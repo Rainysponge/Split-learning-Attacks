@@ -1,0 +1,10 @@
+dataDir: ./data/cifar10
+dataset: cifar10
+model:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
