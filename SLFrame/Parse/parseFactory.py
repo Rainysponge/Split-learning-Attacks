@@ -1,4 +1,4 @@
-from .abstractParse import abstractParseFactory
+from .baseParse import abstractParseFactory
 from .JSON.jsonParse import jsonParse
 from .YAML.yamlParse import yamlParse
 from core.log.Log import Log

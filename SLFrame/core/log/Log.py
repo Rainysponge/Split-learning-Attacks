@@ -3,7 +3,7 @@ log样例
 """
 import logging
 import time
-from .abstractLog import AbstractLog
+from .baseLog import AbstractLog
 
 logger = logging.getLogger()
 
