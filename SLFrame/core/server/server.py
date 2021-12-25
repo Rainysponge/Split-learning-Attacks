@@ -1,8 +1,11 @@
 import torch.nn as nn
 import torch.optim as optim
 
+from core.log.Log import Log
+
 class SplitNNServer():
     def __init__(self, args):
+        self.log = Log(self.__class__.__name__)
         self.comm = args["comm"]
         self.model = args["model"]
         self.MAX_RANK = args["max_rank"]
@@ -43,13 +46,15 @@ class SplitNNServer():
         self.correct += predictions.eq(labels).sum().item()
         if self.step % self.log_step == 0 and self.phase == "train":
             acc = self.correct / self.total
+            self.log.info("phase={} acc={} loss={} epoch={} and step={}"
+                          .format("train", acc, self.loss.item(), self.epoch, self.step))
             # 用log记录一下准确率之类的信息
         if self.phase == "validation":
             self.val_loss += self.loss.item()
         self.step += 1
 
     def backward_pass(self):
-        self.loss.backward()
+        self.loss.backward(retain_graph=True)
         self.optimizer.step()
         return self.acts.grad
 
@@ -59,7 +64,8 @@ class SplitNNServer():
         acc = self.correct / self.total
 
         # 这里也要用log记录一下准确率之类的信息
-
+        self.log.info("phase={} acc={} loss={} epoch={} and step={}"
+                          .format(self.phase, acc, self.val_loss, self.epoch, self.step))
         self.epoch += 1
         self.active_node = (self.active_node % self.MAX_RANK) + 1
         self.train_mode()

@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/partition/basePartition.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/partition/basePartitionFactory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/JSON/jsonParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/JSON/jsonParse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/abstractParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/baseParse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/parseFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/parseFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/utlis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/communication/base_com_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/communication/base_com_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/abstractDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/baseDataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/abstractDatasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/baseDatasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/cifar10/cifar10Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/cifar10/cifar10Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/partition/partitionUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/partitionUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/log/Log.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/log/Log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/log/abstractLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/log/baseLog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/client/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +127,7 @@
       <workItem from="1639963858292" duration="7137000" />
       <workItem from="1639978988374" duration="416000" />
       <workItem from="1639979630448" duration="4489000" />
+      <workItem from="1640429253987" duration="2340000" />
     </task>
     <servers />
   </component>
@@ -163,21 +147,25 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
-    <state width="1237" height="91" key="GridCell.Tab.0.bottom" timestamp="1639984413919">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="157" key="GridCell.Tab.0.bottom" timestamp="1640436080946">
+      <screen x="0" y="0" width="1280" height="672" />
     </state>
+    <state width="1237" height="157" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1640436080946" />
     <state width="1237" height="91" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="91" key="GridCell.Tab.0.center" timestamp="1639984413919">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="157" key="GridCell.Tab.0.center" timestamp="1640436080946">
+      <screen x="0" y="0" width="1280" height="672" />
     </state>
+    <state width="1237" height="157" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1640436080946" />
     <state width="1237" height="91" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="91" key="GridCell.Tab.0.left" timestamp="1639984413919">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="157" key="GridCell.Tab.0.left" timestamp="1640436080946">
+      <screen x="0" y="0" width="1280" height="672" />
     </state>
+    <state width="1237" height="157" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1640436080946" />
     <state width="1237" height="91" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="91" key="GridCell.Tab.0.right" timestamp="1639984413919">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="157" key="GridCell.Tab.0.right" timestamp="1640436080946">
+      <screen x="0" y="0" width="1280" height="672" />
     </state>
+    <state width="1237" height="157" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1640436080946" />
     <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1639963858656">
       <screen x="0" y="0" width="1280" height="680" />
@@ -185,6 +173,6 @@
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1639982904886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1640436080941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
