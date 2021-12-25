@@ -1,4 +1,4 @@
-from ..abstractParse import parse
+from ..baseParse import parse
 from core.log.Log import Log
 
 

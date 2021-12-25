@@ -1,6 +1,6 @@
 import yaml
 
-from ..abstractParse import parse
+from ..baseParse import parse
 from ..utlis import setParseAttribute
 from core.log.Log import Log
 
@@ -9,13 +9,15 @@ class yamlParse(parse):
     """
     样例
     """
-    def __init__(self):
+
+    def __init__(self, **kwargs):
         self.log = Log("yamlParse")
         self.dataset = ""
         self.model = ""
         self.dataDir = ""
         self.partition_method = ""
         self.partition_alpha = 0.5
+        self.split_layer = 1
         self.client_number = 16
         self.batch_size = 64
         self.lr = 0.001
@@ -25,6 +27,7 @@ class yamlParse(parse):
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
         self.gpu_num_per_server = 4
+        self.kwargs = kwargs
 
     def save(self, data, filePath, *args, **kwargs):
         """
@@ -46,3 +49,16 @@ class yamlParse(parse):
             return d
         except Exception as e:
             self.log.error(e)
+
+    def __getitem__(self, item):
+        """
+        可以通过成员变量访问变量，也可以用字典访问，默认返回None，可以用于拓展
+        """
+        # return vars(self)[item] if vars(self)[item] else self.kwargs[item]
+        if item in vars(self):
+            return vars(self)[item]
+        if item in self.kwargs:
+            return self.kwargs[item]
+
+        return None
+

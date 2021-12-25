@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="" />
+    <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/partition/basePartition.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/partition/basePartitionFactory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/JSON/jsonParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/JSON/jsonParse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/abstractParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/baseParse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/parseFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/parseFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/utlis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/utlis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/communication/base_com_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/communication/base_com_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/abstractDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/baseDataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/abstractDatasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/baseDatasetFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/cifar10/cifar10Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/cifar10/cifar10Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/partition/partitionUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/partitionUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/Log.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/log/Log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/abstractLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/log/baseLog.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +36,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="22AMeL082bcceBhek7hHN6ZCo5b" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,8 +48,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/cifar10" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -34,6 +61,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\dataset\partition" />
       <recent name="D:\SLFrame\data\cifar10" />
     </key>
   </component>
@@ -112,6 +140,10 @@
       <updated>1639276032545</updated>
       <workItem from="1639276034266" duration="21193000" />
       <workItem from="1639359093139" duration="593000" />
+      <workItem from="1639895080866" duration="2394000" />
+      <workItem from="1639963858292" duration="7137000" />
+      <workItem from="1639978988374" duration="416000" />
+      <workItem from="1639979630448" duration="4489000" />
     </task>
     <servers />
   </component>
@@ -127,28 +159,32 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1639294966851">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1639963912560">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639294966851" />
-    <state width="1237" height="24" key="GridCell.Tab.0.bottom" timestamp="1639313805641">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
+    <state width="1237" height="91" key="GridCell.Tab.0.bottom" timestamp="1639984413919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="24" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1639313805641" />
-    <state width="1237" height="24" key="GridCell.Tab.0.center" timestamp="1639313805640">
+    <state width="1237" height="91" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
+    <state width="1237" height="91" key="GridCell.Tab.0.center" timestamp="1639984413919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="24" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1639313805640" />
-    <state width="1237" height="24" key="GridCell.Tab.0.left" timestamp="1639313805640">
+    <state width="1237" height="91" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
+    <state width="1237" height="91" key="GridCell.Tab.0.left" timestamp="1639984413919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="24" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1639313805640" />
-    <state width="1237" height="24" key="GridCell.Tab.0.right" timestamp="1639313805640">
+    <state width="1237" height="91" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
+    <state width="1237" height="91" key="GridCell.Tab.0.right" timestamp="1639984413919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="24" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639313805640" />
+    <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1639963858656">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1639311560726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1639982904886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

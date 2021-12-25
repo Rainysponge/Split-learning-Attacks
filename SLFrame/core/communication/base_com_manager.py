@@ -3,6 +3,7 @@ from abc import abstractmethod
 from .message import Message
 from .observer import Observer
 
+
 class BaseCommunicationManager(object):
 
     @abstractmethod
