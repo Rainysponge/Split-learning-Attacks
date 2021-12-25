@@ -1,4 +1,4 @@
-import logging
+
 import queue
 import time
 from typing import List
@@ -78,7 +78,6 @@ class MpiCommunicationManager(BaseCommunicationManager):
                 self.notify(msg_params)
 
             time.sleep(0.3)
-        logging.info("!!!!!!handle_receive_message stopped!!!")
 
     def stop_receive_message(self):
         self.is_running = False

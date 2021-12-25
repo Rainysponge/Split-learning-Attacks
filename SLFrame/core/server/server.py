@@ -8,7 +8,7 @@ class SplitNNServer():
         self.MAX_RANK = args["max_rank"]
 
         self.epoch = 0
-        self.log_step = args["log_step"]
+        self.log_step = args["log_step"] #经过多少步就记录一次log
         self.active_node = 1
         self.train_mode()
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
@@ -43,6 +43,7 @@ class SplitNNServer():
         self.correct += predictions.eq(labels).sum().item()
         if self.step % self.log_step == 0 and self.phase == "train":
             acc = self.correct / self.total
+            # 用log记录一下准确率之类的信息
         if self.phase == "validation":
             self.val_loss += self.loss.item()
         self.step += 1
@@ -57,6 +58,9 @@ class SplitNNServer():
         self.val_loss /= self.step
         acc = self.correct / self.total
 
+        # 这里也要用log记录一下准确率之类的信息
+
         self.epoch += 1
         self.active_node = (self.active_node % self.MAX_RANK) + 1
         self.train_mode()
+

@@ -1,20 +1,20 @@
-from observer import Observer
-from mpi.mpi_com_mananger import MpiCommunicationManager
-from message import Message
+from .observer import Observer
+from .mpi.mpi_com_mananger import MpiCommunicationManager
+from .message import Message
 from abc import abstractmethod
 from mpi4py import MPI
 
 
 class MessageManager(Observer):
 
-    def __init__(self, args, node_type, comm=None, rank=0, size=0, backend="MPI"):
+    def __init__(self, args, node_type, comm=None, rank=0, com_size=0, backend="MPI"):
         self.args = args
-        self.size = size
+        self.com_size = com_size
         self.rank = rank
         self.node_type=node_type
         self.backend = backend
         if backend == "MPI":
-            self.com_manager = MpiCommunicationManager(comm, rank, size, node_type=node_type)
+            self.com_manager = MpiCommunicationManager(comm, rank, com_size, node_type=node_type)
 
         self.com_manager.add_observer(self)
         self.message_handler_dict = dict()

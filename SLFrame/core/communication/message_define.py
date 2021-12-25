@@ -18,6 +18,8 @@ class MyMessage(object):
     MSG_ARG_KEY_SENDER = "sender"
     MSG_ARG_KEY_RECEIVER = "receiver"
 
+    MSG_TYPE_TEST_C2C = 9
+
     """
         message payload keywords definition
     """

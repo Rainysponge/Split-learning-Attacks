@@ -1,20 +1,23 @@
 from ..communication.msg_manager import MessageManager
 from ..communication.message import Message
 from ..communication.message_define import MyMessage
-
+import time
 
 class ClientManager(MessageManager):
+    """
+    args里面要有MPI的 comm, rank, max_rank(也就是comm.size()-1) 其他的暂时不用
+    trainer就是SplitNNClient的一个实例
+    """
 
-    def __init__(self,arg, trainer, backend="MPI"):
-        super().__init__(arg, "client", arg["comm"], arg["rank"], arg["max_rank"] + 1, backend)
+    def __init__(self, args, trainer, backend="MPI"):
+        super().__init__(args, "client", args["comm"], args["rank"], args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.trainer.train_mode()
         self.round_idx = 0
 
     def run(self):
-        if self.trainer.rank == 1:
-            # logging.info("Starting protocol from rank 1 process")
-            self.run_forward_pass()
+        if self.rank == 1:
+           self.run_forward_pass()
         super(ClientManager, self).run()
 
     def run_forward_pass(self):
@@ -57,6 +60,10 @@ class ClientManager(MessageManager):
         else:
             self.run_forward_pass()
 
+    def send_message_test(self, receive_id):
+        message=Message(MyMessage.MSG_TYPE_TEST_C2C,self.rank,receive_id)
+        self.send_message(message)
+
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
@@ -77,4 +84,5 @@ class ClientManager(MessageManager):
     def send_finish_to_server(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
         self.send_message(message)
+
 

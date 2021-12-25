@@ -18,7 +18,7 @@ class MPISendThread(threading.Thread):
         self.q = q
 
     def run(self):
-        logging.debug("Starting " + self.name + ". Process ID = " + str(self.rank))
+        logging.info("Starting " + self.name + ". Process ID = " + str(self.rank))
         while True:
             try:
                 if not self.q.empty():

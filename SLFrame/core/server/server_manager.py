@@ -4,11 +4,11 @@ from ..communication.msg_manager import MessageManager
 from ..communication.message import Message
 
 
-class SplitNNServerManager(MessageManager):
+class ServerManager(MessageManager):
 
-    def __init__(self, arg_dict, trainer, backend="MPI"):
-        super().__init__(arg_dict["args"],"server" ,arg_dict["comm"], arg_dict["rank"],
-                         arg_dict["max_rank"] + 1, backend)
+    def __init__(self, args, trainer, backend="MPI"):
+        super().__init__(args,"server" ,args["comm"], args["rank"],
+                         args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.round_idx = 0
 
