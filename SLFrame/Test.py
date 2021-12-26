@@ -6,6 +6,8 @@ from torchvision import datasets
 from torch.utils.data import DataLoader
 import torch.optim as optim
 
+# import setproctitle
+
 from core.log.Log import Log
 from core.dataset.datasetFactory import datasetFactory
 from Parse.parseFactory import parseFactory, JSON, YAML
@@ -13,53 +15,13 @@ from core.model.cnn import CNN_OriginalFedAvg, Net
 from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork
 from core.client.client import SplitNNClient
 from core.server.server import SplitNNServer
+from core.dataset.controller.cifar10Controller import cifar10Controller
+from core.splitApi import SplitNN_distributed, SplitNN_init
 
-# log = Log("Test.py")
-# log.info("Test")
-#
-# 单个Client 后面和通信息模块对接上流程就跑通了
-
-# parse = parseFactory(fileType=YAML).factory()
-# d = {
-#     "model": [i for i in range(7)],
-#     "dataset": "cifar10",
-#     "dataDir": "./data/cifar10",
-#     'download': True,
-#     'partition_method': 'homo'
-#
-# }
-# parse.save(d, './config.yaml')
-# d = parse.load('./config.yaml')
-# dataset = datasetFactory().factory(parse)  # loader data and partition method
-# print(dataset)
-# dataset.partition_data()
 
 log = Log("Test.py")
 
-batch_size = 64
-transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.1307,), (0.3081,))
-])
-
-train_dataset = datasets.MNIST(root='./data/mnist/',
-                               train=True,
-                               download=True,
-                               transform=transform)
-train_loader = DataLoader(train_dataset, shuffle=True, batch_size=64)
-
-test_dataset = datasets.MNIST(root='./data/mnist/',
-                              train=False,
-                              download=True,
-                              transform=transform)
-test_loader = DataLoader(test_dataset,
-                         shuffle=False, batch_size=64)
-
-split_layer = 1
 model = Net()
-criterion = torch.nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)
-
 client_model = LeNetClientNetwork()
 server_model = LeNetServerNetwork()
 # client_model = nn.Sequential(*nn.ModuleList(model.children())[:split_layer])
@@ -68,30 +30,9 @@ print(type(model))
 print(client_model)
 print(server_model)
 
-# model = client_model
-args = {}
-args["comm"] = None
-args["model"] = client_model
-args["trainloader"] = train_loader
-args["testloader"] = test_loader
-args["rank"] = 1
-args["max_rank"] = 2
-args["lr"] = 0.01
-args["epochs"] = 2
-args["server_rank"] = 1
-args['device'] = 'cpu'
-client = SplitNNClient(args)
-# print(client)
-args["comm"] = None
-args["model"] = server_model
-args["max_rank"] = 4
-
-args["log_step"] = 50
-
-server = SplitNNServer(args)
-
 
 def train(epoch):
+
     server.train_mode()
     client.train_mode()
     # client.dataloader.
@@ -108,11 +49,94 @@ def test():
     acts, labels = client.forward_pass()
     server.forward_pass(acts, labels)
 
-    log.info(server.correct)
+    # log.info(server.correct)
     server.validation_over()
 
 
+def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
+    # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
+    logging = Log("init_training_device")
+    if process_ID == 0:
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        return device
+    process_gpu_dict = dict()
+    for client_index in range(fl_worker_num):
+        gpu_index = client_index % gpu_num_per_machine
+        process_gpu_dict[client_index] = gpu_index
+
+    logging.info(process_gpu_dict)
+    device = torch.device("cuda:" + str(process_gpu_dict[process_ID - 1]) if torch.cuda.is_available() else "cpu")
+    logging.info(device)
+    return device
+
+
 if __name__ == '__main__':
-    for epoch in range(300):
-        train(epoch)
+
+    args = parseFactory(fileType=YAML).factory()
+    """
+        解析器展示, 把需要的数据放在d里面，或者在下面的args里面 eg：args["model"] = client_model
+        这里写过一次之后就可以注释掉了，存在文件中了
+    """
+    d = {
+        "dataset": "mnist",
+        "dataDir": "./data/mnist",
+        'download': True,
+        'partition_method': 'homo',
+        'log_step': 50,
+        "rank": 1,
+        "max_rank": 2,
+        "lr": 0.01,
+        "epochs": 2,
+        "server_rank": 1,
+        'device': 'cpu',
+
+    }
+    args.save(d, './config.yaml')
+    d = args.load('./config.yaml')
+    # comm, process_id, worker_number = SplitNN_init(parse=args)
+    # args["comm"] = comm
+    # args["process_id"] = process_id
+    # args["worker_number"] = worker_number
+
+    args["client_model"] = client_model
+    args["server_model"] = server_model
+
+    """
+        下面相当于   对于通讯而言可以不用改 
+    if args.dataset == "cifar10":
+        data_loader = load_partition_data_distributed_cifar10
+    elif args.dataset == "cifar100":
+        data_loader = load_partition_data_distributed_cifar100
+    elif args.dataset == "cinic10":
+        data_loader = load_partition_data_distributed_cinic10
+    # elif args.dataset == 'MNIST':
+    #     data_loader = load_partition_data_mnist
+    else:
+        data_loader = load_partition_data_distributed_cifar10
+
+    train_data_num, train_data_global, \
+    test_data_global, local_data_num, \
+    train_data_local, test_data_local, class_num = data_loader(process_id, args.dataset, args.data_dir,
+                                                               args.partition_method, args.partition_alpha,
+                                                               args.client_number, args.batch_size)
+    """
+    dataset = datasetFactory().factory(args)  # loader data and partition method
+    # print(dataset)
+
+    train_data_num, train_data_global, test_data_global, local_data_num, \
+    train_data_local, test_data_local, class_num = dataset.load_partition_data(4)  # 这里的4是process Id
+    args["trainloader"] = train_data_local
+    args["testloader"] = test_data_local
+
+    # str_process_name = "SplitNN (distributed):" + str(process_id)
+    # setproctitle.setproctitle(str_process_name)
+
+    client = SplitNNClient(args)
+
+    server = SplitNNServer(args)
+    # SplitNN_distributed(process_id, parse=args)
+    for i in range(1000):
+        # 这里是单个client的测试， 为了测试把server.py里面57行改为的self.loss.backward(retain_graph=True)
+        # 原本是没有retain_graph=True
+        train(i)
         test()

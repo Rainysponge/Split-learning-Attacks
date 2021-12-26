@@ -5,7 +5,7 @@ class SplitNNClient():
 
     def __init__(self, args):
         self.comm = args["comm"]
-        self.model = args["model"]
+        self.model = args["client_model"]
         self.trainloader = args["trainloader"]
         self.testloader = args["testloader"]
         self.rank = args["rank"]

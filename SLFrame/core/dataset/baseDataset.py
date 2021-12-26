@@ -7,7 +7,7 @@ class dataset(data.Dataset, metaclass=abc.ABCMeta):
     管理数据集的抽象类
     datasetFactory 中 import datasetController
     datasetController 中 import partitionFactory
-    partitionFactory 中 import partition_method_list
+    partitionFactory 中 import partition
     """
     # def __init__(self, dataDir):
     #     self.dataDir = dataDir
@@ -17,5 +17,5 @@ class dataset(data.Dataset, metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def partition_data(self):
+    def load_partition_data(self, process_id):
         pass

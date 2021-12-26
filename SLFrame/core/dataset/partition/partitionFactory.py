@@ -2,7 +2,7 @@ import re
 from core.log.Log import Log
 
 from .basePartitionFactory import abstractPartitionFactory
-from .partitionUtils import partition_method_list
+from .cifar10Partition import cifar10Partition
 
 
 class partitionFactory(abstractPartitionFactory):
@@ -11,16 +11,22 @@ class partitionFactory(abstractPartitionFactory):
         self.parse = parse
 
     def factory(self):
-        partition_method = self.parse.partition_method
-        self.log.info("partition_method is {}".format(partition_method))
+        dataset = self.parse['dataset']
+        self.log.info("dataset is {}".format(dataset))
 
-        # 动态调用 后面把partition_method_list的路径放到配置文件里面，拓展性上继承partition_method_list，然后重载或添加方法
-        method_list = [str for str in dir(partition_method_list) if re.match("__*", str) is None]
-        if partition_method in method_list:
-            return getattr(partition_method_list, partition_method)
+        # # 动态调用 后面把partition_method_list的路径放到配置文件里面，拓展性上继承partition_method_list，然后重载或添加方法
+        # method_list = [str for str in dir(partition_method_list) if re.match("__*", str) is None]
+        # if partition_method in method_list:
+        #     return getattr(partition_method_list, partition_method)
+
+        if dataset == 'controller' or dataset == "mnist":
+            partition = cifar10Partition(self.parse).partition_data()
+            return partition
+        else:
+            self.log.error("dataset {} can't be found".format(dataset))
 
         # if partition_method == "homo":
         #     return homo
         # if partition_method == "hetero-fix":
         #     return hetero_fix
-        raise NameError("NameError: partition_method: {}未找到".format(partition_method))
+        raise NameError("NameError: dataset: {}未找到".format(dataset))

@@ -1,6 +1,7 @@
 from .baseDatasetFactory import abstractDatasetFactory
 from core.log.Log import Log
-from .cifar10.cifar10Controller import cifar10Controller
+from .controller.cifar10Controller import cifar10Controller
+from .controller.mnistController import mnistController
 
 
 class datasetFactory(abstractDatasetFactory):

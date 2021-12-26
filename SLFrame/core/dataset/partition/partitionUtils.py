@@ -17,25 +17,3 @@ def record_net_data_stats(y_train, net_dataidx_map):
     log.debug('Data statistics: %s' % str(net_cls_counts))
     return net_cls_counts
 
-
-class partition_method_list:
-    """
-    成员方法全是静态方法
-    """
-
-    @staticmethod
-    def homo(parse, load_data):
-        log.info("homo")
-        X_train, y_train, X_test, y_test = load_data()
-        n_train = X_train.shape[0]
-        total_num = n_train
-        idxs = np.random.permutation(total_num)
-        batch_idxs = np.array_split(idxs, parse['client_number'])
-        net_dataidx_map = {i: batch_idxs[i] for i in range(parse['client_number'])}
-        traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
-        log.info(traindata_cls_counts)
-        return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts
-
-    @staticmethod
-    def hetero_fix(parse, load_data):
-        log.info("hetero-fix")

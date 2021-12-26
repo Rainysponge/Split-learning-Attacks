@@ -62,3 +62,9 @@ class yamlParse(parse):
 
         return None
 
+    def __setitem__(self, key, value):
+        if key in vars(self):
+            setattr(self, key, value)
+        else:
+            self.kwargs[key] = value
+

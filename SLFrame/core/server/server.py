@@ -7,7 +7,7 @@ class SplitNNServer():
     def __init__(self, args):
         self.log = Log(self.__class__.__name__)
         self.comm = args["comm"]
-        self.model = args["model"]
+        self.model = args["server_model"]
         self.MAX_RANK = args["max_rank"]
 
         self.epoch = 0
