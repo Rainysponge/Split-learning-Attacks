@@ -7,6 +7,9 @@ from torch.utils.data import DataLoader
 import torch.optim as optim
 
 # import setproctitle
+import sys
+sys.path.extend("../")
+sys.path.extend("../../")
 
 from core.log.Log import Log
 from core.dataset.datasetFactory import datasetFactory
@@ -87,7 +90,7 @@ if __name__ == '__main__':
         "max_rank": 2,
         "lr": 0.01,
         "epochs": 2,
-        "server_rank": 1,
+        "server_rank": 0,
         'device': 'cpu',
 
     }
@@ -97,6 +100,7 @@ if __name__ == '__main__':
     comm, process_id, worker_number = SplitNN_init()
     args["comm"] = comm
     args["process_id"] = process_id
+    args["rank"]=process_id
     args["worker_number"] = worker_number
 
     args["client_model"] = client_model
@@ -125,7 +129,7 @@ if __name__ == '__main__':
     # print(dataset)
 
     train_data_num, train_data_global, test_data_global, local_data_num, \
-    train_data_local, test_data_local, class_num = dataset.load_partition_data(4)  # 这里的4是process Id
+    train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
     args["trainloader"] = train_data_local
     args["testloader"] = test_data_local
 

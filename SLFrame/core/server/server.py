@@ -1,7 +1,10 @@
 import torch.nn as nn
 import torch.optim as optim
+import sys
 
-from core.log.Log import Log
+sys.path.extend("../../../")
+
+from SLFrame.core.log.Log import Log
 
 class SplitNNServer():
     def __init__(self, args):

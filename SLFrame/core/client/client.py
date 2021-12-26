@@ -14,7 +14,7 @@ class SplitNNClient():
         self.node_right = 1 if self.rank == self.MAX_RANK else self.rank + 1
         self.epoch_count = 0
         self.batch_idx = 0
-        self.MAX_EPOCH_PER_NODE = args["epochs"]
+        self.MAX_EPOCH_PER_NODE = 3
         self.SERVER_RANK = args["server_rank"]
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)

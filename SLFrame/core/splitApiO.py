@@ -60,7 +60,6 @@ def init_client(comm, client_model, worker_number, train_data_local, test_data_l
     args["trainloader"] = train_data_local
     args["testloader"] = test_data_local
     args["client_model"] = client_model
-    args["rank"] = process_id
     args["server_rank"] = server_rank
     args["max_rank"] = worker_number - 1
     args["epochs"] = epochs

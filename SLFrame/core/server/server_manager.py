@@ -2,7 +2,7 @@ from ..communication.message_define import MyMessage
 from mpi4py import MPI
 from ..communication.msg_manager import MessageManager
 from ..communication.message import Message
-
+import logging
 
 class ServerManager(MessageManager):
 
@@ -11,6 +11,7 @@ class ServerManager(MessageManager):
                          args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.round_idx = 0
+        # logging.warning("server rank{} args{}".format(self.rank,args["rank"]))
 
     def run(self):
         super().run()
@@ -38,9 +39,11 @@ class ServerManager(MessageManager):
             self.send_grads_to_client(self.trainer.active_node, grads)
 
     def handle_message_validation_mode(self, msg_params):
+        logging.warning("server recv vali mode")
         self.trainer.eval_mode()
 
     def handle_message_validation_over(self, msg_params):
+        # logging.warning("over")
         self.trainer.validation_over()
 
     def handle_message_finish_protocol(self):

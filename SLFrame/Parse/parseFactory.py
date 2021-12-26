@@ -1,7 +1,7 @@
 from .baseParse import abstractParseFactory
 from .JSON.jsonParse import jsonParse
 from .YAML.yamlParse import yamlParse
-from core.log.Log import Log
+from SLFrame.core.log.Log import Log
 
 JSON = 1
 YAML = 2

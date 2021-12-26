@@ -2,11 +2,16 @@ import sys
 from mpi4py import MPI
 
 sys.path.extend("../../../")
+sys.path.extend("../")
+sys.path.extend("../../")
+sys.path.extend("../../../../")
+
 from SLFrame.core.client.client_manager import ClientManager
 from SLFrame.core.client.client import SplitNNClient
 from SLFrame.core.server.server import SplitNNServer
 from SLFrame.core.server.server_manager import ServerManager
 from SLFrame.core.model.models import LeNetClientNetwork, LeNetServerNetwork
+
 # from .client_manager import ClientManager
 # from .client import SplitNNClient
 # from core.server.server import SplitNNServer
@@ -45,4 +50,4 @@ if __name__ == '__main__':
         server_manager = ServerManager(args, server)
     else:
         client = SplitNNClient(args)
-        client_manager = ServerManager(args, client)
+        client_manager = ClientManager(args, client)

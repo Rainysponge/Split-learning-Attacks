@@ -1,8 +1,9 @@
+import logging
+import time
 from ..communication.msg_manager import MessageManager
 from ..communication.message import Message
 from ..communication.message_define import MyMessage
-import time
-
+from ..log.Log import Log
 
 class ClientManager(MessageManager):
     """
@@ -14,6 +15,7 @@ class ClientManager(MessageManager):
         super().__init__(args, "client", args["comm"], args["rank"], args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.trainer.train_mode()
+        self.log = Log(self.__class__.__name__)
         self.round_idx = 0
 
     def run(self):
@@ -29,17 +31,23 @@ class ClientManager(MessageManager):
     def run_eval(self):
         self.send_validation_signal_to_server(self.trainer.SERVER_RANK)
         self.trainer.eval_mode()
+
         for i in range(len(self.trainer.testloader)):
+            logging.warning("validate {}".format(i))
             self.run_forward_pass()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
+        # logging.warning(
+        #     "noderight {}  self{} max_rank{}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
+        # logging.warning("round{} max_epoch{}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
+        self.log.info(1)
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
+            logging.warning("finish")
             self.send_finish_to_server(self.trainer.SERVER_RANK)
+            self.finish()
         else:
             self.send_semaphore_to_client(self.trainer.node_right)
-
-        if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE:
-            self.finish()
+        self.trainer.batch_idx = 0
 
     def register_message_receive_handlers(self):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2C_SEMAPHORE,
@@ -49,14 +57,15 @@ class ClientManager(MessageManager):
 
     def handle_message_semaphore(self, msg_params):
         # no point in checking the semaphore message
+        logging.warning("client{} recv sema".format(self.rank))
         self.trainer.train_mode()
         self.run_forward_pass()
 
     def handle_message_gradients(self, msg_params):
         grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
         self.trainer.backward_pass(grads)
+        logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
         if self.trainer.batch_idx == len(self.trainer.trainloader):
-            self.round_idx += 1
             self.run_eval()
         else:
             self.run_forward_pass()
@@ -66,6 +75,7 @@ class ClientManager(MessageManager):
         self.send_message(message)
 
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
+        logging.warning("acts to {}".format(receive_id))
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
         self.send_message(message)
@@ -79,6 +89,7 @@ class ClientManager(MessageManager):
         self.send_message(message)
 
     def send_validation_over_to_server(self, receive_id):
+        logging.warning("client{} send vali over to server{}".format(self.rank, self.trainer.SERVER_RANK))
         message = Message(MyMessage.MSG_TYPE_C2S_VALIDATION_OVER, self.rank, receive_id)
         self.send_message(message)
 

@@ -18,11 +18,11 @@ class yamlParse(parse):
         self.partition_method = ""
         self.partition_alpha = 0.5
         self.split_layer = 1
-        self.client_number = 16
-        self.batch_size = 64
+        self.client_number = 64
+        self.batch_size = 6400
         self.lr = 0.001
         self.wd = 0.001
-        self.epochs = 1
+        self.epochs = 3
         self.comm_round = 10
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
