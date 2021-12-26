@@ -7,6 +7,11 @@ from SLFrame.core.client.client import SplitNNClient
 from SLFrame.core.server.server import SplitNNServer
 from SLFrame.core.server.server_manager import ServerManager
 from SLFrame.core.model.models import LeNetClientNetwork, LeNetServerNetwork
+# from .client_manager import ClientManager
+# from .client import SplitNNClient
+# from core.server.server import SplitNNServer
+# from core.server.server_manager import ServerManager
+# from core.model.models import LeNetClientNetwork, LeNetServerNetwork
 
 
 if __name__ == '__main__':

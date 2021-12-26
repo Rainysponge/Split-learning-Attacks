@@ -16,7 +16,7 @@ from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetw
 from core.client.client import SplitNNClient
 from core.server.server import SplitNNServer
 from core.dataset.controller.cifar10Controller import cifar10Controller
-from core.splitApi import SplitNN_distributed, SplitNN_init
+from core.splitApiO import SplitNN_distributed, SplitNN_init
 
 log = Log("Test.py")
 
@@ -94,9 +94,10 @@ if __name__ == '__main__':
     args.save(d, './config.yaml')
     d = args.load('./config.yaml')
     # comm, process_id, worker_number = SplitNN_init(parse=args)
-    # args["comm"] = comm
-    # args["process_id"] = process_id
-    # args["worker_number"] = worker_number
+    comm, process_id, worker_number = SplitNN_init()
+    args["comm"] = comm
+    args["process_id"] = process_id
+    args["worker_number"] = worker_number
 
     args["client_model"] = client_model
     args["server_model"] = server_model
@@ -137,20 +138,22 @@ if __name__ == '__main__':
         clientList.append(SplitNNClient(args))
 
     server = SplitNNServer(args)
-    # SplitNN_distributed(process_id, parse=args)
-    train(0, clientList[0])
-    torch.save(clientList[0].model, 'checkpoint.pth.tar')
-    for i in range(25):
-        # 这里是单个client的测试， 为了测试把server.py里面57行改为的self.loss.backward(retain_graph=True)
-        # 原本是没有retain_graph=True
-        for j in range(16):
-            clientList[j].model = (torch.load('checkpoint.pth.tar'))
-            train(i, clientList[j])
-
-        test(clientList[8])
-        """
-        INFO:root:2021-12-26 17:05:56-----SplitNNServer
-            phase=train acc=0.890625 loss=0.3596789836883545 epoch=25 and step=0
-        INFO:root:2021-12-26 17:05:56-----SplitNNServer
-            phase=train acc=0.9375 loss=0.20334549248218536 epoch=25 and step=0
-        """
+    SplitNN_distributed(process_id, worker_number, "cpu", comm, client_model,
+                        server_model, train_data_num, train_data_global, test_data_global,
+                        local_data_num, train_data_local, test_data_local, args)
+    # train(0, clientList[0])
+    # torch.save(clientList[0].model, 'checkpoint.pth.tar')
+    # for i in range(25):
+    #     # 这里是单个client的测试， 为了测试把server.py里面57行改为的self.loss.backward(retain_graph=True)
+    #     # 原本是没有retain_graph=True
+    #     for j in range(16):
+    #         clientList[j].model = (torch.load('checkpoint.pth.tar'))
+    #         train(i, clientList[j])
+    #
+    #     test(clientList[8])
+    """
+    INFO:root:2021-12-26 17:05:56-----SplitNNServer
+        phase=train acc=0.890625 loss=0.3596789836883545 epoch=25 and step=0
+    INFO:root:2021-12-26 17:05:56-----SplitNNServer
+        phase=train acc=0.9375 loss=0.20334549248218536 epoch=25 and step=0
+    """

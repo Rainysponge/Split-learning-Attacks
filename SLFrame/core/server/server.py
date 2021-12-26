@@ -11,7 +11,7 @@ class SplitNNServer():
         self.MAX_RANK = args["max_rank"]
 
         self.epoch = 0
-        self.log_step = args["log_step"] #经过多少步就记录一次log
+        self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
         self.active_node = 1
         self.train_mode()
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,

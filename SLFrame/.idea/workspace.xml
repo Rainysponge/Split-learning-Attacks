@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/checkpoint.pth.tar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/splitApiO.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/processed/test.pt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/processed/training.pt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
@@ -15,7 +15,11 @@
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/client/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/client/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/client_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/client/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +169,8 @@
       <workItem from="1639979630448" duration="4489000" />
       <workItem from="1640429253987" duration="3188000" />
       <workItem from="1640489329405" duration="5128000" />
-      <workItem from="1640506112026" duration="2320000" />
+      <workItem from="1640506112026" duration="6725000" />
+      <workItem from="1640517754746" duration="1460000" />
     </task>
     <servers />
   </component>
@@ -192,32 +197,33 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom" timestamp="1640509543063">
+    <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1640518356034">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1640509543063" />
+    <state width="1237" height="286" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1640518356034" />
     <state width="1237" height="91" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="195" key="GridCell.Tab.0.center" timestamp="1640509543063">
+    <state width="1237" height="286" key="GridCell.Tab.0.center" timestamp="1640518356034">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1640509543063" />
+    <state width="1237" height="286" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1640518356034" />
     <state width="1237" height="91" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="195" key="GridCell.Tab.0.left" timestamp="1640509543063">
+    <state width="1237" height="286" key="GridCell.Tab.0.left" timestamp="1640518356034">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1640509543063" />
+    <state width="1237" height="286" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1640518356034" />
     <state width="1237" height="91" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="195" key="GridCell.Tab.0.right" timestamp="1640509543063">
+    <state width="1237" height="286" key="GridCell.Tab.0.right" timestamp="1640518356034">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1640509543063" />
+    <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1640518356034" />
     <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1639963858656">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1640517785878">
+      <screen x="0" y="0" width="1280" height="672" />
     </state>
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1640517785878" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1640509543056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1640518350662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

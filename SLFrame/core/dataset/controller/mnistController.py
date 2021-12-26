@@ -79,7 +79,7 @@ class mnistController(dataset):
             dataidxs = net_dataidx_map[process_id - 1]
             local_data_num = len(dataidxs)
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
-            # training batch size = 64; algorithms batch size = 32
+            # training batch size = 64;
             train_data_local, test_data_local = self.get_dataloader()
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (
                 process_id, len(train_data_local), len(test_data_local)))

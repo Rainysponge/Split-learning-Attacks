@@ -3,6 +3,7 @@ from ..communication.message import Message
 from ..communication.message_define import MyMessage
 import time
 
+
 class ClientManager(MessageManager):
     """
     args里面要有MPI的 comm, rank, max_rank(也就是comm.size()-1) 其他的暂时不用
@@ -17,7 +18,7 @@ class ClientManager(MessageManager):
 
     def run(self):
         if self.rank == 1:
-           self.run_forward_pass()
+            self.run_forward_pass()
         super(ClientManager, self).run()
 
     def run_forward_pass(self):
@@ -33,7 +34,7 @@ class ClientManager(MessageManager):
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
-                self.send_finish_to_server(self.trainer.SERVER_RANK)
+            self.send_finish_to_server(self.trainer.SERVER_RANK)
         else:
             self.send_semaphore_to_client(self.trainer.node_right)
 
@@ -61,7 +62,7 @@ class ClientManager(MessageManager):
             self.run_forward_pass()
 
     def send_message_test(self, receive_id):
-        message=Message(MyMessage.MSG_TYPE_TEST_C2C,self.rank,receive_id)
+        message = Message(MyMessage.MSG_TYPE_TEST_C2C, self.rank, receive_id)
         self.send_message(message)
 
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
@@ -84,5 +85,3 @@ class ClientManager(MessageManager):
     def send_finish_to_server(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
         self.send_message(message)
-
-
