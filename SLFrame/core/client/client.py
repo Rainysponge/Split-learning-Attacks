@@ -1,5 +1,5 @@
-
 import torch.optim as optim
+
 
 class SplitNNClient():
 
@@ -16,7 +16,7 @@ class SplitNNClient():
         self.batch_idx = 0
         self.MAX_EPOCH_PER_NODE = args["epochs"]
         self.SERVER_RANK = args["server_rank"]
-        self.optimizer = optim.SGD(self.model.parameters(),args["lr"], momentum=0.9,
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)
 
         self.trainloader = args["trainloader"]

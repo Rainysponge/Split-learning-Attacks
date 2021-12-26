@@ -18,7 +18,6 @@ from core.server.server import SplitNNServer
 from core.dataset.controller.cifar10Controller import cifar10Controller
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
-
 log = Log("Test.py")
 
 model = Net()
@@ -31,8 +30,7 @@ print(client_model)
 print(server_model)
 
 
-def train(epoch):
-
+def train(epoch, client):
     server.train_mode()
     client.train_mode()
     # client.dataloader.
@@ -43,7 +41,7 @@ def train(epoch):
     client.backward_pass(grad)
 
 
-def test():
+def test(client):
     client.eval_mode()
     server.eval_mode()
     acts, labels = client.forward_pass()
@@ -71,7 +69,9 @@ def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
 
 
 if __name__ == '__main__':
-
+    """
+        尽量让Test.py是可以不需要做任何其他操作直接运行的
+    """
     args = parseFactory(fileType=YAML).factory()
     """
         解析器展示, 把需要的数据放在d里面，或者在下面的args里面 eg：args["model"] = client_model
@@ -131,12 +131,26 @@ if __name__ == '__main__':
     # str_process_name = "SplitNN (distributed):" + str(process_id)
     # setproctitle.setproctitle(str_process_name)
 
-    client = SplitNNClient(args)
+    clientList = []
+    for i in range(16):
+        # log.info("{}: {}".format(i, args["trainloader"]))
+        clientList.append(SplitNNClient(args))
 
     server = SplitNNServer(args)
     # SplitNN_distributed(process_id, parse=args)
-    for i in range(1000):
+    train(0, clientList[0])
+    torch.save(clientList[0].model, 'checkpoint.pth.tar')
+    for i in range(25):
         # 这里是单个client的测试， 为了测试把server.py里面57行改为的self.loss.backward(retain_graph=True)
         # 原本是没有retain_graph=True
-        train(i)
-        test()
+        for j in range(16):
+            clientList[j].model = (torch.load('checkpoint.pth.tar'))
+            train(i, clientList[j])
+
+        test(clientList[8])
+        """
+        INFO:root:2021-12-26 17:05:56-----SplitNNServer
+            phase=train acc=0.890625 loss=0.3596789836883545 epoch=25 and step=0
+        INFO:root:2021-12-26 17:05:56-----SplitNNServer
+            phase=train acc=0.9375 loss=0.20334549248218536 epoch=25 and step=0
+        """
