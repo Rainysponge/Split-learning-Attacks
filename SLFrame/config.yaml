@@ -8,4 +8,4 @@ lr: 0.01
 max_rank: 2
 partition_method: homo
 rank: 1
-server_rank: 1
+server_rank: 0
