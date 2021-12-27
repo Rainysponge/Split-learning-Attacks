@@ -11,7 +11,7 @@ class datasetFactory(abstractDatasetFactory):
     def factory(self, parse):
         # try:
         # self.log.info(sys.argv[0])
-        self.log.info(parse.dataset)
+        self.log.info(parse["dataset"])
         create_controller = compile('{}Controller({})'.format(parse.dataset, "parse"),
                                     './core/dataset/{}/{}Controller.py'.format(parse.dataset, parse.dataset),
                                     'eval')

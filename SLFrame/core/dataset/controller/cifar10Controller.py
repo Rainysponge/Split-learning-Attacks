@@ -11,9 +11,9 @@ from torchvision.datasets import CIFAR10
 from ..baseDataset import dataset
 from ..partition.partitionFactory import partitionFactory
 from core.log.Log import Log
+from ..dataset.cifar10 import cifar10_truncated
 
-
-class cifar10Controller(dataset):
+class cifar10Controller():
     def __init__(self, parse, transform=None):
         self.parse = parse
         self.target_transform = None
@@ -27,62 +27,13 @@ class cifar10Controller(dataset):
         self.train = parse['train'] if parse['train'] is not None else True
         self.dataidxs = parse['dataidxs']
         self.download = parse['download'] if parse['download'] is not None else False
-        self.data, self.target = self.__build_truncated_dataset__()
-
-    def __getitem__(self, index) -> T_co:
-        """
-                Args:
-                    index (int): Index
-
-                Returns:
-                    tuple: (image, target) where target is index of the target class.
-         """
-        img, target = self.data[index], self.target[index]
-
-        if self.transform is not None:
-            img = self.transform(img)
-
-        if self.target_transform is not None:
-            target = self.target_transform(target)
-
-        return img, target
-
-    def __len__(self):
-        return len(self.data)
-
-    def __build_truncated_dataset__(self):
-        # print("download = " + str(self.download))
-        # Files already downloaded and verified日志来自这里
-        cifar_dataobj = CIFAR10(self.root, self.train, self.transform, self.target_transform, self.download)
-
-        if self.train:
-            data = cifar_dataobj.data
-            target = np.array(cifar_dataobj.targets)
-        else:
-            data = cifar_dataobj.data
-            target = np.array(cifar_dataobj.targets)
-
-        if self.dataidxs is not None:
-            data = data[self.dataidxs]
-            target = target[self.dataidxs]
-
-        return data, target
-
-    def truncate_channel(self, index):
-        for i in range(index.shape[0]):
-            gs_index = index[i]
-            self.data[gs_index, :, :, 1] = 0.0
-            self.data[gs_index, :, :, 2] = 0.0
 
     def loadData(self):
-        """
-        加载数据
-        """
         self.log.info(self.parse.dataDir)
         train_transform, test_transform = _data_transforms_cifar10()
 
-        cifar10_train_ds = cifar10Controller(parse=self.parse, transform=train_transform)
-        cifar10_test_ds = cifar10Controller(parse=self.parse, transform=test_transform)
+        cifar10_train_ds = cifar10_truncated(parse=self.parse, transform=train_transform)
+        cifar10_test_ds = cifar10_truncated(parse=self.parse, transform=test_transform)
 
         X_train, y_train = cifar10_train_ds.data, cifar10_train_ds.target
         X_test, y_test = cifar10_test_ds.data, cifar10_test_ds.target
@@ -95,26 +46,26 @@ class cifar10Controller(dataset):
         self.log.info(partition_method)
         return partition_method(self.loadData)
 
-    def get_dataloader_CIFAR10(self):
-        dl_obj = cifar10Controller
+    def get_dataloader_CIFAR10(self, dataidxs=None):
+        dl_obj = cifar10_truncated
 
         transform_train, transform_test = _data_transforms_cifar10()
 
-        train_ds = dl_obj(parse=self.parse, transform=transform_train)
-        test_ds = dl_obj(parse=self.parse, transform=transform_test)
+        train_ds = dl_obj(parse=self.parse, transform=transform_train, dataidxs=dataidxs)
+        test_ds = dl_obj(parse=self.parse, transform=transform_test, train=False)
 
         train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=True, drop_last=True)
         test_dl = data.DataLoader(dataset=test_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
 
         return train_dl, test_dl
 
-    def get_dataloader(self):
-        return self.get_dataloader_CIFAR10()
+    def get_dataloader(self, dataidxs=None):
+        return self.get_dataloader_CIFAR10(dataidxs)
 
     def load_partition_data(self, process_id):
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
-        self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
+        # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
         train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
 
         # get global test data
@@ -131,7 +82,7 @@ class cifar10Controller(dataset):
             local_data_num = len(dataidxs)
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64; algorithms batch size = 32
-            train_data_local, test_data_local = self.get_dataloader()
+            train_data_local, test_data_local = self.get_dataloader(dataidxs)
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (
                 process_id, len(train_data_local), len(test_data_local)))
             train_data_global = None

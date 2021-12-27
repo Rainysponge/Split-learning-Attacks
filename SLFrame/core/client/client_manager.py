@@ -37,9 +37,9 @@ class ClientManager(MessageManager):
             self.run_forward_pass()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
-        # logging.warning(
-        #     "noderight {}  self{} max_rank{}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
-        # logging.warning("round{} max_epoch{}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
+        self.log.info(
+            "noderight {}  self{} max_rank{}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
+        self.log.info("round{} max_epoch{}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
         self.log.info(1)
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
             logging.warning("finish")

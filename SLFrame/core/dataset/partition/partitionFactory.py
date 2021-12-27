@@ -19,7 +19,7 @@ class partitionFactory(abstractPartitionFactory):
         # if partition_method in method_list:
         #     return getattr(partition_method_list, partition_method)
 
-        if dataset == 'controller' or dataset == "mnist":
+        if dataset == 'cifar10' or dataset == "mnist":
             partition = cifar10Partition(self.parse).partition_data()
             return partition
         else:

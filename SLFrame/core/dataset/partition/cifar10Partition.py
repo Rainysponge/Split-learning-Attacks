@@ -35,5 +35,5 @@ class cifar10Partition(abstractPartition):
         batch_idxs = np.array_split(idxs, self.parse['client_number'])
         net_dataidx_map = {i: batch_idxs[i] for i in range(self.parse['client_number'])}
         traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
-        log.info(net_dataidx_map)
+        # log.info(net_dataidx_map)
         return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts
