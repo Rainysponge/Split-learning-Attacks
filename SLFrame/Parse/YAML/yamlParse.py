@@ -24,7 +24,7 @@ class yamlParse(parse):
         self.wd = 0.001
         self.epochs = 3
         self.comm_round = 10
-        self.log_step = 50
+        self.log_step = 20
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
         self.gpu_num_per_server = 4

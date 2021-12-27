@@ -85,7 +85,7 @@ if __name__ == '__main__':
         "dataDir": "./data/mnist",
         'download': True,
         'partition_method': 'homo',
-        'log_step': 50,
+        'log_step': 20,
         "rank": 1,
         "max_rank": 2,
         "lr": 0.01,
@@ -140,10 +140,7 @@ if __name__ == '__main__':
     # str_process_name = "SplitNN (distributed):" + str(process_id)
     # setproctitle.setproctitle(str_process_name)
 
-    clientList = []
-    for i in range(16):
-        # log.info("{}: {}".format(i, args["trainloader"]))
-        clientList.append(SplitNNClient(args))
+
 
     server = SplitNNServer(args)
     SplitNN_distributed(process_id, args)

@@ -24,9 +24,6 @@ def SplitNN_init(parse):
 
 
 def SplitNN_distributed(process_id, parse):
-    # process_id, worker_number, device, comm, client_model,
-    # server_model, train_data_num, train_data_global, test_data_global,
-    # local_data_num, train_data_local, test_data_local, args):
     logging = Log("SplitNN_distributed")
     server_rank = 0
     if process_id == server_rank:
@@ -39,11 +36,6 @@ def SplitNN_distributed(process_id, parse):
 
 def init_server(args):
     logging = Log("init_server")
-    # arg_dict = {"comm": comm, "model": server_model, "max_rank": worker_number - 1,
-    #             "rank": process_id, "device": device, "args": args}
-
-    # args["device"] = "cpu"
-    # args["log_step"] = 50
 
     server = SplitNNServer(args)
     server_manager = ServerManager(args, server)
@@ -53,17 +45,7 @@ def init_server(args):
 
 
 def init_client(args):
-    # args["comm"] = comm
-    #
-    # args["trainloader"] = train_data_local
-    # args["testloader"] = test_data_local
-    # args["client_model"] = client_model
-    # args["server_rank"] = server_rank
-    # args["max_rank"] = worker_number - 1
-    # args["epochs"] = epochs
-    # args["device"] = device
     logging = Log("init_client")
-    # args["max_rank"] = args["worker_number"] - 1
     client = SplitNNClient(args)
     client_manager = ClientManager(args, client)
     logging.info("Client run begin")
