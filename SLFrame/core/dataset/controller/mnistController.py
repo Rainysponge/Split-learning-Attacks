@@ -19,7 +19,7 @@ class mnistController():
         self.target_transform = None
         self.transform = transform
         self.data = None
-        self.log = Log(self.__class__.__name__)
+        self.log = Log(self.__class__.__name__, parse)
         self.root = parse['dataDir']
         self.target = None
         self.bantch_size = parse["batch_size"]

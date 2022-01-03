@@ -4,11 +4,11 @@ import sys
 
 sys.path.extend("../../../")
 
-from SLFrame.core.log.Log import Log
+from ..log.Log import Log
 
 class SplitNNServer():
     def __init__(self, args):
-        self.log = Log(self.__class__.__name__)
+        self.log = Log(self.__class__.__name__, args)
         self.comm = args["comm"]
         self.model = args["server_model"]
         self.MAX_RANK = args["max_rank"]

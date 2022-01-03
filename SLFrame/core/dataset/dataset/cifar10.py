@@ -17,7 +17,7 @@ class cifar10_truncated(data.Dataset):
         self.transform = transform
         self.data = None
         self.dataidxs = dataidxs
-        self.log = Log(self.__class__.__name__)
+        self.log = Log(self.__class__.__name__, parse)
         self.root = parse['dataDir']
         self.target = None
         self.bantch_size = parse["batch_size"]

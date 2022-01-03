@@ -11,7 +11,7 @@ from .model.models import LeNetClientNetwork, LeNetServerNetwork
 
 def SplitNN_init(parse):
     # 初始化MPI
-    logging = Log("SplitNN_init")
+    logging = Log("SplitNN_init", parse)
     comm = MPI.COMM_WORLD
     process_id = comm.Get_rank()
     worker_number = comm.Get_size()
@@ -24,7 +24,7 @@ def SplitNN_init(parse):
 
 
 def SplitNN_distributed(process_id, parse):
-    logging = Log("SplitNN_distributed")
+    logging = Log("SplitNN_distributed", parse)
     server_rank = 0
     if process_id == server_rank:
         logging.info("process_id == server_rank : {}".format(process_id))
@@ -35,7 +35,7 @@ def SplitNN_distributed(process_id, parse):
 
 
 def init_server(args):
-    logging = Log("init_server")
+    logging = Log("init_server", args)
 
     server = SplitNNServer(args)
     server_manager = ServerManager(args, server)
@@ -45,7 +45,7 @@ def init_server(args):
 
 
 def init_client(args):
-    logging = Log("init_client")
+    logging = Log("init_client", args)
     client = SplitNNClient(args)
     client_manager = ClientManager(args, client)
     logging.info("Client run begin")

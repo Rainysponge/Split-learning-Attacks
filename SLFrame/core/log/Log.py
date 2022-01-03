@@ -5,11 +5,6 @@ import logging
 import time
 from .baseLog import AbstractLog
 
-logger = logging.getLogger()
-
-
-# logging.basicConfig()
-
 
 def getTime():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -17,29 +12,34 @@ def getTime():
 
 class Log(AbstractLog):
 
-    def __init__(self, className):
+    def __init__(self, className, parse):
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(process)d \n\t %('
+                                                       'message)s')
         self.className = className
-        self.savePath = ""  # 来自配置文件
+        self.savePath = parse["log_save_path"]  # 来自配置文件
+        self.logger = logging.getLogger(className)
+        self.logger.setLevel(level=logging.INFO)
+        self.handler = logging.FileHandler(self.savePath)
+        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(message)s')
+        self.handler.setFormatter(self.formatter)
+
+        self.logger.addHandler(self.handler)
 
     def info(self, message):
-        logger.setLevel(logging.INFO)
-        logging.info("{}-----{}\n\t{}".format(getTime(), self.className, message))
+        self.logger.info(message)
 
     def warning(self, message):
-        logger.setLevel(logging.WARNING)
-        logging.warning("{}-----{}\n\t{}".format(getTime(), self.className, message))
+        self.logger.info(message)
 
     def error(self, message):
-        logger.setLevel(logging.ERROR)
-        logging.error("{}-----{}\n\t{}".format(getTime(), self.className, message))
+        self.logger.info(message)
 
     def debug(self, message):
-        logger.setLevel(logging.DEBUG)
-        logging.debug("{}-----{}\n\t{}".format(getTime(), self.className, message))
+        self.logger.info(message)
 
     def critical(self, message):
-        logger.setLevel(logging.CRITICAL)
-        logging.critical("{}-----{}\n\t{}".format(getTime(), self.className, message))
+
+        self.logger.info(message)
 
     def save(self):
         pass

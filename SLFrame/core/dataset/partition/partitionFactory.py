@@ -7,7 +7,7 @@ from .cifar10Partition import cifar10Partition
 
 class partitionFactory(abstractPartitionFactory):
     def __init__(self, parse):
-        self.log = Log(self.__class__.__name__)
+        self.log = Log(self.__class__.__name__, parse)
         self.parse = parse
 
     def factory(self):

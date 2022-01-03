@@ -11,7 +11,7 @@ class yamlParse(parse):
     """
 
     def __init__(self, **kwargs):
-        self.log = Log("yamlParse")
+        # self.log = None
         self.dataset = ""
         self.model = ""
         self.dataDir = ""
@@ -28,28 +28,32 @@ class yamlParse(parse):
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
         self.gpu_num_per_server = 4
+        self.log_save_path = "D:\\Split-learning-Attacks\\SABuf3\\Split-learning-Attacks\\SLFrame\\log.txt"
         self.kwargs = kwargs
 
     def save(self, data, filePath, *args, **kwargs):
         """
         将dict变为yaml文件输出，如果path下该文件则覆盖
         """
-        self.log.info("save to path: {}".format(filePath))
+        # self.log.info("save to path: {}".format(filePath))
         try:
             with open(filePath, "w") as f:
                 yaml.dump(data, f, **kwargs)
         except Exception as e:
-            self.log.error(e)
+            print(e)
 
     def load(self, filePath, *args, **kwargs):
         try:
             with open(filePath, 'r') as f:
                 d = yaml.load(f, Loader=yaml.FullLoader)
             setParseAttribute(self, d)
-            self.log.info("load config successfully!")
+
+            # self.log = Log("yamlParse", self)
+            # self.log.info("load config successfully!")
+
             return d
         except Exception as e:
-            self.log.error(e)
+            print(e)
 
     def __getitem__(self, item):
         """
@@ -68,4 +72,3 @@ class yamlParse(parse):
             setattr(self, key, value)
         else:
             self.kwargs[key] = value
-

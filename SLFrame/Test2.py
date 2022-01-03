@@ -21,7 +21,7 @@ from core.client.client import SplitNNClient
 from core.server.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
-log = Log("Test.py")
+# log = Log("Test.py")
 
 model = Net()
 client_model = LeNetClientNetwork()
@@ -54,21 +54,21 @@ def test(client):
     server.validation_over()
 
 
-def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
-    # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
-    logging = Log("init_training_device")
-    if process_ID == 0:
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        return device
-    process_gpu_dict = dict()
-    for client_index in range(fl_worker_num):
-        gpu_index = client_index % gpu_num_per_machine
-        process_gpu_dict[client_index] = gpu_index
-
-    logging.info(process_gpu_dict)
-    device = torch.device("cuda:" + str(process_gpu_dict[process_ID - 1]) if torch.cuda.is_available() else "cpu")
-    logging.info(device)
-    return device
+# def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
+#     # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
+#     logging = Log("init_training_device")
+#     if process_ID == 0:
+#         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#         return device
+#     process_gpu_dict = dict()
+#     for client_index in range(fl_worker_num):
+#         gpu_index = client_index % gpu_num_per_machine
+#         process_gpu_dict[client_index] = gpu_index
+#
+#     logging.info(process_gpu_dict)
+#     device = torch.device("cuda:" + str(process_gpu_dict[process_ID - 1]) if torch.cuda.is_available() else "cpu")
+#     logging.info(device)
+#     return device
 
 
 if __name__ == '__main__':
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
     args["client_model"] = client_model
     args["server_model"] = server_model
-
+    log = Log("Test.py", args)
     """
         下面相当于   对于通讯而言可以不用改 
     if args.dataset == "cifar10":
@@ -122,7 +122,7 @@ if __name__ == '__main__':
                                                                args.partition_method, args.partition_alpha,
                                                                args.client_number, args.batch_size)
     """
-    dataset = datasetFactory().factory(args)  # loader data and partition method
+    dataset = datasetFactory(args).factory()  # loader data and partition method
     # print(dataset)
 
     train_data_num, train_data_global, test_data_global, local_data_num, \
