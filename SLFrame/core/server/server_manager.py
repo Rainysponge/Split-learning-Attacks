@@ -4,13 +4,15 @@ from ..communication.msg_manager import MessageManager
 from ..communication.message import Message
 import logging
 
+
 class ServerManager(MessageManager):
 
     def __init__(self, args, trainer, backend="MPI"):
-        super().__init__(args,"server" ,args["comm"], args["rank"],
+        super().__init__(args, "server", args["comm"], args["rank"],
                          args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.round_idx = 0
+
         # logging.warning("server rank{} args{}".format(self.rank,args["rank"]))
 
     def run(self):
@@ -48,4 +50,3 @@ class ServerManager(MessageManager):
 
     def handle_message_finish_protocol(self):
         self.finish()
-

@@ -18,7 +18,7 @@ class yamlParse(parse):
         self.partition_method = ""
         self.partition_alpha = 0.5
         self.split_layer = 1
-        self.client_number = 16
+        self.client_number = 2
         self.batch_size = 64
         self.lr = 0.001
         self.wd = 0.001
@@ -28,7 +28,9 @@ class yamlParse(parse):
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
         self.gpu_num_per_server = 4
-        self.log_save_path = "D:\\Split-learning-Attacks\\SABuf3\\Split-learning-Attacks\\SLFrame\\log.txt"
+        self.log_save_path = "D:\\Split-learning-Attacks\\SABuf\\Split-learning-Attacks\\SLFrame\\log.txt"
+        self.model_save_path = "D:\\Split-learning-Attacks\\SABuf\\Split-learning-Attacks\\SLFrame\\model_save\\{}_{}_{}.pkl"
+
         self.kwargs = kwargs
 
     def save(self, data, filePath, *args, **kwargs):

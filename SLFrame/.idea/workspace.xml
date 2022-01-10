@@ -12,23 +12,12 @@
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/client/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/client_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/baseDatasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/baseDatasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/partition/cifar10Partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/cifar10Partition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/log/Log.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/log/Log.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/splitApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splitApi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/server/server_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +48,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SABuf2/Split-learning-Attacks/SLFrame" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -204,6 +193,8 @@
       <workItem from="1640579167700" duration="3077000" />
       <workItem from="1640604965690" duration="4987000" />
       <workItem from="1641196680949" duration="5380000" />
+      <workItem from="1641805370886" duration="1223000" />
+      <workItem from="1641809770756" duration="6224000" />
     </task>
     <servers />
   </component>
@@ -226,10 +217,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1641200376863">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1641809768232">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1641200376863" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1641809768232" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
     <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
       <screen x="0" y="0" width="1280" height="672" />

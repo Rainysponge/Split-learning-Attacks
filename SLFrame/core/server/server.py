@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.optim as optim
 import sys
@@ -9,6 +10,7 @@ from ..log.Log import Log
 class SplitNNServer():
     def __init__(self, args):
         self.log = Log(self.__class__.__name__, args)
+        self.args = args
         self.comm = args["comm"]
         self.model = args["server_model"]
         self.MAX_RANK = args["max_rank"]
@@ -51,9 +53,11 @@ class SplitNNServer():
             acc = self.correct / self.total
             self.log.info("phase={} acc={} loss={} epoch={} and step={}"
                           .format("train", acc, self.loss.item(), self.epoch, self.step))
+
             # 用log记录一下准确率之类的信息
         if self.phase == "validation":
             self.val_loss += self.loss.item()
+            torch.save(self.model, self.args["model_save_path"].format("server", self.epoch, ""))
         self.step += 1
 
     def backward_pass(self):
