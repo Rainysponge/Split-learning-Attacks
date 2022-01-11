@@ -17,8 +17,8 @@ from core.dataset.datasetFactory import datasetFactory
 from Parse.parseFactory import parseFactory, JSON, YAML
 from core.model.cnn import CNN_OriginalFedAvg, Net
 from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork
-from core.client.client import SplitNNClient
-from core.server.server import SplitNNServer
+from core.variants.vanilla.client import SplitNNClient
+from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
 # log = Log("Test.py")

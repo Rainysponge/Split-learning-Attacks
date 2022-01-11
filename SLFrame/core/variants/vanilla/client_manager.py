@@ -1,10 +1,10 @@
 import logging
 import torch
 import time
-from ..communication.msg_manager import MessageManager
-from ..communication.message import Message
-from ..communication.message_define import MyMessage
-from ..log.Log import Log
+from .message_define import MyMessage
+from ...communication.msg_manager import MessageManager
+from ...communication.message import Message
+from ...log.Log import Log
 
 class ClientManager(MessageManager):
     """
@@ -41,7 +41,6 @@ class ClientManager(MessageManager):
         self.log.info(
             "noderight {}  self{} max_rank{}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
         self.log.info("round{} max_epoch{}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
-        self.log.info(1)
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
             logging.warning("finish")
             self.send_finish_to_server(self.trainer.SERVER_RANK)

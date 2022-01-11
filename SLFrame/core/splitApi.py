@@ -2,10 +2,10 @@ from .log.Log import Log
 import time
 from mpi4py import MPI
 
-from .client.client_manager import ClientManager
-from .client.client import SplitNNClient
-from .server.server import SplitNNServer
-from .server.server_manager import ServerManager
+from .variants.vanilla.client_manager import ClientManager
+from .variants.vanilla.client import SplitNNClient
+from .variants.vanilla.server import SplitNNServer
+from .variants.vanilla.server_manager import ServerManager
 from .model.models import LeNetClientNetwork, LeNetServerNetwork
 
 

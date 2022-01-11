@@ -6,6 +6,7 @@ class SplitNNClient():
     def __init__(self, args):
         self.comm = args["comm"]
         self.model = args["client_model"]
+
         self.trainloader = args["trainloader"]
         self.testloader = args["testloader"]
         self.rank = args["rank"]
@@ -19,7 +20,6 @@ class SplitNNClient():
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)
 
-        self.trainloader = args["trainloader"]
         self.device = args["device"]
 
     def forward_pass(self):

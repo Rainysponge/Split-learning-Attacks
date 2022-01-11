@@ -5,7 +5,7 @@ import sys
 
 sys.path.extend("../../../")
 
-from ..log.Log import Log
+from ...log.Log import Log
 
 class SplitNNServer():
     def __init__(self, args):
