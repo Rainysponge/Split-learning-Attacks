@@ -19,6 +19,7 @@ def SplitNN_init(parse):
     parse["comm"] = comm
     parse["process_id"] = process_id
     parse["worker_number"] = worker_number
+    parse["client_number"] = worker_number
     parse["max_rank"] = parse["worker_number"] - 1
     return comm, process_id, worker_number
 

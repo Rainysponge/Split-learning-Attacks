@@ -141,3 +141,98 @@ class LeNetServerNetwork(nn.Module):
         x = self.block3(x)
 
         return x
+
+
+class adult_LR(nn.Module):
+    def __init__(self):
+        super(adult_LR, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(14, 10),
+
+        )
+        self.block2 = nn.Sequential(
+            nn.Linear(10, 7),
+
+        )
+        self.block3 = nn.Sequential(
+            nn.Linear(7, 2),
+
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+        x = self.block2(x)
+        x = self.block3(x)
+        return x
+
+
+class adult_LR_server(nn.Module):
+    def __init__(self):
+        super(adult_LR_server, self).__init__()
+        # First block - convolutional
+
+        self.block2 = nn.Sequential(
+            nn.Linear(10, 7),
+
+        )
+        self.block3 = nn.Sequential(
+            nn.Linear(7, 2),
+
+        )
+
+    def forward(self, x):
+        # x = self.block1(x)
+        x = self.block2(x)
+        x = self.block3(x)
+        return x
+
+
+class adult_LR_client(nn.Module):
+    def __init__(self):
+        super(adult_LR_client, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(14, 10),
+
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+
+        return x
+
+
+class german_LR_client(nn.Module):
+    def __init__(self):
+        super(german_LR_client, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(24, 14),
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+
+        return x
+
+
+class german_LR_server(nn.Module):
+    def __init__(self):
+        super(german_LR_server, self).__init__()
+        # First block - convolutional
+
+        self.block2 = nn.Sequential(
+            nn.Linear(14, 7),
+
+        )
+        self.block3 = nn.Sequential(
+            nn.Linear(7, 2),
+
+        )
+
+    def forward(self, x):
+        # x = self.block1(x)
+        x = self.block2(x)
+        x = self.block3(x)
+        return x

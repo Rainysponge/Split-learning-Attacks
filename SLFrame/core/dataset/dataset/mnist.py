@@ -10,7 +10,7 @@ from core.log.Log import Log
 
 class mnist_truncated(data.Dataset):
 
-    def __init__(self, parse, dataidxs=None, train = True,transform=None):
+    def __init__(self, parse, dataidxs=None, train=True,transform=None):
 
         self.parse = parse
         self.target_transform = None

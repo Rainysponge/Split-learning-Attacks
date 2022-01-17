@@ -2,6 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/dataset/controller/adultController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/controller/germanController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/dataset/adult.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/dataset/dataset/german.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/adult.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/adult.test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/batches.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/data_batch_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/data_batch_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/data_batch_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/data_batch_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/data_batch_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/readme.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/test_batch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/german/german.data-numeric" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/processed/test.pt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/processed/training.pt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
@@ -12,11 +29,54 @@
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasetTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_1_0.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_1_1.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_1_2.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_1_3.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_1_4.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_2_0.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_2_1.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_2_2.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_2_3.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_2_4.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_3_0.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_3_1.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_3_2.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_3_3.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_4_0.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_4_1.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_4_2.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/client_4_3.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_0_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_10_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_11_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_12_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_13_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_14_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_1_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_2_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_3_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_4_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_5_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_6_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_7_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_8_.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_save/server_9_.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/client/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/client/client_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/server/server_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/server/server_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/splitApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splitApi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +108,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/german" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,11 +119,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Split-learning-Attacks\SABuf3\Split-learning-Attacks\SLFrame\data\german" />
+      <recent name="D:\Split-learning-Attacks\SABuf3\Split-learning-Attacks\SLFrame\data\adult" />
       <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\dataset\partition" />
       <recent name="D:\SLFrame\data\cifar10" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.logTest">
+  <component name="RunManager" selected="Python.datasetTest">
     <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,10 +170,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="datasetTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SLFrame" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/datasetTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="logTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -151,6 +238,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.datasetTest" />
         <item itemvalue="Python.logTest" />
         <item itemvalue="Python.Test" />
         <item itemvalue="Python.test" />
@@ -195,6 +283,18 @@
       <workItem from="1641196680949" duration="5380000" />
       <workItem from="1641805370886" duration="1223000" />
       <workItem from="1641809770756" duration="6224000" />
+      <workItem from="1641996009366" duration="2296000" />
+      <workItem from="1642076428575" duration="6000" />
+      <workItem from="1642077118235" duration="1190000" />
+      <workItem from="1642143645179" duration="1386000" />
+      <workItem from="1642158860108" duration="243000" />
+      <workItem from="1642159244759" duration="7240000" />
+      <workItem from="1642215599689" duration="1646000" />
+      <workItem from="1642242984880" duration="6403000" />
+      <workItem from="1642299461713" duration="595000" />
+      <workItem from="1642311406252" duration="10808000" />
+      <workItem from="1642335597332" duration="9735000" />
+      <workItem from="1642383740396" duration="2790000" />
     </task>
     <servers />
   </component>
@@ -209,18 +309,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1639277368586" />
-    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1640509439974">
+    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1642172306282">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1640509439974" />
+    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1642172306282" />
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1639307876176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1641809768232">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1641996399005">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1641809768232" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1641996399005" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
     <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
       <screen x="0" y="0" width="1280" height="672" />
@@ -242,11 +342,15 @@
     </state>
     <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
     <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1640517785878">
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1642386662574">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1640517785878" />
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1642386662574" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
+    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1642254862785">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1642254862785" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1641197340749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -2,6 +2,8 @@ from .baseDatasetFactory import abstractDatasetFactory
 from core.log.Log import Log
 from .controller.cifar10Controller import cifar10Controller
 from .controller.mnistController import mnistController
+from .controller.adultController import adultController
+from .controller.germanController import germanController
 
 
 class datasetFactory(abstractDatasetFactory):

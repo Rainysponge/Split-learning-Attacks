@@ -1,11 +1,10 @@
-dataDir: ./data/mnist
-dataset: mnist
+dataDir: ./data/cifar10
+dataset: cifar10
 device: cpu
 download: true
-epochs: 2
 log_step: 20
 lr: 0.01
-max_rank: 2
+max_rank: 5
 partition_method: homo
 rank: 1
 server_rank: 0

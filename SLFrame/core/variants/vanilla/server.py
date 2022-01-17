@@ -56,6 +56,8 @@ class SplitNNServer():
 
             # 用log记录一下准确率之类的信息
         if self.phase == "validation":
+            # self.log.info("phase={} acc={} loss={} epoch={} and step={}"
+            #               .format("train", acc, self.loss.item(), self.epoch, self.step))
             self.val_loss += self.loss.item()
             torch.save(self.model, self.args["model_save_path"].format("server", self.epoch, ""))
         self.step += 1

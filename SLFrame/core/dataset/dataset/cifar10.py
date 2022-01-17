@@ -1,6 +1,8 @@
 import logging
 
 import numpy as np
+import torch
+from numpy.compat import long
 import torch.utils.data as data
 from PIL import Image
 from torchvision.datasets import CIFAR10
@@ -31,19 +33,19 @@ class cifar10_truncated(data.Dataset):
     def __build_truncated_dataset__(self):
         # print("download = " + str(self.download))
         # Files already downloaded and verified日志来自这里
-        mnist_dataobj = CIFAR10(self.root, self.train, self.transform, self.target_transform, self.download)
+        cifar_dataobj = CIFAR10(self.root, self.train, self.transform, self.target_transform, self.download)
 
         if self.train:
-            data = mnist_dataobj.data
-            target = np.array(mnist_dataobj.targets)
+            data = cifar_dataobj.data
+            target = np.array(cifar_dataobj.targets)
         else:
-            data = mnist_dataobj.data
-            target = np.array(mnist_dataobj.targets)
+            data = cifar_dataobj.data
+            target = np.array(cifar_dataobj.targets)
 
         if self.dataidxs is not None:
             data = data[self.dataidxs]
             target = target[self.dataidxs]
-
+        target = torch.Tensor(target).long()  # Factos!!!
         return data, target
 
     def truncate_channel(self, index):
@@ -54,12 +56,9 @@ class cifar10_truncated(data.Dataset):
 
     def __getitem__(self, index):
 
-        img, target = self.data[index], int(self.target[index])
-
-        # doing this so that it is consistent with all other datasets
-        # to return a PIL Image
-        img = Image.fromarray(img.numpy(), mode='L')
-
+        img, target = self.data[index], self.target[index]
+        # self.log.info(type(target.long()))
+        # target = Image.fromarray(target, mode='L')
         if self.transform is not None:
             img = self.transform(img)
 
