@@ -88,4 +88,11 @@ class adultController():
                 process_id, len(train_data_local), len(test_data_local)))
             train_data_global = None
             test_data_global = None
+        self.parse["trainloader"] = train_data_local
+        self.parse["testloader"] = test_data_local
+        self.parse["train_data_num"] = train_data_num
+        self.parse["train_data_global"] = train_data_global
+        self.parse["test_data_global"] = test_data_global
+        self.parse["local_data_num"] = local_data_num
+        self.parse["class_num"] = class_num
         return train_data_num, train_data_global, test_data_global, local_data_num, train_data_local, test_data_local, class_num

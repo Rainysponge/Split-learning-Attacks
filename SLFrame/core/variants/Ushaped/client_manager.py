@@ -11,6 +11,7 @@ from ...log.Log import Log
 还没实现!! 只是做个例子
 """
 
+
 class ClientManager(MessageManager):
     """
     args里面要有MPI的 comm, rank, max_rank(也就是comm.size()-1) 其他的暂时不用
@@ -28,12 +29,11 @@ class ClientManager(MessageManager):
             self.trainer.train_mode()
             self.run_forward_pass()
         logging.warning("{} start running".format(self.rank))
-        super().run() #run 要放在最后是因为先要发送信息之后才能开始监听.. 不然大家都在等别人的消息
-
+        super().run()  # run 要放在最后是因为先要发送信息之后才能开始监听.. 不然大家都在等别人的消息
 
     def run_forward_pass(self):
         acts = self.trainer.forward_pass()
-      #  logging.warning("send acts to server")
+        #  logging.warning("send acts to server")
         self.send_activations_to_server(acts, self.trainer.SERVER_RANK)
         self.trainer.batch_idx += 1
 
@@ -44,7 +44,7 @@ class ClientManager(MessageManager):
         for i in range(len(self.trainer.testloader)):
             logging.warning("validate {}".format(i))
             self.run_forward_pass()
-           # logging.warning("lis")
+            # logging.warning("lis")
             self.listen()
 
         self.trainer.validation_over()
@@ -77,18 +77,18 @@ class ClientManager(MessageManager):
 
     def handle_message_gradients(self, msg_params):
         grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
-        self.trainer.backward_pass(type=0,grads=grads)
+        self.trainer.backward_pass(type=0, grads=grads)
         logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
-        if self.trainer.batch_idx == len(self.trainer.trainloader): #len(self.trainer.trainloader)
+        if self.trainer.batch_idx == len(self.trainer.trainloader):  # len(self.trainer.trainloader)
             torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
                                                                                self.trainer.epoch_count))
             self.run_eval()
         else:
             self.run_forward_pass()
 
-    def handle_message_acts_from_server(self,msg_params):
-        acts=msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
-       # logging.warning("QAQ3")
+    def handle_message_acts_from_server(self, msg_params):
+        acts = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
+        # logging.warning("QAQ3")
         self.trainer.forward_pass(type=1, inputs=acts)
         if self.trainer.phase == "train":
             grads = self.trainer.backward_pass(type=1)
@@ -99,7 +99,7 @@ class ClientManager(MessageManager):
         self.send_message(message)
 
     def send_activations_to_server(self, acts, receive_id):
-    #    logging.warning("{} acts to {}".format(self.rank,receive_id))
+        #    logging.warning("{} acts to {}".format(self.rank,receive_id))
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, acts)
         self.send_message(message)
@@ -108,7 +108,6 @@ class ClientManager(MessageManager):
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_GRADS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
         self.send_message(message)
-
 
     def send_semaphore_to_client(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2C_SEMAPHORE, self.rank, receive_id)
@@ -126,4 +125,3 @@ class ClientManager(MessageManager):
     def send_finish_to_server(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
         self.send_message(message)
-

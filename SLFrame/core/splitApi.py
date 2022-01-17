@@ -2,10 +2,10 @@ from .log.Log import Log
 import time
 from mpi4py import MPI
 
-from .variants.Ushaped.client_manager import ClientManager
-from .variants.Ushaped.client import SplitNNClient
-from .variants.Ushaped.server import SplitNNServer
-from .variants.Ushaped.server_manager import ServerManager
+from .variants.vanilla.client_manager import ClientManager
+from .variants.vanilla.client import SplitNNClient
+from .variants.vanilla.server import SplitNNServer
+from .variants.vanilla.server_manager import ServerManager
 from .model.models import LeNetClientNetwork, LeNetServerNetwork
 
 
@@ -18,7 +18,8 @@ def SplitNN_init(parse):
     logging.info("process_id: {}, worker_number: {}".format(process_id, worker_number))
     parse["comm"] = comm
     parse["process_id"] = process_id
-    parse["worker_number"] = worker_number
+    parse["worker_number"] = worker_number - 1
+    parse["client_number"] = worker_number - 1
     parse["max_rank"] = parse["worker_number"] - 1
     return comm, process_id, worker_number
 

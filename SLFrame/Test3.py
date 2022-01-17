@@ -29,8 +29,6 @@ server_model = LeNetServerNetwork()
 # client_model = nn.Sequential(*nn.ModuleList(model.children())[:split_layer])
 # server_model = nn.Sequential(*nn.ModuleList(model.children())[split_layer:])
 
-print(client_model)
-print(server_model)
 
 if __name__ == '__main__':
     args = parseFactory(fileType=YAML).factory()

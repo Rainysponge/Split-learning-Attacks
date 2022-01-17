@@ -66,8 +66,8 @@ class ClientManager(MessageManager):
         self.trainer.backward_pass(grads)
         logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
         if self.trainer.batch_idx == len(self.trainer.trainloader):
-            torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
-                                                                               self.round_idx))
+            # torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
+            #                                                                    self.round_idx))
             self.run_eval()
         else:
             self.run_forward_pass()

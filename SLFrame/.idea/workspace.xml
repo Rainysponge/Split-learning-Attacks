@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/dataset/controller/adultController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/controller/germanController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/dataset/adult.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/dataset/german.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.test" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/adult.data" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/adult.test" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/batches.meta" afterDir="false" />
@@ -29,53 +23,20 @@
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/mnist/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasetTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_1_0.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_1_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_1_2.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_1_3.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_1_4.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_2_0.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_2_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_2_2.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_2_3.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_2_4.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_3_0.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_3_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_3_2.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_3_3.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_4_0.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_4_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_4_2.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/client_4_3.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_0_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_10_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_11_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_12_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_13_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_14_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_1_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_2_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_3_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_4_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_5_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_6_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_7_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_8_.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_save/server_9_.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint.pth.tar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/cifar10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/mnist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/partitionFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/controller/adultController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/adultController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/controller/germanController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/germanController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/splitApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splitApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/Ushaped/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/Ushaped/client_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/client_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/variants/vanilla/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
@@ -108,7 +69,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/german" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SABuf3/Split-learning-Attacks/SLFrame" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -295,6 +256,7 @@
       <workItem from="1642311406252" duration="10808000" />
       <workItem from="1642335597332" duration="9735000" />
       <workItem from="1642383740396" duration="2790000" />
+      <workItem from="1642430081935" duration="1270000" />
     </task>
     <servers />
   </component>
@@ -317,10 +279,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1641996399005">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1642430167027">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1641996399005" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1642430167027" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
     <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
       <screen x="0" y="0" width="1280" height="672" />
