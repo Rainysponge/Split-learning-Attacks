@@ -4,9 +4,11 @@ class MyMessage(object):
     """
     # server to client
     MSG_TYPE_S2C_GRADS = 1
+    MSG_TYPE_S2C_ACTS = 8
 
     # client to server
     MSG_TYPE_C2S_SEND_ACTS = 2
+    MSG_TYPE_C2S_SEND_GRADS = 7
     MSG_TYPE_C2S_VALIDATION_MODE = 3
     MSG_TYPE_C2S_VALIDATION_OVER = 4
     MSG_TYPE_C2S_PROTOCOL_FINISHED = 5
