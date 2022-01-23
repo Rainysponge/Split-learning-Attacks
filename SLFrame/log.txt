@@ -1,349 +1,185 @@
-2022-01-17 22:42:15,710 - SplitNN_init - INFO - 62508 - process_id: 1, worker_number: 3
-2022-01-17 22:42:15,711 - SplitNN_init - INFO - 73356 - process_id: 2, worker_number: 3
-2022-01-17 22:42:15,712 - datasetFactory - INFO - 62508 - mnist
-2022-01-17 22:42:15,712 - SplitNN_init - INFO - 79944 - process_id: 0, worker_number: 3
-2022-01-17 22:42:15,713 - datasetFactory - INFO - 73356 - mnist
-2022-01-17 22:42:15,713 - partitionFactory - INFO - 62508 - dataset is mnist
-2022-01-17 22:42:15,713 - datasetFactory - INFO - 79944 - mnist
-2022-01-17 22:42:15,713 - mnistController - INFO - 62508 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001E971B20A08>>
-2022-01-17 22:42:15,713 - cifar10Partition - INFO - 62508 - homo
-2022-01-17 22:42:15,713 - mnistController - INFO - 62508 - ./data/mnist
-2022-01-17 22:42:15,714 - partitionFactory - INFO - 73356 - dataset is mnist
-2022-01-17 22:42:15,714 - partitionFactory - INFO - 79944 - dataset is mnist
-2022-01-17 22:42:15,714 - mnistController - INFO - 73356 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001D745E00808>>
-2022-01-17 22:42:15,714 - cifar10Partition - INFO - 73356 - homo
-2022-01-17 22:42:15,714 - mnistController - INFO - 79944 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000021EDCF20D88>>
-2022-01-17 22:42:15,714 - mnistController - INFO - 73356 - ./data/mnist
-2022-01-17 22:42:15,715 - cifar10Partition - INFO - 79944 - homo
-2022-01-17 22:42:15,715 - mnistController - INFO - 79944 - ./data/mnist
-2022-01-17 22:42:15,801 - mnistController - INFO - 73356 - rank = 2, local_sample_number = 30000
-2022-01-17 22:42:15,801 - mnistController - INFO - 62508 - rank = 1, local_sample_number = 30000
-2022-01-17 22:42:15,870 - mnistController - INFO - 79944 - train_dl_global number = 234
-2022-01-17 22:42:15,870 - mnistController - INFO - 79944 - test_dl_global number = 39
-2022-01-17 22:42:15,877 - SplitNN_distributed - INFO - 79944 - process_id == server_rank : 0
-2022-01-17 22:42:15,880 - mnistController - INFO - 62508 - dataidxs: [16817 37605 14083 ... 23257 49361 58722]
-2022-01-17 22:42:15,880 - mnistController - INFO - 62508 - process_id = 1, batch_num_train_local = 117, batch_num_test_local = 39
-2022-01-17 22:42:15,881 - init_server - INFO - 79944 - Server run begin
-2022-01-17 22:42:15,889 - mnistController - INFO - 73356 - dataidxs: [23374 21749 32114 ... 54456 49738  4941]
-2022-01-17 22:42:15,889 - SplitNN_distributed - INFO - 62508 - process_id == client_rank : 1
-2022-01-17 22:42:15,889 - mnistController - INFO - 73356 - process_id = 2, batch_num_train_local = 117, batch_num_test_local = 39
-2022-01-17 22:42:15,893 - init_client - INFO - 62508 - Client run begin
-2022-01-17 22:42:15,896 - SplitNN_distributed - INFO - 73356 - process_id == client_rank : 2
-2022-01-17 22:42:15,901 - init_client - INFO - 73356 - Client run begin
-2022-01-17 22:42:16,287 - SplitNNClient - INFO - 62508 - phase=train acc=0.08203125 loss=2.3056800365448 epoch=0 and step=0
-2022-01-17 22:42:31,250 - SplitNNClient - INFO - 62508 - phase=train acc=0.1409970238095238 loss=2.2922065258026123 epoch=0 and step=20
-2022-01-17 22:42:46,543 - SplitNNClient - INFO - 62508 - phase=train acc=0.19655106707317074 loss=2.239762306213379 epoch=0 and step=40
-2022-01-17 22:43:01,659 - SplitNNClient - INFO - 62508 - phase=train acc=0.30135758196721313 loss=1.788289189338684 epoch=0 and step=60
-2022-01-17 22:43:17,940 - SplitNNClient - INFO - 62508 - phase=train acc=0.3959297839506173 loss=0.8380061388015747 epoch=0 and step=80
-2022-01-17 22:43:33,363 - SplitNNClient - INFO - 62508 - phase=train acc=0.47660117574257427 loss=0.5215433835983276 epoch=0 and step=100
-2022-01-17 22:46:12,365 - SplitNN_init - INFO - 79128 - process_id: 0, worker_number: 3
-2022-01-17 22:46:12,366 - SplitNN_init - INFO - 59924 - process_id: 1, worker_number: 3
-2022-01-17 22:46:12,366 - datasetFactory - INFO - 79128 - mnist
-2022-01-17 22:46:12,367 - datasetFactory - INFO - 59924 - mnist
-2022-01-17 22:46:12,367 - partitionFactory - INFO - 79128 - dataset is mnist
-2022-01-17 22:46:12,368 - partitionFactory - INFO - 59924 - dataset is mnist
-2022-01-17 22:46:12,368 - mnistController - INFO - 79128 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001ACDD3A4408>>
-2022-01-17 22:46:12,368 - SplitNN_init - INFO - 80708 - process_id: 2, worker_number: 3
-2022-01-17 22:46:12,368 - cifar10Partition - INFO - 79128 - homo
-2022-01-17 22:46:12,369 - mnistController - INFO - 79128 - ./data/mnist
-2022-01-17 22:46:12,369 - mnistController - INFO - 59924 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000018ED45524C8>>
-2022-01-17 22:46:12,369 - cifar10Partition - INFO - 59924 - homo
-2022-01-17 22:46:12,369 - mnistController - INFO - 59924 - ./data/mnist
-2022-01-17 22:46:12,370 - datasetFactory - INFO - 80708 - mnist
-2022-01-17 22:46:12,371 - partitionFactory - INFO - 80708 - dataset is mnist
-2022-01-17 22:46:12,371 - mnistController - INFO - 80708 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000019AE7E34E88>>
-2022-01-17 22:46:12,371 - cifar10Partition - INFO - 80708 - homo
-2022-01-17 22:46:12,371 - mnistController - INFO - 80708 - ./data/mnist
-2022-01-17 22:46:12,467 - mnistController - INFO - 59924 - rank = 1, local_sample_number = 30000
-2022-01-17 22:46:12,468 - mnistController - INFO - 80708 - rank = 2, local_sample_number = 30000
-2022-01-17 22:46:12,526 - mnistController - INFO - 79128 - train_dl_global number = 234
-2022-01-17 22:46:12,526 - mnistController - INFO - 79128 - test_dl_global number = 39
-2022-01-17 22:46:12,535 - SplitNN_distributed - INFO - 79128 - process_id == server_rank : 0
-2022-01-17 22:46:12,547 - init_server - INFO - 79128 - Server run begin
-2022-01-17 22:46:12,561 - mnistController - INFO - 59924 - dataidxs: [48910 50383 18749 ...  1782  6580 54961]
-2022-01-17 22:46:12,562 - mnistController - INFO - 80708 - process_id = 2, batch_num_train_local = 117, batch_num_test_local = 39
-2022-01-17 22:46:12,562 - mnistController - INFO - 59924 - process_id = 1, batch_num_train_local = 117, batch_num_test_local = 39
-2022-01-17 22:46:12,569 - SplitNN_distributed - INFO - 80708 - process_id == client_rank : 2
-2022-01-17 22:46:12,574 - init_client - INFO - 80708 - Client run begin
-2022-01-17 22:46:12,960 - SplitNNClient - INFO - 59924 - phase=train acc=0.10546875 loss=2.306739330291748 epoch=0 and step=0
-2022-01-17 22:46:27,505 - SplitNNClient - INFO - 59924 - phase=train acc=0.09821428571428571 loss=2.2984707355499268 epoch=0 and step=20
-2022-01-17 22:46:42,727 - SplitNNClient - INFO - 59924 - phase=train acc=0.09937118902439024 loss=2.2801239490509033 epoch=0 and step=40
-2022-01-17 22:46:56,969 - SplitNNClient - INFO - 59924 - phase=train acc=0.1914702868852459 loss=2.190418004989624 epoch=0 and step=60
-2022-01-17 22:47:12,570 - SplitNNClient - INFO - 59924 - phase=train acc=0.2628279320987654 loss=1.4369581937789917 epoch=0 and step=80
-2022-01-17 22:47:28,302 - SplitNNClient - INFO - 59924 - phase=train acc=0.33941831683168316 loss=0.8834677934646606 epoch=0 and step=100
-2022-01-17 22:48:06,523 - SplitNN_init - INFO - 78656 - process_id: 1, worker_number: 4
-2022-01-17 22:48:06,524 - SplitNN_init - INFO - 80736 - process_id: 2, worker_number: 4
-2022-01-17 22:48:06,526 - datasetFactory - INFO - 78656 - 
-2022-01-17 22:48:06,526 - datasetFactory - INFO - 80736 - 
-2022-01-17 22:48:06,528 - SplitNN_init - INFO - 71580 - process_id: 0, worker_number: 4
-2022-01-17 22:48:06,530 - datasetFactory - INFO - 71580 - mnist
-2022-01-17 22:48:06,532 - partitionFactory - INFO - 71580 - dataset is mnist
-number: 4
-2022-01-17 22:48:06,533 - mnistController - INFO - 71580 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000232E2B66C88>>
-2022-01-17 22:48:06,533 - cifar10Partition - INFO - 71580 - homo
-2022-01-17 22:48:06,533 - datasetFactory - INFO - 71004 - mnist
-2022-01-17 22:48:06,533 - mnistController - INFO - 71580 - ./data/mnist
-2022-01-17 22:48:06,535 - partitionFactory - INFO - 71004 - dataset is mnist
-2022-01-17 22:48:06,535 - mnistController - INFO - 71004 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001A2FD9BBD48>>
-2022-01-17 22:48:06,536 - cifar10Partition - INFO - 71004 - homo
-2022-01-17 22:48:06,536 - mnistController - INFO - 71004 - ./data/mnist
-2022-01-17 22:48:06,629 - mnistController - INFO - 71004 - rank = 3, local_sample_number = 20000
-2022-01-17 22:48:06,685 - mnistController - INFO - 71580 - train_dl_global number = 234
-2022-01-17 22:48:06,685 - mnistController - INFO - 71580 - test_dl_global number = 39
-2022-01-17 22:48:06,692 - SplitNN_distributed - INFO - 71580 - process_id == server_rank : 0
-2022-01-17 22:48:06,699 - init_server - INFO - 71580 - Server run begin
-2022-01-17 22:48:06,703 - mnistController - INFO - 71004 - dataidxs: [ 7493 59694 39988 ...   440  4827 26281]
-2022-01-17 22:48:06,704 - mnistController - INFO - 71004 - process_id = 3, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:06,717 - SplitNN_distributed - INFO - 71004 - process_id == client_rank : 3
-2022-01-17 22:48:06,727 - init_client - INFO - 71004 - Client run begin
-2022-01-17 22:48:15,421 - SplitNN_init - INFO - 81256 - process_id: 0, worker_number: 4
-2022-01-17 22:48:15,422 - datasetFactory - INFO - 81256 - 
-2022-01-17 22:48:15,424 - SplitNN_init - INFO - 81212 - process_id: 2, worker_number: 4
-2022-01-17 22:48:15,425 - datasetFactory - INFO - 81212 - mnist
-2022-01-17 22:48:15,426 - SplitNN_init - INFO - 81232 - process_id: 1, worker_number: 4
-2022-01-17 22:48:15,427 - partitionFactory - INFO - 81212 - dataset is mnist
-2022-01-17 22:48:15,427 - datasetFactory - INFO - 81232 - mnist
-2022-01-17 22:48:15,428 - mnistController - INFO - 81212 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001C4704D7D88>>
-2022-01-17 22:48:15,428 - cifar10Partition - INFO - 81212 - homo
-2022-01-17 22:48:15,428 - mnistController - INFO - 81212 - ./data/mnist
-2022-01-17 22:48:15,428 - partitionFactory - INFO - 81232 - dataset is mnist
-2022-01-17 22:48:15,429 - mnistController - INFO - 81232 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000283733C2788>>
-2022-01-17 22:48:15,429 - cifar10Partition - INFO - 81232 - homo
-2022-01-17 22:48:15,429 - mnistController - INFO - 81232 - ./data/mnist
-2022-01-17 22:48:15,431 - SplitNN_init - INFO - 81196 - process_id: 3, worker_number: 4
-2022-01-17 22:48:15,432 - datasetFactory - INFO - 81196 - mnist
-2022-01-17 22:48:15,433 - partitionFactory - INFO - 81196 - dataset is mnist
-2022-01-17 22:48:15,434 - mnistController - INFO - 81196 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000021266CC7F48>>
-2022-01-17 22:48:15,434 - cifar10Partition - INFO - 81196 - homo
-2022-01-17 22:48:15,434 - mnistController - INFO - 81196 - ./data/mnist
-2022-01-17 22:48:15,529 - mnistController - INFO - 81212 - rank = 2, local_sample_number = 20000
-2022-01-17 22:48:15,530 - mnistController - INFO - 81196 - rank = 3, local_sample_number = 20000
-2022-01-17 22:48:15,532 - mnistController - INFO - 81232 - rank = 1, local_sample_number = 20000
-2022-01-17 22:48:15,643 - mnistController - INFO - 81196 - dataidxs: [39369 22833 59645 ... 15829 54187 51495]
-2022-01-17 22:48:15,643 - mnistController - INFO - 81196 - process_id = 3, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:15,643 - mnistController - INFO - 81232 - dataidxs: [ 8355 19508 10479 ... 39188  7101 22992]
-2022-01-17 22:48:15,644 - mnistController - INFO - 81232 - process_id = 1, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:15,649 - mnistController - INFO - 81212 - dataidxs: [57195 55988  2946 ... 30675 16856 47428]
-2022-01-17 22:48:15,649 - mnistController - INFO - 81212 - process_id = 2, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:15,650 - SplitNN_distributed - INFO - 81196 - process_id == client_rank : 3
-2022-01-17 22:48:15,651 - SplitNN_distributed - INFO - 81232 - process_id == client_rank : 1
-2022-01-17 22:48:15,655 - init_client - INFO - 81196 - Client run begin
-2022-01-17 22:48:15,656 - SplitNN_distributed - INFO - 81212 - process_id == client_rank : 2
-2022-01-17 22:48:15,661 - init_client - INFO - 81212 - Client run begin
-2022-01-17 22:48:19,933 - SplitNN_init - INFO - 81752 - process_id: 3, worker_number: 4
-2022-01-17 22:48:19,934 - SplitNN_init - INFO - 81764 - process_id: 2, worker_number: 4
-2022-01-17 22:48:19,934 - SplitNN_init - INFO - 81784 - process_id: 1, worker_number: 4
-2022-01-17 22:48:19,934 - datasetFactory - INFO - 81752 - mnist
-2022-01-17 22:48:19,935 - datasetFactory - INFO - 81764 - mnist
-2022-01-17 22:48:19,935 - SplitNN_init - INFO - 81816 - process_id: 0, worker_number: 4
-2022-01-17 22:48:19,935 - datasetFactory - INFO - 81784 - mnist
-2022-01-17 22:48:19,936 - partitionFactory - INFO - 81752 - dataset is mnist
-2022-01-17 22:48:19,936 - partitionFactory - INFO - 81764 - dataset is mnist
-2022-01-17 22:48:19,936 - mnistController - INFO - 81752 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001BE5DDE7F08>>
-2022-01-17 22:48:19,936 - datasetFactory - INFO - 81816 - mnist
-2022-01-17 22:48:19,936 - partitionFactory - INFO - 81784 - dataset is mnist
-2022-01-17 22:48:19,937 - cifar10Partition - INFO - 81752 - homo
-2022-01-17 22:48:19,937 - mnistController - INFO - 81764 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001DA7E598108>>
-2022-01-17 22:48:19,937 - mnistController - INFO - 81752 - ./data/mnist
-2022-01-17 22:48:19,937 - cifar10Partition - INFO - 81764 - homo
-2022-01-17 22:48:19,937 - mnistController - INFO - 81764 - ./data/mnist
-2022-01-17 22:48:19,937 - mnistController - INFO - 81784 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001E264786288>>
-2022-01-17 22:48:19,938 - cifar10Partition - INFO - 81784 - homo
-2022-01-17 22:48:19,938 - mnistController - INFO - 81784 - ./data/mnist
-2022-01-17 22:48:19,938 - partitionFactory - INFO - 81816 - dataset is mnist
-2022-01-17 22:48:19,939 - mnistController - INFO - 81816 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001A90B740EC8>>
-2022-01-17 22:48:19,939 - cifar10Partition - INFO - 81816 - homo
-2022-01-17 22:48:19,939 - mnistController - INFO - 81816 - ./data/mnist
-2022-01-17 22:48:20,041 - mnistController - INFO - 81752 - rank = 3, local_sample_number = 20000
-2022-01-17 22:48:20,042 - mnistController - INFO - 81784 - rank = 1, local_sample_number = 20000
-2022-01-17 22:48:20,042 - mnistController - INFO - 81764 - rank = 2, local_sample_number = 20000
-2022-01-17 22:48:20,122 - mnistController - INFO - 81816 - train_dl_global number = 234
-2022-01-17 22:48:20,122 - mnistController - INFO - 81816 - test_dl_global number = 39
-2022-01-17 22:48:20,132 - SplitNN_distributed - INFO - 81816 - process_id == server_rank : 0
-2022-01-17 22:48:20,140 - init_server - INFO - 81816 - Server run begin
-2022-01-17 22:48:20,160 - mnistController - INFO - 81784 - dataidxs: [26687 33118 22453 ... 22826 23142 28391]
-2022-01-17 22:48:20,160 - mnistController - INFO - 81752 - dataidxs: [37091 20337 16775 ... 35419 24994 31066]
-2022-01-17 22:48:20,160 - mnistController - INFO - 81784 - process_id = 1, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:20,160 - mnistController - INFO - 81752 - process_id = 3, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:20,160 - mnistController - INFO - 81764 - dataidxs: [49544 22859 42822 ...  6949 46229 51112]
-2022-01-17 22:48:20,160 - mnistController - INFO - 81764 - process_id = 2, batch_num_train_local = 78, batch_num_test_local = 39
-2022-01-17 22:48:20,168 - SplitNN_distributed - INFO - 81784 - process_id == client_rank : 1
-2022-01-17 22:48:20,169 - SplitNN_distributed - INFO - 81764 - process_id == client_rank : 2
-2022-01-17 22:48:20,170 - SplitNN_distributed - INFO - 81752 - process_id == client_rank : 3
-2022-01-17 22:48:20,173 - init_client - INFO - 81764 - Client run begin
-2022-01-17 22:48:20,173 - init_client - INFO - 81784 - Client run begin
-2022-01-17 22:48:20,174 - init_client - INFO - 81752 - Client run begin
-2022-01-17 22:48:20,626 - SplitNNClient - INFO - 81784 - phase=train acc=0.13671875 loss=2.2987635135650635 epoch=0 and step=0
-2022-01-17 22:48:35,396 - SplitNNClient - INFO - 81784 - phase=train acc=0.10658482142857142 loss=2.281104564666748 epoch=0 and step=20
-2022-01-17 22:48:50,468 - SplitNNClient - INFO - 81784 - phase=train acc=0.1565358231707317 loss=2.2072181701660156 epoch=0 and step=40
-2022-01-17 22:49:05,254 - SplitNNClient - INFO - 81784 - phase=train acc=0.24903944672131148 loss=1.430195927619934 epoch=0 and step=60
-2022-01-17 22:52:55,900 - SplitNN_init - INFO - 76908 - process_id: 1, worker_number: 4
-2022-01-17 22:52:55,900 - SplitNN_init - INFO - 6820 - process_id: 0, worker_number: 4
-2022-01-17 22:52:55,900 - SplitNN_init - INFO - 81332 - process_id: 2, worker_number: 4
-2022-01-17 22:52:55,901 - datasetFactory - INFO - 76908 - adult
-2022-01-17 22:52:55,901 - datasetFactory - INFO - 6820 - adult
-2022-01-17 22:52:55,901 - SplitNN_init - INFO - 76852 - process_id: 3, worker_number: 4
-2022-01-17 22:52:55,901 - datasetFactory - INFO - 81332 - adult
-2022-01-17 22:52:55,902 - partitionFactory - INFO - 76908 - dataset is adult
-2022-01-17 22:52:55,902 - datasetFactory - INFO - 76852 - adult
-2022-01-17 22:52:55,902 - partitionFactory - INFO - 81332 - dataset is adult2022-01-17 22:52:55,902 - adultController - INFO - 76908 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000022783E4E608>>
-2022-01-17 22:52:55,903 - cifar10Partition - INFO - 76908 - homo
-2022-01-17 22:52:55,903 - adultController - INFO - 76908 - ./data/adult
-2022-01-17 22:52:55,903 - adultController - INFO - 81332 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001E242ECE808>>
-2022-01-17 22:52:55,903 - adultController - INFO - 6820 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002862184E948>>
-2022-01-17 22:52:55,903 - cifar10Partition - INFO - 81332 - homo
-2022-01-17 22:52:55,903 - cifar10Partition - INFO - 6820 - homo
-2022-01-17 22:52:55,903 - adultController - INFO - 81332 - ./data/adult
-2022-01-17 22:52:55,904 - partitionFactory - INFO - 76852 - dataset is adult
-2022-01-17 22:52:55,904 - adultController - INFO - 76852 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000022E6167E588>>
-2022-01-17 22:52:55,905 - cifar10Partition - INFO - 76852 - homo
-2022-01-17 22:52:55,905 - adultController - INFO - 76852 - ./data/adult
-2022-01-17 22:52:57,379 - adultController - INFO - 81332 - rank = 2, local_sample_number = 10854
-2022-01-17 22:52:57,490 - adultController - INFO - 76852 - rank = 3, local_sample_number = 10853
-2022-01-17 22:52:57,522 - adultController - INFO - 76908 - rank = 1, local_sample_number = 10854
-2022-01-17 22:52:58,904 - adultController - INFO - 81332 - dataidxs: [23942  7347 12850 ... 14069 18365 15812]
-2022-01-17 22:52:58,904 - adultController - INFO - 81332 - process_id = 2, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:52:58,906 - SplitNN_distributed - INFO - 81332 - process_id == client_rank : 2
-2022-01-17 22:52:59,123 - adultController - INFO - 6820 - train_dl_global number = 127
-2022-01-17 22:52:59,123 - adultController - INFO - 6820 - test_dl_global number = 63
-2022-01-17 22:52:59,123 - adultController - INFO - 76852 - dataidxs: [21070 18857  7777 ...  8457  3132  7786]
-2022-01-17 22:52:59,123 - adultController - INFO - 76852 - process_id = 3, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:52:59,125 - SplitNN_distributed - INFO - 6820 - process_id == server_rank : 0
-2022-01-17 22:52:59,125 - SplitNN_distributed - INFO - 76852 - process_id == client_rank : 3
-2022-01-17 22:52:59,129 - init_server - INFO - 6820 - Server run begin
-2022-01-17 22:52:59,133 - adultController - INFO - 76908 - dataidxs: [11060 21241 18092 ... 10390 11801 14859]
-2022-01-17 22:52:59,133 - adultController - INFO - 76908 - process_id = 1, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:52:59,135 - SplitNN_distributed - INFO - 76908 - process_id == client_rank : 1
-2022-01-17 22:53:40,992 - SplitNN_init - INFO - 81644 - process_id: 3, worker_number: 4
-2022-01-17 22:53:40,992 - SplitNN_init - INFO - 81676 - process_id: 2, worker_number: 4
-2022-01-17 22:53:40,993 - datasetFactory - INFO - 81644 - adult
-2022-01-17 22:53:40,993 - datasetFactory - INFO - 81676 - adult
-2022-01-17 22:53:40,993 - SplitNN_init - INFO - 78108 - process_id: 1, worker_number: 4
-2022-01-17 22:53:40,994 - SplitNN_init - INFO - 39752 - process_id: 0, worker_number: 4
-2022-01-17 22:53:40,994 - partitionFactory - INFO - 81644 - dataset is adult
-2022-01-17 22:53:40,995 - datasetFactory - INFO - 78108 - adult
-et is adult
-2022-01-17 22:53:40,995 - adultController - INFO - 81644 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002552A1AEAC8>>
-2022-01-17 22:53:40,995 - datasetFactory - INFO - 39752 - adult
-2022-01-17 22:53:40,995 - cifar10Partition - INFO - 81644 - homo
-2022-01-17 22:53:40,995 - adultController - INFO - 81644 - ./data/adult
-2022-01-17 22:53:40,996 - adultController - INFO - 81676 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000014EDFBEE208>>
-2022-01-17 22:53:40,996 - cifar10Partition - INFO - 81676 - homo
-2022-01-17 22:53:40,996 - adultController - INFO - 81676 - ./data/adult
-2022-01-17 22:53:40,997 - partitionFactory - INFO - 78108 - dataset is adult
-2022-01-17 22:53:40,997 - partitionFactory - INFO - 39752 - dataset is adult
-2022-01-17 22:53:40,997 - adultController - INFO - 78108 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000275FDB5E788>>
-2022-01-17 22:53:40,997 - cifar10Partition - INFO - 78108 - homo
-2022-01-17 22:53:40,997 - adultController - INFO - 78108 - ./data/adult
-2022-01-17 22:53:40,998 - adultController - INFO - 39752 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002726F9BE6C8>>
-2022-01-17 22:53:40,998 - cifar10Partition - INFO - 39752 - homo
-2022-01-17 22:53:40,998 - adultController - INFO - 39752 - ./data/adult
-2022-01-17 22:53:42,503 - adultController - INFO - 78108 - rank = 1, local_sample_number = 10854
-2022-01-17 22:53:42,506 - adultController - INFO - 81644 - rank = 3, local_sample_number = 10853
-2022-01-17 22:53:42,512 - adultController - INFO - 81676 - rank = 2, local_sample_number = 10854
-2022-01-17 22:53:44,027 - adultController - INFO - 39752 - train_dl_global number = 1628
-2022-01-17 22:53:44,027 - adultController - INFO - 39752 - test_dl_global number = 814
-2022-01-17 22:53:44,029 - SplitNN_distributed - INFO - 39752 - process_id == server_rank : 0
-2022-01-17 22:53:44,033 - init_server - INFO - 39752 - Server run begin
-2022-01-17 22:53:44,133 - adultController - INFO - 78108 - dataidxs: [16741 14741 13436 ...  7704 10218  6112]
-2022-01-17 22:53:44,133 - adultController - INFO - 78108 - process_id = 1, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:53:44,135 - SplitNN_distributed - INFO - 78108 - process_id == client_rank : 1
-2022-01-17 22:53:44,162 - adultController - INFO - 81676 - dataidxs: [24344 16190  8527 ... 12226 24664 15579]
-2022-01-17 22:53:44,163 - adultController - INFO - 81676 - process_id = 2, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:53:44,165 - SplitNN_distributed - INFO - 81676 - process_id == client_rank : 2
-2022-01-17 22:53:44,228 - adultController - INFO - 81644 - dataidxs: [30035  4592 14157 ... 17454 14493 22153]
-2022-01-17 22:53:44,228 - adultController - INFO - 81644 - process_id = 3, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:53:44,230 - SplitNN_distributed - INFO - 81644 - process_id == client_rank : 3
-2022-01-17 22:54:38,308 - SplitNN_init - INFO - 19720 - process_id: 1, worker_number: 4
-2022-01-17 22:54:38,308 - SplitNN_init - INFO - 81788 - process_id: 0, worker_number: 4
-2022-01-17 22:54:38,309 - datasetFactory - INFO - 19720 - adult
-2022-01-17 22:54:38,309 - datasetFactory - INFO - 81788 - adult
-2022-01-17 22:54:38,309 - SplitNN_init - INFO - 74128 - process_id: 3, worker_number: 4
-2022-01-17 22:54:38,310 - partitionFactory - INFO - 19720 - dataset is adult
-2022-01-17 22:54:38,310 - partitionFactory - INFO - 81788 - dataset is adult
-2022-01-17 22:54:38,311 - datasetFactory - INFO - 74128 - adult
-2022-01-17 22:54:38,311 - SplitNN_init - INFO - 81284 - process_id: 2, worker_number: 4
-2022-01-17 22:54:38,311 - adultController - INFO - 19720 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002D5BBED5CC8>>
-2022-01-17 22:54:38,311 - cifar10Partition - INFO - 19720 - homo
-method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001232C1D6088>>
-2022-01-17 22:54:38,311 - adultController - INFO - 19720 - ./data/adult
-2022-01-17 22:54:38,311 - adultController - INFO - 81788 - ./data/adult
-2022-01-17 22:54:38,312 - datasetFactory - INFO - 81284 - adult
-et is adult
-2022-01-17 22:54:38,313 - adultController - INFO - 74128 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001FF73E76C08>>
-2022-01-17 22:54:38,313 - cifar10Partition - INFO - 74128 - homo
-2022-01-17 22:54:38,313 - adultController - INFO - 74128 - ./data/adult
-2022-01-17 22:54:38,313 - partitionFactory - INFO - 81284 - dataset is adult
-2022-01-17 22:54:38,315 - adultController - INFO - 81284 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002F15BB13A48>>
-2022-01-17 22:54:38,315 - cifar10Partition - INFO - 81284 - homo
-2022-01-17 22:54:38,316 - adultController - INFO - 81284 - ./data/adult
-2022-01-17 22:54:39,898 - adultController - INFO - 19720 - rank = 1, local_sample_number = 10854
-2022-01-17 22:54:39,957 - adultController - INFO - 74128 - rank = 3, local_sample_number = 10853
-2022-01-17 22:54:39,960 - adultController - INFO - 81284 - rank = 2, local_sample_number = 10854
-2022-01-17 22:54:41,380 - adultController - INFO - 81788 - train_dl_global number = 1628
-2022-01-17 22:54:41,380 - adultController - INFO - 81788 - test_dl_global number = 814
-2022-01-17 22:54:41,382 - SplitNN_distributed - INFO - 81788 - process_id == server_rank : 0
-2022-01-17 22:54:41,386 - init_server - INFO - 81788 - Server run begin
-2022-01-17 22:54:41,396 - adultController - INFO - 19720 - dataidxs: [10461  3151 22707 ... 23412  5293 20487]
-2022-01-17 22:54:41,396 - adultController - INFO - 19720 - process_id = 1, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:54:41,398 - SplitNN_distributed - INFO - 19720 - process_id == client_rank : 1
-2022-01-17 22:54:41,401 - init_client - INFO - 19720 - Client run begin
-2022-01-17 22:54:41,433 - adultController - INFO - 81284 - dataidxs: [11462 22330 16153 ...  2293 20311 19052]
-2022-01-17 22:54:41,433 - adultController - INFO - 81284 - process_id = 2, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:54:41,435 - SplitNN_distributed - INFO - 81284 - process_id == client_rank : 2
-2022-01-17 22:54:41,439 - init_client - INFO - 81284 - Client run begin
-2022-01-17 22:54:41,453 - adultController - INFO - 74128 - dataidxs: [19024  7296 25785 ... 14215   959  4672]
-2022-01-17 22:54:41,453 - adultController - INFO - 74128 - process_id = 3, batch_num_train_local = 542, batch_num_test_local = 814
-2022-01-17 22:54:41,457 - SplitNN_distributed - INFO - 74128 - process_id == client_rank : 3
-2022-01-17 22:54:41,461 - init_client - INFO - 74128 - Client run begin
-2022-01-17 22:54:41,695 - SplitNNServer - INFO - 81788 - phase=train acc=0.85 loss=0.5345721244812012 epoch=0 and step=0
-2022-01-17 22:55:07,562 - SplitNN_init - INFO - 64660 - process_id: 1, worker_number: 4
-2022-01-17 22:55:07,563 - SplitNN_init - INFO - 70944 - process_id: 3, worker_number: 4
-2022-01-17 22:55:07,563 - SplitNN_init - INFO - 31516 - process_id: 2, worker_number: 4
-2022-01-17 22:55:07,563 - datasetFactory - INFO - 64660 - adult
-2022-01-17 22:55:07,564 - datasetFactory - INFO - 70944 - adult
-2022-01-17 22:55:07,564 - datasetFactory - INFO - 31516 - adult
-2022-01-17 22:55:07,564 - SplitNN_init - INFO - 79984 - process_id: 0, worker_number: 4
-2022-01-17 22:55:07,565 - partitionFactory - INFO - 64660 - dataset is adult
-2022-01-17 22:55:07,565 - partitionFactory - INFO - 70944 - dataset is adult
-2022-01-17 22:55:07,565 - datasetFactory - INFO - 79984 - adult
-2022-01-17 22:55:07,565 - partitionFactory - INFO - 31516 - dataset is adult
-10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001C5FDF16048>>
-2022-01-17 22:55:07,565 - adultController - INFO - 70944 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001694C526808>>
-2022-01-17 22:55:07,565 - cifar10Partition - INFO - 64660 - homo
-2022-01-17 22:55:07,566 - cifar10Partition - INFO - 70944 - homo
-adult
-2022-01-17 22:55:07,566 - adultController - INFO - 70944 - ./data/adult
-2022-01-17 22:55:07,566 - partitionFactory - INFO - 79984 - dataset is adult
-2022-01-17 22:55:07,566 - adultController - INFO - 31516 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001AB117062C8>>
-2022-01-17 22:55:07,566 - cifar10Partition - INFO - 31516 - homo
-2022-01-17 22:55:07,566 - adultController - INFO - 31516 - ./data/adult
-2022-01-17 22:55:07,567 - adultController - INFO - 79984 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000195C1416688>>
-2022-01-17 22:55:07,567 - cifar10Partition - INFO - 79984 - homo
-2022-01-17 22:55:07,567 - adultController - INFO - 79984 - ./data/adult
-2022-01-17 22:55:09,097 - adultController - INFO - 64660 - rank = 1, local_sample_number = 10854
-2022-01-17 22:55:09,210 - adultController - INFO - 70944 - rank = 3, local_sample_number = 10853
-2022-01-17 22:55:09,226 - adultController - INFO - 31516 - rank = 2, local_sample_number = 10854
-2022-01-17 22:55:10,646 - adultController - INFO - 64660 - dataidxs: [23668  2367  6657 ... 24216  8302  1091]
-2022-01-17 22:55:10,646 - adultController - INFO - 64660 - process_id = 1, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:55:10,648 - SplitNN_distributed - INFO - 64660 - process_id == client_rank : 1
-2022-01-17 22:55:10,652 - init_client - INFO - 64660 - Client run begin
-2022-01-17 22:55:10,789 - adultController - INFO - 31516 - dataidxs: [16799   739 18995 ... 21139  2294 30315]
-2022-01-17 22:55:10,790 - adultController - INFO - 31516 - process_id = 2, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:55:10,791 - SplitNN_distributed - INFO - 31516 - process_id == client_rank : 2
-2022-01-17 22:55:10,796 - init_client - INFO - 31516 - Client run begin
-2022-01-17 22:55:10,806 - adultController - INFO - 70944 - dataidxs: [  840  9393 29374 ...  3403  7061 13385]
-2022-01-17 22:55:10,806 - adultController - INFO - 70944 - process_id = 3, batch_num_train_local = 42, batch_num_test_local = 63
-2022-01-17 22:55:10,808 - SplitNN_distributed - INFO - 70944 - process_id == client_rank : 3
-2022-01-17 22:55:10,812 - init_client - INFO - 70944 - Client run begin
-2022-01-17 22:55:10,824 - adultController - INFO - 79984 - train_dl_global number = 127
-2022-01-17 22:55:10,825 - adultController - INFO - 79984 - test_dl_global number = 63
-2022-01-17 22:55:10,827 - SplitNN_distributed - INFO - 79984 - process_id == server_rank : 0
-2022-01-17 22:55:10,830 - init_server - INFO - 79984 - Server run begin
-2022-01-17 22:55:11,145 - SplitNNServer - INFO - 79984 - phase=train acc=0.44921875 loss=0.6946734189987183 epoch=0 and step=0
-2022-01-17 22:55:17,346 - SplitNNServer - INFO - 79984 - phase=train acc=0.6882440476190477 loss=0.5501363277435303 epoch=0 and step=20
-2022-01-17 22:55:23,591 - SplitNNServer - INFO - 79984 - phase=train acc=0.7237995426829268 loss=0.5242981314659119 epoch=0 and step=40
-2022-01-17 22:55:24,279 - ClientManager - INFO - 64660 - noderight 2  self1 max_rank2
-2022-01-17 22:55:24,279 - ClientManager - INFO - 64660 - round1 max_epoch2
-2022-01-17 22:55:43,961 - SplitNNServer - INFO - 79984 - phase=validation acc=0.7689732142857143 loss=0.5005897349781461 epoch=0 and step=63
-2022-01-17 22:55:44,278 - SplitNNServer - INFO - 79984 - phase=train acc=0.79296875 loss=0.5491076707839966 epoch=1 and step=0
+2022-01-23 21:25:02,160 - SplitNN_init - INFO - 113204 - process_id: 0, worker_number: 4
+2022-01-23 21:25:02,160 - SplitNN_init - INFO - 103136 - process_id: 1, worker_number: 4
+2022-01-23 21:25:02,161 - SplitNN_init - INFO - 112164 - process_id: 2, worker_number: 4
+2022-01-23 21:25:02,161 - datasetFactory - INFO - 113204 - adult
+2022-01-23 21:25:02,161 - datasetFactory - INFO - 103136 - adult
+2022-01-23 21:25:02,162 - datasetFactory - INFO - 112164 - adult
+2022-01-23 21:25:02,162 - SplitNN_init - INFO - 112848 - process_id: 3, worker_number: 4
+2022-01-23 21:25:02,162 - partitionFactory - INFO - 103136 - dataset is adult
+2022-01-23 21:25:02,162 - partitionFactory - INFO - 113204 - dataset is adult
+2022-01-23 21:25:02,164 - partitionFactory - INFO - 112164 - dataset is adult
+2022-01-23 21:25:02,164 - adultController - INFO - 103136 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001D2582CD948>>
+2022-01-23 21:25:02,164 - adultController - INFO - 113204 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000023E58B6D188>>
+2022-01-23 21:25:02,164 - adultController - INFO - 103136 - ./data/adult
+2022-01-23 21:25:02,164 - cifar10Partition - INFO - 113204 - homo
+2022-01-23 21:25:02,164 - datasetFactory - INFO - 112848 - adult
+2022-01-23 21:25:02,164 - adultController - INFO - 113204 - ./data/adult
+2022-01-23 21:25:02,164 - adultController - INFO - 112164 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000017EFDE6D3C8>>
+2022-01-23 21:25:02,165 - cifar10Partition - INFO - 112164 - homo
+2022-01-23 21:25:02,165 - adultController - INFO - 112164 - ./data/adult
+2022-01-23 21:25:02,165 - partitionFactory - INFO - 112848 - dataset is adult
+2022-01-23 21:25:02,167 - adultController - INFO - 112848 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001D58821D588>>
+2022-01-23 21:25:02,168 - cifar10Partition - INFO - 112848 - homo
+2022-01-23 21:25:02,168 - adultController - INFO - 112848 - ./data/adult
+2022-01-23 21:25:03,645 - adultController - INFO - 103136 - rank = 1, local_sample_number = 10854
+2022-01-23 21:25:03,806 - adultController - INFO - 112848 - rank = 3, local_sample_number = 10853
+2022-01-23 21:25:03,864 - adultController - INFO - 112164 - rank = 2, local_sample_number = 10854
+2022-01-23 21:25:05,339 - adultController - INFO - 103136 - dataidxs: [14949 21746  6173 ...  2268   836  9209]
+2022-01-23 21:25:05,339 - adultController - INFO - 103136 - process_id = 1, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:25:05,341 - SplitNN_distributed - INFO - 103136 - process_id == client_rank : 1
+2022-01-23 21:25:05,346 - init_client - INFO - 103136 - Client 1 run begin
+2022-01-23 21:25:05,358 - adultController - INFO - 113204 - train_dl_global number = 16
+2022-01-23 21:25:05,358 - adultController - INFO - 113204 - test_dl_global number = 8
+2022-01-23 21:25:05,360 - SplitNN_distributed - INFO - 113204 - process_id == server_rank : 0
+2022-01-23 21:25:05,364 - init_server - INFO - 113204 - Server run begin
+2022-01-23 21:25:05,438 - adultController - INFO - 112848 - dataidxs: [26601 23666 10401 ... 12336 14780  9150]
+2022-01-23 21:25:05,438 - adultController - INFO - 112848 - process_id = 3, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:25:05,441 - SplitNN_distributed - INFO - 112848 - process_id == client_rank : 3
+2022-01-23 21:25:05,445 - init_client - INFO - 112848 - Client 3 run begin
+2022-01-23 21:25:05,541 - adultController - INFO - 112164 - dataidxs: [32404 18312 20559 ...  8509 13368  3619]
+2022-01-23 21:25:05,541 - adultController - INFO - 112164 - process_id = 2, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:25:05,543 - SplitNN_distributed - INFO - 112164 - process_id == client_rank : 2
+2022-01-23 21:25:05,546 - init_client - INFO - 112164 - Client 2 run begin
+2022-01-23 21:25:05,677 - SplitNNServer - INFO - 113204 - phase=train acc=0.251 loss=0.6931391358375549 epoch=0 and step=0
+2022-01-23 21:25:07,382 - ClientManager - INFO - 103136 - noderight 2 self 1 max_rank 3
+2022-01-23 21:25:07,383 - ClientManager - INFO - 103136 - round 1 max_epoch 3
+2022-01-23 21:25:10,366 - SplitNNServer - INFO - 113204 - phase=validation acc=0.2365625 loss=0.6931266337633133 epoch=0 and step=8
+2022-01-23 21:25:10,682 - SplitNNServer - INFO - 113204 - phase=train acc=0.773 loss=0.6931490898132324 epoch=1 and step=0
+2022-01-23 21:25:11,033 - ClientManager - INFO - 112164 - noderight 3 self 2 max_rank 3
+2022-01-23 21:25:11,033 - ClientManager - INFO - 112164 - round 1 max_epoch 3
+2022-01-23 21:25:15,087 - SplitNNServer - INFO - 113204 - phase=validation acc=0.7635625 loss=0.6931486800312996 epoch=1 and step=8
+2022-01-23 21:25:15,404 - SplitNNServer - INFO - 113204 - phase=train acc=0.2365 loss=0.6931456327438354 epoch=2 and step=0
+2022-01-23 21:25:15,587 - ClientManager - INFO - 112848 - noderight 1 self 3 max_rank 3
+2022-01-23 21:25:15,587 - ClientManager - INFO - 112848 - round 1 max_epoch 3
+2022-01-23 21:25:19,809 - SplitNNServer - INFO - 113204 - phase=validation acc=0.2374375 loss=0.6931552365422249 epoch=2 and step=8
+2022-01-23 21:38:03,241 - SplitNN_init - INFO - 112296 - process_id: 1, worker_number: 4
+2022-01-23 21:38:03,241 - SplitNN_init - INFO - 114312 - process_id: 2, worker_number: 4
+2022-01-23 21:38:03,242 - datasetFactory - INFO - 114348 - adult
+2022-01-23 21:38:03,242 - datasetFactory - INFO - 112296 - adult
+2022-01-23 21:38:03,242 - datasetFactory - INFO - 114312 - adult
+2022-01-23 21:38:03,243 - SplitNN_init - INFO - 101296 - process_id: 3, worker_number: 4
+2022-01-23 21:38:03,243 - partitionFactory - INFO - 114348 - dataset is adult
+2022-01-23 21:38:03,244 - adultController - INFO - 114348 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002536532D3C8>>
+2022-01-23 21:38:03,245 - datasetFactory - INFO - 101296 - adult
+2022-01-23 21:38:03,245 - partitionFactory - INFO - 114312 - dataset is adult
+2022-01-23 21:38:03,245 - cifar10Partition - INFO - 114348 - homo
+2022-01-23 21:38:03,245 - partitionFactory - INFO - 112296 - dataset is adult
+2022-01-23 21:38:03,245 - adultController - INFO - 114348 - ./data/adult
+2022-01-23 21:38:03,246 - adultController - INFO - 112296 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002589475CF48>>
+2022-01-23 21:38:03,246 - cifar10Partition - INFO - 112296 - homo
+2022-01-23 21:38:03,246 - cifar10Partition - INFO - 114312 - homo
+2022-01-23 21:38:03,246 - adultController - INFO - 112296 - ./data/adult
+2022-01-23 21:38:03,246 - adultController - INFO - 114312 - ./data/adult
+2022-01-23 21:38:03,246 - partitionFactory - INFO - 101296 - dataset is adult
+2022-01-23 21:38:03,247 - adultController - INFO - 101296 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000246D740DA48>>
+2022-01-23 21:38:03,247 - cifar10Partition - INFO - 101296 - homo
+2022-01-23 21:38:03,248 - adultController - INFO - 101296 - ./data/adult
+2022-01-23 21:38:04,855 - adultController - INFO - 114312 - rank = 2, local_sample_number = 10854
+2022-01-23 21:38:04,948 - adultController - INFO - 112296 - rank = 1, local_sample_number = 10854
+2022-01-23 21:38:04,954 - adultController - INFO - 101296 - rank = 3, local_sample_number = 10853
+2022-01-23 21:38:06,424 - adultController - INFO - 114312 - dataidxs: [13712 31502 14408 ... 11963 24025 25515]
+2022-01-23 21:38:06,424 - adultController - INFO - 114312 - process_id = 2, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:38:06,426 - SplitNN_distributed - INFO - 114312 - process_id == client_rank : 2
+2022-01-23 21:38:06,430 - init_client - INFO - 114312 - Client 2 run begin
+2022-01-23 21:38:06,508 - adultController - INFO - 114348 - train_dl_global number = 16
+2022-01-23 21:38:06,508 - adultController - INFO - 114348 - test_dl_global number = 8
+2022-01-23 21:38:06,510 - SplitNN_distributed - INFO - 114348 - process_id == server_rank : 0
+2022-01-23 21:38:06,514 - init_server - INFO - 114348 - Server run begin
+2022-01-23 21:38:06,563 - adultController - INFO - 112296 - dataidxs: [15067 15226 26996 ... 11898  6462  5165]
+2022-01-23 21:38:06,563 - adultController - INFO - 112296 - process_id = 1, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:38:06,566 - SplitNN_distributed - INFO - 112296 - process_id == client_rank : 1
+2022-01-23 21:38:06,569 - adultController - INFO - 101296 - dataidxs: [ 1602   252 12956 ... 18471 22872 15989]
+2022-01-23 21:38:06,569 - adultController - INFO - 101296 - process_id = 3, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:38:06,569 - init_client - INFO - 112296 - Client 1 run begin
+2022-01-23 21:38:06,571 - SplitNN_distributed - INFO - 101296 - process_id == client_rank : 3
+2022-01-23 21:38:06,575 - init_client - INFO - 101296 - Client 3 run begin
+2022-01-23 21:38:06,816 - SplitNNServer - INFO - 114348 - phase=train acc=0.2315 loss=0.8328342437744141 epoch=0 and step=0
+2022-01-23 21:38:08,297 - ClientManager - INFO - 112296 - noderight 2 self 1 max_rank 3
+2022-01-23 21:38:08,297 - ClientManager - INFO - 112296 - round 1 max_epoch 3
+2022-01-23 21:38:11,213 - SplitNNServer - INFO - 114348 - phase=validation acc=0.2361875 loss=0.8086195439100266 epoch=0 and step=8
+2022-01-23 21:38:11,529 - SplitNNServer - INFO - 114348 - phase=train acc=0.246 loss=0.7942671775817871 epoch=1 and step=0
+2022-01-23 21:38:13,044 - ClientManager - INFO - 114312 - noderight 3 self 2 max_rank 3
+2022-01-23 21:38:13,044 - ClientManager - INFO - 114312 - round 1 max_epoch 3
+2022-01-23 21:38:15,888 - SplitNNServer - INFO - 114348 - phase=validation acc=0.2368125 loss=0.7564706206321716 epoch=1 and step=8
+2022-01-23 21:38:16,193 - SplitNNServer - INFO - 114348 - phase=train acc=0.7445 loss=0.643031895160675 epoch=2 and step=0
+2022-01-23 21:38:19,082 - ClientManager - INFO - 101296 - noderight 1 self 3 max_rank 3
+2022-01-23 21:38:19,082 - ClientManager - INFO - 101296 - round 1 max_epoch 3
+2022-01-23 21:38:22,126 - SplitNNServer - INFO - 114348 - phase=validation acc=0.763375 loss=0.6533262357115746 epoch=2 and step=8
+2022-01-23 21:41:43,282 - SplitNN_init - INFO - 114696 - process_id: 2, worker_number: 4
+2022-01-23 21:41:43,283 - datasetFactory - INFO - 114696 - adult
+2022-01-23 21:41:43,285 - partitionFactory - INFO - 114696 - dataset is adult
+2022-01-23 21:41:43,285 - SplitNN_init - INFO - 114812 - process_id: 1, worker_number: 4
+2022-01-23 21:41:43,285 - adultController - INFO - 114696 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002105627DAC8>>
+2022-01-23 21:41:43,285 - cifar10Partition - INFO - 114696 - homo
+2022-01-23 21:41:43,286 - adultController - INFO - 114696 - ./data/adult
+2022-01-23 21:41:43,286 - datasetFactory - INFO - 114812 - adult
+2022-01-23 21:41:43,287 - SplitNN_init - INFO - 114104 - process_id: 0, worker_number: 4
+2022-01-23 21:41:43,287 - partitionFactory - INFO - 114812 - dataset is adult
+2022-01-23 21:41:43,288 - datasetFactory - INFO - 114104 - adult
+2022-01-23 21:41:43,288 - adultController - INFO - 114812 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000019BC0AAD848>>
+2022-01-23 21:41:43,288 - cifar10Partition - INFO - 114812 - homo
+2022-01-23 21:41:43,288 - adultController - INFO - 114812 - ./data/adult
+2022-01-23 21:41:43,289 - SplitNN_init - INFO - 106672 - process_id: 3, worker_number: 4
+2022-01-23 21:41:43,289 - partitionFactory - INFO - 114104 - dataset is adult
+2022-01-23 21:41:43,290 - adultController - INFO - 114104 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001D5A1FEC5C8>>
+2022-01-23 21:41:43,290 - datasetFactory - INFO - 106672 - adult
+2022-01-23 21:41:43,290 - cifar10Partition - INFO - 114104 - homo
+2022-01-23 21:41:43,290 - adultController - INFO - 114104 - ./data/adult
+2022-01-23 21:41:43,291 - partitionFactory - INFO - 106672 - dataset is adult
+2022-01-23 21:41:43,292 - adultController - INFO - 106672 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001A5CE2CCBC8>>
+2022-01-23 21:41:43,292 - cifar10Partition - INFO - 106672 - homo
+2022-01-23 21:41:43,292 - adultController - INFO - 106672 - ./data/adult
+2022-01-23 21:41:44,874 - adultController - INFO - 114696 - rank = 2, local_sample_number = 10854
+2022-01-23 21:41:44,909 - adultController - INFO - 106672 - rank = 3, local_sample_number = 10853
+2022-01-23 21:41:45,002 - adultController - INFO - 114812 - rank = 1, local_sample_number = 10854
+2022-01-23 21:41:46,544 - adultController - INFO - 114696 - dataidxs: [21037 28921 17392 ... 27840 13534 12648]
+2022-01-23 21:41:46,545 - adultController - INFO - 114696 - process_id = 2, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:41:46,547 - SplitNN_distributed - INFO - 114696 - process_id == client_rank : 2
+2022-01-23 21:41:46,552 - init_client - INFO - 114696 - Client 2 run begin
+2022-01-23 21:41:46,613 - adultController - INFO - 114104 - train_dl_global number = 16
+2022-01-23 21:41:46,613 - adultController - INFO - 114104 - test_dl_global number = 8
+2022-01-23 21:41:46,617 - SplitNN_distributed - INFO - 114104 - process_id == server_rank : 0
+2022-01-23 21:41:46,622 - init_server - INFO - 114104 - Server run begin
+2022-01-23 21:41:46,633 - adultController - INFO - 106672 - dataidxs: [31946  1799 30653 ... 16250 27973 20808]
+2022-01-23 21:41:46,633 - adultController - INFO - 106672 - process_id = 3, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:41:46,636 - SplitNN_distributed - INFO - 106672 - process_id == client_rank : 3
+2022-01-23 21:41:46,642 - init_client - INFO - 106672 - Client 3 run begin
+2022-01-23 21:41:46,701 - adultController - INFO - 114812 - dataidxs: [ 2107 11357 32326 ...   580  3962  1145]
+2022-01-23 21:41:46,701 - adultController - INFO - 114812 - process_id = 1, batch_num_train_local = 5, batch_num_test_local = 8
+2022-01-23 21:41:46,703 - SplitNN_distributed - INFO - 114812 - process_id == client_rank : 1
+2022-01-23 21:41:46,707 - init_client - INFO - 114812 - Client 1 run begin
+2022-01-23 21:41:46,938 - SplitNNServer - INFO - 114104 - phase=train acc=0.759 loss=0.6560124754905701 epoch=0 and step=0
+2022-01-23 21:41:48,443 - ClientManager - INFO - 114812 - noderight 2 self 1 max_rank 3
+2022-01-23 21:41:48,443 - ClientManager - INFO - 114812 - round 1 max_epoch 3
+2022-01-23 21:41:51,332 - SplitNNServer - INFO - 114104 - phase=validation acc=0.7641875 loss=0.6448250859975815 epoch=0 and step=8
+2022-01-23 21:41:51,636 - SplitNNServer - INFO - 114104 - phase=train acc=0.222 loss=0.7532690763473511 epoch=1 and step=0
+2022-01-23 21:41:53,249 - ClientManager - INFO - 114696 - noderight 3 self 2 max_rank 3
+2022-01-23 21:41:53,249 - ClientManager - INFO - 114696 - round 1 max_epoch 3
+2022-01-23 21:41:56,021 - SplitNNServer - INFO - 114104 - phase=validation acc=0.237 loss=0.7433047369122505 epoch=1 and step=8
+2022-01-23 21:41:56,324 - SplitNNServer - INFO - 114104 - phase=train acc=0.737 loss=0.6601053476333618 epoch=2 and step=0
+2022-01-23 21:41:58,635 - ClientManager - INFO - 106672 - noderight 1 self 3 max_rank 3
+2022-01-23 21:41:58,635 - ClientManager - INFO - 106672 - round 1 max_epoch 3
+2022-01-23 21:42:01,603 - SplitNNServer - INFO - 114104 - phase=validation acc=0.763125 loss=0.6560739949345589 epoch=2 and step=8
+2022-01-23 21:42:01,918 - SplitNNServer - INFO - 114104 - phase=train acc=0.746 loss=0.6502213478088379 epoch=3 and step=0
+2022-01-23 21:42:03,400 - ClientManager - INFO - 114812 - noderight 2 self 1 max_rank 3
+2022-01-23 21:42:03,400 - ClientManager - INFO - 114812 - round 2 max_epoch 3
+2022-01-23 21:42:06,274 - SplitNNServer - INFO - 114104 - phase=validation acc=0.7641875 loss=0.6309070512652397 epoch=3 and step=8
+2022-01-23 21:42:06,577 - SplitNNServer - INFO - 114104 - phase=train acc=0.2425 loss=0.7619495391845703 epoch=4 and step=0
+2022-01-23 21:42:08,163 - ClientManager - INFO - 114696 - noderight 3 self 2 max_rank 3
+2022-01-23 21:42:08,163 - ClientManager - INFO - 114696 - round 2 max_epoch 3
+2022-01-23 21:42:10,951 - SplitNNServer - INFO - 114104 - phase=validation acc=0.237 loss=0.7582518085837364 epoch=4 and step=8
+2022-01-23 21:42:11,263 - SplitNNServer - INFO - 114104 - phase=train acc=0.769 loss=0.641061544418335 epoch=5 and step=0
+2022-01-23 21:42:12,666 - ClientManager - INFO - 106672 - noderight 1 self 3 max_rank 3
+2022-01-23 21:42:12,666 - ClientManager - INFO - 106672 - round 2 max_epoch 3
+2022-01-23 21:42:15,641 - SplitNNServer - INFO - 114104 - phase=validation acc=0.763125 loss=0.6391268968582153 epoch=5 and step=8
+2022-01-23 21:42:15,947 - SplitNNServer - INFO - 114104 - phase=train acc=0.735 loss=0.6378937363624573 epoch=6 and step=0
+2022-01-23 21:42:17,456 - ClientManager - INFO - 114812 - noderight 2 self 1 max_rank 3
+2022-01-23 21:42:17,456 - ClientManager - INFO - 114812 - round 3 max_epoch 3
+2022-01-23 21:42:20,331 - SplitNNServer - INFO - 114104 - phase=validation acc=0.7641875 loss=0.6150539964437485 epoch=6 and step=8
+2022-01-23 21:42:20,647 - SplitNNServer - INFO - 114104 - phase=train acc=0.233 loss=0.7803135514259338 epoch=7 and step=0
+2022-01-23 21:42:22,215 - ClientManager - INFO - 114696 - noderight 3 self 2 max_rank 3
+2022-01-23 21:42:22,215 - ClientManager - INFO - 114696 - round 3 max_epoch 3
+2022-01-23 21:42:25,027 - SplitNNServer - INFO - 114104 - phase=validation acc=0.237 loss=0.7687660977244377 epoch=7 and step=8
+2022-01-23 21:42:25,331 - SplitNNServer - INFO - 114104 - phase=train acc=0.7605 loss=0.6274549961090088 epoch=8 and step=0
+2022-01-23 21:42:26,727 - ClientManager - INFO - 106672 - noderight 1 self 3 max_rank 3
+2022-01-23 21:42:26,727 - ClientManager - INFO - 106672 - round 3 max_epoch 3

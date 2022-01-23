@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/client_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/message_define.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/asyVanilla/server_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.test" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/adult.data" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/adult.test" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/cifar10/cifar-10-batches-py/batches.meta" afterDir="false" />
@@ -26,19 +34,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint.pth.tar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/adultController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/adultController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/cifar10Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/germanController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/germanController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/mnistController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/communication/mpi/mpi_com_mananger.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/communication/mpi/mpi_com_mananger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/communication/msg_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/communication/msg_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/splitApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splitApi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/variants/Ushaped/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/Ushaped/client_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/variants/vanilla/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/client_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/vanilla/message_define.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/vanilla/message_define.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic.py" beforeDir="false" afterPath="$PROJECT_DIR$/pic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +73,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SABuf3/Split-learning-Attacks/SLFrame" />
+    <property name="last_opened_file_path" value="//wsl$/Ubuntu-18.04/home/rainysponge/FedML/FedML" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -80,13 +84,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Split-learning-Attacks\SABuf2\Split-learning-Attacks\SLFrame\core\variants\asyVanilla" />
       <recent name="D:\Split-learning-Attacks\SABuf3\Split-learning-Attacks\SLFrame\data\german" />
       <recent name="D:\Split-learning-Attacks\SABuf3\Split-learning-Attacks\SLFrame\data\adult" />
       <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\dataset\partition" />
       <recent name="D:\SLFrame\data\cifar10" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.datasetTest">
+  <component name="RunManager" selected="Python.pic">
     <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -175,6 +180,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pic" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SLFrame" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,6 +223,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pic" />
         <item itemvalue="Python.datasetTest" />
         <item itemvalue="Python.logTest" />
         <item itemvalue="Python.Test" />
@@ -257,6 +282,8 @@
       <workItem from="1642335597332" duration="9735000" />
       <workItem from="1642383740396" duration="2790000" />
       <workItem from="1642430081935" duration="1270000" />
+      <workItem from="1642905102255" duration="6099000" />
+      <workItem from="1642920673090" duration="14090000" />
     </task>
     <servers />
   </component>
@@ -279,10 +306,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1642430167027">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1642918963308">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1642430167027" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1642918963308" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
     <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
       <screen x="0" y="0" width="1280" height="672" />
@@ -304,10 +331,10 @@
     </state>
     <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
     <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1642386662574">
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1642920673418">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1642386662574" />
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1642920673418" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
     <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1642254862785">
       <screen x="0" y="0" width="1280" height="672" />

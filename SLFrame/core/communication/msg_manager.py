@@ -11,7 +11,7 @@ class MessageManager(Observer):
         self.args = args
         self.com_size = com_size
         self.rank = rank
-        self.node_type=node_type
+        self.node_type = node_type
         self.backend = backend
         if backend == "MPI":
             self.com_manager = MpiCommunicationManager(comm, rank, com_size, node_type=node_type)

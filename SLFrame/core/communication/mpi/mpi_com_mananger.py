@@ -75,6 +75,7 @@ class MpiCommunicationManager(BaseCommunicationManager):
         while self.is_running:
             if self.q_receiver.qsize() > 0:
                 msg_params = self.q_receiver.get()
+
                 self.notify(msg_params)
 
             time.sleep(0.3)

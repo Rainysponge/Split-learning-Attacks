@@ -174,11 +174,11 @@ class adult_LR_server(nn.Module):
 
         self.block2 = nn.Sequential(
             nn.Linear(10, 7),
-
+            nn.ReLU()
         )
         self.block3 = nn.Sequential(
             nn.Linear(7, 2),
-
+            nn.ReLU()
         )
 
     def forward(self, x):
@@ -194,7 +194,7 @@ class adult_LR_client(nn.Module):
         # First block - convolutional
         self.block1 = nn.Sequential(
             nn.Linear(14, 10),
-
+            nn.ReLU()
         )
 
     def forward(self, x):

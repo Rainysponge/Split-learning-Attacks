@@ -2,7 +2,7 @@ dataDir: ./data/adult
 dataset: adult
 device: cpu
 download: true
-epochs: 2
+epochs: 3
 log_step: 20
 lr: 0.01
 max_rank: 2

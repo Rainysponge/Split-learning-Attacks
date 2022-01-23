@@ -2,15 +2,16 @@ from .log.Log import Log
 import time
 from mpi4py import MPI
 
-from .variants.vanilla.client_manager import ClientManager
-from .variants.vanilla.client import SplitNNClient
-from .variants.vanilla.server import SplitNNServer
-from .variants.vanilla.server_manager import ServerManager
+from .variants.asyVanilla.client_manager import ClientManager
+from .variants.asyVanilla.client import SplitNNClient
+from .variants.asyVanilla.server import SplitNNServer
+from .variants.asyVanilla.server_manager import ServerManager
 from .model.models import LeNetClientNetwork, LeNetServerNetwork
 
 
 def SplitNN_init(parse):
     # 初始化MPI
+    # mpiexec -np 3 python Test.py
     logging = Log("SplitNN_init", parse)
     comm = MPI.COMM_WORLD
     process_id = comm.Get_rank()
@@ -18,7 +19,8 @@ def SplitNN_init(parse):
     logging.info("process_id: {}, worker_number: {}".format(process_id, worker_number))
     parse["comm"] = comm
     parse["process_id"] = process_id
-    parse["worker_number"] = worker_number - 1
+    parse["rank"] = process_id
+    parse["worker_number"] = worker_number
     parse["client_number"] = worker_number - 1
     parse["max_rank"] = parse["worker_number"] - 1
     return comm, process_id, worker_number
@@ -49,5 +51,5 @@ def init_client(args):
     logging = Log("init_client", args)
     client = SplitNNClient(args)
     client_manager = ClientManager(args, client)
-    logging.info("Client run begin")
+    logging.info("Client {} run begin".format(args['rank']))
     client_manager.run()
