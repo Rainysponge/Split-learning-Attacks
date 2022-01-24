@@ -25,8 +25,8 @@ from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
-client_model = adult_LR_client()
-server_model = adult_LR_server()
+client_model = LeNetClientNetwork()
+server_model = LeNetServerNetwork()
 
 
 def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
@@ -63,10 +63,20 @@ if __name__ == '__main__':
 
     dataset = datasetFactory(args).factory()  # loader data and partition method
     # print(dataset)
-    dataset.load_partition_data(process_id)
+    # dataset.load_partition_data(process_id)
     # train_data_num, train_data_global, test_data_global, local_data_num, \
     # train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
-
+    train_data_num, train_data_global, test_data_global, local_data_num, \
+    train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
+    args["trainloader"] = train_data_local
+    args["testloader"] = test_data_local
+    args["train_data_num"] = train_data_num
+    args["train_data_global"] = train_data_global
+    args["test_data_global"] = test_data_global
+    args["local_data_num"] = local_data_num
+    args["class_num"] = class_num
+    log = Log("main", args)
+    # log.info("{}".format(train_data_num))
 
     # str_process_name = "SplitNN (distributed):" + str(process_id)
     # setproctitle.setproctitle(str_process_name

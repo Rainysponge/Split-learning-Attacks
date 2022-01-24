@@ -60,6 +60,8 @@ class ClientManager(MessageManager):
         # no point in checking the semaphore message
         logging.warning("client{} recv sema".format(self.rank))
         self.trainer.train_mode()
+        # self.trainer.model.load_state_dict(torch.load(self.args["model_tmp_path"]))
+        self.trainer.model = torch.load(self.args["model_tmp_path"])
         self.run_forward_pass()
 
     def handle_message_gradients(self, msg_params):
@@ -69,6 +71,8 @@ class ClientManager(MessageManager):
         if self.trainer.batch_idx == len(self.trainer.trainloader):
             # torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
             #                                                                    self.round_idx))
+            # torch.save(self.trainer.model.state_dict(), self.args["model_tmp_path"])
+            torch.save(self.trainer.model, self.args["model_tmp_path"])
             self.run_eval()
         else:
             self.run_forward_pass()

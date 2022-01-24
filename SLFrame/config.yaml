@@ -1,11 +1,11 @@
-dataDir: ./data/adult
-dataset: adult
+dataDir: ./data/mnist
+dataset: mnist
 device: cpu
 download: true
-epochs: 3
+epochs: 20
 log_step: 20
 lr: 0.01
 max_rank: 2
-partition_method: homo
+partition_method: base_on_class
 rank: 1
 server_rank: 0

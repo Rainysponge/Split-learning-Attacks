@@ -1,6 +1,7 @@
 import logging
 import torch
 import time
+
 from queue import Queue
 from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
@@ -47,7 +48,9 @@ class ClientManager(MessageManager):
                 acts, labels = self.trainer.forward_pass()
 
         elif self.server_ready == 1:
+            # 当轮到这个Client时
             if self.acts_queue.empty():
+
                 acts, labels = self.trainer.forward_pass()
                 if labels is not None:
                     self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
@@ -97,23 +100,21 @@ class ClientManager(MessageManager):
             self.send_semaphore_to_client(self.trainer.node_right)
 
         self.trainer.batch_idx = 0
+        # 异步训练
         self.trainer.train_mode()
         self.run_forward_pass()
 
     def register_message_receive_handlers(self):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2C_SEMAPHORE,
                                               self.handle_message_semaphore)
-        # self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_READY,
-        #                                       self.handle_message_to_server)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_GRADS,
                                               self.handle_message_gradients)
 
     def handle_message_semaphore(self, msg_params):
         # no point in checking the semaphore message
         logging.warning("client {} recv sema".format(self.rank))
-        # for act, label in
+        # server 告诉这个 Client 到他的轮次了
         self.server_ready = 1
-        # self.trainer.train_mode()
         self.run_forward_pass()
 
     # def handle_message_to_server(self, msg_params):
@@ -122,6 +123,8 @@ class ClientManager(MessageManager):
 
     def handle_message_gradients(self, msg_params):
         grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
+        logging.info(grads.shape)
+
         self.trainer.backward_pass(grads)
         logging.warning("rank: {} batch: {} len {}".format(self.trainer.rank, self.trainer.batch_idx,
                                                            len(self.trainer.trainloader)))

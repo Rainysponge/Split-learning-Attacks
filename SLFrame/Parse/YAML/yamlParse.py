@@ -22,7 +22,7 @@ class yamlParse(parse):
         self.download = True
 
         self.client_number = 2
-        self.batch_size = 2000
+        self.batch_size = 64
         self.lr = 0.001
         self.wd = 0.001
         self.epochs = 15
@@ -33,6 +33,10 @@ class yamlParse(parse):
         self.gpu_num_per_server = 4
         self.log_save_path = "D:\\Split-learning-Attacks\\SABuf2\\Split-learning-Attacks\\SLFrame\\log.txt"
         self.model_save_path = "D:\\Split-learning-Attacks\\SABuf2\\Split-learning-Attacks\\SLFrame\\model_save\\{}_{}_{}.pkl"
+        self.model_tmp_path = "D:\\Split-learning-Attacks\\SABuf2\\Split-learning-Attacks\\SLFrame\\model_save\\client_tmp.pkl"
+        # self.log_save_path = "/root/autodl-tmp/slframe/log.txt"
+        # self.model_save_path = "/root/autodl-tmp/slframe/model_save/{}_{}_{}.pkl"
+        # self.model_tmp_path = "/root/autodl-tmp/slframe/model_save/model_save/client_tmp.pkl"
         # self.log_save_path = "/kaggle/input/slframe/SLFrame/log.txt"
         # self.model_save_path = "/kaggle/input/slframe/SLFrame/model_save/{}_{}_{}.pkl"
 

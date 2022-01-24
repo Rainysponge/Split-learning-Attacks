@@ -72,7 +72,7 @@ class mnistController():
     def load_partition_data(self, process_id):
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
-        # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
+        # self.log.info("class_num = " + str(class_num))
         train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
 
         # get global test data
@@ -90,7 +90,7 @@ class mnistController():
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64;
             train_data_local, test_data_local = self.get_dataloader(dataidxs)
-            self.log.info("dataidxs: {}".format(dataidxs))
+            # self.log.info("dataidxs: {}".format(dataidxs))
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (
                 process_id, len(train_data_local), len(test_data_local)))
             train_data_global = None

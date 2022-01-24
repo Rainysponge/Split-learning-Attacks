@@ -49,7 +49,6 @@ class ServerManager(MessageManager):
         self.trainer.eval_mode()
 
     def handle_message_validation_over(self, msg_params):
-        # logging.warning("over")
         self.trainer.validation_over()
 
     def handle_message_finish_protocol(self, msg_params):
