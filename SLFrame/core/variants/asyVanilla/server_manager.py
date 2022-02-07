@@ -24,6 +24,7 @@ class ServerManager(MessageManager):
         self.send_message(message)
 
     def register_message_receive_handlers(self):
+        # dict
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_SEND_ACTS,
                                               self.handle_message_acts)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_VALIDATION_MODE,

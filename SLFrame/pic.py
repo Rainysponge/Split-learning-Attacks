@@ -24,13 +24,14 @@ if __name__ == "__main__":
     # idx_2 = list(idx_2)
     # idx_1.extend(idx_2)
     # print(idx_1)
-    with open("D:/Split-learning-Attacks/SABuf2/Split-learning-Attacks/SLFrame/log.txt", "r") as f:
+    with open("D:/Split-learning-Attacks/SABuf2/Split-learning-Attacks/SLFrame/cifar10 2client label.txt", "r") as f:
         content = f.read()
 
     p = re.compile("phase=validation acc=(.*?) loss")
     matchObj = re.findall(p, content)
-
-    acc = [(float(matchObj[i*3]) + float(matchObj[3*i+1]) + float(matchObj[3*i+3])) / 3  for i in range(int(len(matchObj)) // 3)]
+    # acc = []
+    acc = [(float(matchObj[i*2]) + float(matchObj[2*i+1])) / 2 for i in range(int(len(matchObj)) // 2)]
+    # acc = [float(matchObj[i]) for i in range(len(matchObj))]
     x = [i for i in range(len(acc))]
     data = np.array([x, acc])
 
@@ -41,3 +42,6 @@ if __name__ == "__main__":
     print(df.dtypes)
     sns.lineplot(x="turn", y="acc", data=df)
     plt.show()
+
+
+

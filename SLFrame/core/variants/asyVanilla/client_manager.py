@@ -31,7 +31,6 @@ class ClientManager(MessageManager):
             # self.run_forward_pass()
         # self.log.info("self.rank {}".format(self.rank))
         self.trainer.train_mode()
-        # logging.info("rank {} training. The length is {}".format(self.trainer.rank, len(self.trainer.trainloader)))
         self.run_forward_pass()
         super(ClientManager, self).run()
 

@@ -25,8 +25,8 @@ from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
-client_model = LeNetClientNetwork()
-server_model = LeNetServerNetwork()
+client_model = adult_LR_client()
+server_model = adult_LR_server()
 
 
 def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):

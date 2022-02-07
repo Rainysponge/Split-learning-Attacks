@@ -28,6 +28,7 @@ class adult_truncated(data.Dataset):
     def __build_truncated_dataset__(self):
         adult_dataobj = pd.read_csv('{}/adult.data'.format(self.root), header=None)
         row = adult_dataobj[0:1]
+        # self.log.info(adult_dataobj[7])
         d = {}
         for index in row:
             temp = row[index]
@@ -50,16 +51,23 @@ class adult_truncated(data.Dataset):
 
         n, l = train.shape
         for j in range(l - 1):
-            meanVal = np.mean(train[:, j])
+            if self.parse["partition_method"] == "base_on_attribute":
+                if self.parse["partition_method_attributes"] == j:
+                    t = len(np.unique(train[:, j])) // 2
+                    train[:, j] = train[:, j] - t
+                    continue
+            meanVal = abs(np.mean(train[:, j]))
             stdVal = np.std(train[:, j])
             train[:, j] = (train[:, j] - meanVal) / stdVal
-        np.random.shuffle(train)
 
+        # np.random.shuffle(train)
         n, l = test.shape
         for j in range(l - 1):
             meanVal = np.mean(test[:, j])
             stdVal = np.std(test[:, j])
             test[:, j] = (test[:, j] - meanVal) / stdVal
+            # t = len(np.unique(test[:, j])) // 2
+            # test[:, j] = test[:, j] - t
         np.random.shuffle(test)
 
         train_data = train[:, :14]
@@ -74,19 +82,19 @@ class adult_truncated(data.Dataset):
             data = torch.from_numpy(test_data).float()
             target = test_lab
 
-        # 归一化
-        n, l = train.shape
-        for j in range(l - 1):
-            meanVal = np.mean(train[:, j])
-            stdVal = np.std(train[:, j])
-            train[:, j] = (train[:, j] - meanVal) / stdVal
-
-
-        n, l = test.shape
-        for j in range(l - 1):
-            meanVal = np.mean(test[:, j])
-            stdVal = np.std(test[:, j])
-            test[:, j] = (test[:, j] - meanVal) / stdVal
+        # # 归一化
+        # n, l = train.shape
+        # for j in range(l - 1):
+        #     meanVal = np.mean(train[:, j])
+        #     stdVal = np.std(train[:, j])
+        #     train[:, j] = (train[:, j] - meanVal) / stdVal
+        #
+        #
+        # n, l = test.shape
+        # for j in range(l - 1):
+        #     meanVal = np.mean(test[:, j])
+        #     stdVal = np.std(test[:, j])
+        #     test[:, j] = (test[:, j] - meanVal) / stdVal
 
 
 

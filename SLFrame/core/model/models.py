@@ -185,6 +185,7 @@ class adult_LR_server(nn.Module):
         # x = self.block1(x)
         x = self.block2(x)
         x = self.block3(x)
+        # x = torch.sigmoid(x)
         return x
 
 
