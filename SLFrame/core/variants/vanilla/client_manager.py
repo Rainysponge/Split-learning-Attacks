@@ -26,7 +26,6 @@ class ClientManager(MessageManager):
 
     def run_forward_pass(self):
         acts, labels = self.trainer.forward_pass()
-        logging.info("rank {}".format(self.trainer.rank))
         self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
         self.trainer.batch_idx += 1
 
@@ -35,15 +34,10 @@ class ClientManager(MessageManager):
         self.trainer.eval_mode()
 
         for i in range(len(self.trainer.testloader)):
-            logging.warning("validate {}".format(i))
             self.run_forward_pass()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
-        self.log.info(
-            "noderight {} self {} max_rank {}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
-        self.log.info("round {} max_epoch {}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
-            logging.warning("finish")
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
         else:
@@ -82,7 +76,7 @@ class ClientManager(MessageManager):
         self.send_message(message)
 
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
-        logging.warning("acts to {}".format(receive_id))
+      #  logging.warning("acts to {}".format(receive_id))
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
         self.send_message(message)

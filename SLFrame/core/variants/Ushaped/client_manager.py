@@ -7,11 +7,6 @@ from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
 from ...log.Log import Log
 
-"""
-还没实现!! 只是做个例子
-"""
-
-
 class ClientManager(MessageManager):
     """
     args里面要有MPI的 comm, rank, max_rank(也就是comm.size()-1) 其他的暂时不用
@@ -28,12 +23,11 @@ class ClientManager(MessageManager):
         if self.rank == 1:
             self.trainer.train_mode()
             self.run_forward_pass()
-        logging.warning("{} start running".format(self.rank))
         super().run()  # run 要放在最后是因为先要发送信息之后才能开始监听.. 不然大家都在等别人的消息
 
     def run_forward_pass(self):
         acts = self.trainer.forward_pass()
-        #  logging.warning("send acts to server")
+        logging.warning("send acts to server")
         self.send_activations_to_server(acts, self.trainer.SERVER_RANK)
         self.trainer.batch_idx += 1
 
@@ -42,19 +36,19 @@ class ClientManager(MessageManager):
         self.trainer.eval_mode()
 
         for i in range(len(self.trainer.testloader)):
-            logging.warning("validate {}".format(i))
             self.run_forward_pass()
             # logging.warning("lis")
-            self.listen()
-
+            while True:
+                if self.com_manager.q_receiver.qsize()>0:
+                    msg_params = self.com_manager.q_receiver.get()
+                    self.com_manager.notify(msg_params)
+                    break
+                else:
+                    time.sleep(0.5)
         self.trainer.validation_over()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.trainer.epoch_count += 1
-        self.log.info(
-            "noderight {}  self{} max_rank{}".format(self.trainer.node_right, self.trainer.rank, self.trainer.MAX_RANK))
-        self.log.info("round{} max_epoch{}".format(self.trainer.epoch_count, self.trainer.MAX_EPOCH_PER_NODE))
         if self.trainer.epoch_count == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
-            logging.warning("finish")
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
         else:
@@ -70,7 +64,6 @@ class ClientManager(MessageManager):
                                               self.handle_message_acts_from_server)
 
     def handle_message_semaphore(self, msg_params):
-        # no point in checking the semaphore message
         logging.warning("client{} recv semapgore".format(self.rank))
         self.trainer.train_mode()
         self.run_forward_pass()
@@ -79,7 +72,7 @@ class ClientManager(MessageManager):
         grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
         self.trainer.backward_pass(type=0, grads=grads)
         logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
-        if self.trainer.batch_idx == len(self.trainer.trainloader):  # len(self.trainer.trainloader)
+        if self.trainer.batch_idx == len(self.trainer.trainloader):
             torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
                                                                                self.trainer.epoch_count))
             self.run_eval()
@@ -125,3 +118,5 @@ class ClientManager(MessageManager):
     def send_finish_to_server(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
         self.send_message(message)
+
+

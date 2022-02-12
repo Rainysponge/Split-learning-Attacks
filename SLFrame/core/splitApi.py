@@ -2,10 +2,7 @@ from .log.Log import Log
 import time
 from mpi4py import MPI
 
-from .variants.vanilla.client_manager import ClientManager
-from .variants.vanilla.client import SplitNNClient
-from .variants.vanilla.server import SplitNNServer
-from .variants.vanilla.server_manager import ServerManager
+from .variants.variantsFactory import variantsFactory
 from .model.models import LeNetClientNetwork, LeNetServerNetwork
 
 
@@ -39,17 +36,14 @@ def SplitNN_distributed(process_id, parse):
 
 def init_server(args):
     logging = Log("init_server", args)
-
-    server = SplitNNServer(args)
-    server_manager = ServerManager(args, server)
-    logging.info("Server run begin")
+    server,server_manager=variantsFactory(args["variants_type"],"server",args).factory()
+    logging.info("Server run begin {}".format(args["variants_type"]))
     server_manager.run()
     logging.info("Server run end")
 
 
 def init_client(args):
     logging = Log("init_client", args)
-    client = SplitNNClient(args)
-    client_manager = ClientManager(args, client)
+    client, client_manager = variantsFactory(args["variants_type"], "client", args).factory()
     logging.info("Client {} run begin".format(args['rank']))
     client_manager.run()

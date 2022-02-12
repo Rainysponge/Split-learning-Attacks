@@ -19,15 +19,14 @@ from Parse.parseFactory import parseFactory, JSON, YAML
 from core.model.cnn import CNN_OriginalFedAvg, Net, cifar10_client, cifar10_server
 from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork, adult_LR_client, adult_LR_server, \
     german_LR_client, german_LR_server
+from core.model.models_for_U import LeNetClientNetworkPart1,LeNetClientNetworkPart2,LeNetServerNetwork
 from core.model.resnet import resnet56, ResNet_client, ResNet_server
 from core.variants.vanilla.client import SplitNNClient
 from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
-# log = Log("Test.py")
 
-client_model = german_LR_client()
-server_model = german_LR_server()
+
 
 
 def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
@@ -52,43 +51,34 @@ if __name__ == '__main__':
         尽量让Test.py是可以不需要做任何其他操作直接运行的
     """
     args = parseFactory(fileType=YAML).factory()
-    """
-           解析器展示, 把需要的数据放在d里面，或者在下面的args里面 eg：args["model"] = client_model
-           这里写过一次之后就可以注释掉了，存在文件中了
-       """
-    # d = {
-    #     "dataset": "cifar10",
-    #     "dataDir": "./data/cifar10",
-    #     'download': True,
-    #     'partition_method': 'homo',
-    #     'log_step': 20,
-    #     "rank": 1,
-    #     "max_rank": 5,
-    #     "lr": 0.01,
-    #     "server_rank": 0,
-    #     'device': 'cpu',
-    #
-    # }
-    #
-    # args.save(d, './config.yaml')
-    d = args.load('./config.yaml')
+    args.load('./config.yaml')
     # comm, process_id, worker_number = SplitNN_init(parse=args)
     comm, process_id, worker_number = SplitNN_init(args)
     args["rank"] = process_id  # 设置当前process_id
 
-    args["client_model"] = client_model
-    args["server_model"] = server_model
+    args["client_model"] = LeNetClientNetworkPart1()
+    args["client_model_2"]= LeNetClientNetworkPart2()
+    args["server_model"] = LeNetServerNetwork()
     device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server)
     args["device"] = device
-    log = Log("Test.py", args)
-    # log.info(device)
 
     dataset = datasetFactory(args).factory()  # loader data and partition method
     # print(dataset)
-
+    # dataset.load_partition_data(process_id)
+    # train_data_num, train_data_global, test_data_global, local_data_num, \
+    # train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
     train_data_num, train_data_global, test_data_global, local_data_num, \
     train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
+    args["trainloader"] = train_data_local
+    args["testloader"] = test_data_local
+    args["train_data_num"] = train_data_num
+    args["train_data_global"] = train_data_global
+    args["test_data_global"] = test_data_global
+    args["local_data_num"] = local_data_num
+    args["class_num"] = class_num
+    log = Log("main", args)
+    # log.info("{}".format(train_data_num))
 
-
-    server = SplitNNServer(args)
+    # str_process_name = "SplitNN (distributed):" + str(process_id)
+    # setproctitle.setproctitle(str_process_name
     SplitNN_distributed(process_id, args)
