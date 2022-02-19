@@ -1,13 +1,13 @@
 import logging
-from SLFrame.core.log.Log import Log
+from core.log.Log import Log
 
 class variantsFactory():
 
     def __init__(self, variantsType, nodeType, args):
         self.variantsType = variantsType
         self.nodeType = nodeType
-        self.args=args
-        self.log = Log("parseFactory",args)
+        self.args = args
+        self.log = Log("parseFactory", args)
 
     def factory(self):
         if self.variantsType == "vanilla":
@@ -25,6 +25,11 @@ class variantsFactory():
             from ..variants.asyVanilla2.client import SplitNNClient
             from ..variants.asyVanilla2.server_manager import ServerManager
             from ..variants.asyVanilla2.client_manager import ClientManager
+        elif self.variantsType == "vertical":
+            from ..variants.vertical.server import SplitNNServer
+            from ..variants.vertical.client import SplitNNClient
+            from ..variants.vertical.server_manager import ServerManager
+            from ..variants.vertical.client_manager import ClientManager
         else:
             logging.warning("variants_type: default as vanilla")
             from ..variants.vanilla.server import SplitNNServer
@@ -39,4 +44,4 @@ class variantsFactory():
         else:
             client = SplitNNClient(self.args)
             client_manager = ClientManager(self.args, client)
-            return client,client_manager
+            return client, client_manager

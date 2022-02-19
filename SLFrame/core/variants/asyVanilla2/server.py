@@ -34,6 +34,7 @@ class SplitNNServer():
         self.acts = acts
         self.optimizer.zero_grad()
         self.acts.retain_grad()
+
         logits = self.model(acts)
         _, predictions = logits.max(1)
         self.loss = self.criterion(logits, labels)
@@ -45,4 +46,5 @@ class SplitNNServer():
     def backward_pass(self):
         self.loss.backward(retain_graph=True)
         self.optimizer.step()
+        self.log.info(self.acts.grad.shape)
         return self.acts.grad

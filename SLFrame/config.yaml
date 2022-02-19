@@ -1,12 +1,13 @@
-dataDir: ./data/mnist
-dataset: mnist
+dataDir: ./data/adult
+dataset: adult
 device: cpu
 download: true
 epochs: 20
 log_step: 20
 lr: 0.01
 max_rank: 2
-partition_method: base_on_attribute
+partition_method: vertical
 rank: 1
-variants_type: asy_vanilla
+variants_type: vertical
 server_rank: 0
+

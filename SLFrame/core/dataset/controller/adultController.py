@@ -32,6 +32,8 @@ class adultController():
         X_train, y_train = adult_train_ds.data, adult_train_ds.target
         X_test, y_test = adult_test_ds.data, adult_test_ds.target
 
+        # self.log.info(type(X_train))
+
         return X_train, y_train, X_test, y_test
 
     def partition_data(self):
@@ -54,18 +56,21 @@ class adultController():
         # return train_dl, test_dl
         dl_obj = adult_truncated
 
+
         train_ds = dl_obj(parse=self.parse, transform=None, dataidxs=dataidxs)
         test_ds = dl_obj(parse=self.parse, transform=None, train=False)
 
-        train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=True, drop_last=True)
+        train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
         test_dl = data.DataLoader(dataset=test_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
 
         return train_dl, test_dl
 
     def load_partition_data(self, process_id):
+
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
         # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
+
         train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
 
         # get global test data
@@ -79,9 +84,21 @@ class adultController():
         else:
             # get local dataset
             dataidxs = net_dataidx_map[process_id - 1]
-            local_data_num = len(dataidxs)
+            # if self.parse["variants_type"] == "vertical":
+            #     testidx = net_dataidx_test_map[process_id-1]
+            if self.parse["variants_type"] == "vertical":
+                local_data_num = 0
+            else:
+                local_data_num = len(dataidxs)
+
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64;
+            # if self.parse["variants_type"] == "vertical":
+            #     train_data_local = data.DataLoader(
+            #         dataset=dataidxs, batch_size=self.bantch_size, shuffle=True, drop_last=True)
+            #     test_data_local = data.DataLoader(
+            #         dataset=testidx, batch_size=self.bantch_size, shuffle=True, drop_last=True)
+            # else:
             train_data_local, test_data_local = self.get_dataloader(dataidxs)
             # self.log.info("dataidxs: {}".format(dataidxs))
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (

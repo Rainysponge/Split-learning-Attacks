@@ -237,3 +237,33 @@ class german_LR_server(nn.Module):
         x = self.block2(x)
         x = self.block3(x)
         return x
+
+
+class adult_LR_client1(nn.Module):
+    def __init__(self):
+        super(adult_LR_client1, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(7, 5),
+
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+
+        return x
+
+
+class adult_LR_client2(nn.Module):
+    def __init__(self):
+        super(adult_LR_client2, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(7, 5),
+
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+
+        return x

@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 from core.log.Log import Log
 
 from .basePartition import abstractPartition
@@ -30,6 +31,8 @@ class cifar10Partition(abstractPartition):
             return self.base_on_class
         elif partition_method == "base_on_attribute":
             return self.base_on_attribute
+        elif partition_method == "vertical":
+            return self.vertical
 
     def homo(self, load_data):
         self.log.info("homo")
@@ -188,4 +191,31 @@ class cifar10Partition(abstractPartition):
                 net_dataidx_map[i] = batch_idxs
             traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
 
+        return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts
+
+    def vertical(self, load_data):
+        # n_nets = self.parse["client_number"]
+        # self.log.info("base_on_class")
+        # X_train, y_train, X_test, y_test = load_data()
+        # self.log.info(type(X_train))
+        # y_train, y_test = torch.from_numpy(y_train), torch.from_numpy(y_test)
+        #
+        # X_train = X_train.split([7, 7], dim=1)
+        # X_test = X_test.split([7, 7], dim=1)
+        # # for i in range(self.parse["client_number"]):
+        # #     net_dataidx_map
+        # net_dataidx_train_map = {i: X_train[i] for i in range(n_nets)}
+        # net_dataidx_test_map = {i: X_test[i] for i in range(n_nets)}
+        # traindata_cls_counts = None
+        # testdata_cls_counts = None
+        #
+        # return X_train, y_train, X_test, y_test, net_dataidx_train_map, traindata_cls_counts, \
+        #        net_dataidx_test_map, testdata_cls_counts
+        self.log.info("vertical")
+        X_train, y_train, X_test, y_test = load_data()
+        n_train = X_train.shape[0]
+        net_dataidx_map = {i: [j for j in range(n_train)] for i in range(self.parse['client_number'])}
+
+        traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
+        # log.info(net_dataidx_map)
         return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts

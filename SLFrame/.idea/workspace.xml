@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cifar10 2client label.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/client_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/message_define.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/variants/vertical/server_manager.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.data" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/PreProcess_adult.test" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/adult/adult.data" afterDir="false" />
@@ -29,15 +34,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/YAML/yamlParse.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/dataset/controller/adultController.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/controller/adultController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/dataset/dataset/adult.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/dataset/adult.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/dataset/partition/cifar10Partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/partition/cifar10Partition.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/model/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/variants/asyVanilla/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/asyVanilla/client_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/variants/asyVanilla/server_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/asyVanilla/server_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/splitApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splitApi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/asyVanilla2/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/asyVanilla2/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/asyVanilla2/server_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/asyVanilla2/server_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/variants/variantsFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/variants/variantsFactory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pic.py" beforeDir="false" afterPath="$PROJECT_DIR$/pic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,6 +296,10 @@
       <workItem from="1644126925180" duration="12619000" />
       <workItem from="1644202043138" duration="5164000" />
       <workItem from="1644220936685" duration="3487000" />
+      <workItem from="1644906724727" duration="2856000" />
+      <workItem from="1645270606095" duration="1228000" />
+      <workItem from="1645272060065" duration="6585000" />
+      <workItem from="1645278815378" duration="4405000" />
     </task>
     <servers />
   </component>
@@ -311,10 +322,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1643009806225">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1645281691108">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1643009806225" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1645281691108" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
     <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
       <screen x="0" y="0" width="1280" height="672" />
@@ -336,10 +347,10 @@
     </state>
     <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
     <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1644220986115">
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1645278852541">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1644220986115" />
+    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1645278852541" />
     <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
     <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1642254862785">
       <screen x="0" y="0" width="1280" height="672" />
