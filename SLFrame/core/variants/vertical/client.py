@@ -5,13 +5,15 @@ class SplitNNClient():
 
     def __init__(self, args):
         self.comm = args["comm"]
-        self.model = args["client_model"]
         self.rank = args["rank"]
+        self.model = args["client_model"][self.rank] if isinstance(args["client_model"], list) else args["client_model"]
+
         self.MAX_RANK = args["max_rank"]
         self.SERVER_RANK = args["server_rank"]
 
         self.trainloader = args["trainloader"]
         self.testloader = args["testloader"]
+
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)
         self.device = args["device"]
@@ -24,6 +26,7 @@ class SplitNNClient():
         self.log = Log(self.__class__.__name__, args)
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
         self.args=args
+        # self.log.info("self.trainloader: {}".format(len(self.trainloader)))
 
     def reset_local_params(self):
         self.total = 0

@@ -18,14 +18,14 @@ from core.dataset.datasetFactory import datasetFactory
 from Parse.parseFactory import parseFactory, JSON, YAML
 from core.model.cnn import CNN_OriginalFedAvg, Net, cifar10_client, cifar10_server
 from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork, adult_LR_client, adult_LR_server, \
-    german_LR_client, german_LR_server, adult_LR_client1
+    german_LR_client, german_LR_server, adult_LR_client1, adult_LR_client2
 from core.model.resnet import resnet56, ResNet_client, ResNet_server
 from core.variants.vanilla.client import SplitNNClient
 from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
-client_model = adult_LR_client1()
+client_model = [None, adult_LR_client1(), adult_LR_client2(), adult_LR_client2()]
 server_model = adult_LR_server()
 
 

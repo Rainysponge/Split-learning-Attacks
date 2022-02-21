@@ -7,6 +7,8 @@ import seaborn as sns
 import re
 from queue import Queue
 
+from Parse.YAML.yamlParse import yamlParse
+
 if __name__ == "__main__":
     # q = Queue(maxsize=0)
     # aa = (1, 2)
@@ -24,13 +26,15 @@ if __name__ == "__main__":
     # idx_2 = list(idx_2)
     # idx_1.extend(idx_2)
     # print(idx_1)
-    with open("D:/Split-learning-Attacks/SABuf2/Split-learning-Attacks/SLFrame/cifar10 2client label.txt", "r") as f:
+    with open("D:/Split-learning-Attacks/SABuf/Split-learning-Attacks/SLFrame/log.txt", "r") as f:
         content = f.read()
 
     p = re.compile("phase=validation acc=(.*?) loss")
     matchObj = re.findall(p, content)
-    # acc = []
-    acc = [(float(matchObj[i*2]) + float(matchObj[2*i+1])) / 2 for i in range(int(len(matchObj)) // 2)]
+    acc = [float(matchObj[i]) for i in range(int(len(matchObj)))]
+    print(acc)
+    acc = [(float(matchObj[i*2]) + float(matchObj[2*i+1]) + float(matchObj[2*i+2])) / 2 for i in range(int(len(matchObj)) // 2)]
+    # acc.insert(0, 0.59453125)
     # acc = [float(matchObj[i]) for i in range(len(matchObj))]
     x = [i for i in range(len(acc))]
     data = np.array([x, acc])

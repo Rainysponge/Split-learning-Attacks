@@ -36,7 +36,7 @@ class ClientManager(MessageManager):
             logging.warning("validate {}".format(i))
             self.run_forward_pass()
             while True:
-                if self.com_manager.q_receiver.qsize()>0:
+                if self.com_manager.q_receiver.qsize() > 0:
                     msg_params = self.com_manager.q_receiver.get()
                     self.com_manager.notify(msg_params)
                     break
@@ -56,18 +56,19 @@ class ClientManager(MessageManager):
                                               self.handle_message_gradients)
 
     def handle_message_gradients(self, msg_params):
-        tot, cor, vl= msg_params.get(MyMessage.MSG_AGR_KEY_RESULT)
+        tot, cor, vl = msg_params.get(MyMessage.MSG_AGR_KEY_RESULT)
         self.trainer.total += tot
         self.trainer.correct += cor
         self.trainer.val_loss += vl
         self.trainer.step += 1
+        # self.log.info("rank {} rev gra".format(self.trainer.rank))
         if self.trainer.phase == "train":
             self.trainer.write_log()
             grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
             self.trainer.backward_pass(grads)
             logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
             if self.trainer.batch_idx == len(self.trainer.trainloader):
-                torch.save(self.trainer.model, self.args["model_tmp_path"])
+                # torch.save(self.trainer.model, self.args["model_tmp_path"])
                 self.run_eval()
             else:
                 self.run_forward_pass()

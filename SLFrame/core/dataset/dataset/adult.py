@@ -68,7 +68,7 @@ class adult_truncated(data.Dataset):
             test[:, j] = (test[:, j] - meanVal) / stdVal
             # t = len(np.unique(test[:, j])) // 2
             # test[:, j] = test[:, j] - t
-        np.random.shuffle(test)
+        # np.random.shuffle(test)
 
         train_data = train[:, :14]
         train_lab = train[:, 14]
@@ -98,13 +98,13 @@ class adult_truncated(data.Dataset):
         if self.parse["variants_type"] == "vertical":
             if self.train:
                 data = torch.from_numpy(train_data).float()
-                data_tuple = data.split([7, 7], dim=1)
+                data_tuple = data.split(self.parse["data_vertical_list"], dim=1)
                 target = train_lab
             else:
                 data = torch.from_numpy(test_data).float()
-                data_tuple = data.split([7, 7], dim=1)
+                data_tuple = data.split(self.parse["data_vertical_list"], dim=1)
                 target = test_lab
-            if self.dataidxs is not None:
+            if self.dataidxs is not None or self.parse["rank"] > 0:
                 return data_tuple[self.parse["rank"] - 1], target
             else:
                 return data, target

@@ -36,7 +36,7 @@ def SplitNN_distributed(process_id, parse):
 
 def init_server(args):
     logging = Log("init_server", args)
-    server,server_manager=variantsFactory(args["variants_type"], "server", args).factory()
+    server,server_manager = variantsFactory(args["variants_type"], "server", args).factory()
     logging.info("Server run begin {}".format(args["variants_type"]))
     server_manager.run()
     logging.info("Server run end")

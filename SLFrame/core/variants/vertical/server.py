@@ -62,7 +62,7 @@ class SplitNNServer():
         return self.acts.grad
 
     def check_whether_all_receive(self):
-        self.log.info(self.client_number)
+        # self.log.info(self.client_number)
         for idx in range(1, self.client_number+1):
             if idx not in self.flag_client_model_uploaded_dict or not self.flag_client_model_uploaded_dict[idx]:
                 # self.log.info("idx: {}".format(idx))

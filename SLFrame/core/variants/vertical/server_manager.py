@@ -47,14 +47,17 @@ class ServerManager(MessageManager):
         all_received = self.trainer.check_whether_all_receive()
         if all_received:
             self.trainer.forward_pass(acts, labels)
-
+            # self.log.info("server all received")
             grads = None
             if self.trainer.phase == "train":
                 grads = self.trainer.backward_pass()
+                grads_list = grads.split(self.args["cut_layer_vertical_list"], dim=1)
+                for idx in range(self.trainer.client_number):
+                    self.send_grads_to_client(idx+1, grads_list[idx])
 
-            grads_list = grads.split([5, 5], dim=1)
-            for idx in range(self.trainer.client_number):
-                self.send_grads_to_client(idx+1, grads_list[idx])
+            if self.trainer.phase == "validation":
+                for idx in range(self.trainer.client_number):
+                    self.send_grads_to_client(idx + 1, grads)
         else:
             pass
 

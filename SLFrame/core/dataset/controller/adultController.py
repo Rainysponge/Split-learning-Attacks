@@ -58,6 +58,7 @@ class adultController():
 
 
         train_ds = dl_obj(parse=self.parse, transform=None, dataidxs=dataidxs)
+
         test_ds = dl_obj(parse=self.parse, transform=None, train=False)
 
         train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
@@ -84,21 +85,13 @@ class adultController():
         else:
             # get local dataset
             dataidxs = net_dataidx_map[process_id - 1]
-            # if self.parse["variants_type"] == "vertical":
-            #     testidx = net_dataidx_test_map[process_id-1]
-            if self.parse["variants_type"] == "vertical":
-                local_data_num = 0
-            else:
-                local_data_num = len(dataidxs)
+
+
+            local_data_num = len(dataidxs)
 
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64;
-            # if self.parse["variants_type"] == "vertical":
-            #     train_data_local = data.DataLoader(
-            #         dataset=dataidxs, batch_size=self.bantch_size, shuffle=True, drop_last=True)
-            #     test_data_local = data.DataLoader(
-            #         dataset=testidx, batch_size=self.bantch_size, shuffle=True, drop_last=True)
-            # else:
+
             train_data_local, test_data_local = self.get_dataloader(dataidxs)
             # self.log.info("dataidxs: {}".format(dataidxs))
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (

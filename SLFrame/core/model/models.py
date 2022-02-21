@@ -244,13 +244,13 @@ class adult_LR_client1(nn.Module):
         super(adult_LR_client1, self).__init__()
         # First block - convolutional
         self.block1 = nn.Sequential(
-            nn.Linear(7, 5),
+            nn.Linear(6, 4),
 
         )
 
     def forward(self, x):
         x = self.block1(x)
-
+        # x = torch.sigmoid(x)
         return x
 
 
@@ -259,11 +259,26 @@ class adult_LR_client2(nn.Module):
         super(adult_LR_client2, self).__init__()
         # First block - convolutional
         self.block1 = nn.Sequential(
-            nn.Linear(7, 5),
+            nn.Linear(4, 3),
 
         )
 
     def forward(self, x):
         x = self.block1(x)
+        # x = torch.sigmoid(x)
+        return x
 
+
+# class adult_LR_client3(nn.Module):
+#     def __init__(self):
+#         super(adult_LR_client3, self).__init__()
+#         # First block - convolutional
+#         self.block1 = nn.Sequential(
+#             nn.Linear(8, 6),
+#
+#         )
+#
+#     def forward(self, x):
+        x = self.block1(x)
+        # x = torch.sigmoid(x)
         return x
