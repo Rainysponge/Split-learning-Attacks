@@ -1,8 +1,6 @@
 import logging
 import torch
 import time
-
-from queue import Queue
 from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
@@ -20,126 +18,89 @@ class ClientManager(MessageManager):
         self.trainer = trainer
         self.trainer.train_mode()
         self.log = Log(self.__class__.__name__, args)
-        self.server_ready = 0
-        self.acts_queue = Queue(0)
-        self.labels_queue = Queue(0)
         self.round_idx = 0
 
     def run(self):
         if self.rank == 1:
-            self.server_ready = 1
-            # self.run_forward_pass()
-        # self.log.info("self.rank {}".format(self.rank))
-        self.trainer.train_mode()
-        self.run_forward_pass()
+            self.run_forward_pass()
         super(ClientManager, self).run()
 
     def run_forward_pass(self):
-        if self.server_ready == 0:
-            logging.info("rank {} is training".format(self.trainer.rank))
-            acts, labels = self.trainer.forward_pass()
-            while labels is not None:
-                # logging.info("rank {} training. The length is {}".format(self.trainer.rank, len(self.acts_list)))
-                # logging.info("rank {} training. The acts is {}".format(self.trainer.rank, acts))
-
-                self.acts_queue.put(acts)
-                self.labels_queue.put(labels)
-                acts, labels = self.trainer.forward_pass()
-
-        elif self.server_ready == 1:
-            # 当轮到这个Client时
-            if self.acts_queue.empty():
-
-                acts, labels = self.trainer.forward_pass()
-                if labels is not None:
-                    self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
-                    self.trainer.batch_idx += 1
-            else:
-                acts, labels = self.acts_queue.get(), self.labels_queue.get()
-                self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
-                self.trainer.batch_idx += 1
-                # for act, label in zip(self.acts_list, self.labels_list):
-
-        # while self.server_ready == 0:
-        #     logging.info("rank {} is waiting".format(self.trainer.rank))
-
-        # acts, labels = self.trainer.forward_pass()
-
-        # if self.server_ready == 0:
-        #     logging.info("rank {} is trainning. The length is {}".format(self.trainer.rank, len(self.acts_list)))
-        #
-        # elif self.server_ready == 1 and len(self.acts_list) > 0:
-        #     for act, label in zip(self.acts_list, self.labels_list):
-        #         self.send_activations_and_labels_to_server(act, label, self.trainer.SERVER_RANK)
-        #         self.trainer.batch_idx += 1
-
-        # elif self.server_ready == 1:
-        #     self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
+        acts, labels = self.trainer.forward_pass()
+        if self.trainer.server_state == "A" or self.trainer.server_state == "B":
+            self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
+        else:
+            self.send_activations_and_labels_to_server(None, None, self.trainer.SERVER_RANK)
+        self.trainer.batch_idx += 1
 
     def run_eval(self):
         self.send_validation_signal_to_server(self.trainer.SERVER_RANK)
         self.trainer.eval_mode()
 
         for i in range(len(self.trainer.testloader)):
-            logging.warning("rank {} validate {}".format(self.trainer.rank, i))
-            self.run_forward_pass()
+            # self.run_forward_pass()
+            acts, labels = self.trainer.forward_pass()
+            self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
+            self.trainer.batch_idx += 1
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
-        self.log.info(
-            "noderight {} self {} max_rank {}".format(self.trainer.node_right, self.trainer.rank,
-                                                      self.trainer.MAX_RANK))
-        self.log.info("round {} max_epoch {}".format(self.round_idx, self.trainer.MAX_EPOCH_PER_NODE))
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
-            logging.warning("rank {} finish".format(self.trainer.rank))
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
         else:
-            self.server_ready = 0
-            logging.info("send_semaphore_to_client {}".format(self.trainer.node_right))
-            self.send_semaphore_to_client(self.trainer.node_right)
-
+            if self.trainer.node_right == 1:
+                self.send_update_state_to_server(self.trainer.SERVER_RANK)
+            else:
+                self.send_semaphore_to_client(self.trainer.node_right)
         self.trainer.batch_idx = 0
-        # 异步训练
-        self.trainer.train_mode()
-        self.run_forward_pass()
 
     def register_message_receive_handlers(self):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2C_SEMAPHORE,
                                               self.handle_message_semaphore)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_GRADS,
                                               self.handle_message_gradients)
+        self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_STATE,
+                                              self.handle_server_state)
 
     def handle_message_semaphore(self, msg_params):
         # no point in checking the semaphore message
-        logging.warning("client {} recv sema".format(self.rank))
-        # server 告诉这个 Client 到他的轮次了
-        self.server_ready = 1
+        logging.warning("client{} recv sema".format(self.rank))
+        self.trainer.train_mode()
+        # self.trainer.model.load_state_dict(torch.load(self.args["model_tmp_path"]))
+        self.trainer.model = torch.load(self.args["model_tmp_path"])
         self.run_forward_pass()
-
-    # def handle_message_to_server(self, msg_params):
-    #     # self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
-    #     self.server_ready = 1
 
     def handle_message_gradients(self, msg_params):
         grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
-        logging.info(grads.shape)
-
-        self.trainer.backward_pass(grads)
-        logging.warning("rank: {} batch: {} len {}".format(self.trainer.rank, self.trainer.batch_idx,
-                                                           len(self.trainer.trainloader)))
+        if self.trainer.server_state == "A":
+            self.trainer.backward_pass(grads)
+        logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
         if self.trainer.batch_idx == len(self.trainer.trainloader):
             # torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
             #                                                                    self.round_idx))
+            # torch.save(self.trainer.model.state_dict(), self.args["model_tmp_path"])
+            torch.save(self.trainer.model, self.args["model_tmp_path"])
             self.run_eval()
         else:
             self.run_forward_pass()
+
+    def handle_server_state(self, msg_params):
+        self.trainer.server_state = msg_params.get(MyMessage.MSG_ARG_KEY_STATE)
+        # 仅rank最大的发送
+        if self.trainer.rank == self.trainer.MAX_RANK:
+            self.send_semaphore_to_client(self.trainer.node_right)
 
     def send_message_test(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_TEST_C2C, self.rank, receive_id)
         self.send_message(message)
 
+    def send_update_state_to_server(self, receive_id):
+        message = Message(MyMessage.MSG_TYPE_C2S_UPDATE_STATE, self.rank, receive_id)
+        # message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
+        self.send_message(message)
+
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
-        logging.warning("acts to {}".format(receive_id))
+        #  logging.warning("acts to {}".format(receive_id))
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
         self.send_message(message)

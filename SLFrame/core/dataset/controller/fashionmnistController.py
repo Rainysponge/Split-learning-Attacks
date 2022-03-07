@@ -4,12 +4,16 @@ from torch.utils.data.dataset import T_co
 import torchvision.transforms as transforms
 
 import torch.utils.data as data
+
+from PIL import Image
+from torchvision.datasets import MNIST
+
+from ..dataset.fashionmnist import fashionmnist_truncated
 from ..partition.partitionFactory import partitionFactory
 from core.log.Log import Log
-from ..dataset.german import german_truncated
 
 
-class germanController():
+class fashionmnistController():
     def __init__(self, parse, transform=None):
         self.parse = parse
         self.target_transform = None
@@ -25,12 +29,13 @@ class germanController():
 
     def loadData(self):
         self.log.info(self.parse.dataDir)
+        train_transform, test_transform = _data_transforms_mnist()
 
-        adult_train_ds = german_truncated(parse=self.parse, transform=None)
-        adult_test_ds = german_truncated(parse=self.parse, transform=None)
+        mnist_train_ds = fashionmnist_truncated(parse=self.parse, transform=train_transform)
+        mnist_test_ds = fashionmnist_truncated(parse=self.parse, transform=test_transform)
 
-        X_train, y_train = adult_train_ds.data, adult_train_ds.target
-        X_test, y_test = adult_test_ds.data, adult_test_ds.target
+        X_train, y_train = mnist_train_ds.data, mnist_train_ds.target
+        X_test, y_test = mnist_test_ds.data, mnist_test_ds.target
 
         return X_train, y_train, X_test, y_test
 
@@ -52,12 +57,14 @@ class germanController():
         # test_dl = data.DataLoader(dataset=test_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
         #
         # return train_dl, test_dl
-        dl_obj = german_truncated
+        dl_obj = fashionmnist_truncated
 
-        train_ds = dl_obj(parse=self.parse, transform=None, dataidxs=dataidxs)
-        test_ds = dl_obj(parse=self.parse, transform=None, train=False)
+        transform_train, transform_test = _data_transforms_mnist()
 
-        train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
+        train_ds = dl_obj(parse=self.parse, transform=transform_train, dataidxs=dataidxs)
+        test_ds = dl_obj(parse=self.parse, transform=transform_test, train=False)
+
+        train_dl = data.DataLoader(dataset=train_ds, batch_size=self.bantch_size, shuffle=True, drop_last=True)
         test_dl = data.DataLoader(dataset=test_ds, batch_size=self.bantch_size, shuffle=False, drop_last=True)
 
         return train_dl, test_dl
@@ -65,7 +72,7 @@ class germanController():
     def load_partition_data(self, process_id):
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
-        # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
+        # self.log.info("class_num = " + str(class_num))
         train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
 
         # get global test data
@@ -83,7 +90,7 @@ class germanController():
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64;
             train_data_local, test_data_local = self.get_dataloader(dataidxs)
-            self.log.info("dataidxs: {}".format(dataidxs))
+            # self.log.info("dataidxs: {}".format(dataidxs))
             self.log.info("process_id = %d, batch_num_train_local = %d, batch_num_test_local = %d" % (
                 process_id, len(train_data_local), len(test_data_local)))
             train_data_global = None
@@ -96,3 +103,12 @@ class germanController():
         self.parse["local_data_num"] = local_data_num
         self.parse["class_num"] = class_num
         return train_data_num, train_data_global, test_data_global, local_data_num, train_data_local, test_data_local, class_num
+
+
+def _data_transforms_mnist():
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize((0.1307,), (0.3081,))
+    ])
+
+    return transform, transform

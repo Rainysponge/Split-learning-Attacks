@@ -25,11 +25,21 @@ class variantsFactory():
             from ..variants.asyVanilla2.client import SplitNNClient
             from ..variants.asyVanilla2.server_manager import ServerManager
             from ..variants.asyVanilla2.client_manager import ClientManager
+        elif self.variantsType == "Asynchronous":
+            from ..variants.asyVanilla.server import SplitNNServer
+            from ..variants.asyVanilla.client import SplitNNClient
+            from ..variants.asyVanilla.server_manager import ServerManager
+            from ..variants.asyVanilla.client_manager import ClientManager
         elif self.variantsType == "vertical":
             from ..variants.vertical.server import SplitNNServer
             from ..variants.vertical.client import SplitNNClient
             from ..variants.vertical.server_manager import ServerManager
             from ..variants.vertical.client_manager import ClientManager
+        elif self.variantsType == "SGLR":
+            from ..variants.SGLR.server import SplitNNServer
+            from ..variants.SGLR.client import SplitNNClient
+            from ..variants.SGLR.server_manager import ServerManager
+            from ..variants.SGLR.client_manager import ClientManager
         else:
             logging.warning("variants_type: default as vanilla")
             from ..variants.vanilla.server import SplitNNServer

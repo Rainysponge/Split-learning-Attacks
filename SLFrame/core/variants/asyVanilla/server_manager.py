@@ -12,7 +12,7 @@ class ServerManager(MessageManager):
                          args["max_rank"] + 1, backend)
         self.trainer = trainer
         self.round_idx = 0
-        self.finish_number = 0
+
         # logging.warning("server rank{} args{}".format(self.rank,args["rank"]))
 
     def run(self):
@@ -23,8 +23,12 @@ class ServerManager(MessageManager):
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
         self.send_message(message)
 
+    def send_state_to_clients(self, receive_id, state):
+        message = Message(MyMessage.MSG_TYPE_S2C_STATE, self.rank, receive_id)
+        message.add_params(MyMessage.MSG_ARG_KEY_STATE, state)
+        self.send_message(message)
+
     def register_message_receive_handlers(self):
-        # dict
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_SEND_ACTS,
                                               self.handle_message_acts)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_VALIDATION_MODE,
@@ -33,16 +37,15 @@ class ServerManager(MessageManager):
                                               self.handle_message_validation_over)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED,
                                               self.handle_message_finish_protocol)
+        self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_UPDATE_STATE,
+                                              self.handle_message_update_state)
 
     def handle_message_acts(self, msg_params):
         acts, labels = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
-        sender = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
-        # logging.info("sender is {}".format(sender))
         self.trainer.forward_pass(acts, labels)
-        self.trainer.active_node = sender
+        self.trainer.total_batch += 1
         if self.trainer.phase == "train":
             grads = self.trainer.backward_pass()
-            logging.info("send_grads_to_clients {}".format(sender))
             self.send_grads_to_client(self.trainer.active_node, grads)
 
     def handle_message_validation_mode(self, msg_params):
@@ -50,10 +53,14 @@ class ServerManager(MessageManager):
         self.trainer.eval_mode()
 
     def handle_message_validation_over(self, msg_params):
+        # logging.warning("over")
         self.trainer.validation_over()
 
-    def handle_message_finish_protocol(self, msg_params):
-        self.finish_number += 1
-        logging.info("finish {}".format(self.finish_number))
-        if self.finish_number == self.trainer.args["client_number"]:
-            self.finish()
+    def handle_message_finish_protocol(self):
+        self.finish()
+
+    def handle_message_update_state(self, msg_params):
+        state = self.trainer.update_state()
+        for idx in range(1, self.trainer.client_number+1):
+            self.send_state_to_clients(idx, state)
+

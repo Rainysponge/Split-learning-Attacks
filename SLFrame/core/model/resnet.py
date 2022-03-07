@@ -185,9 +185,8 @@ class ResNet(nn.Module):
             return x
 
 
-
 class ResNet_client(nn.Module):
-    def __init__(self,  block=Bottleneck, layers=[6, 6, 6], num_classes=10, zero_init_residual=False, groups=1,
+    def __init__(self, block=Bottleneck, layers=[6, 6, 6], num_classes=10, zero_init_residual=False, groups=1,
                  width_per_group=64, replace_stride_with_dilation=None, norm_layer=None, KD=False):
         super(ResNet_client, self).__init__()
         if norm_layer is None:
@@ -273,7 +272,6 @@ class ResNet_client(nn.Module):
         # else:
         #     return x
         return x
-
 
 
 class ResNet_server(nn.Module):
@@ -363,7 +361,6 @@ class ResNet_server(nn.Module):
         else:
             return x
         # return x
-
 
 
 def resnet56(class_num, pretrained=False, path=None, **kwargs):

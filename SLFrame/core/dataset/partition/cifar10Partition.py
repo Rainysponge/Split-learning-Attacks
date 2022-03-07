@@ -116,6 +116,7 @@ class cifar10Partition(abstractPartition):
 
             div = K // n_nets
             class_per_client = []
+            net_dataidx_map = dict()
             for i in range(n_nets):
                 num = div + 1 if mod > 0 else div
                 class_per_client.append([i for i in range(class_idx, class_idx + num)])
@@ -131,6 +132,14 @@ class cifar10Partition(abstractPartition):
                     # idxs = np.random.permutation(total_num)
                     # batch_idxs = np.array_split(idxs, self.parse['client_number'])
                 net_dataidx_map[i] = batch_idxs
+            min = 100000000000000
+            for i in range(n_nets):
+                if len(net_dataidx_map[i]) < min:
+                    min = len(net_dataidx_map[i])
+            for i in range(n_nets):
+                if len(net_dataidx_map[i]) > min:
+                    np.random.shuffle(net_dataidx_map[i])
+                    net_dataidx_map[i] = net_dataidx_map[i][0: min]
             traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
 
         return X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts

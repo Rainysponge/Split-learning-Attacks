@@ -19,7 +19,8 @@ class partitionFactory(abstractPartitionFactory):
         # if partition_method in method_list:
         #     return getattr(partition_method_list, partition_method)
 
-        if dataset == 'cifar10' or dataset == "mnist" or dataset == "adult" or dataset == 'german':
+        if dataset == 'cifar10' or dataset == "mnist" or dataset == "adult" or dataset == 'german' \
+                or dataset == "fashionmnist":
             partition = cifar10Partition(self.parse).partition_data()
             return partition
         else:

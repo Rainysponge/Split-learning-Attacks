@@ -14,6 +14,8 @@ class SplitNNClient():
         self.node_right = 1 if self.rank == self.MAX_RANK else self.rank + 1
         self.epoch_count = 0
         self.batch_idx = 0
+        self.server_state = "A"
+        self.grads_list = dict()
         self.MAX_EPOCH_PER_NODE = args["epochs"]
         self.SERVER_RANK = args["server_rank"]
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
@@ -22,16 +24,16 @@ class SplitNNClient():
         self.device = args["device"]
 
     def forward_pass(self):
-        inputs, labels = next(self.dataloader, (None, None))
-        if inputs is not None:
-            inputs, labels = inputs.to(self.device), labels.to(self.device)
-            self.optimizer.zero_grad()
+        inputs, labels = next(self.dataloader)
 
-            self.acts = self.model(inputs)
+        inputs, labels = inputs.to(self.device), labels.to(self.device)
+        self.optimizer.zero_grad()
+
+        self.acts = self.model(inputs)
         return self.acts, labels
 
     def backward_pass(self, grads):
-        self.acts.backward(grads, retain_graph=True)
+        self.acts.backward(grads)
         self.optimizer.step()
 
     """

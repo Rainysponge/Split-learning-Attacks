@@ -2,14 +2,18 @@ dataDir: ./data/adult
 dataset: adult
 device: cpu
 download: true
+batch_size: 64
 epochs: 20
 log_step: 20
 lr: 0.01
 max_rank: 2
-partition_method: vertical
-variants_type: vertical
+partition_method: homo
+variants_type: Asynchronous
 server_rank: 0
 data_vertical_list: [6, 4, 4]
 cut_layer_vertical_list: [4, 3, 3]
+SGLR_splitAvg_active: 0.5
+SGLR_splitLR: True
+SGLR_splitLR_alpha: 0.5
 
 

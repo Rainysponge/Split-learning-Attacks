@@ -22,7 +22,7 @@ class yamlParse(parse):
         self.download = True
 
         self.client_number = 2
-        self.batch_size = 64
+        self.batch_size = 15
         self.lr = 0.001
         self.wd = 0.001
         self.epochs = 15
