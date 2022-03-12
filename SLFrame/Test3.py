@@ -10,8 +10,8 @@ import torch.optim as optim
 # import setproctitle
 import sys
 
-sys.path.extend("../")
-sys.path.extend("../../")
+sys.path.append("../")
+sys.path.append("../../")
 
 from core.log.Log import Log
 from core.dataset.datasetFactory import datasetFactory
@@ -25,13 +25,16 @@ from core.variants.vanilla.server import SplitNNServer
 from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
-client_model = adult_LR_client()
-server_model = adult_LR_server()
+client_model = LeNetClientNetwork()
+server_model = LeNetServerNetwork()
 
 
-def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
+def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine,device):
     # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
     # logging = Logging("init_training_device")
+    if device == "cpu":
+        return torch.device(device)
+
     if process_ID == 0:
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         return device
@@ -58,9 +61,9 @@ if __name__ == '__main__':
 
     args["client_model"] = client_model
     args["server_model"] = server_model
-    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server)
+    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server,args["device"])
     args["device"] = device
-
+    Log("QAQ",args).warning(args["variants_type"])
     dataset = datasetFactory(args).factory()  # loader data and partition method
     # print(dataset)
     # dataset.load_partition_data(process_id)

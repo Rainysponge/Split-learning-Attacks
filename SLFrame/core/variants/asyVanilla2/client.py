@@ -66,3 +66,8 @@ class SplitNNClient():
         self.phase="train"
         self.model.train()
         self.reset_local_params()
+
+    def print_com_size(self, com_manager):
+        self.log.info("worker_num={} phase={} epoch_send={} epoch_receive={} total_send={} total_receive={}"
+                      .format(self.rank, self.phase, com_manager.tmp_send_size, com_manager.tmp_receive_size,
+                              com_manager.total_send_size, com_manager.total_receive_size))

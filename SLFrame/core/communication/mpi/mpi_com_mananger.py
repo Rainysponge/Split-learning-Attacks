@@ -1,4 +1,4 @@
-
+import sys
 import queue
 import time
 from typing import List
@@ -33,6 +33,10 @@ class MpiCommunicationManager(BaseCommunicationManager):
 
         self.is_running = True
 
+        self.total_send_size = 0
+        self.total_receive_size = 0
+        self.reset_analysis_data()
+
     def init_server_communication(self):
         """
             创建并返回发送接收队列，利用线程来给队列进行更新
@@ -42,7 +46,8 @@ class MpiCommunicationManager(BaseCommunicationManager):
         self.server_send_thread.start()
 
         server_receive_queue = queue.Queue(0)
-        self.server_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",server_receive_queue)
+        self.server_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",
+                                                      server_receive_queue)
         self.server_receive_thread.start()
 
         return server_send_queue, server_receive_queue
@@ -61,7 +66,14 @@ class MpiCommunicationManager(BaseCommunicationManager):
 
         return client_send_queue, client_receive_queue
 
+    def reset_analysis_data(self):
+        self.tmp_send_size = 0
+        self.tmp_receive_size = 0
+
     def send_message(self, msg: Message):
+        size=sys.getsizeof(msg)
+        self.tmp_send_size += size
+        self.total_send_size += size
         self.q_sender.put(msg)
 
     def add_observer(self, observer: Observer):
@@ -75,7 +87,9 @@ class MpiCommunicationManager(BaseCommunicationManager):
         while self.is_running:
             if self.q_receiver.qsize() > 0:
                 msg_params = self.q_receiver.get()
-
+                size=sys.getsizeof(msg_params)
+                self.tmp_receive_size += size
+                self.total_receive_size += size
                 self.notify(msg_params)
 
             time.sleep(0.3)

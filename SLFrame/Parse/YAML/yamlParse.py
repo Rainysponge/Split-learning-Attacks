@@ -32,9 +32,9 @@ class yamlParse(parse):
         self.gpu_server_num = 1
         self.gpu_num_per_server = 4
         self.partition_method_attributes = 9  # 通过指定属性进行拆分数据集， 后面换成list 9是adult数据集里面的性别列
-        self.log_save_path = "D:\\Split-learning-Attacks\\SABuf\\Split-learning-Attacks\\SLFrame\\log.txt"
-        self.model_save_path = "D:\\Split-learning-Attacks\\SABuf\\Split-learning-Attacks\\SLFrame\\model_save\\{}_{}_{}.pkl"
-        self.model_tmp_path = "D:\\Split-learning-Attacks\\SABuf\\Split-learning-Attacks\\SLFrame\\model_save\\client_tmp.pkl"
+        self.log_save_path = "E:\\QAQ\\code\\TMP\\Split-learning-Attacks\\SLFrame\\log.txt"
+        self.model_save_path = "E:\\QAQ\\code\\TMP\\Split-learning-Attacks\\SLFrame\\model_save\\{}_{}_{}.pkl"
+        self.model_tmp_path = "E:\\QAQ\\code\\TMP\\Split-learning-Attacks\\SLFrame\\model_save\\client_tmp.pkl"
         # self.log_save_path = "/root/autodl-tmp/slframe/log.txt"
         # self.model_save_path = "/root/autodl-tmp/slframe/model_save/{}_{}_{}.pkl"
         # self.model_tmp_path = "/root/autodl-tmp/slframe/model_save/model_save/client_tmp.pkl"

@@ -1,391 +1,905 @@
-2022-03-07 16:36:55,194 - SplitNN_init - INFO - 69033 - process_id: 3, worker_number: 4
-2022-03-07 16:36:55,194 - datasetFactory - INFO - 69033 - mnist
-2022-03-07 16:36:55,195 - partitionFactory - INFO - 69033 - dataset is mnist
-2022-03-07 16:36:55,195 - mnistController - INFO - 69033 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x7ff4ae5cfa90>>
-2022-03-07 16:36:55,195 - cifar10Partition - INFO - 69033 - homo
-2022-03-07 16:36:55,195 - mnistController - INFO - 69033 - ./data/mnist
-2022-03-07 16:36:55,272 - mnistController - INFO - 69033 - rank = 3, local_sample_number = 20000
-2022-03-07 16:36:55,335 - SplitNN_init - INFO - 69032 - process_id: 2, worker_number: 4
-2022-03-07 16:36:55,336 - datasetFactory - INFO - 69032 - mnist
-2022-03-07 16:36:55,336 - partitionFactory - INFO - 69032 - dataset is mnist
-2022-03-07 16:36:55,337 - mnistController - INFO - 69032 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x7f5299f11a60>>
-2022-03-07 16:36:55,337 - cifar10Partition - INFO - 69032 - homo
-2022-03-07 16:36:55,337 - mnistController - INFO - 69032 - ./data/mnist
-2022-03-07 16:36:55,409 - mnistController - INFO - 69033 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
-2022-03-07 16:36:55,417 - SplitNN_distributed - INFO - 69033 - process_id == client_rank : 3
-2022-03-07 16:36:55,426 - mnistController - INFO - 69032 - rank = 2, local_sample_number = 20000
-2022-03-07 16:36:55,429 - init_client - INFO - 69033 - Client 3 run begin
-2022-03-07 16:36:55,485 - SplitNN_init - INFO - 69030 - process_id: 0, worker_number: 4
-2022-03-07 16:36:55,485 - datasetFactory - INFO - 69030 - mnist
-2022-03-07 16:36:55,486 - partitionFactory - INFO - 69030 - dataset is mnist
-2022-03-07 16:36:55,486 - mnistController - INFO - 69030 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x7f9c944dca60>>
-2022-03-07 16:36:55,486 - cifar10Partition - INFO - 69030 - homo
-2022-03-07 16:36:55,486 - mnistController - INFO - 69030 - ./data/mnist
-2022-03-07 16:36:55,561 - mnistController - INFO - 69032 - process_id = 2, batch_num_train_local = 312, batch_num_test_local = 156
-2022-03-07 16:36:55,568 - SplitNN_distributed - INFO - 69032 - process_id == client_rank : 2
-2022-03-07 16:36:55,575 - init_client - INFO - 69032 - Client 2 run begin
-2022-03-07 16:36:55,580 - SplitNN_init - INFO - 69031 - process_id: 1, worker_number: 4
-2022-03-07 16:36:55,581 - datasetFactory - INFO - 69031 - mnist
-2022-03-07 16:36:55,582 - partitionFactory - INFO - 69031 - dataset is mnist
-2022-03-07 16:36:55,582 - mnistController - INFO - 69031 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x7fd5fa27da60>>
-2022-03-07 16:36:55,582 - cifar10Partition - INFO - 69031 - homo
-2022-03-07 16:36:55,582 - mnistController - INFO - 69031 - ./data/mnist
-2022-03-07 16:36:55,603 - mnistController - INFO - 69030 - train_dl_global number = 937
-2022-03-07 16:36:55,604 - mnistController - INFO - 69030 - test_dl_global number = 156
-2022-03-07 16:36:55,611 - SplitNN_distributed - INFO - 69030 - process_id == server_rank : 0
-2022-03-07 16:36:55,619 - init_server - INFO - 69030 - Server run begin Asynchronous
-2022-03-07 16:36:55,671 - mnistController - INFO - 69031 - rank = 1, local_sample_number = 20000
-2022-03-07 16:36:55,824 - mnistController - INFO - 69031 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
-2022-03-07 16:36:55,832 - SplitNN_distributed - INFO - 69031 - process_id == client_rank : 1
-2022-03-07 16:36:55,852 - init_client - INFO - 69031 - Client 1 run begin
-2022-03-07 16:36:57,527 - SplitNNServer - INFO - 69030 - phase=train acc=0.125 loss=2.3072948455810547 epoch=0 and step=0
-2022-03-07 16:37:04,852 - SplitNNServer - INFO - 69030 - phase=train acc=0.11235119047619048 loss=2.29286789894104 epoch=0 and step=20
-2022-03-07 16:37:11,574 - SplitNNServer - INFO - 69030 - phase=train acc=0.12271341463414634 loss=2.2225441932678223 epoch=0 and step=40
-2022-03-07 16:37:17,985 - SplitNNServer - INFO - 69030 - phase=train acc=0.1869877049180328 loss=1.8095836639404297 epoch=0 and step=60
-2022-03-07 16:37:25,321 - SplitNNServer - INFO - 69030 - phase=train acc=0.27912808641975306 loss=1.0173096656799316 epoch=0 and step=80
-2022-03-07 16:37:32,332 - SplitNNServer - INFO - 69030 - phase=train acc=0.36386138613861385 loss=0.5882442593574524 epoch=0 and step=100
-2022-03-07 16:37:39,046 - SplitNNServer - INFO - 69030 - phase=train acc=0.4355630165289256 loss=0.37586963176727295 epoch=0 and step=120
-2022-03-07 16:37:46,058 - SplitNNServer - INFO - 69030 - phase=train acc=0.4942375886524823 loss=0.48323822021484375 epoch=0 and step=140
-2022-03-07 16:37:52,782 - SplitNNServer - INFO - 69030 - phase=train acc=0.5399844720496895 loss=0.42282700538635254 epoch=0 and step=160
-2022-03-07 16:37:59,522 - SplitNNServer - INFO - 69030 - phase=train acc=0.5795925414364641 loss=0.1828499436378479 epoch=0 and step=180
-2022-03-07 16:38:05,949 - SplitNNServer - INFO - 69030 - phase=train acc=0.6130286069651741 loss=0.5308544039726257 epoch=0 and step=200
-2022-03-07 16:38:12,975 - SplitNNServer - INFO - 69030 - phase=train acc=0.6407664027149321 loss=0.3102741241455078 epoch=0 and step=220
-2022-03-07 16:38:19,708 - SplitNNServer - INFO - 69030 - phase=train acc=0.6644190871369294 loss=0.38986101746559143 epoch=0 and step=240
-2022-03-07 16:38:26,424 - SplitNNServer - INFO - 69030 - phase=train acc=0.6858836206896551 loss=0.15930885076522827 epoch=0 and step=260
-2022-03-07 16:38:32,842 - SplitNNServer - INFO - 69030 - phase=train acc=0.7044595195729537 loss=0.10919740051031113 epoch=0 and step=280
-2022-03-07 16:38:39,260 - SplitNNServer - INFO - 69030 - phase=train acc=0.7207225913621262 loss=0.09780585765838623 epoch=0 and step=300
-2022-03-07 16:39:31,063 - SplitNNServer - INFO - 69030 - phase=validation acc=0.94921875 loss=0.14991553670738655 epoch=0 and step=156
-2022-03-07 16:39:31,366 - SplitNNServer - INFO - 69030 - phase=train acc=0.875 loss=0.38569146394729614 epoch=1 and step=0
-2022-03-07 16:39:38,686 - SplitNNServer - INFO - 69030 - phase=train acc=0.9397321428571429 loss=0.19432294368743896 epoch=1 and step=20
-2022-03-07 16:39:45,411 - SplitNNServer - INFO - 69030 - phase=train acc=0.9458841463414634 loss=0.17511439323425293 epoch=1 and step=40
-2022-03-07 16:39:51,819 - SplitNNServer - INFO - 69030 - phase=train acc=0.9477459016393442 loss=0.1494266241788864 epoch=1 and step=60
-2022-03-07 16:39:58,531 - SplitNNServer - INFO - 69030 - phase=train acc=0.9508101851851852 loss=0.12933896481990814 epoch=1 and step=80
-2022-03-07 16:40:05,242 - SplitNNServer - INFO - 69030 - phase=train acc=0.9529702970297029 loss=0.1487986445426941 epoch=1 and step=100
-2022-03-07 16:40:11,660 - SplitNNServer - INFO - 69030 - phase=train acc=0.9526084710743802 loss=0.15471190214157104 epoch=1 and step=120
-2022-03-07 16:40:18,679 - SplitNNServer - INFO - 69030 - phase=train acc=0.9539007092198581 loss=0.11471006274223328 epoch=1 and step=140
-2022-03-07 16:40:25,423 - SplitNNServer - INFO - 69030 - phase=train acc=0.9547748447204969 loss=0.11048827320337296 epoch=1 and step=160
-2022-03-07 16:40:31,845 - SplitNNServer - INFO - 69030 - phase=train acc=0.955628453038674 loss=0.11922841519117355 epoch=1 and step=180
-2022-03-07 16:40:38,567 - SplitNNServer - INFO - 69030 - phase=train acc=0.9564676616915423 loss=0.11601776629686356 epoch=1 and step=200
-2022-03-07 16:40:45,307 - SplitNNServer - INFO - 69030 - phase=train acc=0.9550339366515838 loss=0.08473706990480423 epoch=1 and step=220
-2022-03-07 16:40:52,024 - SplitNNServer - INFO - 69030 - phase=train acc=0.956042531120332 loss=0.1098603680729866 epoch=1 and step=240
-2022-03-07 16:40:58,742 - SplitNNServer - INFO - 69030 - phase=train acc=0.9562380268199234 loss=0.12635438144207 epoch=1 and step=260
-2022-03-07 16:41:05,765 - SplitNNServer - INFO - 69030 - phase=train acc=0.9572953736654805 loss=0.07677678763866425 epoch=1 and step=280
-2022-03-07 16:41:12,480 - SplitNNServer - INFO - 69030 - phase=train acc=0.9583679401993356 loss=0.24415476620197296 epoch=1 and step=300
-2022-03-07 16:42:04,317 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9689503205128205 loss=0.09312426308408761 epoch=1 and step=156
-2022-03-07 16:42:04,620 - SplitNNServer - INFO - 69030 - phase=train acc=0.953125 loss=0.07333649694919586 epoch=2 and step=0
-2022-03-07 16:42:11,646 - SplitNNServer - INFO - 69030 - phase=train acc=0.9546130952380952 loss=0.15501642227172852 epoch=2 and step=20
-2022-03-07 16:42:18,367 - SplitNNServer - INFO - 69030 - phase=train acc=0.9596036585365854 loss=0.10120158642530441 epoch=2 and step=40
-2022-03-07 16:42:25,686 - SplitNNServer - INFO - 69030 - phase=train acc=0.9620901639344263 loss=0.15959924459457397 epoch=2 and step=60
-2022-03-07 16:42:32,436 - SplitNNServer - INFO - 69030 - phase=train acc=0.966820987654321 loss=0.056402403861284256 epoch=2 and step=80
-2022-03-07 16:42:38,872 - SplitNNServer - INFO - 69030 - phase=train acc=0.9670482673267327 loss=0.07888094335794449 epoch=2 and step=100
-2022-03-07 16:42:45,606 - SplitNNServer - INFO - 69030 - phase=train acc=0.9677169421487604 loss=0.1112736240029335 epoch=2 and step=120
-2022-03-07 16:42:52,025 - SplitNNServer - INFO - 69030 - phase=train acc=0.9699689716312057 loss=0.07153860479593277 epoch=2 and step=140
-2022-03-07 16:42:59,044 - SplitNNServer - INFO - 69030 - phase=train acc=0.9702057453416149 loss=0.10808213800191879 epoch=2 and step=160
-2022-03-07 16:43:06,073 - SplitNNServer - INFO - 69030 - phase=train acc=0.9690953038674033 loss=0.04852404072880745 epoch=2 and step=180
-2022-03-07 16:43:12,795 - SplitNNServer - INFO - 69030 - phase=train acc=0.9694496268656716 loss=0.04523998871445656 epoch=2 and step=200
-2022-03-07 16:43:19,528 - SplitNNServer - INFO - 69030 - phase=train acc=0.9696691176470589 loss=0.2208624631166458 epoch=2 and step=220
-2022-03-07 16:43:25,945 - SplitNNServer - INFO - 69030 - phase=train acc=0.9701115145228216 loss=0.07560043036937714 epoch=2 and step=240
-2022-03-07 16:43:33,263 - SplitNNServer - INFO - 69030 - phase=train acc=0.9700670498084292 loss=0.042398154735565186 epoch=2 and step=260
-2022-03-07 16:43:39,689 - SplitNNServer - INFO - 69030 - phase=train acc=0.9699733096085409 loss=0.08721356093883514 epoch=2 and step=280
-2022-03-07 16:43:46,111 - SplitNNServer - INFO - 69030 - phase=train acc=0.9699439368770764 loss=0.047434303909540176 epoch=2 and step=300
-2022-03-07 16:44:38,005 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9780649038461539 loss=0.07008793958494863 epoch=2 and step=156
-2022-03-07 16:44:38,307 - SplitNNServer - INFO - 69030 - state: B last Loss: 0.2581738829612732 delta_loss: 0.0
-2022-03-07 16:44:39,214 - SplitNNServer - INFO - 69030 - phase=train acc=0.953125 loss=0.11587394028902054 epoch=3 and step=0
-2022-03-07 16:44:45,666 - SplitNNServer - INFO - 69030 - phase=train acc=0.9747023809523809 loss=0.11890912801027298 epoch=3 and step=20
-2022-03-07 16:44:52,999 - SplitNNServer - INFO - 69030 - phase=train acc=0.975609756097561 loss=0.1379401832818985 epoch=3 and step=40
-2022-03-07 16:44:59,716 - SplitNNServer - INFO - 69030 - phase=train acc=0.9769467213114754 loss=0.043858543038368225 epoch=3 and step=60
-2022-03-07 16:45:06,442 - SplitNNServer - INFO - 69030 - phase=train acc=0.9762731481481481 loss=0.053578462451696396 epoch=3 and step=80
-2022-03-07 16:45:12,862 - SplitNNServer - INFO - 69030 - phase=train acc=0.9763304455445545 loss=0.023715900257229805 epoch=3 and step=100
-2022-03-07 16:45:19,571 - SplitNNServer - INFO - 69030 - phase=train acc=0.9755940082644629 loss=0.04725126922130585 epoch=3 and step=120
-2022-03-07 16:45:26,009 - SplitNNServer - INFO - 69030 - phase=train acc=0.9763962765957447 loss=0.04612863063812256 epoch=3 and step=140
-2022-03-07 16:45:32,439 - SplitNNServer - INFO - 69030 - phase=train acc=0.9761257763975155 loss=0.06898636370897293 epoch=3 and step=160
-2022-03-07 16:45:39,162 - SplitNNServer - INFO - 69030 - phase=train acc=0.976260359116022 loss=0.13155721127986908 epoch=3 and step=180
-2022-03-07 16:45:46,478 - SplitNNServer - INFO - 69030 - phase=train acc=0.976523631840796 loss=0.05428542196750641 epoch=3 and step=200
-2022-03-07 16:45:52,903 - SplitNNServer - INFO - 69030 - phase=train acc=0.9761029411764706 loss=0.09009124338626862 epoch=3 and step=220
-2022-03-07 16:45:59,337 - SplitNNServer - INFO - 69030 - phase=train acc=0.9763355809128631 loss=0.09918668866157532 epoch=3 and step=240
-2022-03-07 16:46:06,060 - SplitNNServer - INFO - 69030 - phase=train acc=0.9761733716475096 loss=0.043243408203125 epoch=3 and step=260
-2022-03-07 16:46:12,788 - SplitNNServer - INFO - 69030 - phase=train acc=0.9761454626334519 loss=0.08019856363534927 epoch=3 and step=280
-2022-03-07 16:46:19,814 - SplitNNServer - INFO - 69030 - phase=train acc=0.9759136212624585 loss=0.08382351696491241 epoch=3 and step=300
-2022-03-07 16:47:11,670 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9769631410256411 loss=0.0729810366452185 epoch=3 and step=156
-2022-03-07 16:47:11,974 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.06919895112514496 epoch=4 and step=0
-2022-03-07 16:47:18,396 - SplitNNServer - INFO - 69030 - phase=train acc=0.9806547619047619 loss=0.1723593771457672 epoch=4 and step=20
-2022-03-07 16:47:25,128 - SplitNNServer - INFO - 69030 - phase=train acc=0.9813262195121951 loss=0.017905600368976593 epoch=4 and step=40
-2022-03-07 16:47:31,547 - SplitNNServer - INFO - 69030 - phase=train acc=0.9795081967213115 loss=0.006113437004387379 epoch=4 and step=60
-2022-03-07 16:47:37,947 - SplitNNServer - INFO - 69030 - phase=train acc=0.9776234567901234 loss=0.08539186418056488 epoch=4 and step=80
-2022-03-07 16:47:44,659 - SplitNNServer - INFO - 69030 - phase=train acc=0.9769492574257426 loss=0.0098250238224864 epoch=4 and step=100
-2022-03-07 16:47:51,390 - SplitNNServer - INFO - 69030 - phase=train acc=0.9783057851239669 loss=0.021365908905863762 epoch=4 and step=120
-2022-03-07 16:47:58,120 - SplitNNServer - INFO - 69030 - phase=train acc=0.9781693262411347 loss=0.0925862044095993 epoch=4 and step=140
-2022-03-07 16:48:04,538 - SplitNNServer - INFO - 69030 - phase=train acc=0.9786490683229814 loss=0.09390147775411606 epoch=4 and step=160
-2022-03-07 16:48:11,259 - SplitNNServer - INFO - 69030 - phase=train acc=0.9792817679558011 loss=0.04340015724301338 epoch=4 and step=180
-2022-03-07 16:48:18,572 - SplitNNServer - INFO - 69030 - phase=train acc=0.9791666666666666 loss=0.032628290355205536 epoch=4 and step=200
-2022-03-07 16:48:25,292 - SplitNNServer - INFO - 69030 - phase=train acc=0.9785067873303167 loss=0.0891152024269104 epoch=4 and step=220
-2022-03-07 16:48:31,715 - SplitNNServer - INFO - 69030 - phase=train acc=0.9789289419087137 loss=0.021967079490423203 epoch=4 and step=240
-2022-03-07 16:48:38,427 - SplitNNServer - INFO - 69030 - phase=train acc=0.9788673371647509 loss=0.035214539617300034 epoch=4 and step=260
-2022-03-07 16:48:44,845 - SplitNNServer - INFO - 69030 - phase=train acc=0.9790925266903915 loss=0.0774778500199318 epoch=4 and step=280
-2022-03-07 16:48:51,263 - SplitNNServer - INFO - 69030 - phase=train acc=0.9789763289036545 loss=0.07290422916412354 epoch=4 and step=300
-2022-03-07 16:49:42,784 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9811698717948718 loss=0.05886806613741031 epoch=4 and step=156
-2022-03-07 16:49:43,088 - SplitNNServer - INFO - 69030 - phase=train acc=0.9375 loss=0.17813444137573242 epoch=5 and step=0
-2022-03-07 16:49:49,811 - SplitNNServer - INFO - 69030 - phase=train acc=0.9776785714285714 loss=0.031102420762181282 epoch=5 and step=20
-2022-03-07 16:49:56,533 - SplitNNServer - INFO - 69030 - phase=train acc=0.9813262195121951 loss=0.09697568416595459 epoch=5 and step=40
-2022-03-07 16:50:03,250 - SplitNNServer - INFO - 69030 - phase=train acc=0.9815573770491803 loss=0.011746348813176155 epoch=5 and step=60
-2022-03-07 16:50:09,963 - SplitNNServer - INFO - 69030 - phase=train acc=0.9828317901234568 loss=0.06648633629083633 epoch=5 and step=80
-2022-03-07 16:50:16,372 - SplitNNServer - INFO - 69030 - phase=train acc=0.9820544554455446 loss=0.0681663453578949 epoch=5 and step=100
-2022-03-07 16:50:23,076 - SplitNNServer - INFO - 69030 - phase=train acc=0.9820506198347108 loss=0.03378843516111374 epoch=5 and step=120
-2022-03-07 16:50:29,776 - SplitNNServer - INFO - 69030 - phase=train acc=0.9819370567375887 loss=0.084499292075634 epoch=5 and step=140
-2022-03-07 16:50:36,185 - SplitNNServer - INFO - 69030 - phase=train acc=0.9824340062111802 loss=0.018965531140565872 epoch=5 and step=160
-2022-03-07 16:50:42,915 - SplitNNServer - INFO - 69030 - phase=train acc=0.9830801104972375 loss=0.009641692973673344 epoch=5 and step=180
-2022-03-07 16:50:49,320 - SplitNNServer - INFO - 69030 - phase=train acc=0.9832089552238806 loss=0.040846873074769974 epoch=5 and step=200
-2022-03-07 16:50:55,742 - SplitNNServer - INFO - 69030 - phase=train acc=0.9830316742081447 loss=0.3612222373485565 epoch=5 and step=220
-2022-03-07 16:51:02,457 - SplitNNServer - INFO - 69030 - phase=train acc=0.9824948132780082 loss=0.11330444365739822 epoch=5 and step=240
-2022-03-07 16:51:09,480 - SplitNNServer - INFO - 69030 - phase=train acc=0.9826388888888888 loss=0.027481600642204285 epoch=5 and step=260
-2022-03-07 16:51:16,490 - SplitNNServer - INFO - 69030 - phase=train acc=0.982595640569395 loss=0.06201595813035965 epoch=5 and step=280
-2022-03-07 16:51:23,200 - SplitNNServer - INFO - 69030 - phase=train acc=0.9818833056478405 loss=0.06509541720151901 epoch=5 and step=300
-2022-03-07 16:52:14,453 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9825721153846154 loss=0.0560107898052546 epoch=5 and step=156
-2022-03-07 16:52:14,754 - SplitNNServer - INFO - 69030 - state: A last Loss: 0.2581738829612732 delta_loss: 0.09560593962669373
-2022-03-07 16:52:15,358 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.049933046102523804 epoch=6 and step=0
-2022-03-07 16:52:22,369 - SplitNNServer - INFO - 69030 - phase=train acc=0.9806547619047619 loss=0.13809269666671753 epoch=6 and step=20
-2022-03-07 16:52:29,396 - SplitNNServer - INFO - 69030 - phase=train acc=0.9809451219512195 loss=0.011973620392382145 epoch=6 and step=40
-2022-03-07 16:52:35,812 - SplitNNServer - INFO - 69030 - phase=train acc=0.9815573770491803 loss=0.08466588705778122 epoch=6 and step=60
-2022-03-07 16:52:43,143 - SplitNNServer - INFO - 69030 - phase=train acc=0.9814814814814815 loss=0.03939834609627724 epoch=6 and step=80
-2022-03-07 16:52:49,547 - SplitNNServer - INFO - 69030 - phase=train acc=0.9820544554455446 loss=0.010435608215630054 epoch=6 and step=100
-2022-03-07 16:52:56,270 - SplitNNServer - INFO - 69030 - phase=train acc=0.9824380165289256 loss=0.06015417352318764 epoch=6 and step=120
-2022-03-07 16:53:03,292 - SplitNNServer - INFO - 69030 - phase=train acc=0.9819370567375887 loss=0.04562126100063324 epoch=6 and step=140
-2022-03-07 16:53:10,011 - SplitNNServer - INFO - 69030 - phase=train acc=0.9825310559006211 loss=0.010879650712013245 epoch=6 and step=160
-2022-03-07 16:53:16,729 - SplitNNServer - INFO - 69030 - phase=train acc=0.9826484806629834 loss=0.028551997616887093 epoch=6 and step=180
-2022-03-07 16:53:23,447 - SplitNNServer - INFO - 69030 - phase=train acc=0.9830534825870647 loss=0.013584043830633163 epoch=6 and step=200
-2022-03-07 16:53:30,758 - SplitNNServer - INFO - 69030 - phase=train acc=0.9834558823529411 loss=0.03283492475748062 epoch=6 and step=220
-2022-03-07 16:53:37,169 - SplitNNServer - INFO - 69030 - phase=train acc=0.9830783195020747 loss=0.08945967257022858 epoch=6 and step=240
-2022-03-07 16:53:43,880 - SplitNNServer - INFO - 69030 - phase=train acc=0.9828184865900383 loss=0.01428953092545271 epoch=6 and step=260
-2022-03-07 16:53:50,916 - SplitNNServer - INFO - 69030 - phase=train acc=0.9825400355871886 loss=0.014830845408141613 epoch=6 and step=280
-2022-03-07 16:53:57,937 - SplitNNServer - INFO - 69030 - phase=train acc=0.9827138704318937 loss=0.08220969140529633 epoch=6 and step=300
-2022-03-07 16:54:49,159 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9825721153846154 loss=0.0556610445974235 epoch=6 and step=156
-2022-03-07 16:54:49,463 - SplitNNServer - INFO - 69030 - phase=train acc=1.0 loss=0.02889437973499298 epoch=7 and step=0
-2022-03-07 16:54:56,181 - SplitNNServer - INFO - 69030 - phase=train acc=0.9799107142857143 loss=0.11709471046924591 epoch=7 and step=20
-2022-03-07 16:55:02,928 - SplitNNServer - INFO - 69030 - phase=train acc=0.9813262195121951 loss=0.08591514825820923 epoch=7 and step=40
-2022-03-07 16:55:09,639 - SplitNNServer - INFO - 69030 - phase=train acc=0.9833504098360656 loss=0.013635024428367615 epoch=7 and step=60
-2022-03-07 16:55:16,360 - SplitNNServer - INFO - 69030 - phase=train acc=0.9830246913580247 loss=0.030925020575523376 epoch=7 and step=80
-2022-03-07 16:55:23,084 - SplitNNServer - INFO - 69030 - phase=train acc=0.9834467821782178 loss=0.04743120074272156 epoch=7 and step=100
-2022-03-07 16:55:29,792 - SplitNNServer - INFO - 69030 - phase=train acc=0.9837293388429752 loss=0.02697804570198059 epoch=7 and step=120
-2022-03-07 16:55:36,497 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.07653594762086868 epoch=7 and step=140
-2022-03-07 16:55:43,200 - SplitNNServer - INFO - 69030 - phase=train acc=0.984180900621118 loss=0.04040709510445595 epoch=7 and step=160
-2022-03-07 16:55:49,915 - SplitNNServer - INFO - 69030 - phase=train acc=0.9842886740331491 loss=0.02531255967915058 epoch=7 and step=180
-2022-03-07 16:55:56,919 - SplitNNServer - INFO - 69030 - phase=train acc=0.9837531094527363 loss=0.005701824091374874 epoch=7 and step=200
-2022-03-07 16:56:03,930 - SplitNNServer - INFO - 69030 - phase=train acc=0.9841628959276018 loss=0.022180775180459023 epoch=7 and step=220
-2022-03-07 16:56:10,335 - SplitNNServer - INFO - 69030 - phase=train acc=0.9841156639004149 loss=0.0527149960398674 epoch=7 and step=240
-2022-03-07 16:56:16,747 - SplitNNServer - INFO - 69030 - phase=train acc=0.9841954022988506 loss=0.08194073289632797 epoch=7 and step=260
-2022-03-07 16:56:23,456 - SplitNNServer - INFO - 69030 - phase=train acc=0.9844862099644128 loss=0.00939258374273777 epoch=7 and step=280
-2022-03-07 16:56:29,869 - SplitNNServer - INFO - 69030 - phase=train acc=0.9845307308970099 loss=0.07663015276193619 epoch=7 and step=300
-2022-03-07 16:57:21,722 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9848758012820513 loss=0.05029977912850788 epoch=7 and step=156
-2022-03-07 16:57:22,027 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.03320389613509178 epoch=8 and step=0
-2022-03-07 16:57:28,463 - SplitNNServer - INFO - 69030 - phase=train acc=0.9813988095238095 loss=0.09489015489816666 epoch=8 and step=20
-2022-03-07 16:57:35,182 - SplitNNServer - INFO - 69030 - phase=train acc=0.9790396341463414 loss=0.02447998896241188 epoch=8 and step=40
-2022-03-07 16:57:41,908 - SplitNNServer - INFO - 69030 - phase=train acc=0.9828381147540983 loss=0.019750602543354034 epoch=8 and step=60
-2022-03-07 16:57:48,323 - SplitNNServer - INFO - 69030 - phase=train acc=0.9834104938271605 loss=0.07507026195526123 epoch=8 and step=80
-2022-03-07 16:57:55,047 - SplitNNServer - INFO - 69030 - phase=train acc=0.9842202970297029 loss=0.007325431797653437 epoch=8 and step=100
-2022-03-07 16:58:02,376 - SplitNNServer - INFO - 69030 - phase=train acc=0.9848915289256198 loss=0.015611023642122746 epoch=8 and step=120
-2022-03-07 16:58:09,093 - SplitNNServer - INFO - 69030 - phase=train acc=0.9851507092198581 loss=0.008035339415073395 epoch=8 and step=140
-2022-03-07 16:58:15,834 - SplitNNServer - INFO - 69030 - phase=train acc=0.9855395962732919 loss=0.007944844663143158 epoch=8 and step=160
-2022-03-07 16:58:22,549 - SplitNNServer - INFO - 69030 - phase=train acc=0.9855835635359116 loss=0.03511034697294235 epoch=8 and step=180
-2022-03-07 16:58:28,967 - SplitNNServer - INFO - 69030 - phase=train acc=0.9859297263681592 loss=0.006392269395291805 epoch=8 and step=200
-2022-03-07 16:58:35,676 - SplitNNServer - INFO - 69030 - phase=train acc=0.9857890271493213 loss=0.0021086358465254307 epoch=8 and step=220
-2022-03-07 16:58:42,105 - SplitNNServer - INFO - 69030 - phase=train acc=0.9861255186721992 loss=0.036538731306791306 epoch=8 and step=240
-2022-03-07 16:58:48,827 - SplitNNServer - INFO - 69030 - phase=train acc=0.985632183908046 loss=0.08343540132045746 epoch=8 and step=260
-2022-03-07 16:58:55,839 - SplitNNServer - INFO - 69030 - phase=train acc=0.9852646797153025 loss=0.029969893395900726 epoch=8 and step=280
-2022-03-07 16:59:02,565 - SplitNNServer - INFO - 69030 - phase=train acc=0.985517026578073 loss=0.023221908137202263 epoch=8 and step=300
-2022-03-07 16:59:54,421 - SplitNNServer - INFO - 69030 - phase=validation acc=0.983573717948718 loss=0.053258635392642015 epoch=8 and step=156
-2022-03-07 16:59:54,724 - SplitNNServer - INFO - 69030 - state: B last Loss: 0.12534165382385254 delta_loss: 0.0
-2022-03-07 16:59:55,628 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.05087224021553993 epoch=9 and step=0
-2022-03-07 17:00:02,349 - SplitNNServer - INFO - 69030 - phase=train acc=0.9895833333333334 loss=0.039093323051929474 epoch=9 and step=20
-2022-03-07 17:00:08,751 - SplitNNServer - INFO - 69030 - phase=train acc=0.9878048780487805 loss=0.0021668244153261185 epoch=9 and step=40
-2022-03-07 17:00:15,159 - SplitNNServer - INFO - 69030 - phase=train acc=0.9882172131147541 loss=0.07682353258132935 epoch=9 and step=60
-2022-03-07 17:00:21,873 - SplitNNServer - INFO - 69030 - phase=train acc=0.9870756172839507 loss=0.010416742414236069 epoch=9 and step=80
-2022-03-07 17:00:28,891 - SplitNNServer - INFO - 69030 - phase=train acc=0.9857673267326733 loss=0.06584584712982178 epoch=9 and step=100
-2022-03-07 17:00:35,319 - SplitNNServer - INFO - 69030 - phase=train acc=0.9852789256198347 loss=0.047287002205848694 epoch=9 and step=120
-2022-03-07 17:00:41,791 - SplitNNServer - INFO - 69030 - phase=train acc=0.9857047872340425 loss=0.0071351840160787106 epoch=9 and step=140
-2022-03-07 17:00:48,511 - SplitNNServer - INFO - 69030 - phase=train acc=0.9866071428571429 loss=0.05452312156558037 epoch=9 and step=160
-2022-03-07 17:00:54,928 - SplitNNServer - INFO - 69030 - phase=train acc=0.9859288674033149 loss=0.19362711906433105 epoch=9 and step=180
-2022-03-07 17:01:01,646 - SplitNNServer - INFO - 69030 - phase=train acc=0.9857742537313433 loss=0.006300171837210655 epoch=9 and step=200
-2022-03-07 17:01:08,056 - SplitNNServer - INFO - 69030 - phase=train acc=0.9862839366515838 loss=0.02461022138595581 epoch=9 and step=220
-2022-03-07 17:01:15,365 - SplitNNServer - INFO - 69030 - phase=train acc=0.9861255186721992 loss=0.004278003238141537 epoch=9 and step=240
-2022-03-07 17:01:21,782 - SplitNNServer - INFO - 69030 - phase=train acc=0.9862907088122606 loss=0.06828015297651291 epoch=9 and step=260
-2022-03-07 17:01:28,515 - SplitNNServer - INFO - 69030 - phase=train acc=0.9860431494661922 loss=0.014588883146643639 epoch=9 and step=280
-2022-03-07 17:01:34,937 - SplitNNServer - INFO - 69030 - phase=train acc=0.9859323089700996 loss=0.1320810467004776 epoch=9 and step=300
-2022-03-07 17:02:26,745 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9838741987179487 loss=0.05152691223301167 epoch=9 and step=156
-2022-03-07 17:02:27,048 - SplitNNServer - INFO - 69030 - phase=train acc=0.96875 loss=0.0976206585764885 epoch=10 and step=0
-2022-03-07 17:02:33,770 - SplitNNServer - INFO - 69030 - phase=train acc=0.9866071428571429 loss=0.019508840516209602 epoch=10 and step=20
-2022-03-07 17:02:40,475 - SplitNNServer - INFO - 69030 - phase=train acc=0.9866615853658537 loss=0.0183770339936018 epoch=10 and step=40
-2022-03-07 17:02:47,189 - SplitNNServer - INFO - 69030 - phase=train acc=0.9879610655737705 loss=0.006657471414655447 epoch=10 and step=60
-2022-03-07 17:02:53,918 - SplitNNServer - INFO - 69030 - phase=train acc=0.9888117283950617 loss=0.012083989568054676 epoch=10 and step=80
-2022-03-07 17:03:00,649 - SplitNNServer - INFO - 69030 - phase=train acc=0.9883972772277227 loss=0.01720091514289379 epoch=10 and step=100
-2022-03-07 17:03:07,386 - SplitNNServer - INFO - 69030 - phase=train acc=0.9883780991735537 loss=0.025232771411538124 epoch=10 and step=120
-2022-03-07 17:03:14,125 - SplitNNServer - INFO - 69030 - phase=train acc=0.9883643617021277 loss=0.049022018909454346 epoch=10 and step=140
-2022-03-07 17:03:21,446 - SplitNNServer - INFO - 69030 - phase=train acc=0.9881599378881988 loss=0.02590068429708481 epoch=10 and step=160
-2022-03-07 17:03:28,149 - SplitNNServer - INFO - 69030 - phase=train acc=0.9881733425414365 loss=0.013543839566409588 epoch=10 and step=180
-2022-03-07 17:03:34,568 - SplitNNServer - INFO - 69030 - phase=train acc=0.9875621890547264 loss=0.033481303602457047 epoch=10 and step=200
-2022-03-07 17:03:41,019 - SplitNNServer - INFO - 69030 - phase=train acc=0.9874858597285068 loss=0.010670647956430912 epoch=10 and step=220
-2022-03-07 17:03:47,740 - SplitNNServer - INFO - 69030 - phase=train acc=0.9874870331950207 loss=0.08365290611982346 epoch=10 and step=240
-2022-03-07 17:03:54,152 - SplitNNServer - INFO - 69030 - phase=train acc=0.9877274904214559 loss=0.008200000040233135 epoch=10 and step=260
-2022-03-07 17:04:01,165 - SplitNNServer - INFO - 69030 - phase=train acc=0.98793371886121 loss=0.04870443791151047 epoch=10 and step=280
-2022-03-07 17:04:07,873 - SplitNNServer - INFO - 69030 - phase=train acc=0.9881644518272426 loss=0.0016364611219614744 epoch=10 and step=300
-2022-03-07 17:04:59,722 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9840745192307693 loss=0.0517844220028751 epoch=10 and step=156
-2022-03-07 17:05:00,026 - SplitNNServer - INFO - 69030 - phase=train acc=0.96875 loss=0.044541314244270325 epoch=11 and step=0
-2022-03-07 17:05:06,752 - SplitNNServer - INFO - 69030 - phase=train acc=0.9880952380952381 loss=0.023221565410494804 epoch=11 and step=20
-2022-03-07 17:05:13,464 - SplitNNServer - INFO - 69030 - phase=train acc=0.9889481707317073 loss=0.05742420256137848 epoch=11 and step=40
-2022-03-07 17:05:19,948 - SplitNNServer - INFO - 69030 - phase=train acc=0.9877049180327869 loss=0.007597954478114843 epoch=11 and step=60
-2022-03-07 17:05:26,671 - SplitNNServer - INFO - 69030 - phase=train acc=0.9868827160493827 loss=0.1343076229095459 epoch=11 and step=80
-2022-03-07 17:05:33,681 - SplitNNServer - INFO - 69030 - phase=train acc=0.9871596534653465 loss=0.0045837643556296825 epoch=11 and step=100
-2022-03-07 17:05:39,845 - SplitNNServer - INFO - 69030 - phase=train acc=0.9870867768595041 loss=0.0035640555433928967 epoch=11 and step=120
-2022-03-07 17:05:47,160 - SplitNNServer - INFO - 69030 - phase=train acc=0.9874778368794326 loss=0.01362848561257124 epoch=11 and step=140
-2022-03-07 17:05:53,878 - SplitNNServer - INFO - 69030 - phase=train acc=0.9880628881987578 loss=0.08053398877382278 epoch=11 and step=160
-2022-03-07 17:06:00,624 - SplitNNServer - INFO - 69030 - phase=train acc=0.9884323204419889 loss=0.011880595237016678 epoch=11 and step=180
-2022-03-07 17:06:07,032 - SplitNNServer - INFO - 69030 - phase=train acc=0.988339552238806 loss=0.05616436153650284 epoch=11 and step=200
-2022-03-07 17:06:13,744 - SplitNNServer - INFO - 69030 - phase=train acc=0.9884049773755657 loss=0.04849693551659584 epoch=11 and step=220
-2022-03-07 17:06:20,759 - SplitNNServer - INFO - 69030 - phase=train acc=0.9880705394190872 loss=0.0019621734973043203 epoch=11 and step=240
-2022-03-07 17:06:27,173 - SplitNNServer - INFO - 69030 - phase=train acc=0.9880268199233716 loss=0.004523919895291328 epoch=11 and step=260
-2022-03-07 17:06:33,915 - SplitNNServer - INFO - 69030 - phase=train acc=0.9879893238434164 loss=0.034719545394182205 epoch=11 and step=280
-2022-03-07 17:06:40,624 - SplitNNServer - INFO - 69030 - phase=train acc=0.9879049003322259 loss=0.003975543659180403 epoch=11 and step=300
-2022-03-07 17:07:32,145 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9846754807692307 loss=0.05019475147739099 epoch=11 and step=156
-2022-03-07 17:07:32,446 - SplitNNServer - INFO - 69030 - state: C last Loss: 0.12534165382385254 delta_loss: 0.020471923053264618
-2022-03-07 17:07:33,050 - SplitNNServer - INFO - 69030 - phase=train acc=0.96875 loss=0.06101960688829422 epoch=12 and step=0
-2022-03-07 17:07:40,372 - SplitNNServer - INFO - 69030 - phase=train acc=0.9888392857142857 loss=0.013278073631227016 epoch=12 and step=20
-2022-03-07 17:07:47,110 - SplitNNServer - INFO - 69030 - phase=train acc=0.9881859756097561 loss=0.0012441867729648948 epoch=12 and step=40
-2022-03-07 17:07:53,822 - SplitNNServer - INFO - 69030 - phase=train acc=0.9900102459016393 loss=0.04473249614238739 epoch=12 and step=60
-2022-03-07 17:08:00,549 - SplitNNServer - INFO - 69030 - phase=train acc=0.9878472222222222 loss=0.019791388884186745 epoch=12 and step=80
-2022-03-07 17:08:07,258 - SplitNNServer - INFO - 69030 - phase=train acc=0.9870049504950495 loss=0.027731209993362427 epoch=12 and step=100
-2022-03-07 17:08:14,278 - SplitNNServer - INFO - 69030 - phase=train acc=0.9870867768595041 loss=0.0389024093747139 epoch=12 and step=120
-2022-03-07 17:08:20,691 - SplitNNServer - INFO - 69030 - phase=train acc=0.9873670212765957 loss=0.016207071021199226 epoch=12 and step=140
-2022-03-07 17:08:27,107 - SplitNNServer - INFO - 69030 - phase=train acc=0.9883540372670807 loss=0.013208454474806786 epoch=12 and step=160
-2022-03-07 17:08:33,525 - SplitNNServer - INFO - 69030 - phase=train acc=0.9880006906077348 loss=0.07685068249702454 epoch=12 and step=180
-2022-03-07 17:08:40,548 - SplitNNServer - INFO - 69030 - phase=train acc=0.9878731343283582 loss=0.0034114818554371595 epoch=12 and step=200
-2022-03-07 17:08:47,262 - SplitNNServer - INFO - 69030 - phase=train acc=0.9881928733031674 loss=0.05852466821670532 epoch=12 and step=220
-2022-03-07 17:08:53,977 - SplitNNServer - INFO - 69030 - phase=train acc=0.9882650414937759 loss=0.007275904528796673 epoch=12 and step=240
-2022-03-07 17:09:00,404 - SplitNNServer - INFO - 69030 - phase=train acc=0.9885656130268199 loss=0.045908667147159576 epoch=12 and step=260
-2022-03-07 17:09:07,431 - SplitNNServer - INFO - 69030 - phase=train acc=0.9888233985765125 loss=0.04850130155682564 epoch=12 and step=280
-2022-03-07 17:09:13,883 - SplitNNServer - INFO - 69030 - phase=train acc=0.9888392857142857 loss=0.05342487245798111 epoch=12 and step=300
-2022-03-07 17:10:05,151 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9858774038461539 loss=0.04499950041420165 epoch=12 and step=156
-2022-03-07 17:10:05,454 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.06766267865896225 epoch=13 and step=0
-2022-03-07 17:10:12,469 - SplitNNServer - INFO - 69030 - phase=train acc=0.9933035714285714 loss=0.02147637866437435 epoch=13 and step=20
-2022-03-07 17:10:18,885 - SplitNNServer - INFO - 69030 - phase=train acc=0.9916158536585366 loss=0.012527106329798698 epoch=13 and step=40
-2022-03-07 17:10:25,628 - SplitNNServer - INFO - 69030 - phase=train acc=0.9930840163934426 loss=0.0024762945249676704 epoch=13 and step=60
-2022-03-07 17:10:32,044 - SplitNNServer - INFO - 69030 - phase=train acc=0.9922839506172839 loss=0.0168905109167099 epoch=13 and step=80
-2022-03-07 17:10:38,766 - SplitNNServer - INFO - 69030 - phase=train acc=0.9916460396039604 loss=0.017080971971154213 epoch=13 and step=100
-2022-03-07 17:10:45,479 - SplitNNServer - INFO - 69030 - phase=train acc=0.9914772727272727 loss=0.014882059767842293 epoch=13 and step=120
-2022-03-07 17:10:52,504 - SplitNNServer - INFO - 69030 - phase=train acc=0.991688829787234 loss=0.029098836705088615 epoch=13 and step=140
-2022-03-07 17:10:58,930 - SplitNNServer - INFO - 69030 - phase=train acc=0.9914596273291926 loss=0.011934254318475723 epoch=13 and step=160
-2022-03-07 17:11:05,635 - SplitNNServer - INFO - 69030 - phase=train acc=0.9913674033149171 loss=0.006501068826764822 epoch=13 and step=180
-2022-03-07 17:11:12,042 - SplitNNServer - INFO - 69030 - phase=train acc=0.9909825870646766 loss=0.01468397956341505 epoch=13 and step=200
-2022-03-07 17:11:18,768 - SplitNNServer - INFO - 69030 - phase=train acc=0.9906674208144797 loss=0.011952334083616734 epoch=13 and step=220
-2022-03-07 17:11:25,470 - SplitNNServer - INFO - 69030 - phase=train acc=0.9907935684647303 loss=0.04674453288316727 epoch=13 and step=240
-2022-03-07 17:11:31,879 - SplitNNServer - INFO - 69030 - phase=train acc=0.9909602490421456 loss=0.011193564161658287 epoch=13 and step=260
-2022-03-07 17:11:38,587 - SplitNNServer - INFO - 69030 - phase=train acc=0.9909919928825622 loss=0.043379008769989014 epoch=13 and step=280
-2022-03-07 17:11:45,308 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911233388704319 loss=0.0007864437066018581 epoch=13 and step=300
-2022-03-07 17:12:37,145 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9839743589743589 loss=0.05143580259165248 epoch=13 and step=156
-2022-03-07 17:12:37,448 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.057794053107500076 epoch=14 and step=0
-2022-03-07 17:12:43,873 - SplitNNServer - INFO - 69030 - phase=train acc=0.9895833333333334 loss=0.024929488077759743 epoch=14 and step=20
-2022-03-07 17:12:50,318 - SplitNNServer - INFO - 69030 - phase=train acc=0.9908536585365854 loss=0.03575645387172699 epoch=14 and step=40
-2022-03-07 17:12:56,721 - SplitNNServer - INFO - 69030 - phase=train acc=0.9902663934426229 loss=0.006155278068035841 epoch=14 and step=60
-2022-03-07 17:13:03,438 - SplitNNServer - INFO - 69030 - phase=train acc=0.9899691358024691 loss=0.15379390120506287 epoch=14 and step=80
-2022-03-07 17:13:10,442 - SplitNNServer - INFO - 69030 - phase=train acc=0.9900990099009901 loss=0.0062515330500900745 epoch=14 and step=100
-2022-03-07 17:13:17,165 - SplitNNServer - INFO - 69030 - phase=train acc=0.9903150826446281 loss=0.002102356171235442 epoch=14 and step=120
-2022-03-07 17:13:23,879 - SplitNNServer - INFO - 69030 - phase=train acc=0.9906914893617021 loss=0.00499645434319973 epoch=14 and step=140
-2022-03-07 17:13:30,606 - SplitNNServer - INFO - 69030 - phase=train acc=0.9914596273291926 loss=0.03345843777060509 epoch=14 and step=160
-2022-03-07 17:13:37,321 - SplitNNServer - INFO - 69030 - phase=train acc=0.9912810773480663 loss=0.014445016160607338 epoch=14 and step=180
-2022-03-07 17:13:44,042 - SplitNNServer - INFO - 69030 - phase=train acc=0.9909825870646766 loss=0.0558195598423481 epoch=14 and step=200
-2022-03-07 17:13:50,762 - SplitNNServer - INFO - 69030 - phase=train acc=0.9909502262443439 loss=0.02329365536570549 epoch=14 and step=220
-2022-03-07 17:13:57,467 - SplitNNServer - INFO - 69030 - phase=train acc=0.9907935684647303 loss=0.0018076096894219518 epoch=14 and step=240
-2022-03-07 17:14:04,181 - SplitNNServer - INFO - 69030 - phase=train acc=0.9906609195402298 loss=0.0038779575843364 epoch=14 and step=260
-2022-03-07 17:14:11,211 - SplitNNServer - INFO - 69030 - phase=train acc=0.9906027580071174 loss=0.02478449046611786 epoch=14 and step=280
-2022-03-07 17:14:17,621 - SplitNNServer - INFO - 69030 - phase=train acc=0.9907599667774086 loss=0.002099702600389719 epoch=14 and step=300
-2022-03-07 17:15:09,158 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9862780448717948 loss=0.04737096494528277 epoch=14 and step=156
-2022-03-07 17:15:09,460 - SplitNNServer - INFO - 69030 - state: A last Loss: 0.12534165382385254 delta_loss: 0.03422629088163376
-2022-03-07 17:15:10,364 - SplitNNServer - INFO - 69030 - phase=train acc=0.984375 loss=0.1125183030962944 epoch=15 and step=0
-2022-03-07 17:15:17,693 - SplitNNServer - INFO - 69030 - phase=train acc=0.9903273809523809 loss=0.01181595865637064 epoch=15 and step=20
-2022-03-07 17:15:24,119 - SplitNNServer - INFO - 69030 - phase=train acc=0.9908536585365854 loss=0.03648265823721886 epoch=15 and step=40
-2022-03-07 17:15:31,123 - SplitNNServer - INFO - 69030 - phase=train acc=0.9897540983606558 loss=0.07480823993682861 epoch=15 and step=60
-2022-03-07 17:15:37,547 - SplitNNServer - INFO - 69030 - phase=train acc=0.9901620370370371 loss=0.004060816951096058 epoch=15 and step=80
-2022-03-07 17:15:44,267 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911819306930693 loss=0.021944623440504074 epoch=15 and step=100
-2022-03-07 17:15:50,696 - SplitNNServer - INFO - 69030 - phase=train acc=0.9919938016528925 loss=0.015640517696738243 epoch=15 and step=120
-2022-03-07 17:15:58,020 - SplitNNServer - INFO - 69030 - phase=train acc=0.9922429078014184 loss=0.024835944175720215 epoch=15 and step=140
-2022-03-07 17:16:04,734 - SplitNNServer - INFO - 69030 - phase=train acc=0.9917507763975155 loss=0.0027259429916739464 epoch=15 and step=160
-2022-03-07 17:16:11,459 - SplitNNServer - INFO - 69030 - phase=train acc=0.9913674033149171 loss=0.04427097365260124 epoch=15 and step=180
-2022-03-07 17:16:18,176 - SplitNNServer - INFO - 69030 - phase=train acc=0.9916822139303483 loss=0.013821514323353767 epoch=15 and step=200
-2022-03-07 17:16:25,186 - SplitNNServer - INFO - 69030 - phase=train acc=0.9918693438914027 loss=0.0033698175102472305 epoch=15 and step=220
-2022-03-07 17:16:31,601 - SplitNNServer - INFO - 69030 - phase=train acc=0.991701244813278 loss=0.014236179180443287 epoch=15 and step=240
-2022-03-07 17:16:38,328 - SplitNNServer - INFO - 69030 - phase=train acc=0.9918582375478927 loss=0.01764005608856678 epoch=15 and step=260
-2022-03-07 17:16:45,356 - SplitNNServer - INFO - 69030 - phase=train acc=0.9917148576512456 loss=0.0722334235906601 epoch=15 and step=280
-2022-03-07 17:16:52,065 - SplitNNServer - INFO - 69030 - phase=train acc=0.9914867109634552 loss=0.011182118207216263 epoch=15 and step=300
-2022-03-07 17:17:43,576 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9841746794871795 loss=0.04926301990151562 epoch=15 and step=156
-2022-03-07 17:17:43,881 - SplitNNServer - INFO - 69030 - phase=train acc=1.0 loss=0.008381285704672337 epoch=16 and step=0
-2022-03-07 17:17:50,289 - SplitNNServer - INFO - 69030 - phase=train acc=0.9940476190476191 loss=0.0007566245039924979 epoch=16 and step=20
-2022-03-07 17:17:57,019 - SplitNNServer - INFO - 69030 - phase=train acc=0.991234756097561 loss=0.05984465405344963 epoch=16 and step=40
-2022-03-07 17:18:03,434 - SplitNNServer - INFO - 69030 - phase=train acc=0.9887295081967213 loss=0.04191633686423302 epoch=16 and step=60
-2022-03-07 17:18:09,848 - SplitNNServer - INFO - 69030 - phase=train acc=0.9890046296296297 loss=0.017572851851582527 epoch=16 and step=80
-2022-03-07 17:18:17,165 - SplitNNServer - INFO - 69030 - phase=train acc=0.9897896039603961 loss=0.008702226914465427 epoch=16 and step=100
-2022-03-07 17:18:23,885 - SplitNNServer - INFO - 69030 - phase=train acc=0.9901859504132231 loss=0.05920065566897392 epoch=16 and step=120
-2022-03-07 17:18:30,613 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911347517730497 loss=0.008450694382190704 epoch=16 and step=140
-2022-03-07 17:18:37,339 - SplitNNServer - INFO - 69030 - phase=train acc=0.9918478260869565 loss=0.011369134299457073 epoch=16 and step=160
-2022-03-07 17:18:44,048 - SplitNNServer - INFO - 69030 - phase=train acc=0.9915400552486188 loss=0.0027141396421939135 epoch=16 and step=180
-2022-03-07 17:18:50,779 - SplitNNServer - INFO - 69030 - phase=train acc=0.9916822139303483 loss=0.015882695093750954 epoch=16 and step=200
-2022-03-07 17:18:57,827 - SplitNNServer - INFO - 69030 - phase=train acc=0.9917279411764706 loss=0.03512601554393768 epoch=16 and step=220
-2022-03-07 17:19:04,847 - SplitNNServer - INFO - 69030 - phase=train acc=0.9915715767634855 loss=0.0343162976205349 epoch=16 and step=240
-2022-03-07 17:19:11,559 - SplitNNServer - INFO - 69030 - phase=train acc=0.991558908045977 loss=0.0364367701113224 epoch=16 and step=260
-2022-03-07 17:19:18,275 - SplitNNServer - INFO - 69030 - phase=train acc=0.9915480427046264 loss=0.03281122446060181 epoch=16 and step=280
-2022-03-07 17:19:24,996 - SplitNNServer - INFO - 69030 - phase=train acc=0.9914348006644518 loss=0.02077619545161724 epoch=16 and step=300
-2022-03-07 17:20:16,861 - SplitNNServer - INFO - 69030 - phase=validation acc=0.9869791666666666 loss=0.04098132097314169 epoch=16 and step=156
-2022-03-07 17:20:17,164 - SplitNNServer - INFO - 69030 - phase=train acc=1.0 loss=0.00921665783971548 epoch=17 and step=0
-2022-03-07 17:20:24,180 - SplitNNServer - INFO - 69030 - phase=train acc=0.9918154761904762 loss=0.015398774296045303 epoch=17 and step=20
-2022-03-07 17:20:31,219 - SplitNNServer - INFO - 69030 - phase=train acc=0.9919969512195121 loss=0.002948605688288808 epoch=17 and step=40
-2022-03-07 17:20:37,641 - SplitNNServer - INFO - 69030 - phase=train acc=0.991547131147541 loss=0.009846556931734085 epoch=17 and step=60
-2022-03-07 17:20:44,381 - SplitNNServer - INFO - 69030 - phase=train acc=0.9917052469135802 loss=0.0028300948906689882 epoch=17 and step=80
-2022-03-07 17:20:50,820 - SplitNNServer - INFO - 69030 - phase=train acc=0.9908725247524752 loss=0.003961655311286449 epoch=17 and step=100
-2022-03-07 17:20:57,544 - SplitNNServer - INFO - 69030 - phase=train acc=0.9916064049586777 loss=0.018809670582413673 epoch=17 and step=120
-2022-03-07 17:21:03,955 - SplitNNServer - INFO - 69030 - phase=train acc=0.991688829787234 loss=0.0119258351624012 epoch=17 and step=140
-2022-03-07 17:21:10,970 - SplitNNServer - INFO - 69030 - phase=train acc=0.9910714285714286 loss=0.1180640384554863 epoch=17 and step=160
-2022-03-07 17:21:17,991 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911084254143646 loss=0.002479841001331806 epoch=17 and step=180
-2022-03-07 17:21:24,697 - SplitNNServer - INFO - 69030 - phase=train acc=0.9913712686567164 loss=0.016560211777687073 epoch=17 and step=200
-2022-03-07 17:21:31,437 - SplitNNServer - INFO - 69030 - phase=train acc=0.9912330316742082 loss=0.0579800084233284 epoch=17 and step=220
-2022-03-07 17:21:38,167 - SplitNNServer - INFO - 69030 - phase=train acc=0.9910529045643154 loss=0.0962507575750351 epoch=17 and step=240
-2022-03-07 17:21:44,587 - SplitNNServer - INFO - 69030 - phase=train acc=0.9910201149425287 loss=0.04362260550260544 epoch=17 and step=260
-2022-03-07 17:21:51,010 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911588078291815 loss=0.000995819689705968 epoch=17 and step=280
-2022-03-07 17:21:57,723 - SplitNNServer - INFO - 69030 - phase=train acc=0.9911233388704319 loss=0.09036016464233398 epoch=17 and step=300
-2022-03-07 18:01:17,480 - SplitNNServer - INFO - 28588 - phase=train acc=0.7425595238095238 loss=0.6251166462898254 epoch=37 and step=20
-2022-03-07 18:01:23,748 - SplitNNServer - INFO - 28588 - phase=train acc=0.7614329268292683 loss=0.4723224639892578 epoch=37 and step=40
-2022-03-07 18:01:30,000 - SplitNNServer - INFO - 28588 - phase=train acc=0.7607581967213115 loss=0.44967392086982727 epoch=37 and step=60
-2022-03-07 18:01:36,254 - SplitNNServer - INFO - 28588 - phase=train acc=0.7606095679012346 loss=0.538512647151947 epoch=37 and step=80
-2022-03-07 18:01:42,512 - SplitNNServer - INFO - 28588 - phase=train acc=0.7636138613861386 loss=0.44337183237075806 epoch=37 and step=100
-2022-03-07 18:01:48,775 - SplitNNServer - INFO - 28588 - phase=train acc=0.7678202479338843 loss=0.3941596448421478 epoch=37 and step=120
-2022-03-07 18:01:55,010 - SplitNNServer - INFO - 28588 - phase=train acc=0.7740469858156028 loss=0.36930522322654724 epoch=37 and step=140
-2022-03-07 18:02:01,274 - SplitNNServer - INFO - 28588 - phase=train acc=0.7764945652173914 loss=0.5256094932556152 epoch=37 and step=160
-2022-03-07 18:02:07,525 - SplitNNServer - INFO - 28588 - phase=train acc=0.78021408839779 loss=0.5758922696113586 epoch=37 and step=180
-2022-03-07 18:02:13,752 - SplitNNServer - INFO - 28588 - phase=train acc=0.7806281094527363 loss=0.5384967923164368 epoch=37 and step=200
-2022-03-07 18:02:20,002 - SplitNNServer - INFO - 28588 - phase=train acc=0.7825226244343891 loss=0.5658106803894043 epoch=37 and step=220
-2022-03-07 18:02:26,225 - SplitNNServer - INFO - 28588 - phase=train acc=0.7846862033195021 loss=0.3960922956466675 epoch=37 and step=240
-2022-03-07 18:03:50,210 - SplitNNServer - INFO - 28588 - phase=validation acc=0.804441437007874 loss=0.42643083807990306 epoch=37 and step=254
-2022-03-07 18:03:50,525 - SplitNNServer - INFO - 28588 - state: C last Loss: 0.4267079532146454 delta_loss: 0.018321067094802856
-2022-03-07 18:03:51,150 - SplitNNServer - INFO - 28588 - phase=train acc=0.8125 loss=0.3881840705871582 epoch=38 and step=0
-2022-03-07 18:03:57,725 - SplitNNServer - INFO - 28588 - phase=train acc=0.7976190476190477 loss=0.3781185448169708 epoch=38 and step=20
-2022-03-07 18:04:03,997 - SplitNNServer - INFO - 28588 - phase=train acc=0.8132621951219512 loss=0.2942282557487488 epoch=38 and step=40
-2022-03-07 18:04:10,279 - SplitNNServer - INFO - 28588 - phase=train acc=0.8140368852459017 loss=0.39307501912117004 epoch=38 and step=60
-2022-03-07 18:04:16,535 - SplitNNServer - INFO - 28588 - phase=train acc=0.8150077160493827 loss=0.42134255170822144 epoch=38 and step=80
-2022-03-07 18:04:22,792 - SplitNNServer - INFO - 28588 - phase=train acc=0.8151299504950495 loss=0.3954227864742279 epoch=38 and step=100
-2022-03-07 18:04:29,061 - SplitNNServer - INFO - 28588 - phase=train acc=0.8175361570247934 loss=0.3297889530658722 epoch=38 and step=120
-2022-03-07 18:04:35,342 - SplitNNServer - INFO - 28588 - phase=train acc=0.8200354609929078 loss=0.4787718653678894 epoch=38 and step=140
-2022-03-07 18:04:41,594 - SplitNNServer - INFO - 28588 - phase=train acc=0.8221079192546584 loss=0.21926310658454895 epoch=38 and step=160
-2022-03-07 18:04:47,844 - SplitNNServer - INFO - 28588 - phase=train acc=0.8217368784530387 loss=0.5012426972389221 epoch=38 and step=180
-2022-03-07 18:04:54,111 - SplitNNServer - INFO - 28588 - phase=train acc=0.8232276119402985 loss=0.3573426902294159 epoch=38 and step=200
-2022-03-07 18:05:00,360 - SplitNNServer - INFO - 28588 - phase=train acc=0.8218325791855203 loss=0.3761730492115021 epoch=38 and step=220
-2022-03-07 18:05:06,634 - SplitNNServer - INFO - 28588 - phase=train acc=0.8228734439834025 loss=0.3787746727466583 epoch=38 and step=240
-2022-03-07 18:06:30,563 - SplitNNServer - INFO - 28588 - phase=validation acc=0.8291707677165354 loss=0.3664816060638803 epoch=38 and step=254
-2022-03-07 18:06:30,879 - SplitNNServer - INFO - 28588 - phase=train acc=0.78125 loss=0.46443161368370056 epoch=39 and step=0
-2022-03-07 18:06:43,386 - SplitNNServer - INFO - 28588 - phase=train acc=0.7425595238095238 loss=0.6254079937934875 epoch=39 and step=20
-2022-03-07 18:06:50,606 - SplitNNServer - INFO - 28588 - phase=train acc=0.7614329268292683 loss=0.47235044836997986 epoch=39 and step=40
-2022-03-07 18:06:56,888 - SplitNNServer - INFO - 28588 - phase=train acc=0.7607581967213115 loss=0.44975537061691284 epoch=39 and step=60
-2022-03-07 18:07:03,151 - SplitNNServer - INFO - 28588 - phase=train acc=0.7606095679012346 loss=0.5386935472488403 epoch=39 and step=80
-2022-03-07 18:07:09,424 - SplitNNServer - INFO - 28588 - phase=train acc=0.7636138613861386 loss=0.44324997067451477 epoch=39 and step=100
-2022-03-07 18:07:15,668 - SplitNNServer - INFO - 28588 - phase=train acc=0.7678202479338843 loss=0.3943231403827667 epoch=39 and step=120
-2022-03-07 18:07:21,943 - SplitNNServer - INFO - 28588 - phase=train acc=0.773936170212766 loss=0.3693371117115021 epoch=39 and step=140
-2022-03-07 18:07:28,222 - SplitNNServer - INFO - 28588 - phase=train acc=0.7763975155279503 loss=0.5257079601287842 epoch=39 and step=160
-2022-03-07 18:07:34,507 - SplitNNServer - INFO - 28588 - phase=train acc=0.7801277624309392 loss=0.5760815739631653 epoch=39 and step=180
-2022-03-07 18:07:40,774 - SplitNNServer - INFO - 28588 - phase=train acc=0.7806281094527363 loss=0.5387555360794067 epoch=39 and step=200
-2022-03-07 18:07:47,043 - SplitNNServer - INFO - 28588 - phase=train acc=0.7824519230769231 loss=0.5656343102455139 epoch=39 and step=220
-2022-03-07 18:07:53,331 - SplitNNServer - INFO - 28588 - phase=train acc=0.7846213692946058 loss=0.3959938585758209 epoch=39 and step=240
+11 20:38:15,117 - SplitNNServer - INFO - 35140 - phase=train acc=0.9776234567901234 loss=0.026239952072501183 epoch=1 and step=80
+2022-03-11 20:38:22,303 - SplitNNServer - INFO - 35140 - phase=train acc=0.9777227722772277 loss=0.16698554158210754 epoch=1 and step=100
+2022-03-11 20:38:29,768 - SplitNNServer - INFO - 35140 - phase=train acc=0.9768853305785123 loss=0.20222167670726776 epoch=1 and step=120
+2022-03-11 20:38:37,220 - SplitNNServer - INFO - 35140 - phase=train acc=0.9759530141843972 loss=0.10246248543262482 epoch=1 and step=140
+2022-03-11 20:38:44,134 - SplitNNServer - INFO - 35140 - phase=train acc=0.9753493788819876 loss=0.23424826562404633 epoch=1 and step=160
+2022-03-11 20:38:51,021 - SplitNNServer - INFO - 35140 - phase=train acc=0.9743611878453039 loss=0.03373550996184349 epoch=1 and step=180
+2022-03-11 20:38:57,623 - SplitNNServer - INFO - 35140 - phase=train acc=0.9751243781094527 loss=0.08711310476064682 epoch=1 and step=200
+2022-03-11 20:39:04,792 - SplitNNServer - INFO - 35140 - phase=train acc=0.9748303167420814 loss=0.08574949204921722 epoch=1 and step=220
+2022-03-11 20:39:12,883 - SplitNNServer - INFO - 35140 - phase=train acc=0.975103734439834 loss=0.041724223643541336 epoch=1 and step=240
+2022-03-11 20:39:19,218 - SplitNNServer - INFO - 35140 - phase=train acc=0.9749161877394636 loss=0.2437194585800171 epoch=1 and step=260
+2022-03-11 20:39:26,383 - SplitNNServer - INFO - 35140 - phase=train acc=0.9749777580071174 loss=0.05141105502843857 epoch=1 and step=280
+2022-03-11 20:39:34,150 - SplitNNServer - INFO - 35140 - phase=train acc=0.9741486710963455 loss=0.023496124893426895 epoch=1 and step=300
+2022-03-11 20:40:26,427 - SplitNNServer - INFO - 35140 - worker=1 phase=validation acc=0.9741920405982906 loss=0.026878819829892788 epoch=2 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:40:26,734 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.06317856907844543 epoch=2 and step=0
+2022-03-11 20:40:34,177 - SplitNNServer - INFO - 35140 - phase=train acc=0.9791666666666666 loss=0.08996015787124634 epoch=2 and step=20
+2022-03-11 20:40:42,942 - SplitNNServer - INFO - 35140 - phase=train acc=0.9763719512195121 loss=0.10011947154998779 epoch=2 and step=40
+2022-03-11 20:40:49,268 - SplitNNServer - INFO - 35140 - phase=train acc=0.9743852459016393 loss=0.18506544828414917 epoch=2 and step=60
+2022-03-11 20:40:56,475 - SplitNNServer - INFO - 35140 - phase=train acc=0.9741512345679012 loss=0.04991861805319786 epoch=2 and step=80
+2022-03-11 20:41:03,687 - SplitNNServer - INFO - 35140 - phase=train acc=0.9749381188118812 loss=0.013471950776875019 epoch=2 and step=100
+2022-03-11 20:41:10,000 - SplitNNServer - INFO - 35140 - phase=train acc=0.9755940082644629 loss=0.03960685059428215 epoch=2 and step=120
+2022-03-11 20:41:17,517 - SplitNNServer - INFO - 35140 - phase=train acc=0.9759530141843972 loss=0.18013478815555573 epoch=2 and step=140
+2022-03-11 20:41:25,270 - SplitNNServer - INFO - 35140 - phase=train acc=0.9759316770186336 loss=0.08146235346794128 epoch=2 and step=160
+2022-03-11 20:41:32,736 - SplitNNServer - INFO - 35140 - phase=train acc=0.976864640883978 loss=0.2454392910003662 epoch=2 and step=180
+2022-03-11 20:41:39,366 - SplitNNServer - INFO - 35140 - phase=train acc=0.9770677860696517 loss=0.06294861435890198 epoch=2 and step=200
+2022-03-11 20:41:46,818 - SplitNNServer - INFO - 35140 - phase=train acc=0.9770927601809954 loss=0.05991312488913536 epoch=2 and step=220
+2022-03-11 20:41:54,304 - SplitNNServer - INFO - 35140 - phase=train acc=0.9771784232365145 loss=0.04388977959752083 epoch=2 and step=240
+2022-03-11 20:42:01,192 - SplitNNServer - INFO - 35140 - phase=train acc=0.9773108237547893 loss=0.0412861630320549 epoch=2 and step=260
+2022-03-11 20:42:08,659 - SplitNNServer - INFO - 35140 - phase=train acc=0.9767571174377224 loss=0.13546887040138245 epoch=2 and step=280
+2022-03-11 20:42:14,948 - SplitNNServer - INFO - 35140 - phase=train acc=0.9769518272425249 loss=0.08039864152669907 epoch=2 and step=300
+2022-03-11 20:43:07,813 - SplitNNServer - INFO - 35140 - worker=2 phase=validation acc=0.9773971688034188 loss=0.022286651310143776 epoch=2 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:43:08,124 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.026252394542098045 epoch=2 and step=0
+2022-03-11 20:43:15,621 - SplitNNServer - INFO - 35140 - phase=train acc=0.9858630952380952 loss=0.025021567940711975 epoch=2 and step=20
+2022-03-11 20:43:21,948 - SplitNNServer - INFO - 35140 - phase=train acc=0.9836128048780488 loss=0.07658042758703232 epoch=2 and step=40
+2022-03-11 20:43:29,132 - SplitNNServer - INFO - 35140 - phase=train acc=0.9848872950819673 loss=0.004516254644840956 epoch=2 and step=60
+2022-03-11 20:43:37,214 - SplitNNServer - INFO - 35140 - phase=train acc=0.9828317901234568 loss=0.07616602629423141 epoch=2 and step=80
+2022-03-11 20:43:44,326 - SplitNNServer - INFO - 35140 - phase=train acc=0.9822091584158416 loss=0.12840008735656738 epoch=2 and step=100
+2022-03-11 20:43:51,766 - SplitNNServer - INFO - 35140 - phase=train acc=0.9819214876033058 loss=0.12194779515266418 epoch=2 and step=120
+2022-03-11 20:43:59,244 - SplitNNServer - INFO - 35140 - phase=train acc=0.9817154255319149 loss=0.03910551592707634 epoch=2 and step=140
+2022-03-11 20:44:06,387 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818517080745341 loss=0.021739209070801735 epoch=2 and step=160
+2022-03-11 20:44:13,911 - SplitNNServer - INFO - 35140 - phase=train acc=0.9815262430939227 loss=0.019105440005660057 epoch=2 and step=180
+2022-03-11 20:44:20,200 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818874378109452 loss=0.048125796020030975 epoch=2 and step=200
+2022-03-11 20:44:27,380 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818297511312217 loss=0.0566144734621048 epoch=2 and step=220
+2022-03-11 20:44:34,616 - SplitNNServer - INFO - 35140 - phase=train acc=0.9813278008298755 loss=0.062037885189056396 epoch=2 and step=240
+2022-03-11 20:44:42,097 - SplitNNServer - INFO - 35140 - phase=train acc=0.9807830459770115 loss=0.08168407529592514 epoch=2 and step=260
+2022-03-11 20:44:49,596 - SplitNNServer - INFO - 35140 - phase=train acc=0.9814279359430605 loss=0.043579768389463425 epoch=2 and step=280
+2022-03-11 20:44:57,379 - SplitNNServer - INFO - 35140 - phase=train acc=0.9812084717607974 loss=0.10442385822534561 epoch=2 and step=300
+2022-03-11 20:45:49,563 - SplitNNServer - INFO - 35140 - worker=3 phase=validation acc=0.9805689102564102 loss=0.020798646696263867 epoch=2 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:45:49,869 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.017856264486908913 epoch=2 and step=0
+2022-03-11 20:45:57,630 - SplitNNServer - INFO - 35140 - phase=train acc=0.9813988095238095 loss=0.05753590166568756 epoch=2 and step=20
+2022-03-11 20:46:04,521 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.03588011860847473 epoch=2 and step=40
+2022-03-11 20:46:11,968 - SplitNNServer - INFO - 35140 - phase=train acc=0.9833504098360656 loss=0.06275776773691177 epoch=2 and step=60
+2022-03-11 20:46:19,121 - SplitNNServer - INFO - 35140 - phase=train acc=0.9826388888888888 loss=0.04733520746231079 epoch=2 and step=80
+2022-03-11 20:46:26,250 - SplitNNServer - INFO - 35140 - phase=train acc=0.9822091584158416 loss=0.15547215938568115 epoch=2 and step=100
+2022-03-11 20:46:33,764 - SplitNNServer - INFO - 35140 - phase=train acc=0.9816632231404959 loss=0.053970929235219955 epoch=2 and step=120
+2022-03-11 20:46:41,024 - SplitNNServer - INFO - 35140 - phase=train acc=0.9817154255319149 loss=0.006074118427932262 epoch=2 and step=140
+2022-03-11 20:46:48,754 - SplitNNServer - INFO - 35140 - phase=train acc=0.9811723602484472 loss=0.16662514209747314 epoch=2 and step=160
+2022-03-11 20:46:55,650 - SplitNNServer - INFO - 35140 - phase=train acc=0.9816988950276243 loss=0.05036001279950142 epoch=2 and step=180
+2022-03-11 20:47:02,244 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818874378109452 loss=0.03994349390268326 epoch=2 and step=200
+2022-03-11 20:47:09,780 - SplitNNServer - INFO - 35140 - phase=train acc=0.982183257918552 loss=0.026168962940573692 epoch=2 and step=220
+2022-03-11 20:47:16,991 - SplitNNServer - INFO - 35140 - phase=train acc=0.9819761410788381 loss=0.10027031600475311 epoch=2 and step=240
+2022-03-11 20:47:23,907 - SplitNNServer - INFO - 35140 - phase=train acc=0.9816810344827587 loss=0.14583627879619598 epoch=2 and step=260
+2022-03-11 20:47:31,178 - SplitNNServer - INFO - 35140 - phase=train acc=0.9815391459074733 loss=0.018463900312781334 epoch=2 and step=280
+2022-03-11 20:47:38,343 - SplitNNServer - INFO - 35140 - phase=train acc=0.9815199335548173 loss=0.028992785140872 epoch=2 and step=300
+2022-03-11 20:48:31,509 - SplitNNServer - INFO - 35140 - worker=1 phase=validation acc=0.9813034188034188 loss=0.020019134815702583 epoch=3 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:48:31,817 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.017498772591352463 epoch=3 and step=0
+2022-03-11 20:48:39,331 - SplitNNServer - INFO - 35140 - phase=train acc=0.9888392857142857 loss=0.011415263637900352 epoch=3 and step=20
+2022-03-11 20:48:46,557 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.12905527651309967 epoch=3 and step=40
+2022-03-11 20:48:53,108 - SplitNNServer - INFO - 35140 - phase=train acc=0.9825819672131147 loss=0.03503116965293884 epoch=3 and step=60
+2022-03-11 20:49:00,558 - SplitNNServer - INFO - 35140 - phase=train acc=0.9807098765432098 loss=0.11813190579414368 epoch=3 and step=80
+2022-03-11 20:49:08,024 - SplitNNServer - INFO - 35140 - phase=train acc=0.9798886138613861 loss=0.008208162151277065 epoch=3 and step=100
+2022-03-11 20:49:15,812 - SplitNNServer - INFO - 35140 - phase=train acc=0.9805010330578512 loss=0.1247929260134697 epoch=3 and step=120
+2022-03-11 20:49:23,325 - SplitNNServer - INFO - 35140 - phase=train acc=0.9810505319148937 loss=0.049931369721889496 epoch=3 and step=140
+2022-03-11 20:49:29,674 - SplitNNServer - INFO - 35140 - phase=train acc=0.9819487577639752 loss=0.023833949118852615 epoch=3 and step=160
+2022-03-11 20:49:37,131 - SplitNNServer - INFO - 35140 - phase=train acc=0.9816988950276243 loss=0.05286767706274986 epoch=3 and step=180
+2022-03-11 20:49:44,925 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818097014925373 loss=0.03341474384069443 epoch=3 and step=200
+2022-03-11 20:49:52,145 - SplitNNServer - INFO - 35140 - phase=train acc=0.9819711538461539 loss=0.04658447578549385 epoch=3 and step=220
+2022-03-11 20:49:59,871 - SplitNNServer - INFO - 35140 - phase=train acc=0.9823003112033195 loss=0.0065278662368655205 epoch=3 and step=240
+2022-03-11 20:50:06,110 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818606321839081 loss=0.22357439994812012 epoch=3 and step=260
+2022-03-11 20:50:12,955 - SplitNNServer - INFO - 35140 - phase=train acc=0.9822064056939501 loss=0.13152214884757996 epoch=3 and step=280
+2022-03-11 20:50:20,458 - SplitNNServer - INFO - 35140 - phase=train acc=0.9817275747508306 loss=0.05362918972969055 epoch=3 and step=300
+2022-03-11 20:51:13,669 - SplitNNServer - INFO - 35140 - worker=2 phase=validation acc=0.9816038995726496 loss=0.019147081960054338 epoch=3 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:51:13,974 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.012835045345127583 epoch=3 and step=0
+2022-03-11 20:51:21,431 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.04475260153412819 epoch=3 and step=20
+2022-03-11 20:51:28,625 - SplitNNServer - INFO - 35140 - phase=train acc=0.9862804878048781 loss=0.06179776415228844 epoch=3 and step=40
+2022-03-11 20:51:34,928 - SplitNNServer - INFO - 35140 - phase=train acc=0.9846311475409836 loss=0.18571487069129944 epoch=3 and step=60
+2022-03-11 20:51:42,422 - SplitNNServer - INFO - 35140 - phase=train acc=0.9857253086419753 loss=0.06700494140386581 epoch=3 and step=80
+2022-03-11 20:51:49,588 - SplitNNServer - INFO - 35140 - phase=train acc=0.9859220297029703 loss=0.011526946909725666 epoch=3 and step=100
+2022-03-11 20:51:56,766 - SplitNNServer - INFO - 35140 - phase=train acc=0.9865702479338843 loss=0.008336572907865047 epoch=3 and step=120
+2022-03-11 20:52:03,904 - SplitNNServer - INFO - 35140 - phase=train acc=0.9865913120567376 loss=0.03189724683761597 epoch=3 and step=140
+2022-03-11 20:52:12,658 - SplitNNServer - INFO - 35140 - phase=train acc=0.9864130434782609 loss=0.007975436747074127 epoch=3 and step=160
+2022-03-11 20:52:20,106 - SplitNNServer - INFO - 35140 - phase=train acc=0.9860151933701657 loss=0.09425149857997894 epoch=3 and step=180
+2022-03-11 20:52:26,665 - SplitNNServer - INFO - 35140 - phase=train acc=0.9862406716417911 loss=0.19524073600769043 epoch=3 and step=200
+2022-03-11 20:52:34,143 - SplitNNServer - INFO - 35140 - phase=train acc=0.9858597285067874 loss=0.054580703377723694 epoch=3 and step=220
+2022-03-11 20:52:41,286 - SplitNNServer - INFO - 35140 - phase=train acc=0.9857365145228216 loss=0.035566747188568115 epoch=3 and step=240
+2022-03-11 20:52:49,647 - SplitNNServer - INFO - 35140 - phase=train acc=0.9858117816091954 loss=0.021802889183163643 epoch=3 and step=260
+2022-03-11 20:52:56,247 - SplitNNServer - INFO - 35140 - phase=train acc=0.9862099644128114 loss=0.002052935305982828 epoch=3 and step=280
+2022-03-11 20:53:04,956 - SplitNNServer - INFO - 35140 - phase=train acc=0.9861918604651163 loss=0.03602905571460724 epoch=3 and step=300
+2022-03-11 20:53:56,978 - SplitNNServer - INFO - 35140 - worker=3 phase=validation acc=0.9857104700854701 loss=0.01575248223420763 epoch=3 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:53:57,288 - SplitNNServer - INFO - 35140 - phase=train acc=0.96875 loss=0.061564963310956955 epoch=3 and step=0
+2022-03-11 20:54:04,440 - SplitNNServer - INFO - 35140 - phase=train acc=0.9836309523809523 loss=0.013623520731925964 epoch=3 and step=20
+2022-03-11 20:54:11,004 - SplitNNServer - INFO - 35140 - phase=train acc=0.9813262195121951 loss=0.07443800568580627 epoch=3 and step=40
+2022-03-11 20:54:18,534 - SplitNNServer - INFO - 35140 - phase=train acc=0.9828381147540983 loss=0.06304848194122314 epoch=3 and step=60
+2022-03-11 20:54:25,809 - SplitNNServer - INFO - 35140 - phase=train acc=0.9851466049382716 loss=0.006078300066292286 epoch=3 and step=80
+2022-03-11 20:54:33,807 - SplitNNServer - INFO - 35140 - phase=train acc=0.9854579207920792 loss=0.042063478380441666 epoch=3 and step=100
+2022-03-11 20:54:42,020 - SplitNNServer - INFO - 35140 - phase=train acc=0.9854080578512396 loss=0.04399736225605011 epoch=3 and step=120
+2022-03-11 20:54:49,251 - SplitNNServer - INFO - 35140 - phase=train acc=0.9859264184397163 loss=0.018591508269309998 epoch=3 and step=140
+2022-03-11 20:54:57,355 - SplitNNServer - INFO - 35140 - phase=train acc=0.9856366459627329 loss=0.13404028117656708 epoch=3 and step=160
+2022-03-11 20:55:05,505 - SplitNNServer - INFO - 35140 - phase=train acc=0.9856698895027625 loss=0.02724948711693287 epoch=3 and step=180
+2022-03-11 20:55:13,076 - SplitNNServer - INFO - 35140 - phase=train acc=0.9860851990049752 loss=0.011100145988166332 epoch=3 and step=200
+2022-03-11 20:55:21,218 - SplitNNServer - INFO - 35140 - phase=train acc=0.9863546380090498 loss=0.05129898339509964 epoch=3 and step=220
+2022-03-11 20:55:27,670 - SplitNNServer - INFO - 35140 - phase=train acc=0.9858661825726142 loss=0.09084193408489227 epoch=3 and step=240
+2022-03-11 20:55:35,283 - SplitNNServer - INFO - 35140 - phase=train acc=0.9854525862068966 loss=0.1283002495765686 epoch=3 and step=260
+2022-03-11 20:55:42,443 - SplitNNServer - INFO - 35140 - phase=train acc=0.986154359430605 loss=0.013760569505393505 epoch=3 and step=280
+2022-03-11 20:55:49,328 - SplitNNServer - INFO - 35140 - phase=train acc=0.9860880398671097 loss=0.06048216298222542 epoch=3 and step=300
+2022-03-11 20:56:43,346 - SplitNNServer - INFO - 35140 - worker=1 phase=validation acc=0.9856770833333334 loss=0.016255003256128088 epoch=4 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:56:43,651 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.0052073244005441666 epoch=4 and step=0
+2022-03-11 20:56:51,508 - SplitNNServer - INFO - 35140 - phase=train acc=0.9761904761904762 loss=0.15682178735733032 epoch=4 and step=20
+2022-03-11 20:56:58,734 - SplitNNServer - INFO - 35140 - phase=train acc=0.9817073170731707 loss=0.0627194419503212 epoch=4 and step=40
+2022-03-11 20:57:05,276 - SplitNNServer - INFO - 35140 - phase=train acc=0.9818135245901639 loss=0.003464301349595189 epoch=4 and step=60
+2022-03-11 20:57:12,766 - SplitNNServer - INFO - 35140 - phase=train acc=0.9826388888888888 loss=0.18171077966690063 epoch=4 and step=80
+2022-03-11 20:57:19,617 - SplitNNServer - INFO - 35140 - phase=train acc=0.9826732673267327 loss=0.014565209858119488 epoch=4 and step=100
+2022-03-11 20:57:27,115 - SplitNNServer - INFO - 35140 - phase=train acc=0.9832128099173554 loss=0.04533393681049347 epoch=4 and step=120
+2022-03-11 20:57:33,376 - SplitNNServer - INFO - 35140 - phase=train acc=0.9844858156028369 loss=0.012331243604421616 epoch=4 and step=140
+2022-03-11 20:57:40,849 - SplitNNServer - INFO - 35140 - phase=train acc=0.9851513975155279 loss=0.09850979596376419 epoch=4 and step=160
+2022-03-11 20:57:48,334 - SplitNNServer - INFO - 35140 - phase=train acc=0.98541091160221 loss=0.005792598240077496 epoch=4 and step=180
+2022-03-11 20:57:55,783 - SplitNNServer - INFO - 35140 - phase=train acc=0.9853855721393034 loss=0.023750020191073418 epoch=4 and step=200
+2022-03-11 20:58:03,865 - SplitNNServer - INFO - 35140 - phase=train acc=0.985435520361991 loss=0.11633193492889404 epoch=4 and step=220
+2022-03-11 20:58:11,008 - SplitNNServer - INFO - 35140 - phase=train acc=0.9857365145228216 loss=0.010777043178677559 epoch=4 and step=240
+2022-03-11 20:58:17,916 - SplitNNServer - INFO - 35140 - phase=train acc=0.9863505747126436 loss=0.015033919364213943 epoch=4 and step=260
+2022-03-11 20:58:25,731 - SplitNNServer - INFO - 35140 - phase=train acc=0.9863767793594306 loss=0.06505731493234634 epoch=4 and step=280
+2022-03-11 20:58:34,118 - SplitNNServer - INFO - 35140 - phase=train acc=0.9865033222591362 loss=0.03716558590531349 epoch=4 and step=300
+2022-03-11 20:59:26,346 - SplitNNServer - INFO - 35140 - worker=2 phase=validation acc=0.9850761217948718 loss=0.019548920264039933 epoch=4 server_send=0 server_receive=7536 and step=468
+2022-03-11 20:59:26,653 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.02727053500711918 epoch=4 and step=0
+2022-03-11 20:59:33,819 - SplitNNServer - INFO - 35140 - phase=train acc=0.9880952380952381 loss=0.11332961171865463 epoch=4 and step=20
+2022-03-11 20:59:41,572 - SplitNNServer - INFO - 35140 - phase=train acc=0.9900914634146342 loss=0.01805882155895233 epoch=4 and step=40
+2022-03-11 20:59:49,092 - SplitNNServer - INFO - 35140 - phase=train acc=0.9905225409836066 loss=0.06531273573637009 epoch=4 and step=60
+2022-03-11 20:59:55,375 - SplitNNServer - INFO - 35140 - phase=train acc=0.9905478395061729 loss=0.028513455763459206 epoch=4 and step=80
+2022-03-11 21:00:02,830 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911819306930693 loss=0.011667107231914997 epoch=4 and step=100
+2022-03-11 21:00:10,272 - SplitNNServer - INFO - 35140 - phase=train acc=0.9914772727272727 loss=0.003831499954685569 epoch=4 and step=120
+2022-03-11 21:00:18,337 - SplitNNServer - INFO - 35140 - phase=train acc=0.9901374113475178 loss=0.010945199988782406 epoch=4 and step=140
+2022-03-11 21:00:25,809 - SplitNNServer - INFO - 35140 - phase=train acc=0.9897127329192547 loss=0.11223556101322174 epoch=4 and step=160
+2022-03-11 21:00:32,080 - SplitNNServer - INFO - 35140 - phase=train acc=0.9897272099447514 loss=0.0030746604315936565 epoch=4 and step=180
+2022-03-11 21:00:39,270 - SplitNNServer - INFO - 35140 - phase=train acc=0.9899720149253731 loss=0.0022843091282993555 epoch=4 and step=200
+2022-03-11 21:00:46,432 - SplitNNServer - INFO - 35140 - phase=train acc=0.9897483031674208 loss=0.04306846484541893 epoch=4 and step=220
+2022-03-11 21:00:53,664 - SplitNNServer - INFO - 35140 - phase=train acc=0.9894320539419087 loss=0.02474917285144329 epoch=4 and step=240
+2022-03-11 21:01:01,756 - SplitNNServer - INFO - 35140 - phase=train acc=0.9889846743295019 loss=0.06605390459299088 epoch=4 and step=260
+2022-03-11 21:01:08,115 - SplitNNServer - INFO - 35140 - phase=train acc=0.9889346085409253 loss=0.013515429571270943 epoch=4 and step=280
+2022-03-11 21:01:15,600 - SplitNNServer - INFO - 35140 - phase=train acc=0.9889431063122923 loss=0.03362935781478882 epoch=4 and step=300
+2022-03-11 21:02:08,889 - SplitNNServer - INFO - 35140 - worker=3 phase=validation acc=0.9875467414529915 loss=0.016127056672000133 epoch=4 server_send=0 server_receive=7536 and step=468
+2022-03-11 21:02:09,197 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.005822281818836927 epoch=4 and step=0
+2022-03-11 21:02:16,638 - SplitNNServer - INFO - 35140 - phase=train acc=0.9918154761904762 loss=0.008612562902271748 epoch=4 and step=20
+2022-03-11 21:02:23,813 - SplitNNServer - INFO - 35140 - phase=train acc=0.991234756097561 loss=0.023025857284665108 epoch=4 and step=40
+2022-03-11 21:02:31,020 - SplitNNServer - INFO - 35140 - phase=train acc=0.9907786885245902 loss=0.014621883630752563 epoch=4 and step=60
+2022-03-11 21:02:38,226 - SplitNNServer - INFO - 35140 - phase=train acc=0.9913194444444444 loss=0.04952891916036606 epoch=4 and step=80
+2022-03-11 21:02:45,677 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911819306930693 loss=0.04083619639277458 epoch=4 and step=100
+2022-03-11 21:02:52,845 - SplitNNServer - INFO - 35140 - phase=train acc=0.9910898760330579 loss=0.018752185627818108 epoch=4 and step=120
+2022-03-11 21:03:00,944 - SplitNNServer - INFO - 35140 - phase=train acc=0.9910239361702128 loss=0.002692421432584524 epoch=4 and step=140
+2022-03-11 21:03:07,544 - SplitNNServer - INFO - 35140 - phase=train acc=0.9905861801242236 loss=0.0018911592196673155 epoch=4 and step=160
+2022-03-11 21:03:15,018 - SplitNNServer - INFO - 35140 - phase=train acc=0.9908494475138122 loss=0.026143362745642662 epoch=4 and step=180
+2022-03-11 21:03:22,162 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911380597014925 loss=0.015278740786015987 epoch=4 and step=200
+2022-03-11 21:03:29,594 - SplitNNServer - INFO - 35140 - phase=train acc=0.9910209276018099 loss=0.1453568935394287 epoch=4 and step=220
+2022-03-11 21:03:36,762 - SplitNNServer - INFO - 35140 - phase=train acc=0.9901452282157677 loss=0.04588017240166664 epoch=4 and step=240
+2022-03-11 21:03:44,237 - SplitNNServer - INFO - 35140 - phase=train acc=0.9897030651340997 loss=0.014149577356874943 epoch=4 and step=260
+2022-03-11 21:03:52,409 - SplitNNServer - INFO - 35140 - phase=train acc=0.9896018683274022 loss=0.004505741409957409 epoch=4 and step=280
+2022-03-11 21:03:59,875 - SplitNNServer - INFO - 35140 - phase=train acc=0.9895660299003323 loss=0.008302386850118637 epoch=4 and step=300
+2022-03-11 21:04:51,838 - SplitNNServer - INFO - 35140 - worker=1 phase=validation acc=0.9864449786324786 loss=0.02118977763172404 epoch=5 server_send=0 server_receive=7536 and step=468
+2022-03-11 21:04:52,145 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.006641981657594442 epoch=5 and step=0
+2022-03-11 21:04:59,546 - SplitNNServer - INFO - 35140 - phase=train acc=0.9895833333333334 loss=0.05199793726205826 epoch=5 and step=20
+2022-03-11 21:05:08,326 - SplitNNServer - INFO - 35140 - phase=train acc=0.9904725609756098 loss=0.06856106966733932 epoch=5 and step=40
+2022-03-11 21:05:15,261 - SplitNNServer - INFO - 35140 - phase=train acc=0.9912909836065574 loss=0.009963099844753742 epoch=5 and step=60
+2022-03-11 21:05:22,740 - SplitNNServer - INFO - 35140 - phase=train acc=0.9907407407407407 loss=0.044538963586091995 epoch=5 and step=80
+2022-03-11 21:05:29,141 - SplitNNServer - INFO - 35140 - phase=train acc=0.9904084158415841 loss=0.10687875002622604 epoch=5 and step=100
+2022-03-11 21:05:36,630 - SplitNNServer - INFO - 35140 - phase=train acc=0.9899276859504132 loss=0.016972016543149948 epoch=5 and step=120
+2022-03-11 21:05:43,514 - SplitNNServer - INFO - 35140 - phase=train acc=0.9898049645390071 loss=0.05256923288106918 epoch=5 and step=140
+2022-03-11 21:05:51,576 - SplitNNServer - INFO - 35140 - phase=train acc=0.9896156832298136 loss=0.09416230767965317 epoch=5 and step=160
+2022-03-11 21:05:59,039 - SplitNNServer - INFO - 35140 - phase=train acc=0.9899861878453039 loss=0.04129685088992119 epoch=5 and step=180
+2022-03-11 21:06:06,533 - SplitNNServer - INFO - 35140 - phase=train acc=0.990127487562189 loss=0.010102968662977219 epoch=5 and step=200
+2022-03-11 21:06:13,980 - SplitNNServer - INFO - 35140 - phase=train acc=0.9898897058823529 loss=0.01992107555270195 epoch=5 and step=220
+2022-03-11 21:06:20,889 - SplitNNServer - INFO - 35140 - phase=train acc=0.9897562240663901 loss=0.06968625634908676 epoch=5 and step=240
+2022-03-11 21:06:27,490 - SplitNNServer - INFO - 35140 - phase=train acc=0.9898227969348659 loss=0.08322728425264359 epoch=5 and step=260
+2022-03-11 21:06:35,573 - SplitNNServer - INFO - 35140 - phase=train acc=0.9898798932384342 loss=0.006101629231125116 epoch=5 and step=280
+2022-03-11 21:06:43,021 - SplitNNServer - INFO - 35140 - phase=train acc=0.9899294019933554 loss=0.005610027350485325 epoch=5 and step=300
+2022-03-11 21:07:35,971 - SplitNNServer - INFO - 35140 - worker=2 phase=validation acc=0.9883814102564102 loss=0.016599073195394363 epoch=5 server_send=0 server_receive=7536 and step=468
+2022-03-11 21:07:36,280 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.00036105350591242313 epoch=5 and step=0
+2022-03-11 21:07:43,805 - SplitNNServer - INFO - 35140 - phase=train acc=0.984375 loss=0.019331464543938637 epoch=5 and step=20
+2022-03-11 21:07:51,047 - SplitNNServer - INFO - 35140 - phase=train acc=0.9870426829268293 loss=0.0105991680175066 epoch=5 and step=40
+2022-03-11 21:07:57,615 - SplitNNServer - INFO - 35140 - phase=train acc=0.9894979508196722 loss=0.009911131113767624 epoch=5 and step=60
+2022-03-11 21:08:05,331 - SplitNNServer - INFO - 35140 - phase=train acc=0.9909336419753086 loss=0.0018281482625752687 epoch=5 and step=80
+2022-03-11 21:08:13,380 - SplitNNServer - INFO - 35140 - phase=train acc=0.9908725247524752 loss=0.004326203837990761 epoch=5 and step=100
+2022-03-11 21:08:21,297 - SplitNNServer - INFO - 35140 - phase=train acc=0.9909607438016529 loss=0.010238714516162872 epoch=5 and step=120
+2022-03-11 21:08:28,513 - SplitNNServer - INFO - 35140 - phase=train acc=0.9909131205673759 loss=0.02374688722193241 epoch=5 and step=140
+2022-03-11 21:08:36,333 - SplitNNServer - INFO - 35140 - phase=train acc=0.9908773291925466 loss=0.0015426212921738625 epoch=5 and step=160
+2022-03-11 21:08:42,681 - SplitNNServer - INFO - 35140 - phase=train acc=0.9907631215469613 loss=0.21172524988651276 epoch=5 and step=180
+2022-03-11 21:08:50,507 - SplitNNServer - INFO - 35140 - phase=train acc=0.9905161691542289 loss=0.026510560885071754 epoch=5 and step=200
+2022-03-11 21:08:57,990 - SplitNNServer - INFO - 35140 - phase=train acc=0.9906674208144797 loss=0.00251882360316813 epoch=5 and step=220
+2022-03-11 21:09:05,520 - SplitNNServer - INFO - 35140 - phase=train acc=0.9902748962655602 loss=0.03693222999572754 epoch=5 and step=240
+2022-03-11 21:09:12,700 - SplitNNServer - INFO - 35140 - phase=train acc=0.9901221264367817 loss=0.03386151045560837 epoch=5 and step=260
+2022-03-11 21:09:19,849 - SplitNNServer - INFO - 35140 - phase=train acc=0.9901023131672598 loss=0.008101632818579674 epoch=5 and step=280
+2022-03-11 21:09:27,022 - SplitNNServer - INFO - 35140 - phase=train acc=0.9899813122923588 loss=0.006549596320837736 epoch=5 and step=300
+2022-03-11 21:10:19,948 - SplitNNServer - INFO - 35140 - worker=3 phase=validation acc=0.9882478632478633 loss=0.01522812767598225 epoch=5 server_send=0 server_receive=7536 and step=468
+2022-03-11 21:10:20,253 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.010987777262926102 epoch=5 and step=0
+2022-03-11 21:10:26,620 - SplitNNServer - INFO - 35140 - phase=train acc=0.9918154761904762 loss=0.07276656478643417 epoch=5 and step=20
+2022-03-11 21:10:34,138 - SplitNNServer - INFO - 35140 - phase=train acc=0.9935213414634146 loss=0.004000771790742874 epoch=5 and step=40
+2022-03-11 21:10:40,821 - SplitNNServer - INFO - 35140 - phase=train acc=0.9930840163934426 loss=0.0075679137371480465 epoch=5 and step=60
+2022-03-11 21:10:48,707 - SplitNNServer - INFO - 35140 - phase=train acc=0.9924768518518519 loss=0.01397315226495266 epoch=5 and step=80
+2022-03-11 21:10:56,622 - SplitNNServer - INFO - 35140 - phase=train acc=0.9922648514851485 loss=0.0019106611143797636 epoch=5 and step=100
+2022-03-11 21:11:04,129 - SplitNNServer - INFO - 35140 - phase=train acc=0.9919938016528925 loss=0.08115024119615555 epoch=5 and step=120
+2022-03-11 21:11:11,288 - SplitNNServer - INFO - 35140 - phase=train acc=0.9921320921985816 loss=0.007597731426358223 epoch=5 and step=140
+2022-03-11 21:11:18,784 - SplitNNServer - INFO - 35140 - phase=train acc=0.9923330745341615 loss=0.02022896520793438 epoch=5 and step=160
+2022-03-11 21:11:25,378 - SplitNNServer - INFO - 35140 - phase=train acc=0.9916263812154696 loss=0.12253125011920929 epoch=5 and step=180
+2022-03-11 21:11:32,554 - SplitNNServer - INFO - 35140 - phase=train acc=0.9912935323383084 loss=0.007502735126763582 epoch=5 and step=200
+2022-03-11 21:11:40,620 - SplitNNServer - INFO - 35140 - phase=train acc=0.9913037330316742 loss=0.024668216705322266 epoch=5 and step=220
+2022-03-11 21:11:48,454 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911825726141079 loss=0.05566324293613434 epoch=5 and step=240
+2022-03-11 21:11:56,571 - SplitNNServer - INFO - 35140 - phase=train acc=0.991139846743295 loss=0.009777276776731014 epoch=5 and step=260
+2022-03-11 21:12:03,753 - SplitNNServer - INFO - 35140 - phase=train acc=0.990825177935943 loss=0.02700958028435707 epoch=5 and step=280
+2022-03-11 21:12:10,935 - SplitNNServer - INFO - 35140 - phase=train acc=0.9908118770764119 loss=0.05099856108427048 epoch=5 and step=300
+2022-03-11 21:13:04,179 - SplitNNServer - INFO - 35140 - worker=1 phase=validation acc=0.9891826923076923 loss=0.014448700991567583 epoch=6 server_send=0 server_receive=7536 and step=468
+2022-03-11 21:13:04,486 - SplitNNServer - INFO - 35140 - phase=train acc=1.0 loss=0.009297615848481655 epoch=6 and step=0
+2022-03-11 21:13:11,328 - SplitNNServer - INFO - 35140 - phase=train acc=0.9903273809523809 loss=0.006743087433278561 epoch=6 and step=20
+2022-03-11 21:13:18,805 - SplitNNServer - INFO - 35140 - phase=train acc=0.9927591463414634 loss=0.0027114844415336847 epoch=6 and step=40
+2022-03-11 21:13:26,240 - SplitNNServer - INFO - 35140 - phase=train acc=0.9923155737704918 loss=0.0021184964571148157 epoch=6 and step=60
+2022-03-11 21:13:33,392 - SplitNNServer - INFO - 35140 - phase=train acc=0.9926697530864198 loss=0.008463877253234386 epoch=6 and step=80
+2022-03-11 21:13:40,523 - SplitNNServer - INFO - 35140 - phase=train acc=0.9913366336633663 loss=0.006501553580164909 epoch=6 and step=100
+2022-03-11 21:13:48,355 - SplitNNServer - INFO - 35140 - phase=train acc=0.9909607438016529 loss=0.058760058134794235 epoch=6 and step=120
+2022-03-11 21:13:55,840 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911347517730497 loss=0.04049516096711159 epoch=6 and step=140
+2022-03-11 21:14:03,655 - SplitNNServer - INFO - 35140 - phase=train acc=0.9914596273291926 loss=0.01198999211192131 epoch=6 and step=160
+2022-03-11 21:14:11,172 - SplitNNServer - INFO - 35140 - phase=train acc=0.9916263812154696 loss=0.007689230609685183 epoch=6 and step=180
+2022-03-11 21:14:17,573 - SplitNNServer - INFO - 35140 - phase=train acc=0.9913712686567164 loss=0.07199404388666153 epoch=6 and step=200
+2022-03-11 21:14:25,050 - SplitNNServer - INFO - 35140 - phase=train acc=0.9915865384615384 loss=0.013408830389380455 epoch=6 and step=220
+2022-03-11 21:14:32,848 - SplitNNServer - INFO - 35140 - phase=train acc=0.9911825726141079 loss=0.014686294831335545 epoch=6 and step=240
+2022-03-11 21:16:48,411 - SplitNN_init - INFO - 35456 - process_id: 2, worker_number: 4
+2022-03-11 21:16:48,412 - SplitNN_init - INFO - 5124 - process_id: 3, worker_number: 4
+2022-03-11 21:16:48,414 - SplitNN_init - INFO - 35108 - process_id: 1, worker_number: 4
+2022-03-11 21:17:25,049 - SplitNN_init - INFO - 44964 - process_id: 0, worker_number: 4
+2022-03-11 21:17:25,049 - SplitNN_init - INFO - 42728 - process_id: 2, worker_number: 4
+2022-03-11 21:17:25,052 - SplitNN_init - INFO - 4256 - process_id: 1, worker_number: 4
+2022-03-11 21:17:25,052 - SplitNN_init - INFO - 38248 - process_id: 3, worker_number: 4
+2022-03-11 21:18:45,016 - SplitNN_init - INFO - 10280 - process_id: 3, worker_number: 4
+2022-03-11 21:18:45,016 - SplitNN_init - INFO - 8856 - process_id: 2, worker_number: 4
+2022-03-11 21:18:45,017 - QAQ - INFO - 10280 - vanilla
+2022-03-11 21:18:45,017 - QAQ - INFO - 8856 - vanilla
+2022-03-11 21:18:45,017 - SplitNN_init - INFO - 32876 - process_i2022-03-11 21:18:45,017 - datasetFactory - INFO - 8856 - mnist
+2022-03-11 21:18:45,018 - QAQ - INFO - 32876 - vanilla
+2022-03-11 21:18:45,018 - partitionFactory - INFO - 10280 - dataset is mnist
+2022-03-11 21:18:45,018 - partitionFactory - INFO - 8856 - dataset is mnist
+2022-03-11 21:18:45,018 - datasetFactory - INFO - 32876 - mnist
+2022-03-11 21:18:45,019 - mnistController - INFO - 8856 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001E475D1DF70>>
+
+2022-03-11 21:18:45,019 - cifar10Partition - INFO - 10280 - homo
+2022-03-11 21:18:45,019 - partitionFactory - INFO - 32876 - dataset is mnist
+2022-03-11 21:18:45,019 - mnistController - INFO - 8856 - ./data/mnist
+2022-03-11 21:18:45,020 - mnistController - INFO - 32876 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000016ED850DF70>>
+2022-03-11 21:18:45,020 - cifar10Partition - INFO - 32876 - homo
+2022-03-11 21:18:45,020 - mnistController - INFO - 32876 - ./data/mnist
+2022-03-11 21:18:45,021 - SplitNN_init - INFO - 44276 - process_id: 0, worker_number: 4
+2022-03-11 21:18:45,021 - QAQ - INFO - 44276 - vanilla
+2022-03-11 21:18:45,022 - datasetFactory - INFO - 44276 - mnist
+2022-03-11 21:18:45,023 - partitionFactory - INFO - 44276 - dataset is mnist
+2022-03-11 21:18:45,023 - mnistController - INFO - 44276 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000022FB2C1DF70>>
+2022-03-11 21:18:45,024 - cifar10Partition - INFO - 44276 - homo
+2022-03-11 21:18:45,025 - mnistController - INFO - 44276 - ./data/mnist
+2022-03-11 21:18:45,587 - mnistController - INFO - 8856 - rank = 2, local_sample_number = 20000
+2022-03-11 21:18:45,590 - mnistController - INFO - 10280 - rank = 3, local_sample_number = 20000
+2022-03-11 21:18:45,643 - mnistController - INFO - 32876 - rank = 1, local_sample_number = 20000
+2022-03-11 21:18:45,788 - mnistController - INFO - 32876 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
+022-03-11 21:18:45,788 - mnistController - INFO - 10280 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:18:45,788 - mnistController - INFO - 44276 - test_dl_global number = 156
+2022-03-11 21:18:45,799 - SplitNN_distributed - INFO - 10280 - process_id == client_rank : 3
+2022-03-11 21:18:45,799 - SplitNN_distributed - INFO - 8856 - process_id == client_rank : 2
+2022-03-11 21:18:45,800 - SplitNN_distributed - INFO - 32876 - process_id == client_rank : 1
+2022-03-11 21:18:45,802 - SplitNN_distributed - INFO - 44276 - process_id == server_rank : 0
+2022-03-11 21:18:45,886 - init_server - INFO - 44276 - Server run begin vanilla
+2022-03-11 21:18:45,887 - init_client - INFO - 10280 - Client 3 run begin
+2022-03-11 21:18:45,888 - init_client - INFO - 8856 - Client 2 run begin
+2022-03-11 21:18:45,888 - init_client - INFO - 32876 - Client 1 run begin
+2022-03-11 21:18:46,197 - SplitNNServer - INFO - 44276 - phase=train acc=0.125 loss=2.308110475540161 epoch=0 and step=0
+2022-03-11 21:18:53,506 - SplitNNServer - INFO - 44276 - phase=train acc=0.10119047619047619 loss=2.2900748252868652 epoch=0 and step=20
+2022-03-11 21:27:35,433 - SplitNN_init - INFO - 44288 - process_id: 3, worker_number: 4
+2022-03-11 21:27:35,433 - QAQ - INFO - 44288 - vanilla
+2022-03-11 21:27:35,434 - datasetFactory - INFO - 44288 - mnist
+2022-03-11 21:27:35,434 - SplitNN_init - INFO - 39448 - process_id: 0, worker_number: 4
+2022-03-11 21:27:35,434 - partitionFactory - INFO - 44288 - dataset is mnist
+2022-03-11 21:27:35,435 - QAQ - INFO - 39448 - vanilla
+2022-03-11 21:27:35,435 - mnistController - INFO - 44288 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001D24547EF70>>
+2022-03-11 21:27:35,435 - SplitNN_init - INFO - 44612 - process_id: 2, worker_number: 4
+2022-03-11 21:27:35,435 - cifar10Partition - INFO - 44288 - homo
+2022-03-11 21:27:35,435 - datasetFactory - INFO - 39448 - mnist
+2022-03-11 21:27:35,435 - mnistController - INFO - 44288 - ./data/mnist
+2022-03-11 21:27:35,435 - QAQ - INFO - 44612 - vanilla
+2022-03-11 21:27:35,436 - datasetFactory - INFO - 44612 - mnist
+2022-03-11 21:27:35,436 - partitionFactory - INFO - 39448 - dataset is mnist
+2022-03-11 21:27:35,436 - mnistController - INFO - 39448 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002004331DF70>>
+2022-03-11 21:27:35,436 - partitionFactory - INFO - 44612 - dataset is mnist
+2022-03-11 21:27:35,437 - cifar10Partition - INFO - 39448 - homo
+2022-03-11 21:27:35,437 - mnistController - INFO - 39448 - ./data/mnist
+2022-03-11 21:27:35,437 - mnistController - INFO - 44612 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001DCD4FFDF70>>
+2022-03-11 21:27:35,437 - cifar10Partition - INFO - 44612 - homo
+2022-03-11 21:27:35,437 - mnistController - INFO - 44612 - ./data/mnist
+2022-03-11 21:27:35,440 - SplitNN_init - INFO - 33508 - process_id: 1, worker_number: 4
+2022-03-11 21:27:35,441 - QAQ - INFO - 33508 - vanilla
+2022-03-11 21:27:35,441 - datasetFactory - INFO - 33508 - mnist
+2022-03-11 21:27:35,443 - partitionFactory - INFO - 33508 - dataset is mnist
+2022-03-11 21:27:35,444 - mnistController - INFO - 33508 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000267EF43DF70>>
+2022-03-11 21:27:35,444 - cifar10Partition - INFO - 33508 - homo
+2022-03-11 21:27:35,444 - mnistController - INFO - 33508 - ./data/mnist
+2022-03-11 21:27:35,648 - mnistController - INFO - 44288 - rank = 3, local_sample_number = 20000
+2022-03-11 21:27:35,667 - mnistController - INFO - 33508 - rank = 1, local_sample_number = 20000
+2022-03-11 21:27:35,668 - mnistController - INFO - 44612 - rank = 2, local_sample_number = 20000
+2022-03-11 21:27:35,780 - mnistController - INFO - 39448 - train_dl_global number = 937
+2022-03-11 21:27:35,781 - mnistController - INFO - 39448 - test_dl_global number = 156
+2022-03-11 21:27:35,795 - SplitNN_distributed - INFO - 39448 - process_id == server_rank : 0
+2022-03-11 21:27:35,797 - mnistController - INFO - 44288 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:27:35,807 - SplitNN_distributed - INFO - 44288 - process_id == client_rank : 3
+2022-03-11 21:27:35,840 - mnistController - INFO - 44612 - process_id = 2, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:27:35,849 - mnistController - INFO - 33508 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:27:35,850 - SplitNN_distributed - INFO - 44612 - process_id == client_rank : 2
+2022-03-11 21:27:35,859 - SplitNN_distributed - INFO - 33508 - process_id == client_rank : 1
+2022-03-11 21:27:35,870 - init_server - INFO - 39448 - Server run begin vanilla
+2022-03-11 21:27:35,871 - init_client - INFO - 44288 - Client 3 run begin
+2022-03-11 21:27:35,871 - init_client - INFO - 44612 - Client 2 run begin
+2022-03-11 21:27:35,877 - init_client - INFO - 33508 - Client 1 run begin
+2022-03-11 21:27:36,186 - SplitNNServer - INFO - 39448 - phase=train acc=0.078125 loss=2.3029303550720215 epoch=0 and step=0
+2022-03-11 21:27:45,627 - SplitNNServer - INFO - 39448 - phase=train acc=0.10193452380952381 loss=2.29327130317688 epoch=0 and step=20
+2022-03-11 21:27:52,889 - SplitNNServer - INFO - 39448 - phase=train acc=0.1558689024390244 loss=2.2593994140625 epoch=0 and step=40
+2022-03-11 21:27:59,894 - SplitNNServer - INFO - 39448 - phase=train acc=0.2228483606557377 loss=1.9257075786590576 epoch=0 and step=60
+2022-03-11 21:28:06,909 - SplitNNServer - INFO - 39448 - phase=train acc=0.30709876543209874 loss=0.9418320655822754 epoch=0 and step=80
+2022-03-11 21:28:13,720 - SplitNNServer - INFO - 39448 - phase=train acc=0.39511138613861385 loss=0.5523504018783569 epoch=0 and step=100
+2022-03-11 21:28:21,186 - SplitNNServer - INFO - 39448 - phase=train acc=0.468879132231405 loss=0.3259105384349823 epoch=0 and step=120
+2022-03-11 21:28:28,970 - SplitNNServer - INFO - 39448 - phase=train acc=0.5228280141843972 loss=0.36668407917022705 epoch=0 and step=140
+2022-03-11 21:28:36,156 - SplitNNServer - INFO - 39448 - phase=train acc=0.5693905279503105 loss=0.27610155940055847 epoch=0 and step=160
+2022-03-11 21:28:43,091 - SplitNNServer - INFO - 39448 - phase=train acc=0.6076484806629834 loss=0.2839179039001465 epoch=0 and step=180
+2022-03-11 21:28:50,549 - SplitNNServer - INFO - 39448 - phase=train acc=0.6390702736318408 loss=0.14027522504329681 epoch=0 and step=200
+2022-03-11 21:28:58,034 - SplitNNServer - INFO - 39448 - phase=train acc=0.6655118778280543 loss=0.2053525745868683 epoch=0 and step=220
+2022-03-11 21:29:04,334 - SplitNNServer - INFO - 39448 - phase=train acc=0.6875648340248963 loss=0.10053566098213196 epoch=0 and step=240
+2022-03-11 21:29:11,485 - SplitNNServer - INFO - 39448 - phase=train acc=0.7076748084291188 loss=0.10627835988998413 epoch=0 and step=260
+2022-03-11 21:29:18,972 - SplitNNServer - INFO - 39448 - phase=train acc=0.7251445729537367 loss=0.2776404917240143 epoch=0 and step=280
+2022-03-11 21:29:26,172 - SplitNNServer - INFO - 39448 - phase=train acc=0.7402927740863787 loss=0.14506852626800537 epoch=0 and step=300
+2022-03-11 21:29:29,981 - SplitNNServer - INFO - 39448 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=15024 total_send=14976 total_receive=15024
+2022-03-11 21:30:46,444 - SplitNN_init - INFO - 22924 - process_id: 1, worker_number: 4
+2022-03-11 21:30:46,444 - SplitNN_init - INFO - 31804 - process_id: 3, worker_number: 4
+2022-03-11 21:30:46,444 - SplitNN_init - INFO - 38920 - process_id: 0, worker_number: 4
+2022-03-11 21:30:46,444 - QAQ - INFO - 22924 - vanilla
+2022-03-11 21:30:46,445 - QAQ - INFO - 38920 - vanilla
+2022-03-11 21:30:46,445 - QAQ - INFO - 31804 - vanilla
+2022-03-11 21:30:46,445 - datasetFactory - INFO - 22924 - mnist
+2022-03-11 21:30:46,445 - datasetFactory - INFO - 38920 - mnist
+2022-03-11 21:30:46,445 - datasetFactory - INFO - 31804 - mnist
+2022-03-11 21:30:46,446 - partitionFactory - INFO - 22924 - dataset is mnist
+2022-03-11 21:30:46,446 - partitionFactory - INFO - 31804 - dataset is mnist
+2022-03-11 21:30:46,446 - partitionFactory - INFO - 38920 - dataset is mnist
+2022-03-11 21:30:46,446 - mnistController - INFO - 22924 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002073064DF70>>
+2022-03-11 21:30:46,446 - mnistController - INFO - 31804 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000022E2573DF70>>
+2022-03-11 21:30:46,447 - cifar10Partition - INFO - 22924 - homo
+2022-03-11 21:30:46,447 - cifar10Partition - INFO - 38920 - homo
+2022-03-11 21:30:46,447 - mnistController - INFO - 22924 - ./data/mnist
+2022-03-11 21:30:46,447 - cifar10Partition - INFO - 31804 - homo
+2022-03-11 21:30:46,447 - mnistController - INFO - 38920 - ./data/mnist
+2022-03-11 21:30:46,447 - mnistController - INFO - 31804 - ./data/mnist
+2022-03-11 21:30:46,465 - SplitNN_init - INFO - 35072 - process_id: 2, worker_number: 4
+2022-03-11 21:30:46,466 - QAQ - INFO - 35072 - vanilla
+2022-03-11 21:30:46,467 - datasetFactory - INFO - 35072 - mnist
+2022-03-11 21:30:46,468 - partitionFactory - INFO - 35072 - dataset is mnist
+2022-03-11 21:30:46,469 - mnistController - INFO - 35072 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000248A49ADF70>>
+2022-03-11 21:30:46,469 - cifar10Partition - INFO - 35072 - homo
+2022-03-11 21:30:46,471 - mnistController - INFO - 35072 - ./data/mnist
+2022-03-11 21:30:46,652 - mnistController - INFO - 22924 - rank = 1, local_sample_number = 20000
+2022-03-11 21:30:46,680 - mnistController - INFO - 31804 - rank = 3, local_sample_number = 20000
+2022-03-11 21:30:46,698 - mnistController - INFO - 35072 - rank = 2, local_sample_number = 20000
+2022-03-11 21:30:46,782 - mnistController - INFO - 38920 - train_dl_global number = 937
+2022-03-11 21:30:46,782 - mnistController - INFO - 38920 - test_dl_global number = 156
+2022-03-11 21:30:46,794 - SplitNN_distributed - INFO - 38920 - process_id == server_rank : 0
+2022-03-11 21:30:46,842 - mnistController - INFO - 22924 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:30:46,849 - init_server - INFO - 38920 - Server run begin vanilla
+2022-03-11 21:30:46,851 - mnistController - INFO - 35072 - process_id = 2, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:30:46,853 - SplitNN_distributed - INFO - 22924 - process_id == client_rank : 1
+2022-03-11 21:30:46,860 - mnistController - INFO - 31804 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-11 21:30:46,862 - SplitNN_distributed - INFO - 35072 - process_id == client_rank : 2
+2022-03-11 21:30:46,869 - SplitNN_distributed - INFO - 31804 - process_id == client_rank : 3
+2022-03-11 21:30:46,883 - init_client - INFO - 22924 - Client 1 run begin
+2022-03-11 21:30:46,884 - init_client - INFO - 35072 - Client 2 run begin
+2022-03-11 21:30:46,888 - init_client - INFO - 31804 - Client 3 run begin
+2022-03-11 21:30:47,161 - SplitNNServer - INFO - 38920 - phase=train acc=0.109375 loss=2.296748399734497 epoch=0 and step=0
+2022-03-11 21:30:54,256 - SplitNNServer - INFO - 38920 - phase=train acc=0.11607142857142858 loss=2.282442569732666 epoch=0 and step=20
+2022-03-11 21:31:01,557 - SplitNNServer - INFO - 38920 - phase=train acc=0.20807926829268292 loss=2.1195499897003174 epoch=0 and step=40
+2022-03-11 21:31:09,107 - SplitNNServer - INFO - 38920 - phase=train acc=0.3296618852459016 loss=0.9735627770423889 epoch=0 and step=60
+2022-03-11 21:31:16,285 - SplitNNServer - INFO - 38920 - phase=train acc=0.4216820987654321 loss=0.746874213218689 epoch=0 and step=80
+2022-03-11 21:31:23,738 - SplitNNServer - INFO - 38920 - phase=train acc=0.49597772277227725 loss=0.4799751937389374 epoch=0 and step=100
+2022-03-11 21:31:31,542 - SplitNNServer - INFO - 38920 - phase=train acc=0.5564307851239669 loss=0.3436965048313141 epoch=0 and step=120
+2022-03-11 21:31:38,721 - SplitNNServer - INFO - 38920 - phase=train acc=0.6058289007092199 loss=0.40457844734191895 epoch=0 and step=140
+2022-03-11 21:31:47,100 - SplitNNServer - INFO - 38920 - phase=train acc=0.6429541925465838 loss=0.35437774658203125 epoch=0 and step=160
+2022-03-11 21:31:54,260 - SplitNNServer - INFO - 38920 - phase=train acc=0.6746374309392266 loss=0.1401662975549698 epoch=0 and step=180
+2022-03-11 21:32:01,453 - SplitNNServer - INFO - 38920 - phase=train acc=0.7004819651741293 loss=0.18783752620220184 epoch=0 and step=200
+2022-03-11 21:32:08,932 - SplitNNServer - INFO - 38920 - phase=train acc=0.7229920814479638 loss=0.24254876375198364 epoch=0 and step=220
+2022-03-11 21:32:16,702 - SplitNNServer - INFO - 38920 - phase=train acc=0.7417660788381742 loss=0.20660047233104706 epoch=0 and step=240
+2022-03-11 21:32:23,010 - SplitNNServer - INFO - 38920 - phase=train acc=0.7567049808429118 loss=0.15863469243049622 epoch=0 and step=260
+2022-03-11 21:32:30,138 - SplitNNServer - INFO - 38920 - phase=train acc=0.770017793594306 loss=0.043473485857248306 epoch=0 and step=280
+2022-03-11 21:32:37,573 - SplitNNServer - INFO - 38920 - phase=train acc=0.7826515780730897 loss=0.1091664656996727 epoch=0 and step=300
+2022-03-11 21:32:42,822 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=15024 total_send=14976 total_receive=15024
+2022-03-11 21:33:30,992 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.8464209401709402 loss=0.040814056888304286 epoch=1 and step=468
+2022-03-11 21:33:30,993 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=14976 total_receive=22560
+2022-03-11 21:33:31,297 - SplitNNServer - INFO - 38920 - phase=train acc=0.96875 loss=0.10724151879549026 epoch=1 and step=0
+2022-03-11 21:33:38,796 - SplitNNServer - INFO - 38920 - phase=train acc=0.9575892857142857 loss=0.12178253382444382 epoch=1 and step=20
+2022-03-11 21:33:45,630 - SplitNNServer - INFO - 38920 - phase=train acc=0.9596036585365854 loss=0.06512459367513657 epoch=1 and step=40
+2022-03-11 21:33:52,840 - SplitNNServer - INFO - 38920 - phase=train acc=0.9641393442622951 loss=0.032554592937231064 epoch=1 and step=60
+2022-03-11 21:33:59,752 - SplitNNServer - INFO - 38920 - phase=train acc=0.9646990740740741 loss=0.1416739970445633 epoch=1 and step=80
+2022-03-11 21:34:07,271 - SplitNNServer - INFO - 38920 - phase=train acc=0.963180693069307 loss=0.1205441951751709 epoch=1 and step=100
+2022-03-11 21:34:13,829 - SplitNNServer - INFO - 38920 - phase=train acc=0.9624225206611571 loss=0.04435662180185318 epoch=1 and step=120
+2022-03-11 21:34:21,028 - SplitNNServer - INFO - 38920 - phase=train acc=0.9627659574468085 loss=0.1489475518465042 epoch=1 and step=140
+2022-03-11 21:34:28,466 - SplitNNServer - INFO - 38920 - phase=train acc=0.9633152173913043 loss=0.10901140421628952 epoch=1 and step=160
+2022-03-11 21:34:35,889 - SplitNNServer - INFO - 38920 - phase=train acc=0.9637430939226519 loss=0.02974296174943447 epoch=1 and step=180
+2022-03-11 21:34:42,228 - SplitNNServer - INFO - 38920 - phase=train acc=0.9640080845771144 loss=0.0655486211180687 epoch=1 and step=200
+2022-03-11 21:34:49,698 - SplitNNServer - INFO - 38920 - phase=train acc=0.964225113122172 loss=0.15036827325820923 epoch=1 and step=220
+2022-03-11 21:34:57,763 - SplitNNServer - INFO - 38920 - phase=train acc=0.9647951244813278 loss=0.09220503270626068 epoch=1 and step=240
+2022-03-11 21:35:04,929 - SplitNNServer - INFO - 38920 - phase=train acc=0.9646791187739464 loss=0.0960603877902031 epoch=1 and step=260
+2022-03-11 21:35:12,091 - SplitNNServer - INFO - 38920 - phase=train acc=0.9645796263345195 loss=0.20940059423446655 epoch=1 and step=280
+2022-03-11 21:35:18,369 - SplitNNServer - INFO - 38920 - phase=train acc=0.9649086378737541 loss=0.25802165269851685 epoch=1 and step=300
+2022-03-11 21:35:23,636 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=29952 total_receive=37584
+2022-03-11 21:36:11,829 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9674145299145299 loss=0.02834369250574213 epoch=1 and step=468
+2022-03-11 21:36:11,829 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=29952 total_receive=45120
+2022-03-11 21:36:12,135 - SplitNNServer - INFO - 38920 - phase=train acc=0.96875 loss=0.11939496546983719 epoch=1 and step=0
+2022-03-11 21:36:19,350 - SplitNNServer - INFO - 38920 - phase=train acc=0.9665178571428571 loss=0.05826302245259285 epoch=1 and step=20
+2022-03-11 21:36:26,484 - SplitNNServer - INFO - 38920 - phase=train acc=0.9668445121951219 loss=0.04834093526005745 epoch=1 and step=40
+2022-03-11 21:36:34,017 - SplitNNServer - INFO - 38920 - phase=train acc=0.9659323770491803 loss=0.05575749650597572 epoch=1 and step=60
+2022-03-11 21:36:41,204 - SplitNNServer - INFO - 38920 - phase=train acc=0.9666280864197531 loss=0.12076044082641602 epoch=1 and step=80
+2022-03-11 21:36:47,462 - SplitNNServer - INFO - 38920 - phase=train acc=0.9681311881188119 loss=0.03190549463033676 epoch=1 and step=100
+2022-03-11 21:36:54,976 - SplitNNServer - INFO - 38920 - phase=train acc=0.96849173553719 loss=0.07871440052986145 epoch=1 and step=120
+2022-03-11 21:37:02,188 - SplitNNServer - INFO - 38920 - phase=train acc=0.9703014184397163 loss=0.2286328375339508 epoch=1 and step=140
+2022-03-11 21:37:08,465 - SplitNNServer - INFO - 38920 - phase=train acc=0.9700116459627329 loss=0.17898985743522644 epoch=1 and step=160
+2022-03-11 21:37:15,969 - SplitNNServer - INFO - 38920 - phase=train acc=0.9700448895027625 loss=0.060606829822063446 epoch=1 and step=180
+2022-03-11 21:37:23,946 - SplitNNServer - INFO - 38920 - phase=train acc=0.9708488805970149 loss=0.024177368730306625 epoch=1 and step=200
+2022-03-11 21:37:31,384 - SplitNNServer - INFO - 38920 - phase=train acc=0.9716487556561086 loss=0.07336476445198059 epoch=1 and step=220
+2022-03-11 21:37:38,611 - SplitNNServer - INFO - 38920 - phase=train acc=0.9721213692946058 loss=0.12431716173887253 epoch=1 and step=240
+2022-03-11 21:37:45,484 - SplitNNServer - INFO - 38920 - phase=train acc=0.9725215517241379 loss=0.039649028331041336 epoch=1 and step=260
+2022-03-11 21:37:51,759 - SplitNNServer - INFO - 38920 - phase=train acc=0.9721975088967971 loss=0.24208800494670868 epoch=1 and step=280
+2022-03-11 21:37:59,200 - SplitNNServer - INFO - 38920 - phase=train acc=0.9727990033222591 loss=0.015152913518249989 epoch=1 and step=300
+2022-03-11 21:38:03,822 - SplitNNServer - INFO - 38920 - worker_num=3 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=44928 total_receive=60144
+2022-03-11 21:38:52,006 - SplitNNServer - INFO - 38920 - worker=3 phase=validation acc=0.9739917200854701 loss=0.025999712640231546 epoch=1 and step=468
+2022-03-11 21:38:52,006 - SplitNNServer - INFO - 38920 - worker_num=1 phase=train server: epoch_send=0 epoch_receive=7536 total_send=44928 total_receive=67680
+2022-03-11 21:38:52,313 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.04858344420790672 epoch=1 and step=0
+2022-03-11 21:38:58,596 - SplitNNServer - INFO - 38920 - phase=train acc=0.9806547619047619 loss=0.04454730078577995 epoch=1 and step=20
+2022-03-11 21:39:05,720 - SplitNNServer - INFO - 38920 - phase=train acc=0.977515243902439 loss=0.10835988074541092 epoch=1 and step=40
+2022-03-11 21:39:13,169 - SplitNNServer - INFO - 38920 - phase=train acc=0.977202868852459 loss=0.030265241861343384 epoch=1 and step=60
+2022-03-11 21:39:20,344 - SplitNNServer - INFO - 38920 - phase=train acc=0.9783950617283951 loss=0.014011595398187637 epoch=1 and step=80
+2022-03-11 21:39:28,112 - SplitNNServer - INFO - 38920 - phase=train acc=0.9797339108910891 loss=0.037419091910123825 epoch=1 and step=100
+2022-03-11 21:39:35,285 - SplitNNServer - INFO - 38920 - phase=train acc=0.9802427685950413 loss=0.12771350145339966 epoch=1 and step=120
+2022-03-11 21:39:42,724 - SplitNNServer - INFO - 38920 - phase=train acc=0.980718085106383 loss=0.026910535991191864 epoch=1 and step=140
+2022-03-11 21:39:49,882 - SplitNNServer - INFO - 38920 - phase=train acc=0.9803959627329193 loss=0.015347262844443321 epoch=1 and step=160
+2022-03-11 21:39:56,796 - SplitNNServer - INFO - 38920 - phase=train acc=0.9799723756906077 loss=0.15554729104042053 epoch=1 and step=180
+2022-03-11 21:40:03,641 - SplitNNServer - INFO - 38920 - phase=train acc=0.9800217661691543 loss=0.049319230020046234 epoch=1 and step=200
+2022-03-11 21:40:11,041 - SplitNNServer - INFO - 38920 - phase=train acc=0.9792845022624435 loss=0.11236514151096344 epoch=1 and step=220
+2022-03-11 21:40:18,197 - SplitNNServer - INFO - 38920 - phase=train acc=0.9793827800829875 loss=0.15650899708271027 epoch=1 and step=240
+2022-03-11 21:40:25,342 - SplitNNServer - INFO - 38920 - phase=train acc=0.9795857279693486 loss=0.10347568243741989 epoch=1 and step=260
+2022-03-11 21:40:33,116 - SplitNNServer - INFO - 38920 - phase=train acc=0.9792593416370107 loss=0.05053168907761574 epoch=1 and step=280
+2022-03-11 21:40:40,275 - SplitNNServer - INFO - 38920 - phase=train acc=0.9790282392026578 loss=0.012164631858468056 epoch=1 and step=300
+2022-03-11 21:40:44,031 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=59904 total_receive=82704
+2022-03-11 21:41:32,475 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.9795339209401709 loss=0.019644706003582074 epoch=2 and step=468
+2022-03-11 21:41:32,475 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=59904 total_receive=90240
+2022-03-11 21:41:32,788 - SplitNNServer - INFO - 38920 - phase=train acc=0.96875 loss=0.09886784851551056 epoch=2 and step=0
+2022-03-11 21:41:39,939 - SplitNNServer - INFO - 38920 - phase=train acc=0.9836309523809523 loss=0.012174868024885654 epoch=2 and step=20
+2022-03-11 21:41:47,088 - SplitNNServer - INFO - 38920 - phase=train acc=0.9858993902439024 loss=0.11340484768152237 epoch=2 and step=40
+2022-03-11 21:41:53,329 - SplitNNServer - INFO - 38920 - phase=train acc=0.9848872950819673 loss=0.05351297929883003 epoch=2 and step=60
+2022-03-11 21:42:00,516 - SplitNNServer - INFO - 38920 - phase=train acc=0.9828317901234568 loss=0.105843186378479 epoch=2 and step=80
+2022-03-11 21:42:07,693 - SplitNNServer - INFO - 38920 - phase=train acc=0.9829826732673267 loss=0.01055934652686119 epoch=2 and step=100
+2022-03-11 21:42:15,133 - SplitNNServer - INFO - 38920 - phase=train acc=0.9826962809917356 loss=0.04521459341049194 epoch=2 and step=120
+2022-03-11 21:42:22,871 - SplitNNServer - INFO - 38920 - phase=train acc=0.9831560283687943 loss=0.042716968804597855 epoch=2 and step=140
+2022-03-11 21:42:30,289 - SplitNNServer - INFO - 38920 - phase=train acc=0.9829192546583851 loss=0.032351136207580566 epoch=2 and step=160
+2022-03-11 21:42:36,530 - SplitNNServer - INFO - 38920 - phase=train acc=0.9819578729281768 loss=0.023591486737132072 epoch=2 and step=180
+2022-03-11 21:42:43,671 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814987562189055 loss=0.030367087572813034 epoch=2 and step=200
+2022-03-11 21:42:51,122 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814762443438914 loss=0.07796978205442429 epoch=2 and step=220
+2022-03-11 21:42:58,247 - SplitNNServer - INFO - 38920 - phase=train acc=0.9810036307053942 loss=0.03651343286037445 epoch=2 and step=240
+2022-03-11 21:43:05,438 - SplitNNServer - INFO - 38920 - phase=train acc=0.9812021072796935 loss=0.09177107363939285 epoch=2 and step=260
+2022-03-11 21:43:12,623 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814279359430605 loss=0.014779865741729736 epoch=2 and step=280
+2022-03-11 21:43:19,755 - SplitNNServer - INFO - 38920 - phase=train acc=0.981468023255814 loss=0.08323720842599869 epoch=2 and step=300
+2022-03-11 21:43:23,511 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=74880 total_receive=105264
+2022-03-11 21:44:11,844 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9826722756410257 loss=0.015538457598602255 epoch=2 and step=468
+2022-03-11 21:44:11,844 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=74880 total_receive=112800
+2022-03-11 21:44:12,150 - SplitNNServer - INFO - 38920 - phase=train acc=0.96875 loss=0.06447800248861313 epoch=2 and step=0
+2022-03-11 21:44:18,373 - SplitNNServer - INFO - 38920 - phase=train acc=0.9784226190476191 loss=0.03304870054125786 epoch=2 and step=20
+2022-03-11 21:44:25,865 - SplitNNServer - INFO - 38920 - phase=train acc=0.9801829268292683 loss=0.03814170882105827 epoch=2 and step=40
+2022-03-11 21:44:33,339 - SplitNNServer - INFO - 38920 - phase=train acc=0.9810450819672131 loss=0.011660093441605568 epoch=2 and step=60
+2022-03-11 21:44:40,435 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814814814814815 loss=0.028711166232824326 epoch=2 and step=80
+2022-03-11 21:44:47,601 - SplitNNServer - INFO - 38920 - phase=train acc=0.9808168316831684 loss=0.008259053342044353 epoch=2 and step=100
+2022-03-11 21:44:54,789 - SplitNNServer - INFO - 38920 - phase=train acc=0.9799845041322314 loss=0.04705271124839783 epoch=2 and step=120
+2022-03-11 21:45:02,127 - SplitNNServer - INFO - 38920 - phase=train acc=0.9810505319148937 loss=0.010360329411923885 epoch=2 and step=140
+2022-03-11 21:45:08,404 - SplitNNServer - INFO - 38920 - phase=train acc=0.9816576086956522 loss=0.004783429205417633 epoch=2 and step=160
+2022-03-11 21:45:15,877 - SplitNNServer - INFO - 38920 - phase=train acc=0.9816125690607734 loss=0.07741575688123703 epoch=2 and step=180
+2022-03-11 21:45:23,286 - SplitNNServer - INFO - 38920 - phase=train acc=0.9813432835820896 loss=0.011373240500688553 epoch=2 and step=200
+2022-03-11 21:45:31,060 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814762443438914 loss=0.0882938951253891 epoch=2 and step=220
+2022-03-11 21:45:38,840 - SplitNNServer - INFO - 38920 - phase=train acc=0.9815871369294605 loss=0.018056141212582588 epoch=2 and step=240
+2022-03-11 21:45:45,368 - SplitNNServer - INFO - 38920 - phase=train acc=0.9818606321839081 loss=0.05264487862586975 epoch=2 and step=260
+2022-03-11 21:45:52,827 - SplitNNServer - INFO - 38920 - phase=train acc=0.9814279359430605 loss=0.06044023483991623 epoch=2 and step=280
+2022-03-11 21:46:00,255 - SplitNNServer - INFO - 38920 - phase=train acc=0.9813642026578073 loss=0.08748704195022583 epoch=2 and step=300
+2022-03-11 21:46:04,025 - SplitNNServer - INFO - 38920 - worker_num=3 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=89856 total_receive=127824
+2022-03-11 21:46:52,253 - SplitNNServer - INFO - 38920 - worker=3 phase=validation acc=0.9824719551282052 loss=0.016077500597425062 epoch=2 and step=468
+2022-03-11 21:46:52,253 - SplitNNServer - INFO - 38920 - worker_num=1 phase=train server: epoch_send=0 epoch_receive=7536 total_send=89856 total_receive=135360
+2022-03-11 21:46:52,555 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.016783028841018677 epoch=2 and step=0
+2022-03-11 21:47:00,282 - SplitNNServer - INFO - 38920 - phase=train acc=0.9903273809523809 loss=0.04357032850384712 epoch=2 and step=20
+2022-03-11 21:47:07,149 - SplitNNServer - INFO - 38920 - phase=train acc=0.9900914634146342 loss=0.044837646186351776 epoch=2 and step=40
+2022-03-11 21:47:13,686 - SplitNNServer - INFO - 38920 - phase=train acc=0.9877049180327869 loss=0.0044005634263157845 epoch=2 and step=60
+2022-03-11 21:47:21,175 - SplitNNServer - INFO - 38920 - phase=train acc=0.9866898148148148 loss=0.07953425496816635 epoch=2 and step=80
+2022-03-11 21:47:28,639 - SplitNNServer - INFO - 38920 - phase=train acc=0.9860767326732673 loss=0.00544801726937294 epoch=2 and step=100
+2022-03-11 21:47:35,800 - SplitNNServer - INFO - 38920 - phase=train acc=0.9860537190082644 loss=0.00809922069311142 epoch=2 and step=120
+2022-03-11 21:47:43,506 - SplitNNServer - INFO - 38920 - phase=train acc=0.9851507092198581 loss=0.14481255412101746 epoch=2 and step=140
+2022-03-11 21:47:50,636 - SplitNNServer - INFO - 38920 - phase=train acc=0.984957298136646 loss=0.01578843779861927 epoch=2 and step=160
+2022-03-11 21:47:58,085 - SplitNNServer - INFO - 38920 - phase=train acc=0.9856698895027625 loss=0.007801213301718235 epoch=2 and step=180
+2022-03-11 21:48:05,282 - SplitNNServer - INFO - 38920 - phase=train acc=0.9857742537313433 loss=0.009673893451690674 epoch=2 and step=200
+2022-03-11 21:48:11,832 - SplitNNServer - INFO - 38920 - phase=train acc=0.9857890271493213 loss=0.0176237765699625 epoch=2 and step=220
+2022-03-11 21:48:19,290 - SplitNNServer - INFO - 38920 - phase=train acc=0.9852826763485477 loss=0.05574420467019081 epoch=2 and step=240
+2022-03-11 21:48:27,470 - SplitNNServer - INFO - 38920 - phase=train acc=0.9848539272030651 loss=0.006054019555449486 epoch=2 and step=260
+2022-03-11 21:48:34,653 - SplitNNServer - INFO - 38920 - phase=train acc=0.984931049822064 loss=0.01028005313128233 epoch=2 and step=280
+2022-03-11 21:48:41,852 - SplitNNServer - INFO - 38920 - phase=train acc=0.9852055647840532 loss=0.05829878896474838 epoch=2 and step=300
+2022-03-11 21:48:45,643 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=104832 total_receive=150384
+2022-03-11 21:49:33,882 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.9857104700854701 loss=0.014641224550406408 epoch=3 and step=468
+2022-03-11 21:49:33,882 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=104832 total_receive=157920
+2022-03-11 21:49:34,191 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.005914111156016588 epoch=3 and step=0
+2022-03-11 21:49:41,340 - SplitNNServer - INFO - 38920 - phase=train acc=0.9903273809523809 loss=0.012196225114166737 epoch=3 and step=20
+2022-03-11 21:49:48,501 - SplitNNServer - INFO - 38920 - phase=train acc=0.9866615853658537 loss=0.1058904305100441 epoch=3 and step=40
+2022-03-11 21:49:54,774 - SplitNNServer - INFO - 38920 - phase=train acc=0.9882172131147541 loss=0.016304511576890945 epoch=3 and step=60
+2022-03-11 21:50:02,214 - SplitNNServer - INFO - 38920 - phase=train acc=0.9888117283950617 loss=0.012265202589333057 epoch=3 and step=80
+2022-03-11 21:50:09,974 - SplitNNServer - INFO - 38920 - phase=train acc=0.9891707920792079 loss=0.06761236488819122 epoch=3 and step=100
+2022-03-11 21:50:17,381 - SplitNNServer - INFO - 38920 - phase=train acc=0.9879907024793388 loss=0.025849871337413788 epoch=3 and step=120
+2022-03-11 21:50:25,148 - SplitNNServer - INFO - 38920 - phase=train acc=0.9876994680851063 loss=0.0553983710706234 epoch=3 and step=140
+2022-03-11 21:50:32,925 - SplitNNServer - INFO - 38920 - phase=train acc=0.9870923913043478 loss=0.02309371344745159 epoch=3 and step=160
+2022-03-11 21:50:40,400 - SplitNNServer - INFO - 38920 - phase=train acc=0.9872237569060773 loss=0.038841236382722855 epoch=3 and step=180
+2022-03-11 21:50:47,288 - SplitNNServer - INFO - 38920 - phase=train acc=0.9870957711442786 loss=0.08001285791397095 epoch=3 and step=200
+2022-03-11 21:50:54,782 - SplitNNServer - INFO - 38920 - phase=train acc=0.9872030542986425 loss=0.004217382986098528 epoch=3 and step=220
+2022-03-11 21:51:01,618 - SplitNNServer - INFO - 38920 - phase=train acc=0.9872276970954357 loss=0.07406052947044373 epoch=3 and step=240
+2022-03-11 21:51:09,058 - SplitNNServer - INFO - 38920 - phase=train acc=0.9871288314176245 loss=0.05081595480442047 epoch=3 and step=260
+2022-03-11 21:51:15,317 - SplitNNServer - INFO - 38920 - phase=train acc=0.9874332740213523 loss=0.10075408220291138 epoch=3 and step=280
+2022-03-11 21:51:22,494 - SplitNNServer - INFO - 38920 - phase=train acc=0.9873857973421927 loss=0.059074029326438904 epoch=3 and step=300
+2022-03-11 21:51:27,486 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=119808 total_receive=172944
+2022-03-11 21:52:16,069 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9867454594017094 loss=0.013686708789744163 epoch=3 and step=468
+2022-03-11 21:52:16,069 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=119808 total_receive=180480
+2022-03-11 21:52:16,377 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.0055342018604278564 epoch=3 and step=0
+2022-03-11 21:52:24,378 - SplitNNServer - INFO - 38920 - phase=train acc=0.9851190476190477 loss=0.04131196066737175 epoch=3 and step=20
+2022-03-11 21:52:30,696 - SplitNNServer - INFO - 38920 - phase=train acc=0.9851371951219512 loss=0.01179078035056591 epoch=3 and step=40
+2022-03-11 21:52:37,895 - SplitNNServer - INFO - 38920 - phase=train acc=0.9836065573770492 loss=0.0888701006770134 epoch=3 and step=60
+2022-03-11 21:52:45,076 - SplitNNServer - INFO - 38920 - phase=train acc=0.9837962962962963 loss=0.011937272734940052 epoch=3 and step=80
+2022-03-11 21:52:52,555 - SplitNNServer - INFO - 38920 - phase=train acc=0.9834467821782178 loss=0.16323871910572052 epoch=3 and step=100
+2022-03-11 21:53:00,017 - SplitNNServer - INFO - 38920 - phase=train acc=0.984375 loss=0.014698406681418419 epoch=3 and step=120
+2022-03-11 21:53:08,061 - SplitNNServer - INFO - 38920 - phase=train acc=0.9845966312056738 loss=0.030172614380717278 epoch=3 and step=140
+2022-03-11 21:53:15,513 - SplitNNServer - INFO - 38920 - phase=train acc=0.9850543478260869 loss=0.02905477210879326 epoch=3 and step=160
+2022-03-11 21:53:21,772 - SplitNNServer - INFO - 38920 - phase=train acc=0.9853245856353591 loss=0.0065461415797472 epoch=3 and step=180
+2022-03-11 21:53:29,502 - SplitNNServer - INFO - 38920 - phase=train acc=0.9853078358208955 loss=0.08153466880321503 epoch=3 and step=200
+2022-03-11 21:53:36,978 - SplitNNServer - INFO - 38920 - phase=train acc=0.9855769230769231 loss=0.04664795473217964 epoch=3 and step=220
+2022-03-11 21:53:44,492 - SplitNNServer - INFO - 38920 - phase=train acc=0.9858013485477178 loss=0.023836774751544 epoch=3 and step=240
+2022-03-11 21:53:52,278 - SplitNNServer - INFO - 38920 - phase=train acc=0.9861709770114943 loss=0.04529491439461708 epoch=3 and step=260
+2022-03-11 21:54:00,078 - SplitNNServer - INFO - 38920 - phase=train acc=0.9863767793594306 loss=0.0354788713157177 epoch=3 and step=280
+2022-03-11 21:54:06,929 - SplitNNServer - INFO - 38920 - phase=train acc=0.985984219269103 loss=0.15443570911884308 epoch=3 and step=300
+2022-03-11 21:54:11,556 - SplitNNServer - INFO - 38920 - worker_num=3 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=134784 total_receive=195504
+2022-03-11 21:54:59,877 - SplitNNServer - INFO - 38920 - worker=3 phase=validation acc=0.9854433760683761 loss=0.014608372807703987 epoch=3 and step=468
+2022-03-11 21:54:59,877 - SplitNNServer - INFO - 38920 - worker_num=1 phase=train server: epoch_send=0 epoch_receive=7536 total_send=134784 total_receive=203040
+2022-03-11 21:55:00,188 - SplitNNServer - INFO - 38920 - phase=train acc=0.984375 loss=0.041811950504779816 epoch=3 and step=0
+2022-03-11 21:55:07,690 - SplitNNServer - INFO - 38920 - phase=train acc=0.9918154761904762 loss=0.015841767191886902 epoch=3 and step=20
+2022-03-11 21:55:14,864 - SplitNNServer - INFO - 38920 - phase=train acc=0.993140243902439 loss=0.01982402242720127 epoch=3 and step=40
+2022-03-11 21:55:22,380 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925717213114754 loss=0.04528312757611275 epoch=3 and step=60
+2022-03-11 21:55:30,161 - SplitNNServer - INFO - 38920 - phase=train acc=0.9913194444444444 loss=0.04732774198055267 epoch=3 and step=80
+2022-03-11 21:55:37,584 - SplitNNServer - INFO - 38920 - phase=train acc=0.9900990099009901 loss=0.06508888304233551 epoch=3 and step=100
+2022-03-11 21:55:45,024 - SplitNNServer - INFO - 38920 - phase=train acc=0.990573347107438 loss=0.005376060493290424 epoch=3 and step=120
+2022-03-11 21:55:52,503 - SplitNNServer - INFO - 38920 - phase=train acc=0.9904698581560284 loss=0.022352611646056175 epoch=3 and step=140
+2022-03-11 21:55:59,946 - SplitNNServer - INFO - 38920 - phase=train acc=0.9896156832298136 loss=0.10964466631412506 epoch=3 and step=160
+2022-03-11 21:56:06,807 - SplitNNServer - INFO - 38920 - phase=train acc=0.9890366022099447 loss=0.010565265081822872 epoch=3 and step=180
+2022-03-11 21:56:13,940 - SplitNNServer - INFO - 38920 - phase=train acc=0.9891946517412935 loss=0.04695558175444603 epoch=3 and step=200
+2022-03-11 21:56:21,402 - SplitNNServer - INFO - 38920 - phase=train acc=0.9889705882352942 loss=0.07250729203224182 epoch=3 and step=220
+2022-03-11 21:56:28,909 - SplitNNServer - INFO - 38920 - phase=train acc=0.9882650414937759 loss=0.20444197952747345 epoch=3 and step=240
+2022-03-11 21:56:36,366 - SplitNNServer - INFO - 38920 - phase=train acc=0.9885057471264368 loss=0.03319090977311134 epoch=3 and step=260
+2022-03-11 21:56:42,910 - SplitNNServer - INFO - 38920 - phase=train acc=0.988211743772242 loss=0.12127167731523514 epoch=3 and step=280
+2022-03-11 21:56:50,082 - SplitNNServer - INFO - 38920 - phase=train acc=0.9882682724252492 loss=0.01567934639751911 epoch=3 and step=300
+2022-03-11 21:56:53,868 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=149760 total_receive=218064
+2022-03-11 21:57:42,148 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.9881477029914529 loss=0.012503367335863689 epoch=4 and step=468
+2022-03-11 21:57:42,148 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=149760 total_receive=225600
+2022-03-11 21:57:42,457 - SplitNNServer - INFO - 38920 - phase=train acc=0.984375 loss=0.025556739419698715 epoch=4 and step=0
+2022-03-11 21:57:49,931 - SplitNNServer - INFO - 38920 - phase=train acc=0.9947916666666666 loss=0.08026669174432755 epoch=4 and step=20
+2022-03-11 21:57:57,699 - SplitNNServer - INFO - 38920 - phase=train acc=0.9919969512195121 loss=0.02591882087290287 epoch=4 and step=40
+2022-03-11 21:58:03,957 - SplitNNServer - INFO - 38920 - phase=train acc=0.9879610655737705 loss=0.010240312665700912 epoch=4 and step=60
+2022-03-11 21:58:11,777 - SplitNNServer - INFO - 38920 - phase=train acc=0.9878472222222222 loss=0.07698869705200195 epoch=4 and step=80
+2022-03-11 21:58:18,345 - SplitNNServer - INFO - 38920 - phase=train acc=0.9883972772277227 loss=0.02079423889517784 epoch=4 and step=100
+2022-03-11 21:58:25,859 - SplitNNServer - INFO - 38920 - phase=train acc=0.9882489669421488 loss=0.06865782290697098 epoch=4 and step=120
+2022-03-11 21:58:33,616 - SplitNNServer - INFO - 38920 - phase=train acc=0.9889184397163121 loss=0.02359805628657341 epoch=4 and step=140
+2022-03-11 21:58:41,721 - SplitNNServer - INFO - 38920 - phase=train acc=0.9891304347826086 loss=0.029256321489810944 epoch=4 and step=160
+2022-03-11 21:58:49,432 - SplitNNServer - INFO - 38920 - phase=train acc=0.9890366022099447 loss=0.18398070335388184 epoch=4 and step=180
+2022-03-11 21:58:56,292 - SplitNNServer - INFO - 38920 - phase=train acc=0.9894278606965174 loss=0.043681975454092026 epoch=4 and step=200
+2022-03-11 21:59:03,104 - SplitNNServer - INFO - 38920 - phase=train acc=0.9894654977375565 loss=0.00691569410264492 epoch=4 and step=220
+2022-03-11 21:59:10,523 - SplitNNServer - INFO - 38920 - phase=train acc=0.9894320539419087 loss=0.06527836620807648 epoch=4 and step=240
+2022-03-11 21:59:17,690 - SplitNNServer - INFO - 38920 - phase=train acc=0.9893438697318008 loss=0.009015718474984169 epoch=4 and step=260
+2022-03-11 21:59:25,207 - SplitNNServer - INFO - 38920 - phase=train acc=0.989435053380783 loss=0.06050274893641472 epoch=4 and step=280
+2022-03-11 21:59:32,991 - SplitNNServer - INFO - 38920 - phase=train acc=0.9893064784053156 loss=0.03187546506524086 epoch=4 and step=300
+2022-03-11 21:59:36,754 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=164736 total_receive=240624
+2022-03-11 22:00:24,929 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9888822115384616 loss=0.012875575442311132 epoch=4 and step=468
+2022-03-11 22:00:24,929 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=164736 total_receive=248160
+2022-03-11 22:00:25,241 - SplitNNServer - INFO - 38920 - phase=train acc=0.984375 loss=0.0515192449092865 epoch=4 and step=0
+2022-03-11 22:00:31,809 - SplitNNServer - INFO - 38920 - phase=train acc=0.9851190476190477 loss=0.05851123854517937 epoch=4 and step=20
+2022-03-11 22:00:39,560 - SplitNNServer - INFO - 38920 - phase=train acc=0.9870426829268293 loss=0.07680930942296982 epoch=4 and step=40
+2022-03-11 22:00:45,797 - SplitNNServer - INFO - 38920 - phase=train acc=0.9879610655737705 loss=0.012098025530576706 epoch=4 and step=60
+2022-03-11 22:00:53,922 - SplitNNServer - INFO - 38920 - phase=train acc=0.9886188271604939 loss=0.0032693129032850266 epoch=4 and step=80
+2022-03-11 22:01:02,017 - SplitNNServer - INFO - 38920 - phase=train acc=0.989480198019802 loss=0.013585411012172699 epoch=4 and step=100
+2022-03-11 22:01:09,113 - SplitNNServer - INFO - 38920 - phase=train acc=0.9900568181818182 loss=0.001112672733142972 epoch=4 and step=120
+2022-03-11 22:01:15,963 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902482269503546 loss=0.044237054884433746 epoch=4 and step=140
+2022-03-11 22:01:23,404 - SplitNNServer - INFO - 38920 - phase=train acc=0.9901979813664596 loss=0.10919000953435898 epoch=4 and step=160
+2022-03-11 22:01:30,613 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902451657458563 loss=0.018786493688821793 epoch=4 and step=180
+2022-03-11 22:01:38,095 - SplitNNServer - INFO - 38920 - phase=train acc=0.990282960199005 loss=0.016172748059034348 epoch=4 and step=200
+2022-03-11 22:01:45,600 - SplitNNServer - INFO - 38920 - phase=train acc=0.9903139140271493 loss=0.008577646687626839 epoch=4 and step=220
+2022-03-11 22:01:52,755 - SplitNNServer - INFO - 38920 - phase=train acc=0.9901452282157677 loss=0.016570035368204117 epoch=4 and step=240
+2022-03-11 22:01:59,279 - SplitNNServer - INFO - 38920 - phase=train acc=0.990301724137931 loss=0.028017789125442505 epoch=4 and step=260
+2022-03-11 22:02:06,444 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902135231316725 loss=0.009635258466005325 epoch=4 and step=280
+2022-03-11 22:02:14,251 - SplitNNServer - INFO - 38920 - phase=train acc=0.9896179401993356 loss=0.015590762719511986 epoch=4 and step=300
+2022-03-11 22:02:18,005 - SplitNNServer - INFO - 38920 - worker_num=3 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=179712 total_receive=263184
+2022-03-11 22:03:06,232 - SplitNNServer - INFO - 38920 - worker=3 phase=validation acc=0.989082532051282 loss=0.01200435552233942 epoch=4 and step=468
+2022-03-11 22:03:06,233 - SplitNNServer - INFO - 38920 - worker_num=1 phase=train server: epoch_send=0 epoch_receive=7536 total_send=179712 total_receive=270720
+2022-03-11 22:03:06,537 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.026940880343317986 epoch=4 and step=0
+2022-03-11 22:03:13,652 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925595238095238 loss=0.03446298837661743 epoch=4 and step=20
+2022-03-11 22:03:21,037 - SplitNNServer - INFO - 38920 - phase=train acc=0.993140243902439 loss=0.03155112639069557 epoch=4 and step=40
+2022-03-11 22:03:28,810 - SplitNNServer - INFO - 38920 - phase=train acc=0.9930840163934426 loss=0.00274134473875165 epoch=4 and step=60
+2022-03-11 22:03:35,053 - SplitNNServer - INFO - 38920 - phase=train acc=0.9936342592592593 loss=0.0067763617262244225 epoch=4 and step=80
+2022-03-11 22:03:42,183 - SplitNNServer - INFO - 38920 - phase=train acc=0.9931930693069307 loss=0.031913433223962784 epoch=4 and step=100
+2022-03-11 22:03:49,319 - SplitNNServer - INFO - 38920 - phase=train acc=0.9918646694214877 loss=0.007024093996733427 epoch=4 and step=120
+2022-03-11 22:03:57,065 - SplitNNServer - INFO - 38920 - phase=train acc=0.9906914893617021 loss=0.03929253667593002 epoch=4 and step=140
+2022-03-11 22:04:04,234 - SplitNNServer - INFO - 38920 - phase=train acc=0.9908773291925466 loss=0.0415983721613884 epoch=4 and step=160
+2022-03-11 22:04:11,334 - SplitNNServer - INFO - 38920 - phase=train acc=0.990417817679558 loss=0.04847291484475136 epoch=4 and step=180
+2022-03-11 22:04:19,084 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902052238805971 loss=0.026548447087407112 epoch=4 and step=200
+2022-03-11 22:04:27,142 - SplitNNServer - INFO - 38920 - phase=train acc=0.9901018099547512 loss=0.05033334344625473 epoch=4 and step=220
+2022-03-11 22:04:34,288 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902748962655602 loss=0.004217678215354681 epoch=4 and step=240
+2022-03-11 22:04:40,822 - SplitNNServer - INFO - 38920 - phase=train acc=0.9905411877394636 loss=0.027877628803253174 epoch=4 and step=260
+2022-03-11 22:04:47,931 - SplitNNServer - INFO - 38920 - phase=train acc=0.9903247330960854 loss=0.11641737073659897 epoch=4 and step=280
+2022-03-11 22:04:55,384 - SplitNNServer - INFO - 38920 - phase=train acc=0.9901889534883721 loss=0.01946570910513401 epoch=4 and step=300
+2022-03-11 22:05:00,339 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=194688 total_receive=285744
+2022-03-11 22:05:48,621 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.9886485042735043 loss=0.014537969249633735 epoch=5 and step=468
+2022-03-11 22:05:48,621 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=194688 total_receive=293280
+2022-03-11 22:05:48,932 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.023908395320177078 epoch=5 and step=0
+2022-03-11 22:05:56,069 - SplitNNServer - INFO - 38920 - phase=train acc=0.9888392857142857 loss=0.01518806628882885 epoch=5 and step=20
+2022-03-11 22:06:03,501 - SplitNNServer - INFO - 38920 - phase=train acc=0.9885670731707317 loss=0.005542177706956863 epoch=5 and step=40
+2022-03-11 22:06:10,969 - SplitNNServer - INFO - 38920 - phase=train acc=0.9902663934426229 loss=0.08086604624986649 epoch=5 and step=60
+2022-03-11 22:06:17,793 - SplitNNServer - INFO - 38920 - phase=train acc=0.9901620370370371 loss=0.03978991508483887 epoch=5 and step=80
+2022-03-11 22:06:25,215 - SplitNNServer - INFO - 38920 - phase=train acc=0.9904084158415841 loss=0.012588742189109325 epoch=5 and step=100
+2022-03-11 22:06:32,050 - SplitNNServer - INFO - 38920 - phase=train acc=0.9909607438016529 loss=0.03851225599646568 epoch=5 and step=120
+2022-03-11 22:06:39,491 - SplitNNServer - INFO - 38920 - phase=train acc=0.990802304964539 loss=0.011182406917214394 epoch=5 and step=140
+2022-03-11 22:06:46,755 - SplitNNServer - INFO - 38920 - phase=train acc=0.9907802795031055 loss=0.009796548634767532 epoch=5 and step=160
+2022-03-11 22:06:54,218 - SplitNNServer - INFO - 38920 - phase=train acc=0.9912810773480663 loss=0.004632779397070408 epoch=5 and step=180
+2022-03-11 22:07:01,715 - SplitNNServer - INFO - 38920 - phase=train acc=0.9912157960199005 loss=0.014602615498006344 epoch=5 and step=200
+2022-03-11 22:07:08,947 - SplitNNServer - INFO - 38920 - phase=train acc=0.991091628959276 loss=0.06017313525080681 epoch=5 and step=220
+2022-03-11 22:07:16,493 - SplitNNServer - INFO - 38920 - phase=train acc=0.9911177385892116 loss=0.007880037650465965 epoch=5 and step=240
+2022-03-11 22:07:23,034 - SplitNNServer - INFO - 38920 - phase=train acc=0.991139846743295 loss=0.0021148277446627617 epoch=5 and step=260
+2022-03-11 22:07:30,434 - SplitNNServer - INFO - 38920 - phase=train acc=0.9912700177935944 loss=0.035069119185209274 epoch=5 and step=280
+2022-03-11 22:07:37,307 - SplitNNServer - INFO - 38920 - phase=train acc=0.9912271594684385 loss=0.006034220568835735 epoch=5 and step=300
+2022-03-11 22:07:41,948 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=209664 total_receive=308304
+2022-03-11 22:08:30,417 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9887820512820513 loss=0.015509402929505723 epoch=5 and step=468
+2022-03-11 22:08:30,417 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=209664 total_receive=315840
+2022-03-11 22:08:30,731 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.02186580002307892 epoch=5 and step=0
+2022-03-11 22:08:38,428 - SplitNNServer - INFO - 38920 - phase=train acc=0.9940476190476191 loss=0.022541439160704613 epoch=5 and step=20
+2022-03-11 22:08:45,553 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935213414634146 loss=0.014123511500656605 epoch=5 and step=40
+2022-03-11 22:08:52,362 - SplitNNServer - INFO - 38920 - phase=train acc=0.9933401639344263 loss=0.004955983255058527 epoch=5 and step=60
+2022-03-11 22:08:59,212 - SplitNNServer - INFO - 38920 - phase=train acc=0.9934413580246914 loss=0.013436933048069477 epoch=5 and step=80
+2022-03-11 22:09:06,074 - SplitNNServer - INFO - 38920 - phase=train acc=0.9924195544554455 loss=0.10735919326543808 epoch=5 and step=100
+2022-03-11 22:09:13,533 - SplitNNServer - INFO - 38920 - phase=train acc=0.9927685950413223 loss=0.01738572120666504 epoch=5 and step=120
+2022-03-11 22:09:20,995 - SplitNNServer - INFO - 38920 - phase=train acc=0.9923537234042553 loss=0.02742929570376873 epoch=5 and step=140
+2022-03-11 22:09:28,141 - SplitNNServer - INFO - 38920 - phase=train acc=0.9923330745341615 loss=0.06113537400960922 epoch=5 and step=160
+2022-03-11 22:09:35,243 - SplitNNServer - INFO - 38920 - phase=train acc=0.9923169889502762 loss=0.033138856291770935 epoch=5 and step=180
+2022-03-11 22:09:42,638 - SplitNNServer - INFO - 38920 - phase=train acc=0.9919931592039801 loss=0.050389308482408524 epoch=5 and step=200
+2022-03-11 22:09:49,758 - SplitNNServer - INFO - 38920 - phase=train acc=0.9919400452488688 loss=0.0017154394881799817 epoch=5 and step=220
+2022-03-11 22:09:57,521 - SplitNNServer - INFO - 38920 - phase=train acc=0.9919605809128631 loss=0.0069810254499316216 epoch=5 and step=240
+2022-03-11 22:10:03,764 - SplitNNServer - INFO - 38920 - phase=train acc=0.9921575670498084 loss=0.01482458133250475 epoch=5 and step=260
+2022-03-11 22:10:11,209 - SplitNNServer - INFO - 38920 - phase=train acc=0.9921040925266904 loss=0.0009872934315353632 epoch=5 and step=280
+2022-03-11 22:10:18,674 - SplitNNServer - INFO - 38920 - phase=train acc=0.9919019933554817 loss=0.0011276244185864925 epoch=5 and step=300
+2022-03-11 22:10:23,626 - SplitNNServer - INFO - 38920 - worker_num=3 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=224640 total_receive=330864
+2022-03-11 22:11:12,013 - SplitNNServer - INFO - 38920 - worker=3 phase=validation acc=0.9910523504273504 loss=0.01148697024376831 epoch=5 and step=468
+2022-03-11 22:11:12,013 - SplitNNServer - INFO - 38920 - worker_num=1 phase=train server: epoch_send=0 epoch_receive=7536 total_send=224640 total_receive=338400
+2022-03-11 22:11:12,323 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.0015201051719486713 epoch=5 and step=0
+2022-03-11 22:11:19,778 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925595238095238 loss=0.02807825803756714 epoch=5 and step=20
+2022-03-11 22:11:26,905 - SplitNNServer - INFO - 38920 - phase=train acc=0.9927591463414634 loss=0.10565797239542007 epoch=5 and step=40
+2022-03-11 22:11:34,363 - SplitNNServer - INFO - 38920 - phase=train acc=0.9923155737704918 loss=0.051891494542360306 epoch=5 and step=60
+2022-03-11 22:11:41,519 - SplitNNServer - INFO - 38920 - phase=train acc=0.9917052469135802 loss=0.002325889188796282 epoch=5 and step=80
+2022-03-11 22:11:48,358 - SplitNNServer - INFO - 38920 - phase=train acc=0.9918007425742574 loss=0.012026889249682426 epoch=5 and step=100
+2022-03-11 22:11:55,210 - SplitNNServer - INFO - 38920 - phase=train acc=0.9917355371900827 loss=0.05357804894447327 epoch=5 and step=120
+2022-03-11 22:12:02,362 - SplitNNServer - INFO - 38920 - phase=train acc=0.9922429078014184 loss=0.011839576996862888 epoch=5 and step=140
+2022-03-11 22:12:09,818 - SplitNNServer - INFO - 38920 - phase=train acc=0.9926242236024845 loss=0.00499130180105567 epoch=5 and step=160
+2022-03-11 22:12:17,243 - SplitNNServer - INFO - 38920 - phase=train acc=0.992489640883978 loss=0.01944093592464924 epoch=5 and step=180
+2022-03-11 22:12:24,415 - SplitNNServer - INFO - 38920 - phase=train acc=0.9923818407960199 loss=0.0037411507219076157 epoch=5 and step=200
+2022-03-11 22:12:31,893 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925763574660633 loss=0.011080598458647728 epoch=5 and step=220
+2022-03-11 22:12:39,348 - SplitNNServer - INFO - 38920 - phase=train acc=0.9922199170124482 loss=0.013245656155049801 epoch=5 and step=240
+2022-03-11 22:12:47,125 - SplitNNServer - INFO - 38920 - phase=train acc=0.9922772988505747 loss=0.018893951550126076 epoch=5 and step=260
+2022-03-11 22:12:54,242 - SplitNNServer - INFO - 38920 - phase=train acc=0.9922709074733096 loss=0.0287574902176857 epoch=5 and step=280
+2022-03-11 22:13:01,383 - SplitNNServer - INFO - 38920 - phase=train acc=0.9921615448504983 loss=0.009936586022377014 epoch=5 and step=300
+2022-03-11 22:13:05,138 - SplitNNServer - INFO - 38920 - worker_num=1 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=239616 total_receive=353424
+2022-03-11 22:13:53,529 - SplitNNServer - INFO - 38920 - worker=1 phase=validation acc=0.9909521901709402 loss=0.011467753267767028 epoch=6 and step=468
+2022-03-11 22:13:53,529 - SplitNNServer - INFO - 38920 - worker_num=2 phase=train server: epoch_send=0 epoch_receive=7536 total_send=239616 total_receive=360960
+2022-03-11 22:13:53,839 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.003131868550553918 epoch=6 and step=0
+2022-03-11 22:14:00,975 - SplitNNServer - INFO - 38920 - phase=train acc=0.9918154761904762 loss=0.08363128453493118 epoch=6 and step=20
+2022-03-11 22:14:09,045 - SplitNNServer - INFO - 38920 - phase=train acc=0.9916158536585366 loss=0.0038576743099838495 epoch=6 and step=40
+2022-03-11 22:14:15,573 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925717213114754 loss=0.004630001727491617 epoch=6 and step=60
+2022-03-11 22:14:22,717 - SplitNNServer - INFO - 38920 - phase=train acc=0.9917052469135802 loss=0.003738090628758073 epoch=6 and step=80
+2022-03-11 22:14:30,111 - SplitNNServer - INFO - 38920 - phase=train acc=0.9924195544554455 loss=0.02657313458621502 epoch=6 and step=100
+2022-03-11 22:14:37,588 - SplitNNServer - INFO - 38920 - phase=train acc=0.9927685950413223 loss=0.020306818187236786 epoch=6 and step=120
+2022-03-11 22:14:44,708 - SplitNNServer - INFO - 38920 - phase=train acc=0.9929078014184397 loss=0.034488242119550705 epoch=6 and step=140
+2022-03-11 22:14:51,514 - SplitNNServer - INFO - 38920 - phase=train acc=0.9931094720496895 loss=0.003914519213140011 epoch=6 and step=160
+2022-03-11 22:14:58,374 - SplitNNServer - INFO - 38920 - phase=train acc=0.9928349447513812 loss=0.009076210670173168 epoch=6 and step=180
+2022-03-11 22:15:06,128 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925373134328358 loss=0.012823186814785004 epoch=6 and step=200
+2022-03-11 22:15:13,530 - SplitNNServer - INFO - 38920 - phase=train acc=0.9921521493212669 loss=0.01451835222542286 epoch=6 and step=220
+2022-03-11 22:15:20,622 - SplitNNServer - INFO - 38920 - phase=train acc=0.991701244813278 loss=0.01589883491396904 epoch=6 and step=240
+2022-03-11 22:15:27,792 - SplitNNServer - INFO - 38920 - phase=train acc=0.991558908045977 loss=0.01891869492828846 epoch=6 and step=260
+2022-03-11 22:15:35,548 - SplitNNServer - INFO - 38920 - phase=train acc=0.9916592526690391 loss=0.018785132095217705 epoch=6 and step=280
+2022-03-11 22:15:41,806 - SplitNNServer - INFO - 38920 - phase=train acc=0.9917981727574751 loss=0.0311652272939682 epoch=6 and step=300
+2022-03-11 22:15:46,765 - SplitNNServer - INFO - 38920 - worker_num=2 phase=validation server: epoch_send=14976 epoch_receive=22560 total_send=254592 total_receive=375984
+2022-03-11 22:16:35,383 - SplitNNServer - INFO - 38920 - worker=2 phase=validation acc=0.9906183226495726 loss=0.011429069892408298 epoch=6 and step=468
+2022-03-11 22:16:35,383 - SplitNNServer - INFO - 38920 - worker_num=3 phase=train server: epoch_send=0 epoch_receive=7536 total_send=254592 total_receive=383520
+2022-03-11 22:16:35,689 - SplitNNServer - INFO - 38920 - phase=train acc=1.0 loss=0.010422278195619583 epoch=6 and step=0
+2022-03-11 22:16:43,426 - SplitNNServer - INFO - 38920 - phase=train acc=0.9955357142857143 loss=0.005798356607556343 epoch=6 and step=20
+2022-03-11 22:16:50,611 - SplitNNServer - INFO - 38920 - phase=train acc=0.9927591463414634 loss=0.039275143295526505 epoch=6 and step=40
+2022-03-11 22:16:58,272 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935963114754098 loss=0.005985751282423735 epoch=6 and step=60
+2022-03-11 22:17:06,016 - SplitNNServer - INFO - 38920 - phase=train acc=0.9932484567901234 loss=0.018789980560541153 epoch=6 and step=80
+2022-03-11 22:17:13,850 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925742574257426 loss=0.018010441213846207 epoch=6 and step=100
+2022-03-11 22:17:20,725 - SplitNNServer - INFO - 38920 - phase=train acc=0.9925103305785123 loss=0.029254496097564697 epoch=6 and step=120
+2022-03-11 22:17:28,372 - SplitNNServer - INFO - 38920 - phase=train acc=0.9931294326241135 loss=0.01280325185507536 epoch=6 and step=140
+2022-03-11 22:17:35,592 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935947204968945 loss=0.0006045529153198004 epoch=6 and step=160
+2022-03-11 22:17:42,840 - SplitNNServer - INFO - 38920 - phase=train acc=0.993439226519337 loss=0.03188350424170494 epoch=6 and step=180
+2022-03-11 22:17:49,913 - SplitNNServer - INFO - 38920 - phase=train acc=0.9933146766169154 loss=0.030522212386131287 epoch=6 and step=200
+2022-03-11 22:17:57,381 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935661764705882 loss=0.006854251027107239 epoch=6 and step=220
+2022-03-11 22:18:04,807 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935165975103735 loss=0.03312186151742935 epoch=6 and step=240
+2022-03-11 22:18:12,542 - SplitNNServer - INFO - 38920 - phase=train acc=0.9935344827586207 loss=0.03359992429614067 epoch=6 and step=260
+2022-03-11 22:18:19,077 - SplitNNServer - INFO - 38920 - phase=train acc=0.9933274021352313 loss=0.03182204067707062 epoch=6 and step=280
+2022-03-12 11:51:39,799 - SplitNN_init - INFO - 23036 - process_id: 0, worker_number: 4
+2022-03-12 11:51:39,799 - SplitNN_init - INFO - 25128 - process_id: 1, worker_number: 4
+2022-03-12 11:51:41,551 - datasetFactory - INFO - 30400 - mnist
+2022-03-12 11:51:41,552 - partitionFactory - INFO - 30400 - dataset is mnist
+2022-03-12 11:51:41,552 - mnistController - INFO - 30400 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001AA9B3F6280>>
+2022-03-12 11:51:41,552 - datasetFactory - INFO - 23036 - mnist
+2022-03-12 11:51:41,553 - cifar10Partition - INFO - 30400 - homo
+2022-03-12 11:51:41,553 - mnistController - INFO - 30400 - ./data/mnist
+2022-03-12 11:51:41,553 - partitionFactory - INFO - 23036 - dataset is mnist
+2022-03-12 11:51:41,554 - mnistController - INFO - 23036 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000020C0DAB6280>>
+2022-03-12 11:51:41,554 - cifar10Partition - INFO - 23036 - homo
+2022-03-12 11:51:41,554 - mnistController - INFO - 23036 - ./data/mnist
+2022-03-12 11:51:41,555 - datasetFactory - INFO - 34228 - mnist
+2022-03-12 11:51:41,555 - datasetFactory - INFO - 25128 - mnist
+2022-03-12 11:51:41,556 - partitionFactory - INFO - 34228 - dataset is mnist
+2022-03-12 11:51:41,556 - partitionFactory - INFO - 25128 - dataset is mnist
+2022-03-12 11:51:41,557 - mnistController - INFO - 34228 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000144F1836280>>
+2022-03-12 11:51:41,557 - cifar10Partition - INFO - 34228 - homo
+2022-03-12 11:51:41,557 - mnistController - INFO - 25128 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002CC52FF6280>>
+2022-03-12 11:51:41,557 - mnistController - INFO - 34228 - ./data/mnist
+2022-03-12 11:51:41,557 - cifar10Partition - INFO - 25128 - homo
+2022-03-12 11:51:41,557 - mnistController - INFO - 25128 - ./data/mnist
+2022-03-12 11:51:43,731 - mnistController - INFO - 25128 - rank = 1, local_sample_number = 20000
+2022-03-12 11:51:43,732 - mnistController - INFO - 30400 - rank = 3, local_sample_number = 20000
+2022-03-12 11:51:43,732 - mnistController - INFO - 34228 - rank = 2, local_sample_number = 20000
+2022-03-12 11:51:43,985 - mnistController - INFO - 23036 - train_dl_global number = 937
+2022-03-12 11:51:43,986 - mnistController - INFO - 23036 - test_dl_global number = 156
+2022-03-12 11:51:43,995 - SplitNN_distributed - INFO - 23036 - process_id == server_rank : 0
+2022-03-12 11:51:44,342 - init_server - INFO - 23036 - Server run begin Ushaped
+2022-03-12 11:51:44,479 - mnistController - INFO - 34228 - process_id = 2, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:51:44,484 - mnistController - INFO - 25128 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:51:44,492 - SplitNN_distributed - INFO - 34228 - process_id == client_rank : 2
+2022-03-12 11:51:44,498 - SplitNN_distributed - INFO - 25128 - process_id == client_rank : 1
+2022-03-12 11:51:44,499 - mnistController - INFO - 30400 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:51:44,511 - SplitNN_distributed - INFO - 30400 - process_id == client_rank : 3
+2022-03-12 11:51:44,557 - init_client - INFO - 34228 - Client 2 run begin
+2022-03-12 11:51:44,557 - init_client - INFO - 25128 - Client 1 run begin
+2022-03-12 11:51:44,583 - init_client - INFO - 30400 - Client 3 run begin
+2022-03-12 11:52:28,904 - SplitNN_init - INFO - 59060 - process_id: 2, worker_number: 4
+2022-03-12 11:52:28,905 - SplitNN_init - INFO - 33268 - process_id: 1, worker_number: 4
+2022-03-12 11:52:28,906 - SplitNN_init - INFO - 52880 - process_id: 3, worker_number: 4
+2022-03-12 11:52:28,906 - SplitNN_init - INFO - 61352 - process_id: 0, worker_number: 4
+2022-03-12 11:52:28,907 - datasetFactory - INFO - 59060 - mnist
+2022-03-12 11:52:28,908 - datasetFactory - INFO - 33268 - mnist
+2022-03-12 11:52:28,908 - partitionFactory - INFO - 59060 - dataset is mnist
+2022-03-12 11:52:28,909 - datasetFactory - INFO - 61352 - mnist
+2022-03-12 11:52:28,909 - mnistController - INFO - 59060 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000260875C51F0>>
+2022-03-12 11:52:28,909 - partitionFactory - INFO - 33268 - dataset is mnist
+2022-03-12 11:52:28,909 - cifar10Partition - INFO - 59060 - homo
+2022-03-12 11:52:28,909 - mnistController - INFO - 59060 - ./data/mnist
+2022-03-12 11:52:28,909 - mnistController - INFO - 33268 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000202E46451F0>>
+2022-03-12 11:52:28,909 - partitionFactory - INFO - 61352 - dataset is mnist
+2022-03-12 11:52:28,909 - cifar10Partition - INFO - 33268 - homo
+2022-03-12 11:52:28,910 - mnistController - INFO - 33268 - ./data/mnist
+2022-03-12 11:52:28,910 - mnistController - INFO - 61352 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000016AE17951F0>>
+2022-03-12 11:52:28,910 - cifar10Partition - INFO - 61352 - homo
+2022-03-12 11:52:28,910 - mnistController - INFO - 61352 - ./data/mnist
+2022-03-12 11:52:28,925 - datasetFactory - INFO - 52880 - mnist
+2022-03-12 11:52:28,926 - partitionFactory - INFO - 52880 - dataset is mnist
+2022-03-12 11:52:28,927 - mnistController - INFO - 52880 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000017788FC51F0>>
+2022-03-12 11:52:28,927 - cifar10Partition - INFO - 52880 - homo
+2022-03-12 11:52:28,927 - mnistController - INFO - 52880 - ./data/mnist
+2022-03-12 11:52:29,130 - mnistController - INFO - 33268 - rank = 1, local_sample_number = 20000
+2022-03-12 11:52:29,157 - mnistController - INFO - 52880 - rank = 3, local_sample_number = 20000
+2022-03-12 11:52:29,211 - mnistController - INFO - 59060 - rank = 2, local_sample_number = 20000
+2022-03-12 11:52:29,312 - mnistController - INFO - 61352 - train_dl_global number = 937
+2022-03-12 11:52:29,312 - mnistController - INFO - 61352 - test_dl_global number = 156
+2022-03-12 11:52:29,325 - SplitNN_distributed - INFO - 61352 - process_id == server_rank : 0
+2022-03-12 11:52:29,347 - mnistController - INFO - 33268 - process_id = 1, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:52:29,357 - SplitNN_distributed - INFO - 33268 - process_id == client_rank : 1
+2022-03-12 11:52:29,362 - mnistController - INFO - 52880 - process_id = 3, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:52:29,380 - SplitNN_distributed - INFO - 52880 - process_id == client_rank : 3
+2022-03-12 11:52:29,391 - mnistController - INFO - 59060 - process_id = 2, batch_num_train_local = 312, batch_num_test_local = 156
+2022-03-12 11:52:29,402 - SplitNN_distributed - INFO - 59060 - process_id == client_rank : 2
+2022-03-12 11:52:29,440 - init_server - INFO - 61352 - Server run begin Ushaped
+2022-03-12 11:52:29,444 - init_client - INFO - 33268 - Client 1 run begin
+2022-03-12 11:52:29,448 - init_client - INFO - 52880 - Client 3 run begin
+2022-03-12 11:52:29,454 - init_client - INFO - 59060 - Client 2 run begin
+2022-03-12 11:52:30,337 - SplitNNClient - INFO - 33268 - phase=train acc=0.1875 loss=2.2989697456359863 epoch=0 and step=0
+2022-03-12 11:52:50,992 - SplitNNClient - INFO - 33268 - phase=train acc=0.10119047619047619 loss=2.3029043674468994 epoch=0 and step=20
+2022-03-12 11:53:05,329 - SplitNNClient - INFO - 33268 - phase=train acc=0.1368140243902439 loss=2.275935411453247 epoch=0 and step=40
+2022-03-12 11:53:20,239 - SplitNNClient - INFO - 33268 - phase=train acc=0.17751024590163936 loss=2.183159828186035 epoch=0 and step=60
+2022-03-12 11:53:34,939 - SplitNNClient - INFO - 33268 - phase=train acc=0.2339891975308642 loss=1.8102426528930664 epoch=0 and step=80
+2022-03-12 11:53:49,268 - SplitNNClient - INFO - 33268 - phase=train acc=0.3186881188118812 loss=0.8578160405158997 epoch=0 and step=100
+2022-03-12 11:54:04,788 - SplitNNClient - INFO - 33268 - phase=train acc=0.39359504132231404 loss=0.5224916338920593 epoch=0 and step=120
+2022-03-12 11:54:19,385 - SplitNNClient - INFO - 33268 - phase=train acc=0.456781914893617 loss=0.9381903409957886 epoch=0 and step=140
+2022-03-12 11:54:34,583 - SplitNNClient - INFO - 33268 - phase=train acc=0.5085403726708074 loss=0.3010299801826477 epoch=0 and step=160
+2022-03-12 11:54:48,869 - SplitNNClient - INFO - 33268 - phase=train acc=0.5511912983425414 loss=0.43760475516319275 epoch=0 and step=180
+2022-03-12 11:55:03,173 - SplitNNClient - INFO - 33268 - phase=train acc=0.5896299751243781 loss=0.33698827028274536 epoch=0 and step=200
+2022-03-12 11:55:17,425 - SplitNNClient - INFO - 33268 - phase=train acc=0.6211821266968326 loss=0.16309043765068054 epoch=0 and step=220
+2022-03-12 11:55:31,686 - SplitNNClient - INFO - 33268 - phase=train acc=0.6469139004149378 loss=0.12492695450782776 epoch=0 and step=240
+2022-03-12 11:55:45,964 - SplitNNClient - INFO - 33268 - phase=train acc=0.6691211685823755 loss=0.2228156179189682 epoch=0 and step=260
+2022-03-12 11:56:00,236 - SplitNNClient - INFO - 33268 - phase=train acc=0.6889457295373665 loss=0.16855786740779877 epoch=0 and step=280
+2022-03-12 11:56:14,859 - SplitNNClient - INFO - 33268 - phase=train acc=0.7056166943521595 loss=0.0646735429763794 epoch=0 and step=300
+2022-03-12 11:56:22,205 - SplitNNClient - INFO - 33268 - worker_num=1 phase=train server: epoch_send=29952 epoch_receive=29952 total_send=29952 total_receive=29952
+2022-03-12 11:57:44,157 - SplitNNClient - INFO - 33268 - worker_num=1 phase=validation server: epoch_send=7536 epoch_receive=0 total_send=37488 total_receive=29952
+2022-03-12 11:57:44,157 - SplitNNClient - INFO - 33268 - phase=validation acc=0.9555288461538461 loss=0.14659436906162554 epoch=0 and step=156
+2022-03-12 11:57:44,725 - SplitNNClient - INFO - 59060 - phase=train acc=0.109375 loss=2.280374526977539 epoch=0 and step=0
+2022-03-12 11:57:59,366 - SplitNNClient - INFO - 59060 - phase=train acc=0.1956845238095238 loss=2.157501220703125 epoch=0 and step=20
+2022-03-12 11:58:13,643 - SplitNNClient - INFO - 59060 - phase=train acc=0.4089176829268293 loss=0.7645469307899475 epoch=0 and step=40
+2022-03-12 11:58:27,920 - SplitNNClient - INFO - 59060 - phase=train acc=0.5391905737704918 loss=0.4436246454715729 epoch=0 and step=60
+2022-03-12 11:58:42,272 - SplitNNClient - INFO - 59060 - phase=train acc=0.621141975308642 loss=0.42688512802124023 epoch=0 and step=80
+2022-03-12 11:58:56,530 - SplitNNClient - INFO - 59060 - phase=train acc=0.6763613861386139 loss=0.26036906242370605 epoch=0 and step=100
+2022-03-12 11:59:12,050 - SplitNNClient - INFO - 59060 - phase=train acc=0.7162964876033058 loss=0.33669382333755493 epoch=0 and step=120
+2022-03-12 11:59:26,316 - SplitNNClient - INFO - 59060 - phase=train acc=0.7476728723404256 loss=0.225151926279068 epoch=0 and step=140
+2022-03-12 11:59:40,923 - SplitNNClient - INFO - 59060 - phase=train acc=0.7699922360248447 loss=0.21763606369495392 epoch=0 and step=160
+2022-03-12 11:59:55,826 - SplitNNClient - INFO - 59060 - phase=train acc=0.7892783149171271 loss=0.07273750007152557 epoch=0 and step=180
+2022-03-12 12:00:09,829 - SplitNNClient - INFO - 59060 - phase=train acc=0.8050373134328358 loss=0.2677811086177826 epoch=0 and step=200
+2022-03-12 12:00:26,029 - SplitNNClient - INFO - 59060 - phase=train acc=0.8164592760180995 loss=0.10514388978481293 epoch=0 and step=220
+2022-03-12 12:00:40,616 - SplitNNClient - INFO - 59060 - phase=train acc=0.8276063278008299 loss=0.2363646775484085 epoch=0 and step=240
+2022-03-12 12:00:53,953 - SplitNNClient - INFO - 59060 - phase=train acc=0.8372246168582376 loss=0.09907839447259903 epoch=0 and step=260
+2022-03-12 12:01:09,827 - SplitNNClient - INFO - 59060 - phase=train acc=0.845529359430605 loss=0.13729417324066162 epoch=0 and step=280
+2022-03-12 12:01:24,134 - SplitNNClient - INFO - 59060 - phase=train acc=0.8526785714285714 loss=0.21427541971206665 epoch=0 and step=300
+2022-03-12 12:01:31,792 - SplitNNClient - INFO - 59060 - worker_num=2 phase=train server: epoch_send=29952 epoch_receive=30000 total_send=29952 total_receive=30000
+2022-03-12 12:02:53,228 - SplitNNClient - INFO - 59060 - worker_num=2 phase=validation server: epoch_send=7536 epoch_receive=0 total_send=37488 total_receive=30000
+2022-03-12 12:02:53,228 - SplitNNClient - INFO - 59060 - phase=validation acc=0.9588341346153846 loss=0.12898418329691944 epoch=0 and step=156
+2022-03-12 12:02:53,813 - SplitNNClient - INFO - 52880 - phase=train acc=0.15625 loss=2.3079593181610107 epoch=0 and step=0
+2022-03-12 12:03:08,453 - SplitNNClient - INFO - 52880 - phase=train acc=0.1324404761904762 loss=2.2617592811584473 epoch=0 and step=20
+2022-03-12 12:03:22,781 - SplitNNClient - INFO - 52880 - phase=train acc=0.22408536585365854 loss=1.9959040880203247 epoch=0 and step=40
+2022-03-12 12:03:37,688 - SplitNNClient - INFO - 52880 - phase=train acc=0.3826844262295082 loss=0.5928416848182678 epoch=0 and step=60
+2022-03-12 12:03:52,341 - SplitNNClient - INFO - 52880 - phase=train acc=0.4949845679012346 loss=0.27432915568351746 epoch=0 and step=80
+2022-03-12 12:04:05,252 - SplitNNClient - INFO - 52880 - phase=train acc=0.5741027227722773 loss=0.24852067232131958 epoch=0 and step=100
+2022-03-12 12:04:20,136 - SplitNNClient - INFO - 52880 - phase=train acc=0.6283574380165289 loss=0.30280691385269165 epoch=0 and step=120
+2022-03-12 12:04:34,135 - SplitNNClient - INFO - 52880 - phase=train acc=0.6696586879432624 loss=0.21288320422172546 epoch=0 and step=140
+2022-03-12 12:04:48,746 - SplitNNClient - INFO - 52880 - phase=train acc=0.703027950310559 loss=0.19231262803077698 epoch=0 and step=160
+2022-03-12 12:05:03,014 - SplitNNClient - INFO - 52880 - phase=train acc=0.7271236187845304 loss=0.1881498545408249 epoch=0 and step=180
+2022-03-12 12:05:18,707 - SplitNNClient - INFO - 52880 - phase=train acc=0.7472792288557214 loss=0.0986921489238739 epoch=0 and step=200
+2022-03-12 12:05:33,240 - SplitNNClient - INFO - 52880 - phase=train acc=0.7654835972850679 loss=0.09309817105531693 epoch=0 and step=220
+2022-03-12 12:05:47,821 - SplitNNClient - INFO - 52880 - phase=train acc=0.7811203319502075 loss=0.21311941742897034 epoch=0 and step=240
+2022-03-12 12:06:02,488 - SplitNNClient - INFO - 52880 - phase=train acc=0.7940613026819924 loss=0.06298314779996872 epoch=0 and step=260
+2022-03-12 12:06:17,134 - SplitNNClient - INFO - 52880 - phase=train acc=0.8050489323843416 loss=0.24117209017276764 epoch=0 and step=280
+2022-03-12 12:06:31,489 - SplitNNClient - INFO - 52880 - phase=train acc=0.8149397840531561 loss=0.17335769534111023 epoch=0 and step=300
+2022-03-12 12:06:41,305 - SplitNNClient - INFO - 52880 - worker_num=3 phase=train server: epoch_send=29952 epoch_receive=30000 total_send=29952 total_receive=30000
+2022-03-12 12:08:03,545 - SplitNNClient - INFO - 52880 - worker_num=3 phase=validation server: epoch_send=7536 epoch_receive=0 total_send=37488 total_receive=30000
+2022-03-12 12:08:03,546 - SplitNNClient - INFO - 52880 - phase=validation acc=0.9655448717948718 loss=0.10664201600071138 epoch=0 and step=156
+2022-03-12 12:08:04,139 - SplitNNClient - INFO - 33268 - phase=train acc=0.921875 loss=0.24488823115825653 epoch=2 and step=0
+2022-03-12 12:08:19,406 - SplitNNClient - INFO - 33268 - phase=train acc=0.921875 loss=0.24957801401615143 epoch=2 and step=20
+2022-03-12 12:08:33,706 - SplitNNClient - INFO - 33268 - phase=train acc=0.9420731707317073 loss=0.06354998052120209 epoch=2 and step=40
+2022-03-12 12:08:48,270 - SplitNNClient - INFO - 33268 - phase=train acc=0.9487704918032787 loss=0.13959664106369019 epoch=2 and step=60
+2022-03-12 12:09:02,552 - SplitNNClient - INFO - 33268 - phase=train acc=0.9508101851851852 loss=0.16237743198871613 epoch=2 and step=80
+2022-03-12 12:09:16,831 - SplitNNClient - INFO - 33268 - phase=train acc=0.9523514851485149 loss=0.12650373578071594 epoch=2 and step=100
+2022-03-12 12:09:31,429 - SplitNNClient - INFO - 33268 - phase=train acc=0.9536415289256198 loss=0.08067100495100021 epoch=2 and step=120
+2022-03-12 12:09:45,709 - SplitNNClient - INFO - 33268 - phase=train acc=0.9557845744680851 loss=0.2129938155412674 epoch=2 and step=140
+2022-03-12 12:09:59,711 - SplitNNClient - INFO - 33268 - phase=train acc=0.9562305900621118 loss=0.19448640942573547 epoch=2 and step=160
+2022-03-12 12:10:13,951 - SplitNNClient - INFO - 33268 - phase=train acc=0.9557147790055248 loss=0.05952438339591026 epoch=2 and step=180
+2022-03-12 12:10:28,286 - SplitNNClient - INFO - 33268 - phase=train acc=0.9562344527363185 loss=0.08398474007844925 epoch=2 and step=200
+2022-03-12 12:10:42,626 - SplitNNClient - INFO - 33268 - phase=train acc=0.957579185520362 loss=0.18447013199329376 epoch=2 and step=220
+2022-03-12 12:10:56,952 - SplitNNClient - INFO - 33268 - phase=train acc=0.9586358921161826 loss=0.16956651210784912 epoch=2 and step=240
+2022-03-12 12:11:11,254 - SplitNNClient - INFO - 33268 - phase=train acc=0.959051724137931 loss=0.11570966243743896 epoch=2 and step=260
+2022-03-12 12:11:25,566 - SplitNNClient - INFO - 33268 - phase=train acc=0.9595195729537367 loss=0.13622595369815826 epoch=2 and step=280
+2022-03-12 12:11:39,884 - SplitNNClient - INFO - 33268 - phase=train acc=0.9605481727574751 loss=0.3571889400482178 epoch=2 and step=300
+2022-03-12 12:11:48,740 - SplitNNClient - INFO - 33268 - worker_num=1 phase=train server: epoch_send=30048 epoch_receive=30000 total_send=67536 total_receive=59952
+2022-03-12 12:13:10,838 - SplitNNClient - INFO - 33268 - worker_num=1 phase=validation server: epoch_send=7536 epoch_receive=0 total_send=75072 total_receive=59952
+2022-03-12 12:13:10,838 - SplitNNClient - INFO - 33268 - phase=validation acc=0.971854967948718 loss=0.08520336127437006 epoch=2 and step=156
+2022-03-12 12:13:11,586 - SplitNNClient - INFO - 59060 - phase=train acc=0.953125 loss=0.0809396356344223 epoch=2 and step=0
+2022-03-12 12:13:25,832 - SplitNNClient - INFO - 59060 - phase=train acc=0.9620535714285714 loss=0.08061772584915161 epoch=2 and step=20
+2022-03-12 12:13:40,151 - SplitNNClient - INFO - 59060 - phase=train acc=0.9676067073170732 loss=0.045188724994659424 epoch=2 and step=40
+2022-03-12 12:13:56,032 - SplitNNClient - INFO - 59060 - phase=train acc=0.9656762295081968 loss=0.14785398542881012 epoch=2 and step=60
+2022-03-12 12:14:11,583 - SplitNNClient - INFO - 59060 - phase=train acc=0.9654706790123457 loss=0.07262701541185379 epoch=2 and step=80
+2022-03-12 12:14:25,920 - SplitNNClient - INFO - 59060 - phase=train acc=0.9645730198019802 loss=0.20917639136314392 epoch=2 and step=100
+2022-03-12 12:14:40,172 - SplitNNClient - INFO - 59060 - phase=train acc=0.9642303719008265 loss=0.061943043023347855 epoch=2 and step=120
+2022-03-12 12:14:54,758 - SplitNNClient - INFO - 59060 - phase=train acc=0.9645390070921985 loss=0.056653931736946106 epoch=2 and step=140
+2022-03-12 12:15:09,334 - SplitNNClient - INFO - 59060 - phase=train acc=0.9639945652173914 loss=0.13651983439922333 epoch=2 and step=160
+2022-03-12 12:15:23,622 - SplitNNClient - INFO - 59060 - phase=train acc=0.9626208563535912 loss=0.12396687269210815 epoch=2 and step=180
+2022-03-12 12:15:37,955 - SplitNNClient - INFO - 59060 - phase=train acc=0.962764303482587 loss=0.04383852332830429 epoch=2 and step=200
+2022-03-12 12:15:52,552 - SplitNNClient - INFO - 59060 - phase=train acc=0.9637302036199095 loss=0.042974770069122314 epoch=2 and step=220
+2022-03-12 12:16:07,138 - SplitNNClient - INFO - 59060 - phase=train acc=0.9645357883817427 loss=0.034207239747047424 epoch=2 and step=240
+2022-03-12 12:16:22,004 - SplitNNClient - INFO - 59060 - phase=train acc=0.9650981800766284 loss=0.04751705005764961 epoch=2 and step=260
+2022-03-12 12:16:37,872 - SplitNNClient - INFO - 59060 - phase=train acc=0.9661921708185054 loss=0.08406268060207367 epoch=2 and step=280
+2022-03-12 12:16:52,473 - SplitNNClient - INFO - 59060 - phase=train acc=0.9667254983388704 loss=0.16062742471694946 epoch=2 and step=300
+2022-03-12 12:17:00,107 - SplitNNClient - INFO - 59060 - worker_num=2 phase=train server: epoch_send=30048 epoch_receive=30000 total_send=67536 total_receive=60000
+2022-03-12 12:18:22,210 - SplitNNClient - INFO - 59060 - worker_num=2 phase=validation server: epoch_send=7536 epoch_receive=0 total_send=75072 total_receive=60000
+2022-03-12 12:18:22,210 - SplitNNClient - INFO - 59060 - phase=validation acc=0.9710536858974359 loss=0.09217538324129493 epoch=2 and step=156
+2022-03-12 12:18:22,961 - SplitNNClient - INFO - 52880 - phase=train acc=0.953125 loss=0.09847205877304077 epoch=2 and step=0
+2022-03-12 12:18:36,973 - SplitNNClient - INFO - 52880 - phase=train acc=0.9635416666666666 loss=0.06975238770246506 epoch=2 and step=20
+2022-03-12 12:18:51,566 - SplitNNClient - INFO - 52880 - phase=train acc=0.961890243902439 loss=0.05116160959005356 epoch=2 and step=40
+2022-03-12 12:19:05,857 - SplitNNClient - INFO - 52880 - phase=train acc=0.9608094262295082 loss=0.16144780814647675 epoch=2 and step=60
+2022-03-12 12:19:20,138 - SplitNNClient - INFO - 52880 - phase=train acc=0.9608410493827161 loss=0.10515653342008591 epoch=2 and step=80
+2022-03-12 12:19:34,521 - SplitNNClient - INFO - 52880 - phase=train acc=0.9625618811881188 loss=0.07246974855661392 epoch=2 and step=100
+2022-03-12 12:19:50,502 - SplitNNClient - INFO - 52880 - phase=train acc=0.9634555785123967 loss=0.06853599846363068 epoch=2 and step=120
+2022-03-12 12:20:04,798 - SplitNNClient - INFO - 52880 - phase=train acc=0.9630984042553191 loss=0.028789635747671127 epoch=2 and step=140
+2022-03-12 12:20:19,399 - SplitNNClient - INFO - 52880 - phase=train acc=0.9634122670807453 loss=0.15866680443286896 epoch=2 and step=160
+2022-03-12 12:20:33,164 - SplitNNClient - INFO - 52880 - phase=train acc=0.9636567679558011 loss=0.053347136825323105 epoch=2 and step=180
+2022-03-12 12:20:47,165 - SplitNNClient - INFO - 52880 - phase=train acc=0.9640858208955224 loss=0.030731748789548874 epoch=2 and step=200
+2022-03-12 12:21:01,835 - SplitNNClient - INFO - 52880 - phase=train acc=0.964295814479638 loss=0.10655730962753296 epoch=2 and step=220
+2022-03-12 12:21:17,060 - SplitNNClient - INFO - 52880 - phase=train acc=0.964341286307054 loss=0.10567270219326019 epoch=2 and step=240

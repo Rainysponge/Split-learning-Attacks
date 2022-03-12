@@ -42,10 +42,14 @@ class ServerManager(MessageManager):
 
     def handle_message_validation_mode(self, msg_params):
         logging.warning("server recv vali mode")
+        self.trainer.print_com_size(self.com_manager)
+        self.com_manager.reset_analysis_data()
         self.trainer.eval_mode()
 
     def handle_message_validation_over(self, msg_params):
         # logging.warning("over")
+        self.trainer.print_com_size(self.com_manager)
+        self.com_manager.reset_analysis_data()
         self.trainer.validation_over()
 
     def handle_message_finish_protocol(self):

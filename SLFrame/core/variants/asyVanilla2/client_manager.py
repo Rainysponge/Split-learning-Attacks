@@ -43,6 +43,8 @@ class ClientManager(MessageManager):
                 else:
                     time.sleep(0.5)
         self.trainer.write_log()
+        self.trainer.print_com_size(self.com_manager)
+        self.com_manager.reset_analysis_data()
         self.trainer.epoch_count += 1
         if self.trainer.epoch_count == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
             self.send_finish_to_server(self.trainer.SERVER_RANK)
@@ -68,6 +70,8 @@ class ClientManager(MessageManager):
             logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
             if self.trainer.batch_idx == len(self.trainer.trainloader):
                 torch.save(self.trainer.model, self.args["model_tmp_path"])
+                self.trainer.print_com_size(self.com_manager)
+                self.com_manager.reset_analysis_data()
                 self.run_eval()
             else:
                 self.run_forward_pass()

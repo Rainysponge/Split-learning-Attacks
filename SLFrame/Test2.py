@@ -10,7 +10,7 @@ import torch.optim as optim
 # import setproctitle
 import sys
 
-sys.path.extend("../")
+sys.path.append("../")
 sys.path.extend("../../")
 
 from core.log.Log import Log
@@ -29,9 +29,11 @@ from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
 
-def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine):
+def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine,device):
     # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
     # logging = Logging("init_training_device")
+    if device == "cpu":
+        return torch.device(device)
     if process_ID == 0:
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         return device
@@ -59,7 +61,7 @@ if __name__ == '__main__':
     args["client_model"] = LeNetClientNetworkPart1()
     args["client_model_2"]= LeNetClientNetworkPart2()
     args["server_model"] = LeNetServerNetwork()
-    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server)
+    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server,args["device"])
     args["device"] = device
 
     dataset = datasetFactory(args).factory()  # loader data and partition method
