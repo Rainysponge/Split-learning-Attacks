@@ -37,3 +37,15 @@ SL的范式
 ### server_rank
 
 指定服务端的rank, 默认为0
+
+### config
+**dataDir**: 存放数据集的文件夹
+**dataset**: 要使用的数据集
+**download**: 是否需要下载数据集 针对pytorch提供的数据集如mnist
+**batch_size**: batch大小
+**log_step**: 每几个epochs记录一次日志
+**lr**: 优化器参数
+**partition_method**: 数据集拆分方法
+**variants_type**: 范式
+
+

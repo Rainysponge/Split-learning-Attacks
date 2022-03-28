@@ -5,6 +5,7 @@ from .controller.mnistController import mnistController
 from .controller.adultController import adultController
 from .controller.germanController import germanController
 from .controller.fashionmnistController import fashionmnistController
+from .controller.cheXpertController import cheXpertController
 
 
 class datasetFactory(abstractDatasetFactory):
