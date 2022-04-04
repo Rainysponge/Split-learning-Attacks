@@ -24,8 +24,8 @@ class MessageManager(Observer):
         self.com_manager.handle_receive_message()
 
     def receive_message(self, msg_type, msg_params) -> None:
-        # logging.info("receive_message. rank_id = %d, msg_type = %s. msg_params = %s" % (
-        #     self.rank, str(msg_type), str(msg_params.get_content())))
+        import logging
+      # logging.info("receive_message. rank_id = %d, msg_type = %s." % (self.rank, str(msg_type)))
         handler_callback_func = self.message_handler_dict[msg_type]
         handler_callback_func(msg_params)
 
@@ -34,6 +34,8 @@ class MessageManager(Observer):
         msg.add(Message.MSG_ARG_KEY_TYPE, message.get_type())
         msg.add(Message.MSG_ARG_KEY_SENDER, message.get_sender_id())
         msg.add(Message.MSG_ARG_KEY_RECEIVER, message.get_receiver_id())
+        import logging
+       # logging.warning("Type:%s Sender:%s Receiver:%s"% (message.get_type() ,message.get_sender_id(),message.get_receiver_id()))
         for key, value in message.get_params().items():
             # logging.info("%s == %s" % (key, value))
             msg.add(key, value)

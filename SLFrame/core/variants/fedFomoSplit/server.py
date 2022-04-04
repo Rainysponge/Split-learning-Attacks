@@ -46,4 +46,5 @@ class SplitNNServer():
     def backward_pass(self):
         self.loss.backward(retain_graph=True)
         self.optimizer.step()
+        self.log.info(self.acts.grad.shape)
         return self.acts.grad

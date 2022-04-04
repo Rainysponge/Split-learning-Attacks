@@ -40,6 +40,16 @@ class variantsFactory():
             from ..variants.SGLR.client import SplitNNClient
             from ..variants.SGLR.server_manager import ServerManager
             from ..variants.SGLR.client_manager import ClientManager
+        elif self.variantsType == "exchange":
+            from ..variants.exchange.server import SplitNNServer
+            from ..variants.exchange.client import SplitNNClient
+            from ..variants.exchange.server_manager import ServerManager
+            from ..variants.exchange.client_manager import ClientManager
+        elif self.variantsType == "exchange2":
+            from ..variants.exchange2.server import SplitNNServer
+            from ..variants.exchange2.client import SplitNNClient
+            from ..variants.exchange2.server_manager import ServerManager
+            from ..variants.exchange2.client_manager import ClientManager
         else:
             logging.warning("variants_type: default as vanilla")
             from ..variants.vanilla.server import SplitNNServer
