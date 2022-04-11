@@ -14,6 +14,7 @@ class Message(object):
     MSG_OPERATION_BROADCAST = "broadcast"
     MSG_OPERATION_REDUCE = "reduce"
 
+    MSG_ARG_KEY_RECEIVE_PRIORITY = "receive_priority"
     MSG_ARG_KEY_MODEL_PARAMS = "model_params"
 
     def __init__(self, type=0, sender_id=0, receiver_id=0):
@@ -72,3 +73,6 @@ class Message(object):
     def __to_msg_type_string(self):
         type = self.msg_params[Message.MSG_ARG_KEY_TYPE]
         return type
+
+    def __lt__(self,other):
+        return self.get(Message.MSG_ARG_KEY_RECEIVE_PRIORITY)>other.get(Message.MSG_ARG_KEY_RECEIVE_PRIORITY)

@@ -20,6 +20,7 @@ class MyMessage(object):
     MSG_ARG_KEY_PHASE = "phase"
     MSG_AGR_KEY_RESULT = "result"
 
+
     MSG_TYPE_TEST_C2C = 9
 
     """

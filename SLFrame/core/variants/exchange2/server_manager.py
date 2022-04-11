@@ -56,14 +56,16 @@ class ServerManager(MessageManager):
 
         self.result_buffer[self.active_node]= (self.trainer.total, self.trainer.correct, self.trainer.val_loss)
         self.grads_buffer[self.active_node]=grads
-      #  logging.warning("grads from {}: {}".format(self.active_node,sum(sum(sum(sum(grads))))))
+        if grads is not None:
+            logging.warning("grads from {}: {}".format(self.active_node,sum(sum(sum(sum(grads))))))
         self.counter += 1
         if self.counter == self.client_num:
             self.counter = 0
             sending_list = self.get_sending_list("random_permutation")
             for i in range(self.client_num):
                 self.send_grads_to_client(i+1,self.grads_buffer[sending_list[i]])
-                #logging.warning("client {} receive: {}".format(i+1,sum(sum(sum(sum(self.grads_buffer[sending_list[i]]))))))
+                if self.grads_buffer[sending_list[i]] is not None:
+                    logging.warning("send to client {} : {}".format(i+1,sum(sum(sum(sum(self.grads_buffer[sending_list[i]]))))))
 
 
 

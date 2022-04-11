@@ -2,7 +2,7 @@ import sys
 import queue
 import time
 from typing import List
-
+import logging
 from ..base_com_manager import BaseCommunicationManager
 from ..message import Message
 from .mpi_receive_thread import MPIReceiveThread
@@ -41,11 +41,11 @@ class MpiCommunicationManager(BaseCommunicationManager):
         """
             创建并返回发送接收队列，利用线程来给队列进行更新
         """
-        server_send_queue = queue.Queue(0)
+        server_send_queue = queue.PriorityQueue()
         self.server_send_thread = MPISendThread(self.comm, self.rank, self.size, "ServerSendThread", server_send_queue)
         self.server_send_thread.start()
 
-        server_receive_queue = queue.Queue(0)
+        server_receive_queue = queue.PriorityQueue()
         self.server_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",
                                                       server_receive_queue)
         self.server_receive_thread.start()
@@ -54,12 +54,12 @@ class MpiCommunicationManager(BaseCommunicationManager):
 
     def init_client_communication(self):
         # SEND
-        client_send_queue = queue.Queue(0)
+        client_send_queue = queue.PriorityQueue()
         self.client_send_thread = MPISendThread(self.comm, self.rank, self.size, "ClientSendThread", client_send_queue)
         self.client_send_thread.start()
 
         # RECEIVE
-        client_receive_queue = queue.Queue(0)
+        client_receive_queue = queue.PriorityQueue()
         self.client_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ClientReceiveThread",
                                                       client_receive_queue)
         self.client_receive_thread.start()
@@ -70,10 +70,12 @@ class MpiCommunicationManager(BaseCommunicationManager):
         self.tmp_send_size = 0
         self.tmp_receive_size = 0
 
-    def send_message(self, msg: Message):
+    def send_message(self, msg: Message, priority=100):
         size=sys.getsizeof(msg)
         self.tmp_send_size += size
         self.total_send_size += size
+        msg.add_params(Message.MSG_ARG_KEY_RECEIVE_PRIORITY,priority)
+        logging.warning(priority)
         self.q_sender.put(msg)
 
     def add_observer(self, observer: Observer):
@@ -85,7 +87,7 @@ class MpiCommunicationManager(BaseCommunicationManager):
     def handle_receive_message(self):
         self.is_running = True
         while self.is_running:
-            if self.q_receiver.qsize() > 0:
+            if not self.q_receiver.empty():
                 msg_params = self.q_receiver.get()
                 size=sys.getsizeof(msg_params)
                 self.tmp_receive_size += size

@@ -59,6 +59,8 @@ class ClientManager(MessageManager):
 
     def handle_message_gradients(self, msg_params):
         tot,cor,vl= msg_params.get(MyMessage.MSG_AGR_KEY_RESULT)
+
+
         self.trainer.total += tot
         self.trainer.correct += cor
         self.trainer.val_loss += vl
@@ -66,6 +68,7 @@ class ClientManager(MessageManager):
         if self.trainer.phase == "train":
             self.trainer.write_log()
             grads = msg_params.get(MyMessage.MSG_ARG_KEY_GRADS)
+            logging.warning("client {} receive: {}".format(self.rank, sum(sum(sum(sum(grads))))))
             self.trainer.backward_pass(grads)
             logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
             if self.trainer.batch_idx == len(self.trainer.trainloader):
