@@ -21,6 +21,7 @@ class ServerManager(MessageManager):
     def send_grads_to_client(self, receive_id, grads):
         message = Message(MyMessage.MSG_TYPE_S2C_GRADS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
+      #  logging.warning("server send to {}".format(receive_id))
         self.send_message(message)
 
     def register_message_receive_handlers(self):
@@ -34,6 +35,7 @@ class ServerManager(MessageManager):
                                               self.handle_message_finish_protocol)
 
     def handle_message_acts(self, msg_params):
+    #    logging.warning("server acts from {}".format(msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)))
         acts, labels = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
         self.trainer.forward_pass(acts, labels)
         if self.trainer.phase == "train":
@@ -45,11 +47,13 @@ class ServerManager(MessageManager):
         self.trainer.print_com_size(self.com_manager)
         self.com_manager.reset_analysis_data()
         self.trainer.eval_mode()
+       # self.send_grads_to_client(self.trainer.active_node, None)
 
     def handle_message_validation_over(self, msg_params):
-        # logging.warning("over")
+        logging.warning("server recv vali over")
         self.trainer.print_com_size(self.com_manager)
         self.com_manager.reset_analysis_data()
+      #  self.send_grads_to_client(self.trainer.active_node,None)
         self.trainer.validation_over()
 
     def handle_message_finish_protocol(self):

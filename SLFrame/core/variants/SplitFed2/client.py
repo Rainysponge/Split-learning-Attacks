@@ -1,5 +1,5 @@
 import torch.optim as optim
-from collections import defaultdict
+import logging
 from ...log.Log import Log
 
 class SplitNNClient():
@@ -16,7 +16,8 @@ class SplitNNClient():
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)
         self.device = args["device"]
-
+        self.local_sample_number = len(self.trainloader)
+        self.phase = "train"
         self.epoch_count = 0
         self.batch_idx = 0
         self.MAX_EPOCH_PER_NODE = 3
@@ -24,7 +25,7 @@ class SplitNNClient():
 
         self.log = Log(self.__class__.__name__, args)
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
-        self.args=args
+        self.args = args
 
     def reset_local_params(self):
         self.total = 0
@@ -32,24 +33,18 @@ class SplitNNClient():
         self.val_loss = 0
         self.step = 0
         self.batch_idx = 0
-        self.correct_class = defaultdict(int)
-        self.total_class = defaultdict(int)
-
 
     def write_log(self):
-        if (self.phase=="train" and self.step%self.log_step==0) or self.phase=="validation":
+        if (self.phase == "train" and self.step%self.log_step==0) or self.phase=="validation":
             self.log.info("phase={} acc={} loss={} epoch={} and step={}"
                           .format(self.phase, self.correct/self.total, self.val_loss, self.epoch_count, self.step))
-            if self.phase=="validation":
-                str="accuracy of each class:"
-                for key in self.total_class.keys():
-                    str = str + "{}:{}  ".format(key,self.correct_class[key]/self.total_class[key])
-                self.log.info(str)
 
     def forward_pass(self):
+        # logging.info("{} begin run_forward_pass".format(self.rank))
         inputs, labels = next(self.dataloader)
 
         inputs, labels = inputs.to(self.device), labels.to(self.device)
+        # logging.info("img size:{}".format(inputs.shape))
         self.optimizer.zero_grad()
 
         self.acts = self.model(inputs)
@@ -75,8 +70,3 @@ class SplitNNClient():
         self.phase="train"
         self.model.train()
         self.reset_local_params()
-
-    def print_com_size(self, com_manager):
-        self.log.info("worker_num={} phase={} epoch_send={} epoch_receive={} total_send={} total_receive={}"
-                      .format(self.rank, self.phase, com_manager.tmp_send_size, com_manager.tmp_receive_size,
-                              com_manager.total_send_size, com_manager.total_receive_size))

@@ -49,18 +49,19 @@ class LeNetComplete(nn.Module):
           x: Output Tensor
         """
         # Apply first convolutional block to input tensor
-        x = self.block1(x)
 
+
+        x = self.block1(x)
         # Apply second convolutional block to input tensor
         x = self.block2(x)
 
         # Flatten output
-        x = x.view(-1, 4 * 4 * 16)
+        x = x.view(x.size(0), -1)
 
         # Apply first fully-connected block to input tensor
         x = self.block3(x)
 
-        return F.log_softmax(x, dim=1)
+        return x
 
 
 class LeNetClientNetwork(nn.Module):

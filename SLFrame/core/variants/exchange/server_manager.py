@@ -1,4 +1,4 @@
-
+import torch
 from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
@@ -35,14 +35,13 @@ class ServerManager(MessageManager):
     def handle_message_acts(self, msg_params):
         acts, labels = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
         self.active_node = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
+
         client_phase = msg_params.get(MyMessage.MSG_ARG_KEY_PHASE)
         if client_phase == "train":
             self.trainer.train_mode()
         else:
             self.trainer.eval_mode()
         self.trainer.forward_pass(acts, labels)
-        # self.log.info(acts.shape)
-        # self.log.info(type(acts))
 
         grads = None
         if self.trainer.phase == "train":

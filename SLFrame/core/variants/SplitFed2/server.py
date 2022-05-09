@@ -7,6 +7,7 @@ sys.path.extend("../../../")
 
 from ...log.Log import Log
 
+
 class SplitNNServer():
     def __init__(self, args):
         self.log = Log(self.__class__.__name__, args)
@@ -14,6 +15,16 @@ class SplitNNServer():
         self.comm = args["comm"]
         self.model = args["server_model"]
         self.MAX_RANK = args["max_rank"]
+
+        self.rank = args["rank"]
+
+        self.model_param_dict = dict()
+        self.client_sample_dict = dict()
+        self.acts_dict = dict()
+
+        self.acts_num = 0
+        self.model_param_num = 0
+        self.sum_sample_number = 0
 
         self.epoch = 0
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
@@ -41,10 +52,9 @@ class SplitNNServer():
         self.total = labels.size(0)
         self.correct = predictions.eq(labels).sum().item()
         self.val_loss = self.loss.item()
-        self.predict = predictions
-
 
     def backward_pass(self):
         self.loss.backward(retain_graph=True)
         self.optimizer.step()
+        # self.log.info(self.acts.grad.shape)
         return self.acts.grad

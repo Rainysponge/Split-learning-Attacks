@@ -41,11 +41,11 @@ class MpiCommunicationManager(BaseCommunicationManager):
         """
             创建并返回发送接收队列，利用线程来给队列进行更新
         """
-        server_send_queue = queue.PriorityQueue()
+        server_send_queue = queue.Queue()
         self.server_send_thread = MPISendThread(self.comm, self.rank, self.size, "ServerSendThread", server_send_queue)
         self.server_send_thread.start()
 
-        server_receive_queue = queue.PriorityQueue()
+        server_receive_queue = queue.Queue()
         self.server_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",
                                                       server_receive_queue)
         self.server_receive_thread.start()
@@ -54,12 +54,12 @@ class MpiCommunicationManager(BaseCommunicationManager):
 
     def init_client_communication(self):
         # SEND
-        client_send_queue = queue.PriorityQueue()
+        client_send_queue = queue.Queue()
         self.client_send_thread = MPISendThread(self.comm, self.rank, self.size, "ClientSendThread", client_send_queue)
         self.client_send_thread.start()
 
         # RECEIVE
-        client_receive_queue = queue.PriorityQueue()
+        client_receive_queue = queue.Queue()
         self.client_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ClientReceiveThread",
                                                       client_receive_queue)
         self.client_receive_thread.start()
@@ -75,7 +75,6 @@ class MpiCommunicationManager(BaseCommunicationManager):
         self.tmp_send_size += size
         self.total_send_size += size
         msg.add_params(Message.MSG_ARG_KEY_RECEIVE_PRIORITY,priority)
-        logging.warning(priority)
         self.q_sender.put(msg)
 
     def add_observer(self, observer: Observer):
@@ -95,6 +94,14 @@ class MpiCommunicationManager(BaseCommunicationManager):
                 self.notify(msg_params)
 
             time.sleep(0.3)
+
+    def wait_for_message(self):
+        while True:
+            if self.q_receiver.qsize() > 0:
+                msg_params = self.q_receiver.get()
+                return msg_params
+            else:
+                time.sleep(0.3)
 
     def stop_receive_message(self):
         self.is_running = False

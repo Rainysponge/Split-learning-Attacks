@@ -11,6 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class LeNetClientNetworkPart1(nn.Module):
     """CNN following the architecture of:
     https://medium.com/ml2vec/intro-to-pytorch-with-image-classification-on-a- \
@@ -42,6 +43,7 @@ class LeNetClientNetworkPart1(nn.Module):
         x = self.block1(x)
 
         return x
+
 
 class LeNetClientNetworkPart2(nn.Module):
     """CNN following the architecture of:
@@ -93,8 +95,6 @@ class LeNetServerNetwork(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
 
-
-
     def forward(self, x):
         """Defines forward pass of CNN from the split layer until the last
 
@@ -111,4 +111,50 @@ class LeNetServerNetwork(nn.Module):
         # x = x.view(-1, 4*4*16)
         x = x.view(x.size(0), -1)
 
+        return x
+
+
+
+
+class adult_LR_U_client1(nn.Module):
+    def __init__(self):
+        super(adult_LR_U_client1, self).__init__()
+        # First block - convolutional
+        self.block1 = nn.Sequential(
+            nn.Linear(24, 10),
+
+        )
+
+    def forward(self, x):
+        x = self.block1(x)
+
+        return x
+
+
+class adult_LR_U_server(nn.Module):
+    def __init__(self):
+        super(adult_LR_U_server, self).__init__()
+        # First block - convolutional
+
+        self.block2 = nn.Sequential(
+            nn.Linear(10, 7),
+
+        )
+
+    def forward(self, x):
+        x = self.block2(x)
+        return x
+
+
+class adult_LR_U_client2(nn.Module):
+    def __init__(self):
+        super(adult_LR_U_client2, self).__init__()
+        # First block - convolutional
+        self.block3 = nn.Sequential(
+            nn.Linear(7, 2),
+
+        )
+
+    def forward(self, x):
+        x = self.block3(x)
         return x

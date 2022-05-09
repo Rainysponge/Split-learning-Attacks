@@ -1,11 +1,15 @@
+import logging
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import sys
+from queue import Queue
 
 sys.path.extend("../../../")
 
 from ...log.Log import Log
+
 
 class SplitNNServer():
     def __init__(self, args):
@@ -14,9 +18,20 @@ class SplitNNServer():
         self.comm = args["comm"]
         self.model = args["server_model"]
         self.MAX_RANK = args["max_rank"]
+        self.phase = "train"
+        # self.client_act_check_dict = dict()
+        # self.client_act_dict = dict()
+        self.client_number = args["client_number"]
+        self.client_act_queue = Queue()
+        self.is_waiting = False
+        self.client_batch_end_num = 0
+        self.client_test_end_num = 0
+        self.client_train_end_num = 0
+        # self.acts2 = None
 
         self.epoch = 0
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
+        self.active_node = 1
         self.train_mode()
         self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
                                    weight_decay=5e-4)
@@ -30,21 +45,18 @@ class SplitNNServer():
         self.model.eval()
         self.phase = "validation"
 
-    def forward_pass(self, acts, labels):
+    def forward_pass(self, acts):
         self.acts = acts
-        self.optimizer.zero_grad()
         self.acts.retain_grad()
+        self.optimizer.zero_grad()
+        self.acts2 = self.model(acts)
+        return self.acts2
 
-        logits = self.model(acts)
-        _, predictions = logits.max(1)
-        self.loss = self.criterion(logits, labels)
-        self.total = labels.size(0)
-        self.correct = predictions.eq(labels).sum().item()
-        self.val_loss = self.loss.item()
-        self.predict = predictions
-
-
-    def backward_pass(self):
-        self.loss.backward(retain_graph=True)
+    def backward_pass(self, grad):
+        self.acts2.backward(grad)
         self.optimizer.step()
         return self.acts.grad
+
+    def validation_over(self):
+        self.active_node = (self.active_node % self.MAX_RANK) + 1
+        self.train_mode()
