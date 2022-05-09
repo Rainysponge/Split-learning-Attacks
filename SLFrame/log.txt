@@ -2050,3 +2050,123 @@ n_local = 46, batch_num_test_local = 78
 2022-05-09 10:34:16,537 - SplitNNServer - INFO - 14696 - phase=train acc=0.9347278225806451 loss=0.14538852870464325 epoch=25 and step=30
 2022-05-09 10:34:23,071 - SplitNNServer - INFO - 14696 - phase=train acc=0.9352134146341463 loss=0.2836779057979584 epoch=25 and step=40
 2022-05-09 10:34:26,791 - SplitNNServer - INFO - 14696 - worker_num=10 phase=train server: epoch_send=2208 epoch_receive=2256 total_send=552000 total_receive=1508208
+2022-05-09 13:54:54,721 - SplitNN_init - INFO - 25156 - process_id: 0, worker_number: 4
+2022-05-09 13:54:54,913 - datasetFactory - INFO - 25096 - fashionmnist
+2022-05-09 13:54:55,148 - partitionFactory - INFO - 25096 - dataset is fashionmnist
+2022-05-09 13:54:55,261 - fashionmnistController - INFO - 10076 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000014AC45D5370>>
+2022-05-09 13:54:55,473 - cifar10Partition - INFO - 25096 - homo
+2022-05-09 13:54:55,556 - fashionmnistController - INFO - 25156 - ./data/fashionmnist
+2022-05-09 13:54:55,630 - fashionmnistController - INFO - 10076 - ./data/fashionmnist
+2022-05-09 13:54:55,644 - fashionmnistController - INFO - 24960 - ./data/fashionmnist
+2022-05-09 13:54:55,660 - fashionmnistController - INFO - 25096 - ./data/fashionmnist
+2022-05-09 13:55:18,964 - SplitNN_init - INFO - 24604 - process_id: 3, worker_number: 4
+2022-05-09 13:55:19,222 - datasetFactory - INFO - 2648 - fashionmnist
+
+2022-05-09 13:55:19,228 - datasetFactory - INFO - 24604 - fashionmnist
+ashionmnist
+2022-05-09 13:55:19,465 - partitionFactory - INFO - 2648 - dataset is fashionmnist
+
+10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002B75D6E5370>>
+2022-05-09 13:55:19,655 - fashionmnistController - INFO - 2648 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000001F4B0445370>>
+
+2022-05-09 13:55:19,756 - cifar10Partition - INFO - 24604 - homo
+./data/
+2022-05-09 13:55:19,784 - cifar10Partition - INFO - 22116 - homo
+rank = 2, local_sample_number = 20000
+2022-05-09 13:55:19,883 - fashionmnistController - INFO - 24604 - ./data/
+2022-05-09 13:55:19,915 - fashionmnistController - INFO - 23976 - process_id = 2, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:55:19,923 - SplitNN_distributed - INFO - 23976 - process_id == client_rank : 2
+968 - fashionmnistController - INFO - 22116 - ./data/
+2022-05-09 13:55:19,995 - fashionmnistController - INFO - 24604 - rank = 3, local_sample_number = 20000
+2022-05-09 13:55:20,088 - fashionmnistController - INFO - 24604 - process_id = 3, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:55:20,096 - SplitNN_distributed - INFO - 24604 - process_id == client_rank : 3
+r = 20000
+2022-05-09 13:55:20,138 - fashionmnistController - INFO - 2648 - train_dl_global number = 93
+2022-05-09 13:55:20,138 - fashionmnistController - INFO - 2648 - test_dl_global number = 15
+2022-05-09 13:55:20,146 - SplitNN_distributed - INFO - 2648 - process_id == server_rank : 0
+rain_local = 31, batch_num_test_local = 15
+2022-05-09 13:55:20,400 - init_server - INFO - 2648 - Server run begin vanilla
+ent_rank : 1
+2022-05-09 13:55:20,456 - init_client - INFO - 22116 - Client 1 run begin
+2022-05-09 13:55:21,409 - SplitNNServer - INFO - 2648 - phase=train acc=0.0 loss=6.912137031555176 epoch=0 and step=0
+2022-05-09 13:57:49,932 - SplitNN_init - INFO - 12728 - process_id: 1, worker_number: 4
+2022-05-09 13:57:50,186 - datasetFactory - INFO - 12728 - fashionmnist
+2022-05-09 13:57:50,443 - partitionFactory - INFO - 12728 - dataset is fashionmnist
+2022-05-09 13:57:50,589 - fashionmnistController - INFO - 12728 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000023E46DC5370>>
+2022-05-09 13:57:50,705 - cifar10Partition - INFO - 20220 - homo
+2022-05-09 13:57:50,832 - fashionmnistController - INFO - 21728 - ./data/
+2022-05-09 13:57:50,868 - fashionmnistController - INFO - 19580 - ./data/
+2022-05-09 13:57:50,887 - cifar10Partition - INFO - 12728 - homo
+./data/
+2022-05-09 13:57:50,980 - fashionmnistController - INFO - 19580 - rank = 3, local_sample_number = 20000
+2022-05-09 13:57:50,981 - fashionmnistController - INFO - 21728 - train_dl_global number = 93
+2022-05-09 13:57:50,981 - fashionmnistController - INFO - 21728 - test_dl_global number = 15
+2022-05-09 13:57:50,988 - SplitNN_distributed - INFO - 21728 - process_id == server_rank : 0
+r = 20000
+2022-05-09 13:57:51,055 - fashionmnistController - INFO - 19580 - process_id = 3, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:57:51,060 - SplitNN_distributed - INFO - 19580 - process_id == client_rank : 3
+ain_local = 31, batch_num_test_local = 15
+2022-05-09 13:57:51,100 - fashionmnistController - INFO - 12728 - ./data/
+2022-05-09 13:57:51,102 - SplitNN_distributed - INFO - 20220 - process_id == client_rank : 2
+r = 20000
+2022-05-09 13:57:51,249 - fashionmnistController - INFO - 12728 - process_id = 1, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:57:51,393 - init_client - INFO - 20220 - Client 2 run begin
+illa
+nt_rank : 1
+2022-05-09 13:57:51,466 - init_client - INFO - 12728 - Client 1 run begin
+2022-05-09 13:58:41,951 - SplitNN_init - INFO - 21024 - process_id: 0, worker_number: 422022-05-09 13:58:42,105 - datasetFactory - INFO - 22364 - fashionmnist202022-05-09 13:58:42,375 - partitionFactory - INFO - 22364 - dataset is fashionmnist
+2-05-09 13:58:42,381 - fashionmnistController - INFO - 4112 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x00000289E7FF5370>>
+2022-05-09 13:58:42,620 - fashionmnistController - INFO - 22364 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x0000016BEC535370>>
+- 4112 - rank = 2, local_sample_number = 20000
+2022-05-09 13:58:42,741 - cifar10Partition - INFO - 21024 - homo
+rocess_id = 2, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:42,814 - cifar10Partition - INFO - 22364 - homo
+ess_id == client_rank : 2
+2022-05-09 13:58:42,983 - fashionmnistController - INFO - 21920 - ./data/
+2022-05-09 13:58:42,986 - fashionmnistController - INFO - 22364 - ./data/
+2022-05-09 13:58:43,019 - init_client - INFO - 4112 - Client 2 run begin
+, local_sample_number = 20000
+2022-05-09 13:58:43,105 - fashionmnistController - INFO - 22364 - rank = 1, local_sample_number = 20000
+2022-05-09 13:58:43,106 - fashionmnistController - INFO - 21024 - train_dl_global number = 93
+2022-05-09 13:58:43,107 - fashionmnistController - INFO - 21024 - test_dl_global number = 15
+2022-05-09 13:58:43,113 - SplitNN_distributed - INFO - 21024 - process_id == server_rank : 0
+ain_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:43,178 - fashionmnistController - INFO - 21920 - process_id = 3, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:43,180 - SplitNN_distributed - INFO - 22364 - process_id == client_rank : 1
+2022-05-09 13:58:43,423 - init_client - INFO - 22364 - Client 1 run begin
+illa
+2022-05-09 13:58:50,211 - SplitNN_init - INFO - 21032 - process_id: 2, worker_number: 4
+2022-05-09 13:58:50,411 - datasetFactory - INFO - 4248 - fashionmnist
+
+2022-05-09 13:58:50,650 - partitionFactory - INFO - 4248 - dataset is fashionmnist
+
+2022-05-09 13:58:50,859 - fashionmnistController - INFO - 4248 - <bound method cifar10Partition.homo of <core.dataset.partition.cifar10Partition.cifar10Partition object at 0x000002CB68565370>>
+
+2022-05-09 13:58:50,927 - cifar10Partition - INFO - 25360 - homo
+2022-05-09 13:58:51,102 - fashionmnistController - INFO - 15000 - ./data/
+2022-05-09 13:58:51,105 - cifar10Partition - INFO - 4248 - homo
+ ./data/
+2022-05-09 13:58:51,146 - fashionmnistController - INFO - 25360 - ./data/
+2022-05-09 13:58:51,210 - fashionmnistController - INFO - 15000 - rank = 1, local_sample_number = 20000
+2022-05-09 13:58:51,235 - fashionmnistController - INFO - 21032 - rank = 2, local_sample_number = 20000
+2022-05-09 13:58:51,248 - fashionmnistController - INFO - 4248 - ./data/
+2022-05-09 13:58:51,296 - fashionmnistController - INFO - 15000 - process_id = 1, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:51,304 - SplitNN_distributed - INFO - 15000 - process_id == client_rank : 1
+ain_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:51,341 - SplitNN_distributed - INFO - 21032 - process_id == client_rank : 2
+
+2022-05-09 13:58:51,359 - fashionmnistController - INFO - 25360 - test_dl_global number = 15
+2022-05-09 13:58:51,366 - SplitNN_distributed - INFO - 25360 - process_id == server_rank : 0
+ = 20000
+2022-05-09 13:58:51,431 - fashionmnistController - INFO - 4248 - process_id = 3, batch_num_train_local = 31, batch_num_test_local = 15
+2022-05-09 13:58:51,631 - init_client - INFO - 21032 - Client 2 run begin
+ client_rank : 3
+2022-05-09 13:58:51,698 - init_server - INFO - 25360 - Server run begin vanilla
+2022-05-09 13:58:52,472 - SplitNNServer - INFO - 25360 - phase=train acc=0.0046875 loss=6.900692939758301 epoch=0 and step=0
+2022-05-09 13:59:07,458 - SplitNNServer - INFO - 25360 - phase=train acc=0.06065340909090909 loss=6.842121124267578 epoch=0 and step=10
+2022-05-09 13:59:22,625 - SplitNNServer - INFO - 25360 - phase=train acc=0.07767857142857143 loss=6.623702049255371 epoch=0 and step=20
+2022-05-09 13:59:37,581 - SplitNNServer - INFO - 25360 - phase=train acc=0.08805443548387097 loss=6.580252647399902 epoch=0 and step=30
+2022-05-09 13:59:38,486 - SplitNNServer - INFO - 25360 - worker_num=1 phase=train server: epoch_send=7192 epoch_receive=1536 total_send=7192 total_receive=1536
+2022-05-09 13:59:48,440 - SplitNNServer - INFO - 25360 - worker_num=1 phase=validation server: epoch_send=0 epoch_receive=768 total_send=7192 total_receive=2304
+2022-05-09 13:59:48,440 - SplitNNServer - INFO - 25360 - worker=1 phase=validation acc=0.09205163043478261 loss=2.141199267428854 epoch=1 and step=46
+2022-05-09 13:59:49,081 - SplitNNServer - INFO - 25360 - phase=train acc=0.13125 loss=6.554913520812988 epoch=1 and step=0

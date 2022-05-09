@@ -71,7 +71,7 @@ class MpiCommunicationManager(BaseCommunicationManager):
         self.tmp_receive_size = 0
 
     def send_message(self, msg: Message, priority=100):
-        size=sys.getsizeof(msg)
+        size=sys.getsizeof(msg.to_string())
         self.tmp_send_size += size
         self.total_send_size += size
         msg.add_params(Message.MSG_ARG_KEY_RECEIVE_PRIORITY,priority)
@@ -88,7 +88,7 @@ class MpiCommunicationManager(BaseCommunicationManager):
         while self.is_running:
             if not self.q_receiver.empty():
                 msg_params = self.q_receiver.get()
-                size=sys.getsizeof(msg_params)
+                size=sys.getsizeof(msg_params.to_string())
                 self.tmp_receive_size += size
                 self.total_receive_size += size
                 self.notify(msg_params)
