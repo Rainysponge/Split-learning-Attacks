@@ -152,8 +152,15 @@ SLFrame
           ├─YAML …… YAML解析器 
           │  │  yamlParse.py  
   
-在下载整个文件后 // 配置环境
+
+
 ## 如何使用
+在下载整个文件后 需要配置相关环境，安装mpi和下列库
+```
+yaml
+py4mpi
+```
+
 如要使用已有的范式只需要配置config.yaml文件  
 这里用psl举例，配置文件如下：  
 
@@ -219,7 +226,7 @@ message_define.py  // 定义通讯所需的相关参数
 server.py  // 定义服务端的相关参数和训练方法
 server_manager.py  // 定义服务端在通讯时的相关方法
 ```
-也可以继承process中的相关类已使用一些通用的方法
+也可以继承process中的相关类已使用一些通用的方法。
 
 
 
