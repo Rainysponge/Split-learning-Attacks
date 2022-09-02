@@ -1,4 +1,5 @@
 from mpi4py import MPI
+import logging
 from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
@@ -20,6 +21,7 @@ class ServerManager(MessageManager):
         super().run()
 
     def send_grads_to_client(self, receive_id, grads=None):
+        logging.info("grads to {}".format(receive_id))
         message = Message(MyMessage.MSG_TYPE_S2C_GRADS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
         message.add_params(MyMessage.MSG_AGR_KEY_RESULT,
@@ -31,11 +33,17 @@ class ServerManager(MessageManager):
                                               self.handle_message_acts)
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED,
                                               self.handle_message_finish_protocol)
+        self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_VALIDATION,
+                                              self.handle_validation_sign)
 
     def handle_message_acts(self, msg_params):
         acts, labels = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
+
+        # self.log.info(type(acts))
+
         self.active_node = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
         client_phase = msg_params.get(MyMessage.MSG_ARG_KEY_PHASE)
+        logging.info("client_phase {}".format(client_phase))
         if client_phase == "train":
             self.trainer.train_mode()
         else:
@@ -46,7 +54,9 @@ class ServerManager(MessageManager):
 
         grads = None
         if self.trainer.phase == "train":
+            logging.info("backward_pass")
             grads = self.trainer.backward_pass()
+            logging.info("backward_pass end")
 
         self.send_grads_to_client(self.active_node, grads)
 
@@ -54,3 +64,14 @@ class ServerManager(MessageManager):
         self.finished_nodes += 1
         if self.finished_nodes == self.trainer.MAX_RANK:
             self.finish()
+
+    def handle_validation_sign(self, msg_params):
+        self.trainer.validation_sign_number += 1
+        if self.trainer.validation_sign_number == self.trainer.MAX_RANK:
+            self.trainer.validation_sign_number = 0
+            for idx in range(1, self.trainer.MAX_RANK + 1):
+                self.send_validation_sign_to_client(idx)
+
+    def send_validation_sign_to_client(self, receive_id):
+        message = Message(MyMessage.MSG_TYPE_S2C_START_VALIDATION, 0, receive_id)
+        self.send_message(message)

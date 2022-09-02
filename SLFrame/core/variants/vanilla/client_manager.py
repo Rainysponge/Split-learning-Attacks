@@ -21,17 +21,20 @@ class ClientManager(MessageManager):
 
     def run(self):
         if self.rank == 1:
+            logging.info("{} begin run_forward_pass".format(self.trainer.rank))
             self.run_forward_pass()
         super(ClientManager, self).run()
 
     def run_forward_pass(self):
         acts, labels = self.trainer.forward_pass()
+        logging.info("{} run_forward_pass".format(self.trainer.rank))
         self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
         self.trainer.batch_idx += 1
 
     def run_eval(self):
         self.send_validation_signal_to_server(self.trainer.SERVER_RANK)
         self.trainer.eval_mode()
+        self.trainer.print_com_size(self.com_manager)
 
         for i in range(len(self.trainer.testloader)):
             self.run_forward_pass()
@@ -42,8 +45,8 @@ class ClientManager(MessageManager):
             self.finish()
         else:
             self.send_semaphore_to_client(self.trainer.node_right)
+
         self.trainer.batch_idx = 0
-        logging.error("client {} valiover".format(self.rank))
 
     def register_message_receive_handlers(self):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2C_SEMAPHORE,
@@ -87,7 +90,6 @@ class ClientManager(MessageManager):
         self.send_message(message)
 
     def send_validation_signal_to_server(self, receive_id):
-        logging.warning("client {} send vali signal to server{}".format(self.rank, self.trainer.SERVER_RANK))
         message = Message(MyMessage.MSG_TYPE_C2S_VALIDATION_MODE, self.rank, receive_id)
         self.send_message(message)
 

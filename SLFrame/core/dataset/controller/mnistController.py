@@ -4,6 +4,7 @@ from torch.utils.data.dataset import T_co
 import torchvision.transforms as transforms
 
 import torch.utils.data as data
+from torch_geometric.loader import DataLoader
 
 from PIL import Image
 from torchvision.datasets import MNIST
@@ -73,7 +74,7 @@ class mnistController():
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
         # self.log.info("class_num = " + str(class_num))
-        train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
+        train_data_num = sum([len(net_dataidx_map[r]) for r in net_dataidx_map.keys()])
 
         # get global test data
         if process_id == 0:

@@ -17,24 +17,17 @@ class MpiCommunicationManager(BaseCommunicationManager):
         self.size = size
 
         self._observers: List[Observer] = []
+        self.send_thread = None
+        self.receive_thread = None
+        self.collective_thread = None
+
 
         if node_type == "client":
             self.q_sender, self.q_receiver = self.init_client_communication()
         elif node_type == "server":
             self.q_sender, self.q_receiver = self.init_server_communication()
 
-        self.server_send_thread = None
-        self.server_receive_thread = None
-        self.server_collective_thread = None
-
-        self.client_send_thread = None
-        self.client_receive_thread = None
-        self.client_collective_thread = None
-
         self.is_running = True
-
-        self.total_send_size = 0
-        self.total_receive_size = 0
         self.reset_analysis_data()
 
     def init_server_communication(self):
@@ -42,38 +35,33 @@ class MpiCommunicationManager(BaseCommunicationManager):
             创建并返回发送接收队列，利用线程来给队列进行更新
         """
         server_send_queue = queue.Queue()
-        self.server_send_thread = MPISendThread(self.comm, self.rank, self.size, "ServerSendThread", server_send_queue)
-        self.server_send_thread.start()
+        self.send_thread = MPISendThread(self.comm, self.rank, self.size, "ServerSendThread", server_send_queue)
+        self.send_thread.start()
 
         server_receive_queue = queue.Queue()
-        self.server_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",
+        self.receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ServerReceiveThread",
                                                       server_receive_queue)
-        self.server_receive_thread.start()
-
+        self.receive_thread.start()
         return server_send_queue, server_receive_queue
 
     def init_client_communication(self):
         # SEND
         client_send_queue = queue.Queue()
-        self.client_send_thread = MPISendThread(self.comm, self.rank, self.size, "ClientSendThread", client_send_queue)
-        self.client_send_thread.start()
+        self.send_thread = MPISendThread(self.comm, self.rank, self.size, "ClientSendThread", client_send_queue)
+        self.send_thread.start()
 
         # RECEIVE
         client_receive_queue = queue.Queue()
-        self.client_receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ClientReceiveThread",
+        self.receive_thread = MPIReceiveThread(self.comm, self.rank, self.size, "ClientReceiveThread",
                                                       client_receive_queue)
-        self.client_receive_thread.start()
-
+        self.receive_thread.start()
         return client_send_queue, client_receive_queue
 
     def reset_analysis_data(self):
-        self.tmp_send_size = 0
-        self.tmp_receive_size = 0
+        self.send_thread.tmp_send_size = 0
+        self.receive_thread.tmp_receive_size = 0
 
     def send_message(self, msg: Message, priority=100):
-        size=sys.getsizeof(msg.to_string())
-        self.tmp_send_size += size
-        self.total_send_size += size
         msg.add_params(Message.MSG_ARG_KEY_RECEIVE_PRIORITY,priority)
         self.q_sender.put(msg)
 
@@ -88,12 +76,9 @@ class MpiCommunicationManager(BaseCommunicationManager):
         while self.is_running:
             if not self.q_receiver.empty():
                 msg_params = self.q_receiver.get()
-                size=sys.getsizeof(msg_params.to_string())
-                self.tmp_receive_size += size
-                self.total_receive_size += size
                 self.notify(msg_params)
 
-            time.sleep(0.3)
+            time.sleep(0.01)
 
     def wait_for_message(self):
         while True:
@@ -101,16 +86,13 @@ class MpiCommunicationManager(BaseCommunicationManager):
                 msg_params = self.q_receiver.get()
                 return msg_params
             else:
-                time.sleep(0.3)
+                time.sleep(0.01)
 
     def stop_receive_message(self):
         self.is_running = False
-        self.__stop_thread(self.server_send_thread)
-        self.__stop_thread(self.server_receive_thread)
-        self.__stop_thread(self.server_collective_thread)
-        self.__stop_thread(self.client_send_thread)
-        self.__stop_thread(self.client_receive_thread)
-        self.__stop_thread(self.client_collective_thread)
+        self.__stop_thread(self.send_thread)
+        self.__stop_thread(self.receive_thread)
+        self.__stop_thread(self.collective_thread)
 
     def notify(self, msg_params):
         msg_type = msg_params.get_type()

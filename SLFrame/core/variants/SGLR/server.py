@@ -25,6 +25,15 @@ class SplitNNServer():
         self.client_model_uploaded_number = 0
         self.client_train_grads_list = dict()
         self.loss_list = list()
+        self.act_dict = dict()
+        self.res_dict = dict()
+        self.act_number = 0
+
+        self.total = 0
+        self.correct = 0
+        self.val_loss = 0
+        self.step = 0
+        self.batch_idx = 0
         # self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
         #                            weight_decay=5e-4)
         # self.optimizer = torch.optim.Adam(self.model.parameters(),
@@ -51,15 +60,18 @@ class SplitNNServer():
 
     def train_mode(self):
         self.model.train()
+        self.reset_local_params()
         self.phase = "train"
 
     def eval_mode(self):
         self.model.eval()
+        self.reset_local_params()
         self.phase = "validation"
 
-    def forward_pass(self, acts, labels):
+    def forward_pass(self, acts, labels, sender):
         self.acts = acts
-        self.optimizer.zero_grad()
+        if self.phase == "validation":
+            self.optimizer.zero_grad()
         self.acts.retain_grad()
 
         logits = self.model(acts)
@@ -68,10 +80,13 @@ class SplitNNServer():
         self.total = labels.size(0)
         self.correct = predictions.eq(labels).sum().item()
         self.val_loss = self.loss.item()
+        self.res_dict[sender] = (self.total, self.correct, self.val_loss)
+        if self.phase == "validation":
+            self.optimizer.zero_grad()
 
     def backward_pass(self):
         self.loss.backward(retain_graph=True)
-        self.optimizer.step()
+        # self.optimizer.step()
         # self.log.info(self.acts.grad.shape)
         return self.acts.grad
 
@@ -108,3 +123,10 @@ class SplitNNServer():
             self.log.info("SGLR_splitLR: {}".format(args["SGLR_splitLR"]))
             return optim.SGD(self.model.parameters(), args["lr"] * (self.client_number ** args["SGLR_splitLR_alpha"]),
                              momentum=0.9, weight_decay=5e-4)
+
+    def reset_local_params(self):
+        self.total = 0
+        self.correct = 0
+        self.val_loss = 0
+        self.step = 0
+        self.batch_idx = 0

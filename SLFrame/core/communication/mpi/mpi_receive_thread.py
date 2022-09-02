@@ -2,7 +2,7 @@ import ctypes
 import logging
 import threading
 import traceback
-
+import sys
 from ..message import Message
 
 
@@ -14,6 +14,8 @@ class MPIReceiveThread(threading.Thread):
         self.rank = rank
         self.size = size
         self.name = name
+        self.total_receive_size = 0
+        self.tmp_receive_size = 0
         self.q = q
 
     def run(self):
@@ -21,9 +23,13 @@ class MPIReceiveThread(threading.Thread):
         while True:
             try:
                 msg_str = self.comm.recv()
+
                 msg = Message()
                 msg.init(msg_str)
                 self.q.put(msg)
+                size=msg.get_size()
+                self.tmp_receive_size += size
+                self.total_receive_size += size
             except Exception:
                 traceback.print_exc()
 

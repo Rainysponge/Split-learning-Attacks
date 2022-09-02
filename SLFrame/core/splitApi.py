@@ -20,6 +20,13 @@ def SplitNN_init(parse):
     parse["worker_number"] = worker_number
     parse["client_number"] = worker_number - 1
     parse["max_rank"] = parse["worker_number"] - 1
+
+    if parse['variants_type'] == 'TaskAgnostic':
+        dataset_cur, cur_client_num = judge_client_dataset(parse)
+        parse['dataset_cur'] = dataset_cur
+        parse['cur_client_num'] = cur_client_num
+
+
     return comm, process_id, worker_number
 
 
@@ -47,3 +54,14 @@ def init_client(args):
     client, client_manager = variantsFactory(args["variants_type"], "client", args).factory()
     logging.info("Client {} run begin".format(args['rank']))
     client_manager.run()
+
+
+def judge_client_dataset(parse):
+    """
+    对于多任务范式的特供方法，返回数据集索引和当前数据集有几个客户端使用
+    """
+    client_num = parse['client_split'][0]
+    for i in range(len(parse['client_split'])):
+        if parse['rank'] <= parse['client_split'][i]:
+            return i, client_num
+        client_num = parse['client_split'][i+1] - parse['client_split'][i]

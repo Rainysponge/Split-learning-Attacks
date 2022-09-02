@@ -42,7 +42,7 @@ class SplitNNServer():
         self.acts2=self.model(acts)
         return self.acts2
 
-    def backward_pass(self,grad):
+    def backward_pass(self, grad):
         self.acts2.backward(grad)
         self.optimizer.step()
         return self.acts.grad

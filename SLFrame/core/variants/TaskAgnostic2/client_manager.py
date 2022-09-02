@@ -52,6 +52,9 @@ class ClientManager(MessageManager):
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
         else:
+            # self.send_semaphore_to_client(self.trainer.node_right)
+            # message.add_params(MyMessage.MSG_ARG_KEY_CLIENT_NUM, self.args['cur_client_num'])
+            # message.add_params(MyMessage.MSG_ARG_KEY_CUR_DATASET_IDX, self.args['dataset_cur'])
             if self.args['client_split'][self.args['dataset_cur']] == self.args['rank']:
 
                 next_group_cur = (self.args['dataset_cur'] + 1) % len(self.args['client_split'])
@@ -62,6 +65,17 @@ class ClientManager(MessageManager):
                 for i in range(start, end):
                     self.send_semaphore_to_client(i)
 
+            # while True:
+            #     # wait for sign
+            #     if self.com_manager.q_receiver.qsize() > 0:
+            #         msg_params = self.com_manager.q_receiver.get()
+            #         self.com_manager.notify(msg_params)
+            #         break
+            #     else:
+            #         time.sleep(0.5)
+
+            # self.trainer.train_mode()
+            # self.run_forward_pass()
 
     def register_message_receive_handlers(self):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_GRADS,
@@ -102,9 +116,33 @@ class ClientManager(MessageManager):
             if self.trainer.batch_idx == len(self.trainer.trainloader):
                 # torch.save(self.trainer.model, self.args["model_tmp_path"])
                 self.send_ready_to_send_model(0)
+                # self.send_model_param_to_fed_server(0)
+                # wait fedavg server msg
+                # while True:
+                #     if self.com_manager.q_receiver.qsize() > 0:
+                #         msg_params = self.com_manager.q_receiver.get()
+                #
+                #         logging.info(msg_params)
+                #
+                #         self.com_manager.notify(msg_params)
+                #         break
+                #     else:
+                #         time.sleep(0.5)
+                # self.run_eval()
             else:
                 if self.args["rank"] == self.args['client_split'][self.args['dataset_cur']]:
                     self.send_next_batch_to_server(0)
+            # else:
+            #     while True:
+            #         if self.com_manager.q_receiver.qsize() > 0:
+            #             msg_params = self.com_manager.q_receiver.get()
+            #             logging.info("rank {} get sign".format(self.args['rank']))
+            #
+            #             self.com_manager.notify(msg_params)
+            #             break
+            #         else:
+            #             time.sleep(0.5)
+            #     self.run_forward_pass()
         else:
             self.run_forward_pass()
 
@@ -156,7 +194,16 @@ class ClientManager(MessageManager):
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_GRADS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
         message.add_params(MyMessage.MSG_ARG_KEY_PHASE, self.trainer.phase)
-
+        # comm.send(data, dest=destination_process)
+        # msg = Message()
+        # msg.add(Message.MSG_ARG_KEY_TYPE, message.get_type())
+        # msg.add(Message.MSG_ARG_KEY_SENDER, message.get_sender_id())
+        # msg.add(Message.MSG_ARG_KEY_RECEIVER, message.get_receiver_id())
+        # for key, value in message.get_params().items():
+        #     # logging.info("%s == %s" % (key, value))
+        #     msg.add(key, value)
+        #
+        # self.args['comm'].send(msg, dest=0)
         self.send_message(message)
 
     def send_semaphore_to_client(self, receive_id):

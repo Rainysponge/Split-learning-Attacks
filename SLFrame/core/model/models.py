@@ -30,7 +30,7 @@ class LeNetComplete(nn.Module):
             nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
-
+        self.flatten = nn.Flatten()
         # Third block - fully connected
         self.block3 = nn.Sequential(
             nn.Linear(in_features=256, out_features=120),
@@ -49,8 +49,6 @@ class LeNetComplete(nn.Module):
           x: Output Tensor
         """
         # Apply first convolutional block to input tensor
-
-
         x = self.block1(x)
         # Apply second convolutional block to input tensor
         x = self.block2(x)
@@ -81,6 +79,12 @@ class LeNetClientNetwork(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
 
+        # Second block - convolutional
+        self.block2 = nn.Sequential(
+            nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2))
+
     def forward(self, x):
         """Defines forward pass of CNN until the split layer, which is the first
         convolutional layer
@@ -93,6 +97,7 @@ class LeNetClientNetwork(nn.Module):
         """
         # Apply first convolutional block to input tensor
         x1 = self.block1(x)
+        x1 = self.block2(x1)
 
         return x1
 
@@ -132,8 +137,7 @@ class LeNetServerNetwork(nn.Module):
           x: Output Tensor
         """
         # Apply second convolutional block to input tensor
-        x = self.block2(x)
-
+        # x = self.block2(x)
         # Flatten output
         # x = x.view(-1, 4*4*16)
         x = x.view(x.size(0), -1)

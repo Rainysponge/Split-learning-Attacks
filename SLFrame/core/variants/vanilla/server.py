@@ -19,8 +19,12 @@ class SplitNNServer():
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
         self.active_node = 1
         self.train_mode()
-        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
-                                   weight_decay=5e-4)
+        self.optimizer = optim.Adam(self.model.parameters(),
+                                    lr=args["lr"],
+                                    betas=(0.9, 0.999),
+                                    eps=1e-08,
+                                    weight_decay=0,
+                                    amsgrad=False)
         self.criterion = nn.CrossEntropyLoss()
 
     def reset_local_params(self):
@@ -38,6 +42,7 @@ class SplitNNServer():
     def eval_mode(self):
         self.model.eval()
         self.phase = "validation"
+        self.reset_local_params()
 
     def forward_pass(self, acts, labels):
         self.acts = acts
@@ -70,14 +75,18 @@ class SplitNNServer():
         # not precise estimation of validation loss
         self.val_loss /= self.step
         acc = self.correct / self.total
-        if self.active_node == 1:
-            self.epoch += 1
+
         # 这里也要用log记录一下准确率之类的信息
-        self.log.info("worker={} phase={} acc={} loss={} epoch={} and step={}"
-                          .format(self.active_node,self.phase, acc, self.val_loss, self.epoch,self.step))
+        self.log.info("phase={} acc={} loss={} epoch={} and step={}"
+                          .format(self.phase, acc, self.val_loss, self.epoch, self.step))
+        self.epoch += 1
         self.active_node = (self.active_node % self.MAX_RANK) + 1
         self.train_mode()
 
-    def print_com_size(self,com_manager):
-        self.log.info("worker_num={} phase={} server: epoch_send={} epoch_receive={} total_send={} total_receive={}"
-                      .format(self.active_node,self.phase,com_manager.tmp_send_size,com_manager.tmp_receive_size,com_manager.total_send_size,com_manager.total_receive_size))
+
+    # def reset_local_params(self):
+    #     self.total = 0
+    #     self.correct = 0
+    #     self.val_loss = 0
+    #     self.step = 0
+    #     self.batch_idx = 0

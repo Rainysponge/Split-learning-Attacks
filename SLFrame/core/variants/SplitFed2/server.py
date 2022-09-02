@@ -53,6 +53,7 @@ class SplitNNServer():
         self.correct = predictions.eq(labels).sum().item()
         self.val_loss = self.loss.item()
 
+
     def backward_pass(self):
         self.loss.backward(retain_graph=True)
         self.optimizer.step()

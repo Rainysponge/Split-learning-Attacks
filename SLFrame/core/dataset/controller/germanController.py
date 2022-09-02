@@ -66,7 +66,7 @@ class germanController():
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
         # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
-        train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
+        train_data_num = sum([len(net_dataidx_map[r]) for r in net_dataidx_map.keys()])
 
         # get global test data
         if process_id == 0:
@@ -78,7 +78,10 @@ class germanController():
             local_data_num = 0
         else:
             # get local dataset
-            dataidxs = net_dataidx_map[process_id - 1]
+            try:
+                dataidxs = net_dataidx_map[process_id - 1]
+            except Exception as e:
+                dataidxs = net_dataidx_map[0]
             local_data_num = len(dataidxs)
             self.log.info("rank = %d, local_sample_number = %d" % (process_id, local_data_num))
             # training batch size = 64;

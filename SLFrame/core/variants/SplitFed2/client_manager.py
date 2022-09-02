@@ -35,6 +35,7 @@ class ClientManager(MessageManager):
 
     def run_eval(self):
         self.trainer.eval_mode()
+        self.trainer.print_com_size(self.com_manager)
         for i in range(len(self.trainer.testloader)):
             logging.warning("validate {}".format(i))
             self.run_forward_pass()
@@ -42,10 +43,12 @@ class ClientManager(MessageManager):
                 if self.com_manager.q_receiver.qsize() > 0:
                     msg_params = self.com_manager.q_receiver.get()
                     self.com_manager.notify(msg_params)
+                    #
                     break
                 else:
-                    time.sleep(0.5)
+                    time.sleep(0.1)
         self.trainer.write_log()
+
         self.trainer.epoch_count += 1
         if self.trainer.epoch_count == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
             self.send_finish_to_server(self.trainer.SERVER_RANK)
@@ -90,17 +93,18 @@ class ClientManager(MessageManager):
                 # torch.save(self.trainer.model, self.args["model_tmp_path"])
                 self.send_model_param_to_fed_server(0)
 
-                while True:
-                    if self.com_manager.q_receiver.qsize() > 0:
-                        msg_params = self.com_manager.q_receiver.get()
-                        logging.info(msg_params)
 
-                        self.com_manager.notify(msg_params)
-                        break
-                    else:
-                        time.sleep(0.5)
-
-                self.run_eval()
+                # while True:
+                #     if self.com_manager.q_receiver.qsize() > 0:
+                #         msg_params = self.com_manager.q_receiver.get()
+                #         logging.info(msg_params)
+                #
+                #         self.com_manager.notify(msg_params)
+                #         break
+                #     else:
+                #         time.sleep(0.5)
+                #
+                # self.run_eval()
             else:
                 self.run_forward_pass()
 
@@ -119,6 +123,7 @@ class ClientManager(MessageManager):
         model_param = msg_params.get(MyMessage.MSG_ARG_KEY_MODEL)
         # self.log.info(model_param["block1.0.weight"])
         self.trainer.model.load_state_dict(model_param)
+        self.run_eval()
 
     def send_model_param_to_fed_server(self, receive_id):
         message = Message(MyMessage.MSG_TYPE_C2S_SEND_MODEL, self.rank, receive_id)

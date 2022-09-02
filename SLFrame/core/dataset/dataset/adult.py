@@ -15,7 +15,7 @@ class adult_truncated(data.Dataset):
         self.data = None
         self.dataidxs = dataidxs
         self.log = Log(self.__class__.__name__, parse)
-        self.root = parse['dataDir']+"adult"
+        self.root = parse['dataDir'] + "adult"
         self.target = None
         self.bantch_size = parse["batch_size"]
         # self.n_nets = parse['client_number'] if parse['client_number'] else 16

@@ -6,6 +6,9 @@ from .controller.adultController import adultController
 from .controller.germanController import germanController
 from .controller.fashionmnistController import fashionmnistController
 from .controller.cheXpertController import cheXpertController
+from .controller.coraController import coraController
+from .controller.molhivController import molhivController
+from .controller.shakespeareController import shakespeareController
 
 
 class datasetFactory(abstractDatasetFactory):
@@ -17,6 +20,18 @@ class datasetFactory(abstractDatasetFactory):
         # try:
         # self.log.info(sys.argv[0])
         self.log.info(self.parse["dataset"])
+        if isinstance(self.parse["dataset"], list):
+            # 特供方法 多任务
+            dataset_cur, cur_client_num = self.judge_client_dataset()
+            item = self.parse["dataset"][dataset_cur]
+            create_controller = compile('{}Controller(self.{})'.format(item, "parse"),
+                                        './core/dataset/{}/{}Controller.py'.format(item,
+                                                                                   item),
+                                        'eval')
+
+            controller = eval(create_controller)
+
+            return controller
 
         create_controller = compile('{}Controller(self.{})'.format(self.parse.dataset, "parse"),
                                     './core/dataset/{}/{}Controller.py'.format(self.parse.dataset, self.parse.dataset),
@@ -33,3 +48,13 @@ class datasetFactory(abstractDatasetFactory):
         # except Exception as e:
         #     self.log.info(e)
         # self.log.info(dir(a))
+
+    def judge_client_dataset(self):
+        """
+        对于多任务范式的特供方法，返回数据集索引和当前数据集有几个客户端使用
+        """
+        client_num = self.parse['client_split'][0]
+        for i in range(len(self.parse['client_split'])):
+            if self.parse['rank'] <= self.parse['client_split'][i]:
+                return i, client_num
+            client_num = self.parse['client_split'][i+1] - self.parse['client_split'][i]

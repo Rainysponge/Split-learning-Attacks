@@ -78,7 +78,7 @@ class LeNetClientNetworkPart2(nn.Module):
         return x
 
 
-class LeNetServerNetwork(nn.Module):
+class LeNetServerNetwork_U(nn.Module):
     """CNN following the architecture of:
     https://medium.com/ml2vec/intro-to-pytorch-with-image-classification-on-a- \
             fashion-clothes-dataset-e589682df0c5
@@ -87,7 +87,7 @@ class LeNetServerNetwork(nn.Module):
     from the split layer until the last."""
 
     def __init__(self):
-        super(LeNetServerNetwork, self).__init__()
+        super(LeNetServerNetwork_U, self).__init__()
 
         # Second block - convolutional
         self.block2 = nn.Sequential(

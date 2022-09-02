@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/dataset/controller/cheXpertController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/dataset/dataset/cheXpert.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/model/DenseNet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/model/EffientNet0.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/CheXpert-v1.0-small/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/dataset/datasetFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/dataset/datasetFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="b66ac810-2f02-425d-831c-a83929465362" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +23,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -40,26 +30,30 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Split-learning-Attacks\SABuf2\Split-learning-Attacks\SLFrame\core\model" />
-      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\variants\asyVanilla" />
-      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\variants\SGLR" />
-      <recent name="D:\Split-learning-Attacks\SABuf2\Split-learning-Attacks\SLFrame\core\variants\asyVanilla" />
-      <recent name="D:\Split-learning-Attacks\SABuf3\Split-learning-Attacks\SLFrame\data\german" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\dataset\dataset" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\data\shakespeare" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\model" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\data\molhiv" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\variants\gnn" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\data\shakespeare\preprocess" />
+      <recent name="D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\core\process" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pic">
-    <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Test2">
+    <configuration name="Test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -72,9 +66,31 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test2.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SLFrame" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -95,6 +111,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SLFrame" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataTest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -125,28 +163,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="logTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SLFrame" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/logTest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="pic" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SLFrame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,35 +185,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SLFrame" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/client" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/client/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Test2" />
+        <item itemvalue="Python.Test3" />
         <item itemvalue="Python.pic" />
+        <item itemvalue="Python.dataTest" />
         <item itemvalue="Python.datasetTest" />
-        <item itemvalue="Python.logTest" />
-        <item itemvalue="Python.Test" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +207,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -275,7 +270,150 @@
       <workItem from="1646212590180" duration="171000" />
       <workItem from="1646550438405" duration="6006000" />
       <workItem from="1646618841713" duration="17523000" />
-      <workItem from="1648449977949" duration="561000" />
+      <workItem from="1646649918823" duration="2214000" />
+      <workItem from="1646712727582" duration="704000" />
+      <workItem from="1646722009447" duration="5386000" />
+      <workItem from="1646739623654" duration="340000" />
+      <workItem from="1647065545141" duration="9253000" />
+      <workItem from="1647149525015" duration="4897000" />
+      <workItem from="1647160347573" duration="3454000" />
+      <workItem from="1647240308234" duration="9139000" />
+      <workItem from="1647520939541" duration="3391000" />
+      <workItem from="1647780639880" duration="1281000" />
+      <workItem from="1647785706159" duration="1726000" />
+      <workItem from="1647787806036" duration="576000" />
+      <workItem from="1647829241900" duration="2384000" />
+      <workItem from="1647832004768" duration="637000" />
+      <workItem from="1647832674964" duration="59000" />
+      <workItem from="1647832763547" duration="4714000" />
+      <workItem from="1647837839198" duration="2502000" />
+      <workItem from="1647841014338" duration="10088000" />
+      <workItem from="1647861333882" duration="10000" />
+      <workItem from="1647863848461" duration="2734000" />
+      <workItem from="1648366130377" duration="2540000" />
+      <workItem from="1648374147856" duration="1513000" />
+      <workItem from="1648376328079" duration="9038000" />
+      <workItem from="1648435321504" duration="104000" />
+      <workItem from="1648435713478" duration="249000" />
+      <workItem from="1648436259509" duration="2303000" />
+      <workItem from="1648449922236" duration="620000" />
+      <workItem from="1648552136005" duration="98000" />
+      <workItem from="1648553681014" duration="355000" />
+      <workItem from="1648554076667" duration="4464000" />
+      <workItem from="1648559794714" duration="2193000" />
+      <workItem from="1648581445250" duration="224000" />
+      <workItem from="1648624379316" duration="1418000" />
+      <workItem from="1648713566166" duration="626000" />
+      <workItem from="1648715372053" duration="513000" />
+      <workItem from="1648883751933" duration="6718000" />
+      <workItem from="1648967099216" duration="26023000" />
+      <workItem from="1649035174918" duration="5325000" />
+      <workItem from="1649073378262" duration="1139000" />
+      <workItem from="1649210925331" duration="5418000" />
+      <workItem from="1649223781932" duration="9641000" />
+      <workItem from="1649239679633" duration="12000" />
+      <workItem from="1649241384408" duration="3199000" />
+      <workItem from="1649248230015" duration="885000" />
+      <workItem from="1649330336616" duration="930000" />
+      <workItem from="1649483065758" duration="615000" />
+      <workItem from="1649500448900" duration="1813000" />
+      <workItem from="1649582944169" duration="2147000" />
+      <workItem from="1649731187545" duration="3706000" />
+      <workItem from="1649743588134" duration="158000" />
+      <workItem from="1649764225268" duration="2132000" />
+      <workItem from="1649769331942" duration="2483000" />
+      <workItem from="1649829077728" duration="4331000" />
+      <workItem from="1650093688556" duration="675000" />
+      <workItem from="1650180848700" duration="19032000" />
+      <workItem from="1650256549190" duration="1376000" />
+      <workItem from="1650258709515" duration="11323000" />
+      <workItem from="1650349819420" duration="188000" />
+      <workItem from="1650805847036" duration="4268000" />
+      <workItem from="1650866946543" duration="13767000" />
+      <workItem from="1650949761433" duration="11610000" />
+      <workItem from="1651054955183" duration="1710000" />
+      <workItem from="1651218219919" duration="2724000" />
+      <workItem from="1651277843805" duration="2269000" />
+      <workItem from="1651475069617" duration="8064000" />
+      <workItem from="1651500813029" duration="136000" />
+      <workItem from="1651515027425" duration="384000" />
+      <workItem from="1651559956112" duration="754000" />
+      <workItem from="1651587002752" duration="454000" />
+      <workItem from="1651647385278" duration="12248000" />
+      <workItem from="1651734903137" duration="761000" />
+      <workItem from="1651749514754" duration="3452000" />
+      <workItem from="1651797769055" duration="1300000" />
+      <workItem from="1651815759247" duration="14163000" />
+      <workItem from="1652077340723" duration="17959000" />
+      <workItem from="1652177289018" duration="2296000" />
+      <workItem from="1652269347057" duration="621000" />
+      <workItem from="1652670641204" duration="2960000" />
+      <workItem from="1652681424597" duration="7386000" />
+      <workItem from="1652713938038" duration="2736000" />
+      <workItem from="1652759260212" duration="7886000" />
+      <workItem from="1653048081489" duration="1412000" />
+      <workItem from="1653071454229" duration="836000" />
+      <workItem from="1653091215653" duration="3294000" />
+      <workItem from="1653300383203" duration="1527000" />
+      <workItem from="1653364124079" duration="10228000" />
+      <workItem from="1653978998509" duration="12607000" />
+      <workItem from="1654586559546" duration="5431000" />
+      <workItem from="1655191401853" duration="5791000" />
+      <workItem from="1655288812199" duration="8416000" />
+      <workItem from="1655711291314" duration="596000" />
+      <workItem from="1655780859861" duration="11813000" />
+      <workItem from="1656402206623" duration="1245000" />
+      <workItem from="1656487750551" duration="636000" />
+      <workItem from="1656494610669" duration="1013000" />
+      <workItem from="1656495686239" duration="1471000" />
+      <workItem from="1656943597685" duration="1440000" />
+      <workItem from="1656994752832" duration="14990000" />
+      <workItem from="1657094956887" duration="589000" />
+      <workItem from="1657114299450" duration="138000" />
+      <workItem from="1657545105406" duration="5119000" />
+      <workItem from="1657591305062" duration="20935000" />
+      <workItem from="1657692728528" duration="12975000" />
+      <workItem from="1657714818523" duration="1257000" />
+      <workItem from="1658050075097" duration="2498000" />
+      <workItem from="1658113776897" duration="3526000" />
+      <workItem from="1658132770113" duration="9506000" />
+      <workItem from="1658196760668" duration="25553000" />
+      <workItem from="1658800966376" duration="16582000" />
+      <workItem from="1659512339809" duration="1419000" />
+      <workItem from="1659602019646" duration="609000" />
+      <workItem from="1659687114401" duration="2764000" />
+      <workItem from="1659706777075" duration="921000" />
+      <workItem from="1659772210722" duration="2921000" />
+      <workItem from="1659853476166" duration="5431000" />
+      <workItem from="1659870809299" duration="849000" />
+      <workItem from="1659925971064" duration="605000" />
+      <workItem from="1659947529985" duration="3377000" />
+      <workItem from="1660013432143" duration="7207000" />
+      <workItem from="1660047047906" duration="1319000" />
+      <workItem from="1660566177474" duration="2378000" />
+      <workItem from="1660631578375" duration="16846000" />
+      <workItem from="1660740848390" duration="624000" />
+      <workItem from="1660812032960" duration="1197000" />
+      <workItem from="1660900240997" duration="1923000" />
+      <workItem from="1660989801316" duration="4833000" />
+      <workItem from="1661047119834" duration="1213000" />
+      <workItem from="1661156633443" duration="598000" />
+      <workItem from="1661171677222" duration="4883000" />
+      <workItem from="1661232804406" duration="16920000" />
+      <workItem from="1661262735383" duration="821000" />
+      <workItem from="1661311849949" duration="10095000" />
+      <workItem from="1661330086036" duration="126000" />
+      <workItem from="1661330291659" duration="11364000" />
+      <workItem from="1661502850306" duration="1202000" />
+      <workItem from="1661571340633" duration="639000" />
+      <workItem from="1661584997362" duration="1378000" />
+      <workItem from="1661601749570" duration="1193000" />
+      <workItem from="1661653886776" duration="1199000" />
+      <workItem from="1661666567007" duration="1195000" />
+      <workItem from="1661758700415" duration="13189000" />
+      <workItem from="1661828536898" duration="15403000" />
+      <workItem from="1661945300941" duration="2076000" />
+      <workItem from="1662097636599" duration="3231000" />
     </task>
     <servers />
   </component>
@@ -286,54 +424,59 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1639277368586">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1639277368586" />
-    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1646038674647">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1661947005247">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="357" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1646038674647" />
-    <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1639307876176">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1639307876176" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1646041034793">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1661947005247" />
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom" timestamp="1657636948064">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1646041034793" />
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1639963912560" />
-    <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1641197356349">
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1657636948064" />
+    <state width="1237" height="201" key="GridCell.Tab.0.center" timestamp="1657636948064">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
-    <state width="1237" height="91" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="286" key="GridCell.Tab.0.center" timestamp="1641197356349">
+    <state width="1237" height="201" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1657636948064" />
+    <state width="1237" height="201" key="GridCell.Tab.0.left" timestamp="1657636948064">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
-    <state width="1237" height="91" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="286" key="GridCell.Tab.0.left" timestamp="1641197356348">
+    <state width="1237" height="201" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1657636948064" />
+    <state width="1237" height="201" key="GridCell.Tab.0.right" timestamp="1657636948064">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1641197356348" />
-    <state width="1237" height="91" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state width="1237" height="286" key="GridCell.Tab.0.right" timestamp="1641197356349">
+    <state width="1237" height="201" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1657636948064" />
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1657636948065">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1641197356349" />
-    <state width="1237" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1639984413919" />
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1646618850853">
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1657636948065" />
+    <state width="1237" height="201" key="GridCell.Tab.1.center" timestamp="1657636948065">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="325" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1646618850853" />
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1639963858656" />
-    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1642254862785">
+    <state width="1237" height="201" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1657636948065" />
+    <state width="1237" height="201" key="GridCell.Tab.1.left" timestamp="1657636948065">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1642254862785" />
+    <state width="1237" height="201" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1657636948065" />
+    <state width="1237" height="201" key="GridCell.Tab.1.right" timestamp="1657636948065">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1657636948065" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1661181280103">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1661181280103" />
+    <state x="192" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1661760647822">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="192" y="186" key="com.intellij.ide.util.TipDialog/0.0.1280.672@0.0.1280.672" timestamp="1661760647822" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLFrame$Test.coverage" NAME="Test Coverage Results" MODIFIED="1641197340749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/variants/TaskAgnostic/client_manager.py</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

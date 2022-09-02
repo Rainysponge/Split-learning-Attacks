@@ -10,7 +10,7 @@ from core.log.Log import Log
 
 class mnist_truncated(data.Dataset):
 
-    def __init__(self, parse, dataidxs=None, train=True,transform=None):
+    def __init__(self, parse, dataidxs=None, train=True, transform=None):
 
         self.parse = parse
         self.target_transform = None
@@ -18,7 +18,7 @@ class mnist_truncated(data.Dataset):
         self.data = None
         self.dataidxs = dataidxs
         self.log = Log(self.__class__.__name__, parse)
-        self.root = parse['dataDir']+parse['dataset']
+        self.root = parse['dataDir'] + "mnist"
         self.target = None
         self.bantch_size = parse["batch_size"]
         # self.n_nets = parse['client_number'] if parse['client_number'] else 16
@@ -32,10 +32,11 @@ class mnist_truncated(data.Dataset):
         # print("download = " + str(self.download))
         # Files already downloaded and verified日志来自这里
         mnist_dataobj = MNIST(self.root, self.train, self.transform, self.target_transform, self.download)
-
+        self.log.info(mnist_dataobj.targets)
         if self.train:
             data = mnist_dataobj.data
             target = np.array(mnist_dataobj.targets)
+
         else:
             data = mnist_dataobj.data
             target = np.array(mnist_dataobj.targets)

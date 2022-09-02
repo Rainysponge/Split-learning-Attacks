@@ -39,14 +39,12 @@ class ClientManager(MessageManager):
             self.run_forward_pass()
             # logging.warning("lis")
             while True:
-                if self.com_manager.q_receiver.qsize()>0:
+                if self.com_manager.q_receiver.qsize() > 0:
                     msg_params = self.com_manager.q_receiver.get()
                     self.com_manager.notify(msg_params)
                     break
                 else:
                     time.sleep(0.5)
-        self.trainer.print_com_size(self.com_manager)
-        self.com_manager.reset_analysis_data()
         self.trainer.validation_over()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.trainer.epoch_count += 1
@@ -55,6 +53,7 @@ class ClientManager(MessageManager):
             self.finish()
         else:
             self.send_semaphore_to_client(self.trainer.node_right)
+
         self.trainer.batch_idx = 0
 
     def register_message_receive_handlers(self):
@@ -75,16 +74,16 @@ class ClientManager(MessageManager):
         self.trainer.backward_pass(type=0, grads=grads)
         logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
         if self.trainer.batch_idx == len(self.trainer.trainloader):
-            torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
-                                                                               self.trainer.epoch_count))
             self.trainer.print_com_size(self.com_manager)
-            self.com_manager.reset_analysis_data()
+            # torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
+            #                                                                    self.trainer.epoch_count))
             self.run_eval()
         else:
             self.run_forward_pass()
 
     def handle_message_acts_from_server(self, msg_params):
         acts = msg_params.get(MyMessage.MSG_ARG_KEY_ACTS)
+        # logging.warning("QAQ3")
         self.trainer.forward_pass(type=1, inputs=acts)
         if self.trainer.phase == "train":
             grads = self.trainer.backward_pass(type=1)

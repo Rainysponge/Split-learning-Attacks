@@ -74,6 +74,7 @@ class ClientManager(MessageManager):
         logging.warning("batch: {} len {} from {}".format(self.trainer.batch_idx, len(self.trainer.dataloader),
                                                           self.trainer.rank))
         if self.trainer.batch_idx == len(self.trainer.dataloader):
+            self.trainer.print_com_size(self.com_manager)
             # torch.save(self.trainer.model, self.args["model_save_path"].format("client", self.trainer.rank,
             #                                                                    self.trainer.epoch_count))
             if self.trainer.phase == 'validation':
@@ -87,6 +88,7 @@ class ClientManager(MessageManager):
                 self.send_test_end_to_server(self.trainer.SERVER_RANK)
             else:
                 self.send_train_end_to_server(self.trainer.SERVER_RANK)
+
 
             # self.run_eval()
         else:

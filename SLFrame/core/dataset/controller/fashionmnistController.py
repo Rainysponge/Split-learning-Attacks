@@ -73,7 +73,7 @@ class fashionmnistController():
         X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = self.partition_data()
         class_num = len(np.unique(y_train))
         # self.log.info("class_num = " + str(class_num))
-        train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
+        train_data_num = sum([len(net_dataidx_map[r]) for r in net_dataidx_map.keys()])
 
         # get global test data
         if process_id == 0:

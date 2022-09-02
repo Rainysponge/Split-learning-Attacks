@@ -56,7 +56,6 @@ class adultController():
         # return train_dl, test_dl
         dl_obj = adult_truncated
 
-
         train_ds = dl_obj(parse=self.parse, transform=None, dataidxs=dataidxs)
 
         test_ds = dl_obj(parse=self.parse, transform=None, train=False)
@@ -72,7 +71,7 @@ class adultController():
         class_num = len(np.unique(y_train))
         # self.log.info("traindata_cls_counts = " + str(traindata_cls_counts))
 
-        train_data_num = sum([len(net_dataidx_map[r]) for r in range(self.parse["client_number"])])
+        train_data_num = sum([len(net_dataidx_map[r]) for r in net_dataidx_map.keys()])
 
         # get global test data
         if process_id == 0:
@@ -84,8 +83,10 @@ class adultController():
             local_data_num = 0
         else:
             # get local dataset
-            dataidxs = net_dataidx_map[process_id - 1]
-
+            try:
+                dataidxs = net_dataidx_map[process_id - 1]
+            except Exception as e:
+                dataidxs = net_dataidx_map[0]
 
             local_data_num = len(dataidxs)
 

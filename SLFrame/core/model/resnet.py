@@ -98,7 +98,7 @@ class BasicBlock(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, block, layers, num_classes=10, zero_init_residual=False, groups=1,
+    def __init__(self, block=Bottleneck, layers=[6, 6, 6], num_classes=10, zero_init_residual=False, groups=1,
                  width_per_group=64, replace_stride_with_dilation=None, norm_layer=None, KD=False):
         super(ResNet, self).__init__()
         if norm_layer is None:

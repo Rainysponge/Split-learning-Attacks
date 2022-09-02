@@ -24,7 +24,7 @@ class ServerManager(MessageManager):
         message = Message(MyMessage.MSG_TYPE_S2C_GRADS, self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_GRADS, grads)
         message.add_params(MyMessage.MSG_AGR_KEY_RESULT,
-                           (self.trainer.total, self.trainer.correct, self.trainer.val_loss))
+                           (self.trainer.res_dict[receive_id]))
         self.send_message(message)
 
     def register_message_receive_handlers(self):
@@ -38,27 +38,38 @@ class ServerManager(MessageManager):
         sender = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
         client_phase = msg_params.get(MyMessage.MSG_ARG_KEY_PHASE)
         grads = None
-        if client_phase == "train":
-            self.trainer.train_mode()
-            self.trainer.forward_pass(acts, labels)
-            grads = self.trainer.backward_pass()
-            self.trainer.add_client_local_grads(sender, grads)
-            all_receive, active_list = self.trainer.check_whether_all_receive()
-            if all_receive:
-                # 发回
-                logging.info("active_list: {}".format(active_list))
-                grads = self.trainer.splitAvg(active_list)
-                # self.log.info(grads.shape)
-                for idx in range(1, self.trainer.client_number+1):
-                    if idx in active_list:
-                        self.send_grads_to_client(idx, grads)
-                    else:
-                        self.send_grads_to_client(idx, self.trainer.client_train_grads_list[idx])
+        self.trainer.act_dict[sender] = (acts, labels)
+        self.trainer.act_number += 1
+        # self.log.info("act_number: {} MAX_RANK: {}".format(self.trainer.act_number, self.trainer.MAX_RANK))
+        if self.trainer.act_number == self.trainer.MAX_RANK:
+            if client_phase == "train":
+                self.trainer.train_mode()
+                self.trainer.act_number = 0
 
-        else:
-            self.trainer.eval_mode()
-            self.trainer.forward_pass(acts, labels)
-            self.send_grads_to_client(sender, grads)
+                for i in range(1, self.trainer.MAX_RANK + 1):
+                    self.trainer.forward_pass(self.trainer.act_dict[i][0], self.trainer.act_dict[i][1], i)
+
+                    grads = self.trainer.backward_pass()
+
+                    self.trainer.add_client_local_grads(i, grads)
+                    all_receive, active_list = self.trainer.check_whether_all_receive()
+                    if all_receive:
+                        # 发回
+                        logging.info("active_list: {}".format(active_list))
+                        grads = self.trainer.splitAvg(active_list)
+                        # self.log.info(grads.shape)
+                        for idx in range(1, self.trainer.client_number+1):
+                            if idx in active_list:
+                                self.send_grads_to_client(idx, grads)
+                            else:
+                                self.send_grads_to_client(idx, self.trainer.client_train_grads_list[idx])
+                self.trainer.optimizer.step()
+            else:
+                self.trainer.act_number = 0
+                self.trainer.eval_mode()
+                for i in range(1, self.trainer.MAX_RANK + 1):
+                    self.trainer.forward_pass(acts, labels, i)
+                    self.send_grads_to_client(i, grads)
 
     def handle_message_finish_protocol(self):
         self.finished_nodes += 1

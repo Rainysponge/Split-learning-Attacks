@@ -1,86 +1,80 @@
+import numpy as np
+import scipy.sparse as sp
 import torch
-import logging
-import torch.nn as nn
+from core.model.RNN import RNN_Original_client, RNN_Original_server
 
-from torchvision import transforms
-from torchvision import datasets
-from torch.utils.data import DataLoader
-import torch.optim as optim
-
-# import setproctitle
-import sys
-
-sys.path.append("../")
-sys.path.extend("../../")
-
-from core.log.Log import Log
-from core.dataset.datasetFactory import datasetFactory
-from Parse.parseFactory import parseFactory, JSON, YAML
-from core.model.cnn import CNN_OriginalFedAvg, Net, cifar10_client, cifar10_server
-from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork, adult_LR_client, adult_LR_server, \
-    german_LR_client, german_LR_server
-from core.model.models_for_U import LeNetClientNetworkPart1,LeNetClientNetworkPart2,LeNetServerNetwork
-from core.model.resnet import resnet56, ResNet_client, ResNet_server
-from core.variants.vanilla.client import SplitNNClient
-from core.variants.vanilla.server import SplitNNServer
-from core.splitApi import SplitNN_distributed, SplitNN_init
+def encode_onehot(labels):
+    classes = set(labels)
+    classes_dict = {c: np.identity(len(classes))[i, :] for i, c in
+                    enumerate(classes)}
+    labels_onehot = np.array(list(map(classes_dict.get, labels)),
+                             dtype=np.int32)
+    return labels_onehot
 
 
+def normalize(mx):
+    """Row-normalize sparse matrix"""
+    rowsum = np.array(mx.sum(1))
+    r_inv = np.power(rowsum, -1).flatten()
+    r_inv[np.isinf(r_inv)] = 0.
+    r_mat_inv = sp.diags(r_inv)
+    mx = r_mat_inv.dot(mx)
+    return mx
 
 
-
-def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine,device):
-    # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
-    # logging = Logging("init_training_device")
-    if device == "cpu":
-        return torch.device(device)
-    if process_ID == 0:
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        return device
-    process_gpu_dict = dict()
-    for client_index in range(fl_worker_num):
-        gpu_index = client_index % gpu_num_per_machine
-        process_gpu_dict[client_index] = gpu_index
-
-    logging.info(process_gpu_dict)
-    device = torch.device("cuda:" + str(process_gpu_dict[process_ID - 1]) if torch.cuda.is_available() else "cpu")
-    logging.info(device)
-    return device
+def normalize_adj(adjacency):
+    degree = np.array(adjacency.sum(1))
+    d_hat = sp.diags(np.power(degree, -0.5).flatten())
+    adj_norm = d_hat.dot(adjacency).dot(d_hat).tocoo()
+    return adj_norm
 
 
-if __name__ == '__main__':
-    """
-        尽量让Test.py是可以不需要做任何其他操作直接运行的
-    """
-    args = parseFactory(fileType=YAML).factory()
-    args.load('./config.yaml')
-    # comm, process_id, worker_number = SplitNN_init(parse=args)
-    comm, process_id, worker_number = SplitNN_init(args)
-    args["rank"] = process_id  # 设置当前process_id
+def normalize_features(features):
+    return features / features.sum(1)
 
-    args["client_model"] = LeNetClientNetworkPart1()
-    args["client_model_2"]= LeNetClientNetworkPart2()
-    args["server_model"] = LeNetServerNetwork()
-    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server,args["device"])
-    args["device"] = device
 
-    dataset = datasetFactory(args).factory()  # loader data and partition method
-    # print(dataset)
-    # dataset.load_partition_data(process_id)
-    # train_data_num, train_data_global, test_data_global, local_data_num, \
-    # train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
-    train_data_num, train_data_global, test_data_global, local_data_num, \
-    train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
-    args["trainloader"] = train_data_local
-    args["testloader"] = test_data_local
-    args["train_data_num"] = train_data_num
-    args["train_data_global"] = train_data_global
-    args["test_data_global"] = test_data_global
-    args["local_data_num"] = local_data_num
-    args["class_num"] = class_num
-    log = Log("main", args)
-    # log.info("{}".format(train_data_num))
+def load_data(path="./data/cora/", dataset="cora"):
+    """Load citation network dataset (cora only for now)"""
+    print('Loading {} dataset...'.format(dataset))
 
-    # str_process_name = "SplitNN (distributed):" + str(process_id)
-    # setproctitle.setproctitle(str_process_name
-    SplitNN_distributed(process_id, args)
+    idx_features_labels = np.genfromtxt("{}{}.content".format(path, dataset),
+                                        dtype=np.dtype(str))
+    features = sp.csr_matrix(idx_features_labels[:, 1:-1], dtype=np.float32)
+    labels = encode_onehot(idx_features_labels[:, -1])
+
+    # build graph
+    idx = np.array(idx_features_labels[:, 0], dtype=np.int32)
+    idx_map = {j: i for i, j in enumerate(idx)}
+    edges_unordered = np.genfromtxt("{}{}.cites".format(path, dataset),
+                                    dtype=np.int32)
+    edges = np.array(list(map(idx_map.get, edges_unordered.flatten())),
+                     dtype=np.int32).reshape(edges_unordered.shape)
+    adj = sp.coo_matrix((np.ones(edges.shape[0]), (edges[:, 0], edges[:, 1])),
+                        shape=(labels.shape[0], labels.shape[0]),
+                        dtype=np.float32)
+
+    # build symmetric adjacency matrix
+    adj = adj + adj.T.multiply(adj.T > adj) - adj.multiply(adj.T > adj)
+
+    features = normalize_features(features)
+    adj = normalize_adj(adj + sp.eye(adj.shape[0]))
+
+    idx_train = range(140)
+    idx_val = range(200, 500)
+    idx_test = range(500, 1500)
+
+    features = torch.FloatTensor(np.array(features))
+    labels = torch.LongTensor(np.where(labels)[1])
+    adj = torch.FloatTensor(np.array(adj.todense()))
+
+    idx_train = torch.LongTensor(idx_train)
+    idx_val = torch.LongTensor(idx_val)
+    idx_test = torch.LongTensor(idx_test)
+
+    return adj, features, labels, idx_train, idx_val, idx_test
+
+if __name__ == "__main__":
+    adj, features, labels, idx_train, idx_val, idx_test = load_data()
+    print(idx_test)
+    print(idx_train)
+

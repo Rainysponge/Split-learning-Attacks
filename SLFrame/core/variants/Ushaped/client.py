@@ -11,7 +11,7 @@ class SplitNNClient():
         self.comm = args["comm"]
         self.model = args["client_model"]
         self.model_2 = args["client_model_2"]
-        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,weight_decay=5e-4)
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9, weight_decay=5e-4)
         self.optimizer_2 = optim.SGD(self.model_2.parameters(), args["lr"], momentum=0.9, weight_decay=5e-4)
         self.criterion = nn.CrossEntropyLoss()
 
@@ -32,29 +32,28 @@ class SplitNNClient():
 
         self.log = Log(self.__class__.__name__, args)
         self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
-        self.args=args
-
+        self.args = args
 
     def reset_local_params(self):
         self.total = 0
         self.correct = 0
         self.val_loss = 0
         self.batch_idx = 0
-        self.step=0
+        self.step = 0
 
     def forward_pass(self, type=0, inputs=None):
-        if type==0:
+        if type == 0:
             inputs, labels = next(self.dataloader)
             inputs, labels = inputs.to(self.device), labels.to(self.device)
-            self.labels=labels
+            self.labels = labels
             self.optimizer.zero_grad()
             self.acts = self.model(inputs)
             return self.acts
         else:
             self.optimizer_2.zero_grad()
-            self.acts2=inputs
+            self.acts2 = inputs
             self.acts2.retain_grad()
-            logits=self.model_2(self.acts2)
+            logits = self.model_2(self.acts2)
             _, predictions = logits.max(1)
             self.loss = self.criterion(logits, self.labels)
 
@@ -67,11 +66,11 @@ class SplitNNClient():
                 # 用log记录一下准确率之类的信息
             if self.phase == "validation":
                 self.val_loss += self.loss.item()
-                torch.save(self.model, self.args["model_save_path"].format("server", self.epoch_count, ""))
+                # torch.save(self.model, self.args["model_save_path"].format("server", self.epoch_count, ""))
             self.step += 1
 
-    def backward_pass(self,type=0,grads=None):
-        if type==0:
+    def backward_pass(self, type=0, grads=None):
+        if type == 0:
             self.acts.backward(grads)
             self.optimizer.step()
         else:
@@ -105,6 +104,7 @@ class SplitNNClient():
         self.train_mode()
 
     def print_com_size(self, com_manager):
-        self.log.info("worker_num={} phase={} epoch_send={} epoch_receive={} total_send={} total_receive={}"
-                      .format(self.rank, self.phase, com_manager.tmp_send_size, com_manager.tmp_receive_size,
-                              com_manager.total_send_size, com_manager.total_receive_size))
+        self.log.info("worker_num={} epoch_send={} epoch_receive={} total_send={} total_receive={}"
+                      .format(self.rank, com_manager.send_thread.tmp_send_size,
+                              com_manager.receive_thread.tmp_receive_size,
+                              com_manager.send_thread.total_send_size, com_manager.receive_thread.total_receive_size))

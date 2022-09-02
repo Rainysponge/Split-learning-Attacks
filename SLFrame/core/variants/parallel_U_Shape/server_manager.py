@@ -128,6 +128,7 @@ class ServerManager(MessageManager):
         # logging.info("{} end".format(sender))
         self.trainer.client_test_end_num += 1
         if self.trainer.client_test_end_num == self.trainer.client_number:
+            self.trainer.print_com_size(self.com_manager)
             for i in range(1, self.trainer.client_number + 1):
                 self.send_train_sign_to_clients(i)
             self.trainer.client_test_end_num = 0

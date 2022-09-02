@@ -60,3 +60,8 @@ class SplitNNServer():
     def validation_over(self):
         self.active_node = (self.active_node % self.MAX_RANK) + 1
         self.train_mode()
+
+    def print_com_size(self, com_manager):
+        self.log.info("worker_num={} phase={} epoch_send={} epoch_receive={} total_send={} total_receive={}"
+                      .format(0, self.phase, com_manager.tmp_send_size, com_manager.tmp_receive_size,
+                              com_manager.total_send_size, com_manager.total_receive_size))

@@ -1,5 +1,6 @@
 import json
 import sys
+import torch
 
 
 class Message(object):
@@ -35,6 +36,15 @@ class Message(object):
         self.sender_id = self.msg_params[Message.MSG_ARG_KEY_SENDER]
         self.receiver_id = self.msg_params[Message.MSG_ARG_KEY_RECEIVER]
         # print("msg_params = " + str(self.msg_params))
+
+    def get_size(self):
+        sum=0
+        for v in self.msg_params.values():
+            if isinstance(v,torch.Tensor):
+                sum+=sys.getsizeof(v.storage())
+            else:
+                sum+=sys.getsizeof(str(v))
+        return sum
 
     def get_sender_id(self):
         return self.sender_id

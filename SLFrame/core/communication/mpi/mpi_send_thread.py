@@ -3,7 +3,7 @@ import logging
 import threading
 import time
 import traceback
-
+import sys
 from ..message import Message
 
 
@@ -16,6 +16,8 @@ class MPISendThread(threading.Thread):
         self.size = size
         self.name = name
         self.q = q
+        self.total_send_size = 0
+        self.tmp_send_size = 0
 
     def run(self):
         logging.info("Starting " + self.name + ". Process ID = " + str(self.rank))
@@ -23,10 +25,14 @@ class MPISendThread(threading.Thread):
             try:
                 if not self.q.empty():
                     msg = self.q.get()
+                    msg_str = msg.to_string()
+                    size = msg.get_size()
+                    self.tmp_send_size += size
+                    self.total_send_size += size
                     dest_id = msg.get(Message.MSG_ARG_KEY_RECEIVER)
-                    self.comm.send(msg.to_string(), dest=dest_id)
+                    self.comm.send(msg_str, dest=dest_id)
                 else:
-                    time.sleep(0.003)
+                    time.sleep(0.03)
             except Exception:
                 traceback.print_exc()
 
