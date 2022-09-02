@@ -1,86 +1,86 @@
-import torch
-import logging
+import numpy as np
+import pandas as pd
 import torch.nn as nn
 
-from torchvision import transforms
-from torchvision import datasets
-from torch.utils.data import DataLoader
-import torch.optim as optim
-
-# import setproctitle
-import sys
-
-sys.path.append("../")
-sys.path.append("../../")
-
-from core.log.Log import Log
-from core.dataset.datasetFactory import datasetFactory
-from Parse.parseFactory import parseFactory, JSON, YAML
-from core.model.cnn import CNN_OriginalFedAvg, Net, cifar10_client, cifar10_server
-from core.model.models import LeNetComplete, LeNetClientNetwork, LeNetServerNetwork, adult_LR_client, adult_LR_server, \
-    german_LR_client, german_LR_server
-from core.model.resnet import resnet56, ResNet_client, ResNet_server
-from core.variants.vanilla.client import SplitNNClient
-from core.variants.vanilla.server import SplitNNServer
-from core.splitApi import SplitNN_distributed, SplitNN_init
+from matplotlib import pyplot as plt
+import seaborn as sns
+from torchvision.datasets import MNIST
+from core.model.models import german_LR_client, german_LR_server, LeNetClientNetwork,  LeNetServerNetwork,\
+    adult_LR_client, adult_LR_server, LeNetComplete
 
 
-client_model = LeNetClientNetwork()
-server_model = LeNetServerNetwork()
+class A():
+    def __init__(self, t):
+        self.a = 0
+        self.b = None
+        self.f(t)
+
+    def f(self, t):
+        if t == 1:
+            self.b = 1
+        else:
+            self.b = 9
 
 
-def init_training_device(process_ID, fl_worker_num, gpu_num_per_machine,device):
-    # initialize the mapping from process ID to GPU ID: <process ID, GPU ID>
-    # logging = Logging("init_training_device")
-    if device == "cpu":
-        return torch.device(device)
+if __name__ == "__main__":
+    # mnist_dataobj = MNIST('./data/mnist')
+    # data = mnist_dataobj.data
+    # y_train = np.array(mnist_dataobj.targets)
+    #
+    # min_size = 0
+    # K = len(np.unique(y_train))
+    # N = y_train.shape[0]
+    # n_nets = 3
+    # alpha = 100.0
+    # net_dataidx_map = {}
+    # idx_batch = [[] for _ in range(n_nets)]
+    # while min_size < 10:
+    #     # idx_batch = [[] for _ in range(n_nets)]
+    #     # for each class in the dataset
+    #     for k in range(K):
+    #         idx_k = np.where(y_train == k)[0]
+    #         # self.log("".format())
+    #         np.random.shuffle(idx_k)
+    #         proportions = np.random.dirichlet(np.repeat(alpha, n_nets))
+    #         # Balance
+    #         proportions = np.array([p * (len(idx_j) < N / n_nets) for p, idx_j in zip(proportions, idx_batch)])
+    #         proportions = proportions / proportions.sum()
+    #         proportions = (np.cumsum(proportions) * len(idx_k)).astype(int)[:-1]
+    #         idx_batch = [idx_j + idx.tolist() for idx_j, idx in zip(idx_batch, np.split(idx_k, proportions))]
+    #         min_size = min([len(idx_j) for idx_j in idx_batch])
+    #
+    # for j in range(n_nets):
+    #     np.random.shuffle(idx_batch[j])
+    #     net_dataidx_map[j] = idx_batch[j]
+    # # traindata_cls_counts = record_net_data_stats(y_train, net_dataidx_map)
+    #
+    # # print(y_train[11491])
+    # fig = plt.figure()
+    # ax_dict = dict()
+    # for k in net_dataidx_map.keys():
+    #     ax_dict[k] = fig.add_subplot(131+k)
+    #     # print(len(net_dataidx_map[k]))
+    #     print(k)
+    #     sum_dict = dict()
+    #     for i in range(10):
+    #         sum_dict[i] = 0
+    #     for i in net_dataidx_map[k]:
+    #         sum_dict[y_train[i]] = sum_dict[y_train[i]] + 1
+    #     print(sum_dict)
+    #     df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['number'])
+    #     df = df.reset_index().rename(columns={"index": 'label'})
+    #     sns.barplot(x='label', y='number', data=df, ax=ax_dict[k])
+    # plt.title("α = {}".format(alpha))
+    # plt.show()
 
-    if process_ID == 0:
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        return device
-    process_gpu_dict = dict()
-    for client_index in range(fl_worker_num):
-        gpu_index = client_index % gpu_num_per_machine
-        process_gpu_dict[client_index] = gpu_index
-
-    logging.info(process_gpu_dict)
-    device = torch.device("cuda:" + str(process_gpu_dict[process_ID - 1]) if torch.cuda.is_available() else "cpu")
-    logging.info(device)
-    return device
-
-
-if __name__ == '__main__':
-    """
-        尽量让Test.py是可以不需要做任何其他操作直接运行的
-    """
-    args = parseFactory(fileType=YAML).factory()
-    args.load('./config.yaml')
-    # comm, process_id, worker_number = SplitNN_init(parse=args)
-    comm, process_id, worker_number = SplitNN_init(args)
-    args["rank"] = process_id  # 设置当前process_id
-
-    args["client_model"] = client_model
-    args["server_model"] = server_model
-    device = init_training_device(process_id, worker_number - 1, args.gpu_num_per_server,args["device"])
-    args["device"] = device
-    Log("QAQ",args).warning(args["variants_type"])
-    dataset = datasetFactory(args).factory()  # loader data and partition method
-    # print(dataset)
-    # dataset.load_partition_data(process_id)
-    # train_data_num, train_data_global, test_data_global, local_data_num, \
-    # train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
-    train_data_num, train_data_global, test_data_global, local_data_num, \
-    train_data_local, test_data_local, class_num = dataset.load_partition_data(process_id)  # 这里的4是process Id
-    args["trainloader"] = train_data_local
-    args["testloader"] = test_data_local
-    args["train_data_num"] = train_data_num
-    args["train_data_global"] = train_data_global
-    args["test_data_global"] = test_data_global
-    args["local_data_num"] = local_data_num
-    args["class_num"] = class_num
-    log = Log("main", args)
-    # log.info("{}".format(train_data_num))
-
-    # str_process_name = "SplitNN (distributed):" + str(process_id)
-    # setproctitle.setproctitle(str_process_name
-    SplitNN_distributed(process_id, args)
+    # i = 0
+    # a = A(12)
+    # print(a.b)
+    model = LeNetComplete()
+    # # cm2 = LeNetClientNetworkPart2()
+    # fc_features = model.fc.in_features
+    # model.fc = nn.Sequential(nn.Flatten(), nn.Linear(fc_features, 10))
+    client_model = nn.Sequential(*nn.ModuleList(model.children())[:2])
+    server_model = nn.Sequential(*nn.ModuleList(model.children())[2:])
+    print(client_model)
+    print(server_model)
