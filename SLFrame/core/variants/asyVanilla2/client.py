@@ -53,14 +53,24 @@ class SplitNNClient():
         # logging.info("{} begin run_forward_pass1".format(self.rank))
         inputs, labels = next(self.dataloader)
         # self.log.info("before acts:{}  labels:{}".format(type(inputs), labels.shape))
-        inputs, labels = inputs.to("cpu"), labels.to("cpu")
-        # inputs, labels = inputs.to(self.device), labels.to(self.device)
+        # inputs, labels = inputs.to("cpu"), labels.to("cpu")
+        inputs, labels = inputs.to(self.device), labels.to(self.device)
         self.optimizer.zero_grad()
 
         self.acts = self.model(inputs)
         # if isinstance(self.acts, tuple):
             # self.log.info("after acts:{}  d:{}".format(self.acts[0].shape, len(d)))
 
+        if self.args["save_acts_step"] >0 and self.step<=1 and self.phase=="validation" and self.epoch_count % self.args["save_acts_step"] == 0:
+            a=self.acts
+            a=a.cpu().detach()
+            a=a.numpy()
+            f=open("./model_save/acts/Vanilla/A_{}_E_{}_C_{}.txt".format(self.args["partition_alpha"],self.epoch_count,self.rank),"w")
+
+        
+            for i in range(a.shape[0]):
+                f.write("{} {} {}\n".format(self.rank,labels[i],str(list(a[i].flatten()))))
+                
         return self.acts, labels
 
     def backward_pass(self, grads):

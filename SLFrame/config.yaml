@@ -1,19 +1,36 @@
-dataDir: ./data/adult
-dataset: adult
-device: cpu
+dataDir: ./data/
+#dataset: ["mnist", "fashionmnist"]
+#dataset: ["german", "german"]
+dataset: cifar10
+device: gpu
+gpu_num_per_server: 1
 download: true
-batch_size: 64
-epochs: 20
-log_step: 20
+batch_size: 128
+epochs: 210
+log_step: 40
 lr: 0.01
 max_rank: 2
-partition_method: homo
-variants_type: Asynchronous
+partition_method: hetero
+variants_type: vanilla
+
+seed: 0
+partition_alpha: 0.3
 server_rank: 0
+model: LeNet
+split_layer: 1
+thred: 0.10
+
+partition_method_attributes: 7
+class_number_per_client: 4
+
+client_split: [3,5]
 data_vertical_list: [6, 4, 4]
 cut_layer_vertical_list: [4, 3, 3]
 SGLR_splitAvg_active: 0.5
 SGLR_splitLR: True
 SGLR_splitLR_alpha: 0.5
+#log_save_path: D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\log.txt
 
+
+save_acts_step: 10
 

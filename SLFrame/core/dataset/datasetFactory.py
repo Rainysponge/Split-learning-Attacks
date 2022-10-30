@@ -6,9 +6,9 @@ from .controller.adultController import adultController
 from .controller.germanController import germanController
 from .controller.fashionmnistController import fashionmnistController
 from .controller.cheXpertController import cheXpertController
-from .controller.coraController import coraController
-from .controller.molhivController import molhivController
-from .controller.shakespeareController import shakespeareController
+# from .controller.coraController import coraController
+# from .controller.molhivController import molhivController
+# from .controller.shakespeareController import shakespeareController
 
 
 class datasetFactory(abstractDatasetFactory):

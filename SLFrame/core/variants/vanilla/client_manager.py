@@ -27,7 +27,8 @@ class ClientManager(MessageManager):
 
     def run_forward_pass(self):
         acts, labels = self.trainer.forward_pass()
-        logging.info("{} run_forward_pass".format(self.trainer.rank))
+        
+        #logging.info("{} run_forward_pass".format(self.trainer.rank))
         self.send_activations_and_labels_to_server(acts, labels, self.trainer.SERVER_RANK)
         self.trainer.batch_idx += 1
 
@@ -37,9 +38,11 @@ class ClientManager(MessageManager):
         self.trainer.print_com_size(self.com_manager)
 
         for i in range(len(self.trainer.testloader)):
+            self.trainer.step += 1
             self.run_forward_pass()
         self.send_validation_over_to_server(self.trainer.SERVER_RANK)
         self.round_idx += 1
+        self.trainer.epoch_count+=1
         if self.round_idx == self.trainer.MAX_EPOCH_PER_NODE and self.trainer.rank == self.trainer.MAX_RANK:
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
