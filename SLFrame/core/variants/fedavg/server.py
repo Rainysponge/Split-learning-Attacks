@@ -1,11 +1,10 @@
+from ...log.Log import Log
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import sys
 
 sys.path.extend("../../../")
-
-from ...log.Log import Log
 
 
 class SplitNNServer():
@@ -25,18 +24,18 @@ class SplitNNServer():
         self.acts_num = 0
         self.model_param_num = 0
         self.sum_sample_number = 0
+        self.last_param = None
 
         self.epoch = 0
-        self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
+        # 经过多少步就记录一次log
+        self.log_step = args["log_step"] if args["log_step"] else 50
         self.train_mode()
         self.criterion = nn.CrossEntropyLoss()
 
     def train_mode(self):
-#        self.model.train()
+        #        self.model.train()
         self.phase = "train"
 
     def eval_mode(self):
      #   self.model.eval()
         self.phase = "validation"
-
-

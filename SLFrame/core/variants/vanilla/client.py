@@ -20,12 +20,15 @@ class SplitNNClient():
         self.batch_idx = 0
         self.MAX_EPOCH_PER_NODE = args["epochs"]
         self.SERVER_RANK = args["server_rank"]
-        self.optimizer = optim.Adam(self.model.parameters(),
-                                    lr=args["lr"],
-                                    betas=(0.9, 0.999),
-                                    eps=1e-08,
-                                    weight_decay=0,
-                                    amsgrad=False)
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
+                                   weight_decay=5e-4)
+        
+        # self.optimizer = optim.Adam(self.model.parameters(),
+        #                             lr=args["lr"],
+        #                             betas=(0.9, 0.999),
+        #                             eps=1e-08,
+        #                             weight_decay=0,
+        #                             amsgrad=False)
         self.step=0
         self.device = args["device"]
 

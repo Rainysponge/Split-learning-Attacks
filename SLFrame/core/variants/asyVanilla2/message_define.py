@@ -21,6 +21,7 @@ class MyMessage(object):
     MSG_ARG_KEY_RECEIVER = "receiver"
     MSG_ARG_KEY_PHASE = "phase"
     MSG_AGR_KEY_RESULT = "result"
+    MSG_ARG_KEY_CLIENT_EPOCH = "client_epoch"
 
     MSG_TYPE_TEST_C2C = 9
 
@@ -29,4 +30,3 @@ class MyMessage(object):
     """
     MSG_ARG_KEY_ACTS = "activations"
     MSG_ARG_KEY_GRADS = "activation_grads"
-

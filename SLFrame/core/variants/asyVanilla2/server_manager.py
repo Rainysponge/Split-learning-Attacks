@@ -1,5 +1,6 @@
 from mpi4py import MPI
 import logging
+import torch
 from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
@@ -15,6 +16,8 @@ class ServerManager(MessageManager):
         self.trainer = trainer
         self.active_node = -1
         self.finished_nodes = 0
+        self.last = -1
+        self.args = args
         # logging.warning("server rank{} args{}".format(self.rank,args["rank"]))
 
     def run(self):
@@ -43,6 +46,7 @@ class ServerManager(MessageManager):
 
         self.active_node = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
         client_phase = msg_params.get(MyMessage.MSG_ARG_KEY_PHASE)
+        epoc = msg_params.get(MyMessage.MSG_ARG_KEY_CLIENT_EPOCH)
         logging.info("client_phase {}".format(client_phase))
         if client_phase == "train":
             self.trainer.train_mode()
@@ -57,6 +61,10 @@ class ServerManager(MessageManager):
             logging.info("backward_pass")
             grads = self.trainer.backward_pass()
             logging.info("backward_pass end")
+        else:
+            if self.args["save_model_epoch"] > 0 and self.last < epoc and epoc % self.args["save_model_epoch"] == 0:
+                self.last = epoc
+                self.save_model(epoc)
 
         self.send_grads_to_client(self.active_node, grads)
 
@@ -73,5 +81,10 @@ class ServerManager(MessageManager):
                 self.send_validation_sign_to_client(idx)
 
     def send_validation_sign_to_client(self, receive_id):
-        message = Message(MyMessage.MSG_TYPE_S2C_START_VALIDATION, 0, receive_id)
+        message = Message(
+            MyMessage.MSG_TYPE_S2C_START_VALIDATION, 0, receive_id)
         self.send_message(message)
+
+    def save_model(self, epoc):
+        torch.save(self.trainer.model,
+                   "./model_save/attack_acts/PSL/{}/S_A_{}_E_{}.pkl".format(self.args["dataset"], self.args["partition_alpha"], epoc))

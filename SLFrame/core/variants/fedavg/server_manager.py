@@ -4,6 +4,7 @@ from .message_define import MyMessage
 from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
 from ...log.Log import Log
+import torch
 
 
 class ServerManager(MessageManager):
@@ -33,16 +34,20 @@ class ServerManager(MessageManager):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_C2S_SEND_MODEL,
                                               self.handle_message_model_param)
 
-
     def handle_message_finish_protocol(self):
         self.finished_nodes += 1
         if self.finished_nodes == self.trainer.MAX_RANK:
             self.finish()
 
+    def get_dict_n2_dist(x1: dict, x2: dict):
+        pass
+
     def handle_message_model_param(self, msg_params):
         sender = msg_params.get(MyMessage.MSG_ARG_KEY_SENDER)
         model_param = msg_params.get(MyMessage.MSG_ARG_KEY_MODEL)
         sample_number = msg_params.get(MyMessage.MSG_AGR_KEY_SAMPLE_NUM)
+        if self.trainer.last_param is None:
+            self.trainer.last_param = model_param
         self.trainer.sum_sample_number += sample_number
         self.trainer.model_param_dict[sender] = (sample_number, model_param)
         # self.sender_list[sender] = True
@@ -52,9 +57,13 @@ class ServerManager(MessageManager):
             # self.log.info(self.sender_list)
             # for key in self.trainer.model_param_dict.keys():
             #     logging.info("key: ".format(key))
-            self.log.info("get all model params ---- from rank {}".format(self.trainer.rank))
+            self.log.info(
+                "get all model params ---- from rank {}".format(self.trainer.rank))
+
             self.trainer.model_param_num = 0
             model_avg = model_param
+            dist = 0
+            t_n = 0
             for key in model_avg.keys():
                 for idx in range(1, self.trainer.MAX_RANK + 1):
 
@@ -66,7 +75,17 @@ class ServerManager(MessageManager):
                         model_avg[key] = local_model_params[key] * w
                     else:
                         model_avg[key] += local_model_params[key] * w
+                #self.log.info("key:{}\n value:{}".format(key, model_avg[key]))
+                dif = self.trainer.last_param[key]-model_avg[key]
+                sz = 1
+                for v in dif.shape:
+                    sz *= v
+                t_n += sz
+                dist += torch.pow(dif, 2).sum(list(range(len(dif.shape))))
+
+            self.log.info("Dist:{d}".format(d=dist/t_n))
             self.trainer.sum_sample_number = 0
+            self.trainer.last_param = model_avg
             for idx in range(1, self.trainer.MAX_RANK + 1):
                 self.send_model_param_to_fed_client(idx, model_avg)
 

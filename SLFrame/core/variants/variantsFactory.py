@@ -85,6 +85,11 @@ class variantsFactory():
             from ..variants.comp_model.client import SplitNNClient
             from ..variants.comp_model.server_manager import ServerManager
             from ..variants.comp_model.client_manager import ClientManager
+        elif self.variantsType == "fedavg":
+            from ..variants.fedavg.server import SplitNNServer
+            from ..variants.fedavg.client import SplitNNClient
+            from ..variants.fedavg.server_manager import ServerManager
+            from ..variants.fedavg.client_manager import ClientManager
         else:
             logging.warning("variants_type: default as vanilla")
             from ..variants.vanilla.server import SplitNNServer

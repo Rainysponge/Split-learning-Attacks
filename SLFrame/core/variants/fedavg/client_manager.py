@@ -15,7 +15,8 @@ class ClientManager(MessageManager):
     """
 
     def __init__(self, args, trainer, backend="MPI"):
-        super().__init__(args, "client", args["comm"], args["rank"], args["max_rank"] + 1, backend)
+        super().__init__(args, "client",
+                         args["comm"], args["rank"], args["max_rank"] + 1, backend)
         # self.trainer = type(SplitNNClient)
         self.trainer = trainer
         self.trainer.train_mode()
@@ -39,7 +40,8 @@ class ClientManager(MessageManager):
             if self.trainer.phase == "train":
                 self.trainer.write_log()
                 self.trainer.backward_pass()
-                logging.warning("batch: {} len {}".format(self.trainer.batch_idx, len(self.trainer.trainloader)))
+                logging.warning("batch: {} len {}".format(
+                    self.trainer.batch_idx, len(self.trainer.trainloader)))
 
                 if self.trainer.batch_idx == len(self.trainer.trainloader):
                     # torch.save(self.trainer.model, self.args["model_tmp_path"])
@@ -59,7 +61,6 @@ class ClientManager(MessageManager):
                 if self.trainer.batch_idx == len(self.trainer.dataloader):
                     break
 
-
     def run_eval(self):
         self.trainer.eval_mode()
         self.run_forward_pass()
@@ -76,16 +77,17 @@ class ClientManager(MessageManager):
         self.register_message_receive_handler(MyMessage.MSG_TYPE_S2C_MODEL,
                                               self.handle_message_model_param_from_server)
 
-
     def send_activations_and_labels_to_server(self, acts, labels, receive_id):
         logging.warning("acts to {}".format(receive_id))
-        message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS, self.rank, receive_id)
+        message = Message(MyMessage.MSG_TYPE_C2S_SEND_ACTS,
+                          self.rank, receive_id)
         message.add_params(MyMessage.MSG_ARG_KEY_ACTS, (acts, labels))
         message.add_params(MyMessage.MSG_ARG_KEY_PHASE, self.trainer.phase)
         self.send_message(message)
 
     def send_finish_to_server(self, receive_id):
-        message = Message(MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
+        message = Message(
+            MyMessage.MSG_TYPE_C2S_PROTOCOL_FINISHED, self.rank, receive_id)
         self.send_message(message)
 
     def handle_message_model_param_from_server(self, msg_params):
@@ -93,7 +95,11 @@ class ClientManager(MessageManager):
         self.trainer.model.load_state_dict(model_param)
 
     def send_model_param_to_fed_server(self, receive_id):
-        message = Message(MyMessage.MSG_TYPE_C2S_SEND_MODEL, self.rank, receive_id)
-        message.add_params(MyMessage.MSG_ARG_KEY_MODEL, self.trainer.model.state_dict())
-        message.add_params(MyMessage.MSG_AGR_KEY_SAMPLE_NUM, self.trainer.local_sample_number)
+        message = Message(MyMessage.MSG_TYPE_C2S_SEND_MODEL,
+                          self.rank, receive_id)
+        message.add_params(MyMessage.MSG_ARG_KEY_MODEL,
+                           self.trainer.model.state_dict())
+      #  self.log.info(self.trainer.model.state_dict())
+        message.add_params(MyMessage.MSG_AGR_KEY_SAMPLE_NUM,
+                           self.trainer.local_sample_number)
         self.send_message(message)

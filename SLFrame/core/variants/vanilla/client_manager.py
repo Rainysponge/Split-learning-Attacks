@@ -6,6 +6,7 @@ from ...communication.msg_manager import MessageManager
 from ...communication.message import Message
 from ...log.Log import Log
 
+
 class ClientManager(MessageManager):
     """
     args里面要有MPI的 comm, rank, max_rank(也就是comm.size()-1) 其他的暂时不用
@@ -47,6 +48,7 @@ class ClientManager(MessageManager):
             self.send_finish_to_server(self.trainer.SERVER_RANK)
             self.finish()
         else:
+            time.sleep(3)
             self.send_semaphore_to_client(self.trainer.node_right)
 
         self.trainer.batch_idx = 0

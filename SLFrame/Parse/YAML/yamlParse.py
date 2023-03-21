@@ -31,13 +31,15 @@ class yamlParse(parse):
         self.frequency_of_the_test = 1
         self.gpu_server_num = 1
         self.gpu_num_per_server = 1
-        self.seed=-1
+        self.seed = -1
         self.partition_method_attributes = 9  # 通过指定属性进行拆分数据集， 后面换成list 9是adult数据集里面的性别列
         self.log_save_path = "./log.txt"
         self.model_save_path = "./model_save/{}_{}_{}.pkl"
         self.model_tmp_path = "./model_save/client_tmp.pkl"
-        
-        self.save_acts_step=0
+
+        self.save_acts_step = 0
+        self.save_attack_acts_step = 0
+        self.save_model_epoch = 0
         # self.log_save_path = "/root/autodl-tmp/slframe/log.txt"
         # self.model_save_path = "/root/autodl-tmp/slframe/model_save/{}_{}_{}.pkl"
         # self.model_tmp_path = "/root/autodl-tmp/slframe/model_save/model_save/client_tmp.pkl"
@@ -87,4 +89,3 @@ class yamlParse(parse):
             setattr(self, key, value)
         else:
             self.kwargs[key] = value
-

@@ -35,8 +35,8 @@ from core.splitApi import SplitNN_distributed, SplitNN_init
 
 
 # client_model = [LeNetClientNetworkPart1(), LeNetClientNetworkPart2()]
-#client_model = resnet56(class_num=10)
-client_model = LeNetComplete()
+client_model = resnet56(class_num=10)
+# client_model = LeNetComplete()
 
 server_model = None
 

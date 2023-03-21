@@ -18,23 +18,20 @@ class SplitNNClient():
 
         self.trainloader = args["trainloader"]
         self.testloader = args["testloader"]
-        # self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
-        #                            weight_decay=5e-4)
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=1e-4)
-        # self.criterion = nn.BCEWithLogitsLoss()
-        # optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
+                                   weight_decay=5e-4)
         self.criterion = nn.BCEWithLogitsLoss()
 
         self.device = args["device"]
         self.phase = "train"
         self.epoch_count = 0
         self.batch_idx = 0
-        self.MAX_EPOCH_PER_NODE = 3
         self.MAX_EPOCH_PER_NODE = args["epochs"]
         self.scheduler = None
 
         self.log = Log(self.__class__.__name__, args)
-        self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
+        # 经过多少步就记录一次log
+        self.log_step = args["log_step"] if args["log_step"] else 50
         self.args = args
 
     def reset_local_params(self):
@@ -59,28 +56,40 @@ class SplitNNClient():
 
         self.acts = self.model(inputs)
         # if isinstance(self.acts, tuple):
-            # self.log.info("after acts:{}  d:{}".format(self.acts[0].shape, len(d)))
+        # self.log.info("after acts:{}  d:{}".format(self.acts[0].shape, len(d)))
 
-        if self.args["save_acts_step"] >0 and self.step<=1 and self.phase=="validation" and self.epoch_count % self.args["save_acts_step"] == 0:
-            a=self.acts
-            a=a.cpu().detach()
-            a=a.numpy()
-            f=open("./model_save/acts/Vanilla/A_{}_E_{}_C_{}.txt".format(self.args["partition_alpha"],self.epoch_count,self.rank),"w")
+        if self.args["save_acts_step"] > 0 and self.step == 1 and self.phase == "validation" and self.epoch_count % self.args["save_acts_step"] == 0:
+            a = self.acts
+            a = a.cpu().detach()
+            a = a.numpy()
+            f = open("./model_save/acts/PSL/A_{}_E_{}_C_{}.txt".format(
+                self.args["partition_alpha"], self.epoch_count, self.rank), "w")
 
-        
             for i in range(a.shape[0]):
-                f.write("{} {} {}\n".format(self.rank,labels[i],str(list(a[i].flatten()))))
-                
+                f.write("{} {} {}\n".format(
+                    self.rank, labels[i], str(list(a[i].flatten()))))
+
+        if self.args["save_attack_acts_step"] > 0 and self.step <= 50 and self.phase == "validation" and self.epoch_count % self.args["save_acts_step"] == 0:
+            a = self.acts
+            a = a.cpu().detach()
+            a = a.numpy()
+            f = open("./model_save/attack_acts/PSL/A_{}_E_{}_C_{}.txt".format(
+                self.args["partition_alpha"], self.epoch_count, self.rank), "w")
+
+            for i in range(a.shape[0]):
+                f.write("{} {} {}\n".format(
+                    self.rank, labels[i], str(list(a[i].flatten()))))
+
         return self.acts, labels
 
     def backward_pass(self, grads):
         # self
-        logging.info("{} begin backward_pass".format(self.rank))
-        self.acts.edge_attr.backward(grads)
+        # logging.info("{} begin backward_pass".format(self.rank))
+        self.acts.backward(grads)
         self.optimizer.step()
         if self.scheduler is not None:
             self.scheduler.step()
-        logging.info("{} end backward_pass".format(self.rank))
+        # logging.info("{} end backward_pass".format(self.rank))
 
     """
     如果模型有dropout或者BN层的时候，需要改变模型的模式

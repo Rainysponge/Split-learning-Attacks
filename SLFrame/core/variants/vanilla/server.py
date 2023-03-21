@@ -1,3 +1,4 @@
+from ...log.Log import Log
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -5,7 +6,6 @@ import sys
 
 sys.path.extend("../../../")
 
-from ...log.Log import Log
 
 class SplitNNServer():
     def __init__(self, args):
@@ -16,15 +16,12 @@ class SplitNNServer():
         self.MAX_RANK = args["max_rank"]
 
         self.epoch = 0
-        self.log_step = args["log_step"] if args["log_step"] else 50  # 经过多少步就记录一次log
+        # 经过多少步就记录一次log
+        self.log_step = args["log_step"] if args["log_step"] else 50
         self.active_node = 1
         self.train_mode()
-        self.optimizer = optim.Adam(self.model.parameters(),
-                                    lr=args["lr"],
-                                    betas=(0.9, 0.999),
-                                    eps=1e-08,
-                                    weight_decay=0,
-                                    amsgrad=False)
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
+                                   weight_decay=5e-4)
         self.criterion = nn.CrossEntropyLoss()
 
     def reset_local_params(self):
@@ -78,11 +75,10 @@ class SplitNNServer():
 
         # 这里也要用log记录一下准确率之类的信息
         self.log.info("phase={} acc={} loss={} epoch={} and step={}"
-                          .format(self.phase, acc, self.val_loss, self.epoch, self.step))
+                      .format(self.phase, acc, self.val_loss, self.epoch, self.step))
         self.epoch += 1
         self.active_node = (self.active_node % self.MAX_RANK) + 1
         self.train_mode()
-
 
     # def reset_local_params(self):
     #     self.total = 0

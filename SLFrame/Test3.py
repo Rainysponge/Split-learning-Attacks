@@ -3,7 +3,6 @@ import pandas as pd
 import torch.nn as nn
 
 from matplotlib import pyplot as plt
-import seaborn as sns
 from torchvision.datasets import MNIST
 from core.model.models import german_LR_client, german_LR_server, LeNetClientNetwork,  LeNetServerNetwork,\
     adult_LR_client, adult_LR_server, LeNetComplete

@@ -14,12 +14,14 @@ class SplitNNClient():
 
         self.trainloader = args["trainloader"]
         self.testloader = args["testloader"]
-        self.optimizer = optim.Adam(self.model.parameters(),
-                                    lr=args["lr"],
-                                    betas=(0.9, 0.999),
-                                    eps=1e-08,
-                                    weight_decay=0,
-                                    amsgrad=False)
+        # self.optimizer = optim.Adam(self.model.parameters(),
+        #                             lr=args["lr"],
+        #                             betas=(0.9, 0.999),
+        #                             eps=1e-08,
+        #                             weight_decay=0,
+        #                             amsgrad=False)
+        self.optimizer = optim.SGD(self.model.parameters(), args["lr"], momentum=0.9,
+                                   weight_decay=5e-4)
         self.criterion = nn.CrossEntropyLoss()
         self.device = args["device"]
         self.local_sample_number = len(self.trainloader)

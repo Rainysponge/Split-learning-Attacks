@@ -6,15 +6,15 @@ device: gpu
 gpu_num_per_server: 1
 download: true
 batch_size: 128
-epochs: 210
-log_step: 40
+epochs: 410
+log_step: 10
 lr: 0.01
 max_rank: 2
-partition_method: hetero
-variants_type: vanilla
+partition_method: homo
+variants_type: asy_vanilla
 
 seed: 0
-partition_alpha: 0.3
+partition_alpha: 2
 server_rank: 0
 model: LeNet
 split_layer: 1
@@ -32,5 +32,6 @@ SGLR_splitLR_alpha: 0.5
 #log_save_path: D:\Split-learning-Attacks\SABuf\Split-learning-Attacks\SLFrame\log.txt
 
 
-save_acts_step: 10
-
+save_acts_step: 0
+save_attack_acts_step: 0
+save_model_epoch: 50
