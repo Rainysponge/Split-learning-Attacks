@@ -159,6 +159,12 @@ SLFrame
 ```
 yaml
 py4mpi
+pytorch
+scikit-learn
+pandas
+numpy
+pillow
+matplotlib
 ```
 
 如要使用已有的范式只需要配置config.yaml文件  
