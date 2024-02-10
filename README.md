@@ -154,7 +154,7 @@ SLFrame
   
 
 
-## 如何使用
+## How to Use
 After downloading the entire file, it is necessary to configure the relevant environment and install MPI along with the following libraries:
 ```
 yaml
@@ -218,7 +218,7 @@ In the main function, it is necessary to declare the used model.
 To execute, input the following command in the command line:
 `mpiexec -np N python filename`
 Here, N represents the number of processes, equivalent to the number of clients plus one, and 'filename' indicates the name of the file where the main function is located.
-## 自定义范式
+## Your Own Paradigm
 You can imitate the writing style of your own paradigms. The required files are as follows:
 ```
 client.py  // Defines relevant parameters and training methods for the client
